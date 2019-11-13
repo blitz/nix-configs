@@ -1,4 +1,3 @@
 {
-  overlay = import ./overlay;
-  config = import ./config;
+  modules = import ./modules;
 }

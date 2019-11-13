@@ -3,8 +3,14 @@
 let jsOverlay = import ../overlay;
 in {
 
+  # The specific direnv version is required for lorri.
+  imports = [ ./direnv.nix ];
+  
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "mitigations=off" ];
+
+  boot.cleanTmpDir = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -20,15 +26,9 @@ in {
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
   };
 
-  # Yubikey
-  services.udev.packages = [ pkgs.libu2f-host ];
-  services.pcscd.enable = true;
-
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    jsOverlay
-  ];
+  nixpkgs.overlays = [ jsOverlay ];
 
   # Shell
   programs.zsh.enable = true;
@@ -44,6 +44,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     bc
+    bind
     wget
     zile
     pv
@@ -54,10 +55,15 @@ in {
     gnupg
     tig
     nix-top
-    emacs
     file
     git
-    gparted
-    nixfmt
+    parted
+    usbutils
+    pciutils
+    libarchive
+    psmisc
+    nmap
+    inetutils
+    man-pages
   ];
 }

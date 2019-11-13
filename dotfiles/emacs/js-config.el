@@ -19,7 +19,18 @@
 (electric-pair-mode 1)
 (column-number-mode 1)
 
+
+;; Haskell
+
+(intero-global-mode 1)
+
 ;; GNU Global
 
 (add-hook 'c-mode-hook 'ggtags-mode)
 (add-hook 'c++-mode-hook 'ggtags-mode)
+
+;; Tramp
+
+;; Tramp has problems dealing with zsh, so just don't use it for Tramp
+;; sessions.
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
