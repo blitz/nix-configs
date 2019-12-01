@@ -45,6 +45,9 @@
     ];
   };
 
+  # Coding
+  services.lorri.enable = true;
+
   networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
