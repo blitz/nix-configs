@@ -26,6 +26,9 @@ in {
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
   };
 
+  # Firmware Update
+  services.fwupd.enable = true;
+
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [ jsOverlay ];
