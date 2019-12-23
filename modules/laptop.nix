@@ -19,6 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     firefox-wayland
+    google-chrome
     mpv
     riot-desktop
     gnome3.evolution
