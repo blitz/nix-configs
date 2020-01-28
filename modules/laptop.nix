@@ -51,6 +51,10 @@
 
   networking.firewall.enable = false;
 
+  # Swap
+  zramSwap.enable = true;
+  zramSwap.algorithm = "zstd";
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi.enable = false;
