@@ -13,6 +13,8 @@
 (add-to-list 'package-archives (cons "melpa" "https://melpa.org/packages/") t)
 (package-initialize)
 
+(require 'use-package)
+
 ;; Misc Coding
 
 (show-paren-mode 1)
@@ -21,7 +23,18 @@
 
 ;; Haskell
 
-(intero-global-mode 1)
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  )
+
+(add-hook 'dante-mode-hook
+	  '(lambda () (flycheck-add-next-checker 'haskell-dante
+						 '(warning . haskell-hlint))))
 
 ;; GNU Global
 
@@ -37,3 +50,19 @@
 ;; Direnv
 
 (direnv-mode)
+
+;; Customize
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-stylish-on-save t)
+ '(make-backup-files nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
