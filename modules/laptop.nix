@@ -83,7 +83,17 @@
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.opengl.enable = true;
+
+  # Accelerated Video
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
 
   users.users.julian = {
     description = "Julian Stecklina";

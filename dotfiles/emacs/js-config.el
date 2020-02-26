@@ -21,6 +21,10 @@
 (electric-pair-mode 1)
 (column-number-mode 1)
 
+;; Direnv
+
+(direnv-mode 1)
+
 ;; Haskell
 
 (use-package dante
@@ -47,10 +51,6 @@
 ;; sessions.
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
-;; Direnv
-
-(direnv-mode)
-
 ;; Customize
 
 (custom-set-variables
@@ -58,8 +58,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(dante-tap-type-time 5)
  '(haskell-stylish-on-save t)
- '(make-backup-files nil))
+ '(make-backup-files nil)
+ '(safe-local-variable-values (quote ((dante-methods stack)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
