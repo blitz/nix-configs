@@ -48,6 +48,7 @@
 
   # Coding
   services.lorri.enable = true;
+  nix.trustedUsers = [ "root" "julian" ];
 
   networking.firewall.enable = false;
 
