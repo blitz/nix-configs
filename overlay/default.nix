@@ -17,6 +17,7 @@ in {
       nix-mode
       use-package
       yaml-mode
+      clang-format
     ]));
 
 }

@@ -27,18 +27,9 @@
 
 ;; Haskell
 
-(use-package dante
-  :ensure t
-  :after haskell-mode
-  :commands 'dante-mode
-  :init
-  (add-hook 'haskell-mode-hook 'flycheck-mode)
-  (add-hook 'haskell-mode-hook 'dante-mode)
-  )
-
-(add-hook 'dante-mode-hook
-	  '(lambda () (flycheck-add-next-checker 'haskell-dante
-						 '(warning . haskell-hlint))))
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;; GNU Global
 

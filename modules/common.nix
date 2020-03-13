@@ -16,11 +16,8 @@ in {
   time.timeZone = "Europe/Berlin";
   services.chrony.enable = true;
 
-  i18n = {
-    consoleFont = "Lat2-Terminus16";
-    defaultLocale = "en_US.UTF-8";
-    consoleUseXkbConfig = true;
-  };
+  console.font = "Lat2-Terminus16";
+  console.useXkbConfig = true;
 
   environment.variables = {
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
