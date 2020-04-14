@@ -24,6 +24,7 @@ in {
   };
 
   # Firmware Update
+  hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
 
   # Package Overlay

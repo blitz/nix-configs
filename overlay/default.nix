@@ -5,6 +5,7 @@ let
 in {
   emacs = emacsWithPackages (epkgs:
     (with epkgs.melpaPackages; [
+      cmake-mode
       dante
       dhall-mode
       direnv
