@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 
-let jsOverlay = import ../overlay;
+let
+  jsOverlay = import ../overlay;
+
+  hostName = config.networking.hostName;
+
+  domain = config.networking.domain;
 in {
 
   # The specific direnv version is required for lorri.
   imports = [ ./direnv.nix ];
-  
+
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
@@ -30,6 +35,14 @@ in {
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [ jsOverlay ];
+
+  # Workaround for https://github.com/NixOS/nixpkgs/issues/10183
+  # networking.extraHosts = ''
+  #   127.0.0.1 ${hostName}.${domain} ${hostName}
+  #   ::1 ${hostName}.${domain} ${hostName}
+  #  '';
+  #services.resolved.enable = true;
+  #services.nscd.enable = true;
 
   # Shell
   programs.zsh.enable = true;
@@ -67,4 +80,8 @@ in {
     inetutils
     man-pages
   ];
+
+  documentation.man.enable = true;
+  documentation.dev.enable = true;
+  documentation.enable = true;
 }

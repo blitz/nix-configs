@@ -17,16 +17,15 @@
     export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
   '';
 
+  programs.gnome-documents.enable = true;
+
   environment.systemPackages = with pkgs; [
     firefox-wayland
     google-chrome
     mpv
     riot-desktop
-    gnome3.evolution
-    gnome3.gnome-documents
     gnome3.gnome-tweaks
     gnome3.gnome-usage
-    gnome3.vinagre
     emacs
     gparted
     nixfmt
@@ -80,7 +79,8 @@
 
   services.avahi = {
     enable = true;
-    ipv6 = true;
+
+    # Needs nscd
     nssmdns = true;
 
     publish = {

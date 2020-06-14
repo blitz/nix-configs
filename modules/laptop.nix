@@ -3,7 +3,6 @@
   imports = [
     <nixos-hardware/lenovo/thinkpad/x250>
     <nixos-hardware/common/pc/ssd>
-
   ];
 
   networking.networkmanager.enable = true;
