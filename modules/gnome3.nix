@@ -23,10 +23,11 @@
     firefox-wayland
     google-chrome
     mpv
-    riot-desktop
+    element-desktop
     gnome3.gnome-tweaks
     gnome3.gnome-usage
     emacs
+    gitAndTools.gh
     gparted
     nixfmt
     okular
@@ -48,6 +49,9 @@
   # Coding
   services.lorri.enable = true;
   nix.trustedUsers = [ "root" "julian" ];
+
+  # ARM Crosscompilation
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.firewall.enable = false;
 
