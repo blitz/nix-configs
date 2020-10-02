@@ -8,8 +8,16 @@ let
   domain = config.networking.domain;
 in {
 
-  # The specific direnv version is required for lorri.
-  imports = [ ./direnv.nix ];
+  # Direnv
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
+  nix.trustedUsers = [ "root" "julian" ];
 
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -53,7 +61,9 @@ in {
   };
   programs.zsh.promptInit =
     "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
-
+  programs.zsh.shellInit = ''
+    eval "$(direnv hook zsh)"
+  '';
   nix.gc.automatic = true;
 
   environment.systemPackages = with pkgs; [
@@ -79,6 +89,9 @@ in {
     nmap
     inetutils
     man-pages
+
+    direnv
+    nix-direnv
   ];
 
   documentation.man.enable = true;

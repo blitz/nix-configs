@@ -18,6 +18,9 @@ in {
       nix-mode
       use-package
       yaml-mode
+      lsp-mode
+      lsp-haskell
+      lsp-ui
       #clang-format
     ]));
 

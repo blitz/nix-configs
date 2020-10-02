@@ -27,9 +27,16 @@
 
 ;; Haskell
 
-(require 'haskell-interactive-mode)
-(require 'haskell-process)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(require 'lsp)
+(require 'lsp-haskell)
+
+;; Hooks so haskell and literate haskell major modes trigger LSP setup
+(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-literate-mode-hook #'lsp)
+
+;; (require 'haskell-interactive-mode)
+;; (require 'haskell-process)
+;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;; GNU Global
 
@@ -51,8 +58,10 @@
  ;; If there is more than one, they won't work right.
  '(dante-tap-type-time 5)
  '(haskell-stylish-on-save t)
+ '(lsp-haskell-process-args-hie nil)
+ '(lsp-haskell-process-path-hie "ghcide")
  '(make-backup-files nil)
- '(safe-local-variable-values (quote ((dante-methods stack)))))
+ '(safe-local-variable-values '((dante-methods stack))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

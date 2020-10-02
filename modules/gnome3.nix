@@ -46,10 +46,6 @@
     ];
   };
 
-  # Coding
-  services.lorri.enable = true;
-  nix.trustedUsers = [ "root" "julian" ];
-
   # ARM Crosscompilation
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
