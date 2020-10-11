@@ -59,7 +59,7 @@
  '(dante-tap-type-time 5)
  '(haskell-stylish-on-save t)
  '(lsp-haskell-process-args-hie nil)
- '(lsp-haskell-process-path-hie "ghcide")
+ '(lsp-haskell-process-path-hie "haskell-language-server-wrapper")
  '(make-backup-files nil)
  '(safe-local-variable-values '((dante-methods stack))))
 (custom-set-faces

@@ -37,6 +37,7 @@ in {
   };
 
   # Firmware Update
+  hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
 
@@ -89,6 +90,8 @@ in {
     nmap
     inetutils
     man-pages
+    pwgen
+    dmidecode
 
     direnv
     nix-direnv

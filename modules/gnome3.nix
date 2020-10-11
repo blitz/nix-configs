@@ -26,6 +26,8 @@
     element-desktop
     gnome3.gnome-tweaks
     gnome3.gnome-usage
+    gnome3.gnome-boxes
+    pkgs.spice-gtk
     emacs
     gitAndTools.gh
     gparted
@@ -45,6 +47,16 @@
       terminus_font
     ];
   };
+
+  # For GNOME Boxes
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+  };
+
+  # https://github.com/NixOS/nixpkgs/issues/60594
+  security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
 
   # ARM Crosscompilation
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -94,7 +106,7 @@
   users.users.julian = {
     description = "Julian Stecklina";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" ];
+    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" ];
     createHome = true;
   };
 }
