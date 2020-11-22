@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
 
   imports = [
-    <nixos-hardware/common/pc/ssd>
     ./gnome3.nix
     ./common.nix
   ];

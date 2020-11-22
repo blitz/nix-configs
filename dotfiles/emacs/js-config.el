@@ -23,7 +23,7 @@
 
 ;; Direnv
 
-(direnv-mode 1)
+;(direnv-mode 1)
 
 ;; Haskell
 
