@@ -21,6 +21,7 @@ in {
       lsp-mode
       lsp-haskell
       lsp-ui
+      rustic
       #clang-format
     ]));
 

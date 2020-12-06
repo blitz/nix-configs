@@ -8,15 +8,6 @@ let
   domain = config.networking.domain;
 in {
 
-  # Direnv
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-  '';
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
-
   nix.trustedUsers = [ "root" "julian" ];
 
   # Living on the edge.
@@ -66,6 +57,7 @@ in {
     eval "$(direnv hook zsh)"
   '';
   nix.gc.automatic = true;
+  nix.optimise.automatic = true;
 
   environment.systemPackages = with pkgs; [
     bc

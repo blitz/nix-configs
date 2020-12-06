@@ -11,6 +11,15 @@
     };
   };
 
+  # Direnv
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
   environment.shellInit = ''
     export GPG_TTY="$(tty)"
     gpg-connect-agent /bye
@@ -24,9 +33,11 @@
     google-chrome
     mpv
     element-desktop
+    signal-desktop
     gnome3.gnome-tweaks
     gnome3.gnome-usage
     gnome3.gnome-boxes
+    gnome3.gnome-session
     pkgs.spice-gtk
     emacs
     gitAndTools.gh
@@ -34,6 +45,21 @@
     nixfmt
     okular
     gimp
+    steam
+
+    # Haskell dev
+    ghc
+    haskellPackages.haskell-language-server
+    stack
+    stylish-cabal
+    stylish-haskell
+
+    # Rust dev
+    rls
+    cargo
+    rustc
+    rustfmt
+    clang_11
   ];
 
   fonts = {
