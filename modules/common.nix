@@ -49,6 +49,8 @@ in {
   services.resolved.enable = true;
   #services.nscd.enable = true;
 
+  services.tailscale.enable = true;
+
   # Shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
