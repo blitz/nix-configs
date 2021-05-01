@@ -140,9 +140,6 @@ in
   # https://github.com/NixOS/nixpkgs/issues/60594
   security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
 
-  # ARM Crosscompilation
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   networking.firewall.enable = false;
 
   # Swap

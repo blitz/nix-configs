@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 
-  networking.networkmanager.enable = false;
+  networking.networkmanager.enable = true;
   services.openssh.enable = true;
 
   # I use this as a build server at times.
