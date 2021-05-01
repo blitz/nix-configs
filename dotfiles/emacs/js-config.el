@@ -61,6 +61,9 @@
  '(lsp-haskell-process-args-hie nil)
  '(lsp-haskell-process-path-hie "haskell-language-server-wrapper")
  '(make-backup-files nil)
+ '(nix-nixfmt-bin "nixpkgs-fmt")
+ '(ring-bell-function 'ignore)
+ '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values '((dante-methods stack))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

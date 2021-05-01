@@ -1,16 +1,38 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  emacsWithPackages = (pkgs.emacsPackagesNgGen pkgs.emacs).emacsWithPackages;
+in
+{
+  # For video loopback in OBS Studio
+  boot.extraModulePackages = with config.boot.kernelPackages;
+    [ v4l2loopback ];
+
+  # boot.kernelPatches = [ {
+  #   name = "amdgpu-mesa-fix";
+  #   patch = null;
+  #   # https://wiki.archlinux.org/index.php/Firefox#Hardware_video_acceleration
+  #   extraConfig = ''
+  #     CHECKPOINT_RESTORE y
+  #   '';
+  #  } ];
+  
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
   programs = {
-    ssh.startAgent = false;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
+    # ssh.startAgent = false;
+    # gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    #steam.enable = true;
   };
 
+  # Flatpak
+  #services.flatpak.enable = true;
+  
   # Direnv
   nix.extraOptions = ''
     keep-outputs = true
@@ -20,39 +42,63 @@
     "/share/nix-direnv"
   ];
 
-  environment.shellInit = ''
-    export GPG_TTY="$(tty)"
-    gpg-connect-agent /bye
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  '';
+  # environment.shellInit = ''
+  #   export GPG_TTY="$(tty)"
+  #   gpg-connect-agent /bye
+  #   export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+  # '';
 
-  programs.gnome-documents.enable = true;
+  #programs.gnome-documents.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefox-wayland
-    google-chrome
+    firefox
+    chromium
     mpv
     element-desktop
     signal-desktop
+    deja-dup
     gnome3.gnome-tweaks
     gnome3.gnome-usage
     gnome3.gnome-boxes
     gnome3.gnome-session
     pkgs.spice-gtk
-    emacs
     gitAndTools.gh
     gparted
-    nixfmt
+    nixpkgs-fmt
     okular
     gimp
-    steam
+    #obs-studio
+    #obs-v4l2sink # This needs manual configuration to work :(
+
+    # Emacs
+    (emacsWithPackages
+      (epkgs: (with epkgs.melpaPackages;
+      [
+        cmake-mode
+        dante
+        dhall-mode
+        direnv
+        flymake-hlint
+        haskell-mode
+        hlint-refactor
+        magit
+        markdown-mode
+        nasm-mode
+        nix-mode
+        use-package
+        yaml-mode
+        lsp-mode
+        lsp-haskell
+        lsp-ui
+        rustic
+      ])))
 
     # Haskell dev
-    ghc
-    haskellPackages.haskell-language-server
-    stack
-    stylish-cabal
-    stylish-haskell
+    # ghc
+    # haskellPackages.haskell-language-server
+    # stack
+    # stylish-cabal
+    # stylish-haskell
 
     # Rust dev
     rls
@@ -60,10 +106,20 @@
     rustc
     rustfmt
     clang_11
+    clippy
+
+    # ULX3S
+    fujprog
+
+    # Terminal recording
+    asciinema
   ];
 
   fonts = {
-    enableFontDir = true;
+    fontDir = {
+      enable = true;
+    };
+
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       corefonts
@@ -99,7 +155,17 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

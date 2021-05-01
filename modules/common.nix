@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   jsOverlay = import ../overlay;
@@ -34,14 +34,13 @@ in {
 
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ jsOverlay ];
 
   # Workaround for https://github.com/NixOS/nixpkgs/issues/10183
   # networking.extraHosts = ''
   #   127.0.0.1 ${hostName}.${domain} ${hostName}
   #   ::1 ${hostName}.${domain} ${hostName}
   #  '';
-  #services.resolved.enable = true;
+  services.resolved.enable = true;
   #services.nscd.enable = true;
 
   # Shell
@@ -62,28 +61,30 @@ in {
   environment.systemPackages = with pkgs; [
     bc
     bind
-    wget
-    zile
-    pv
-    htop
+    cachix
+    dmidecode
     dstat
-    tmux
-    git
-    gnupg
-    tig
-    nix-top
     file
     git
-    parted
-    usbutils
-    pciutils
-    libarchive
-    psmisc
-    nmap
+    git
+    gnupg
+    htop
     inetutils
+    libarchive
     man-pages
+    nix-top
+    nmap
+    parted
+    pciutils
+    psmisc
+    pv
     pwgen
-    dmidecode
+    tig
+    tmux
+    usbutils
+    wget
+    zile
+    lm_sensors
 
     direnv
     nix-direnv
