@@ -56,8 +56,9 @@ in {
     enable = true;
     plugins = [ "git" "sudo" "tmux" ];
   };
-  programs.zsh.promptInit =
-    "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
+  programs.zsh.promptInit = ''
+    eval "$(${pkgs.starship}/bin/starship init zsh)"
+  '';
   programs.zsh.shellInit = ''
     eval "$(direnv hook zsh)"
   '';

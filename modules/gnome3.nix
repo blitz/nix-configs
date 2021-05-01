@@ -123,10 +123,11 @@ in
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       corefonts
-      noto-fonts
+      dina-font
       freefont_ttf
-      powerline-fonts
-      terminus_font
+      liberation_ttf
+      mplus-outline-fonts
+      nerdfonts
     ];
   };
 
