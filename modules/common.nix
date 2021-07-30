@@ -7,12 +7,12 @@ let
 
   domain = config.networking.domain;
 in {
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  # nix = {
+  #   package = pkgs.nixUnstable;
+  #   extraOptions = ''
+  #     experimental-features = nix-command flakes
+  #   '';
+  # };
 
   nix.trustedUsers = [ "root" "julian" ];
 
