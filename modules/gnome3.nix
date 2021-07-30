@@ -176,7 +176,7 @@ in
   # Enable the Gnome3.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.gvfs.enable = true;
 
   services.avahi = {
