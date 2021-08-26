@@ -4,17 +4,8 @@ let
 in
 {
   # For video loopback in OBS Studio
-  boot.extraModulePackages = with config.boot.kernelPackages;
-    [ v4l2loopback ];
-
-  # boot.kernelPatches = [ {
-  #   name = "amdgpu-mesa-fix";
-  #   patch = null;
-  #   # https://wiki.archlinux.org/index.php/Firefox#Hardware_video_acceleration
-  #   extraConfig = ''
-  #     CHECKPOINT_RESTORE y
-  #   '';
-  #  } ];
+  # boot.extraModulePackages = with config.boot.kernelPackages;
+  #   [ v4l2loopback ];
   
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
