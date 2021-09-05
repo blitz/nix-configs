@@ -4,16 +4,21 @@
     ./gnome3.nix
     ./common.nix
   ];
-  
+
   boot.extraModprobeConfig = ''
     options kvm-amd avic=1
   '';
 
+  # TODO Settings in the power daemon are not persistent? Or they
+  # don't have any effect.
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = true;
+
   services.thinkfan = {
     enable = true;
     levels = [
-      [0  0   60]
-      [1  55  65]
+      [0  0   55]
+      [1  50  65]
       [2  60  68]
       [3  65  72]
       [4  67  75]
@@ -55,7 +60,7 @@
 
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = false;
   hardware.bluetooth.powerOnBoot = false;
 
   powerManagement.cpuFreqGovernor = "schedutil";

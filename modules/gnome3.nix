@@ -6,7 +6,7 @@ in
   # For video loopback in OBS Studio
   # boot.extraModulePackages = with config.boot.kernelPackages;
   #   [ v4l2loopback ];
-  
+
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
@@ -23,7 +23,7 @@ in
 
   # Flatpak
   #services.flatpak.enable = true;
-  
+
   # Direnv
   nix.extraOptions = ''
     keep-outputs = true
@@ -33,13 +33,7 @@ in
     "/share/nix-direnv"
   ];
 
-  # environment.shellInit = ''
-  #   export GPG_TTY="$(tty)"
-  #   gpg-connect-agent /bye
-  #   export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  # '';
-
-  #programs.gnome-documents.enable = true;
+  #virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
     firefox
@@ -92,15 +86,10 @@ in
     # stylish-haskell
 
     # Rust dev
-    rls
-    cargo
-    rustc
-    rustfmt
-    clang_11
-    clippy
+    rustup
 
     # ULX3S
-    fujprog
+    # fujprog
 
     # Terminal recording
     asciinema
