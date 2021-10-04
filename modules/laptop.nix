@@ -60,8 +60,5 @@
 
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth.enable = false;
-  hardware.bluetooth.powerOnBoot = false;
-
   powerManagement.cpuFreqGovernor = "schedutil";
 }
