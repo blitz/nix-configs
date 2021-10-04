@@ -42,6 +42,7 @@ in
     element-desktop
     signal-desktop
     deja-dup
+    magic-wormhole
     gnome3.gnome-tweaks
     gnome3.gnome-usage
     gnome3.gnome-boxes
