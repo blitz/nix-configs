@@ -49,7 +49,7 @@ in {
   services.resolved.enable = true;
   #services.nscd.enable = true;
 
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   # Shell
   programs.zsh.enable = true;
