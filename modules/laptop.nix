@@ -9,13 +9,8 @@
     options kvm-amd avic=1
   '';
 
-  # TODO Settings in the power daemon are not persistent? Or they
-  # don't have any effect.
-  services.power-profiles-daemon.enable = false;
-  services.tlp.enable = true;
-
   services.thinkfan = {
-    enable = true;
+    enable = false;
     levels = [
       [0  0   55]
       [1  50  65]

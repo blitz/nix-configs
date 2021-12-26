@@ -7,14 +7,14 @@ let
 
   domain = config.networking.domain;
 in {
-  # nix = {
-  #   package = pkgs.nixUnstable;
-  #   extraOptions = ''
-  #     experimental-features = nix-command flakes
-  #   '';
-  # };
+  nix = {
+    trustedUsers = [ "root" "julian" ];
 
-  nix.trustedUsers = [ "root" "julian" ];
+    package = pkgs.nix_2_4;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -74,8 +74,7 @@ in {
     dmidecode
     dstat
     file
-    git
-    git
+    gitFull
     gnupg
     htop
     inetutils

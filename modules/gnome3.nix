@@ -18,7 +18,7 @@ in
     #   enableSSHSupport = true;
     # };
 
-    #steam.enable = true;
+    steam.enable = true;
   };
 
   # Flatpak
@@ -78,21 +78,30 @@ in
         rustic
       ])))
 
-    # Haskell dev
-    # ghc
-    # haskellPackages.haskell-language-server
-    # stack
-    # stylish-cabal
-    # stylish-haskell
-
     # Rust dev
     rustup
-
-    # ULX3S
-    # fujprog
+    clang_12
 
     # Terminal recording
     asciinema
+
+    # Legacy Coding
+    msmtp
+    (pkgs.buildFHSUserEnv {
+      name = "legacy-env";
+      targetPkgs = pkgs: with pkgs; [
+        gcc binutils
+        gnumake coreutils patch zlib zlib.dev curl git m4 bison flex acpica-tools
+        ncurses.dev
+        elfutils.dev
+        openssl openssl.dev
+        cpio pahole gawk perl bc nettools rsync
+        gmp gmp.dev
+        libmpc
+        mpfr mpfr.dev
+        zstd python3Minimal
+      ];
+    })
   ];
 
   fonts = {
@@ -117,9 +126,6 @@ in
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
-
-  # https://github.com/NixOS/nixpkgs/issues/60594
-  security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
 
   networking.firewall.enable = false;
 
@@ -176,7 +182,7 @@ in
   users.users.julian = {
     description = "Julian Stecklina";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" ];
+    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" ];
     createHome = true;
   };
 }

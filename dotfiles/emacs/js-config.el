@@ -63,6 +63,7 @@
  '(make-backup-files nil)
  '(nix-nixfmt-bin "nixpkgs-fmt")
  '(ring-bell-function 'ignore)
+ '(rustic-analyzer-command '("/home/julian/.cargo/bin/rust-analyzer"))
  '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values '((dante-methods stack))))
 (custom-set-faces
