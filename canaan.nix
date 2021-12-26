@@ -1,6 +1,29 @@
 { config, pkgs, ... }:
 
 {
+  boot.extraModprobeConfig = ''
+    options kvm-amd avic=1
+  '';
+
+  services.thinkfan = {
+    enable = false;
+    levels = [
+      [0  0   55]
+      [1  50  65]
+      [2  60  68]
+      [3  65  72]
+      [4  67  75]
+      [5  68  78]
+      [6  69  79]
+      [7  70  80]
+      [127 78 32767]
+    ];
+
+    # Disble bias because it causes annoying spinups of the fan.
+    extraArgs = [ "-b" "0" ];
+    #sensors = "tp_thermal /proc/acpi/ibm/thermal";
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
