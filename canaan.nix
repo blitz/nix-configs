@@ -5,6 +5,29 @@
     options kvm-amd avic=1
   '';
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxPackages_5_15.kernel.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "https://github.com/blitz/linux/archive/refs/heads/v5.16-amd-acpi.tar.gz";
+        sha256 = "sha256-yXtIll5Z68dGw3In1P3jZDwSxbMXT+t2Zkuvs6x0jf0=";
+      };
+      version = "5.16-rc6";
+      modDirVersion = "5.16.0-rc6";
+    };
+  });
+
+  boot.kernelPatches = [
+    {
+      name = "amd-cppc";
+      patch = null;
+      extraConfig = ''
+        X86_AMD_PSTATE y
+      '';
+    }
+  ];
+  
   services.thinkfan = {
     enable = false;
     levels = [

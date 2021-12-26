@@ -5,19 +5,6 @@
     ./common.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPatches = [
-  #   # {
-  #   #   name = "thinkpad-l14-temp11";
-  #   #   patch = ./thinkpad-l14-temp11.patch;
-  #   # }
-
-  #   {
-  #     name = "thinkpad-l14-temp-labels";
-  #     patch = ./thinkpad-l14-temp-labels.patch;
-  #   }
-  # ];
-
   hardware.opengl.extraPackages = [
     # OpenCL
     # pkgs.rocm-opencl-runtime
