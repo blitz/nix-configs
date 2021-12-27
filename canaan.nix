@@ -8,13 +8,13 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxPackages_5_15.kernel.override {
-    argsOverride = rec {
+    argsOverride = {
       src = pkgs.fetchurl {
         url = "https://github.com/blitz/linux/archive/refs/heads/v5.16-amd-acpi.tar.gz";
-        sha256 = "sha256-yXtIll5Z68dGw3In1P3jZDwSxbMXT+t2Zkuvs6x0jf0=";
+        sha256 = "sha256-V0+u+xe1+kvktvVil0kHEjSaSHNxHIYgOjsXIHO0bsY=";
       };
-      version = "5.16-rc6";
-      modDirVersion = "5.16.0-rc6";
+      version = "5.16-rc7";
+      modDirVersion = "5.16.0-rc7";
     };
   });
 
