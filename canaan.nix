@@ -15,8 +15,8 @@
         rev = "6bf75f1fc66e1a07b9dae81bd82c893adbfa542d";
         sha256 = "9MOW92n81I7COxdmCqNV2jU4yuWDcKnYpkHrlbgMfOk=";
       };
-      version = "5.16-rc7";
-      modDirVersion = "5.16.0-rc7";
+      version = "5.16-rc8";
+      modDirVersion = "5.16.0-rc8";
     };
   });
 
