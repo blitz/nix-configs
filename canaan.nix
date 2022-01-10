@@ -12,11 +12,11 @@
       src = pkgs.fetchFromGitHub {
         owner = "blitz";
         repo = "linux";
-        rev = "6bf75f1fc66e1a07b9dae81bd82c893adbfa542d";
-        sha256 = "9MOW92n81I7COxdmCqNV2jU4yuWDcKnYpkHrlbgMfOk=";
+        rev = "fd1ecada79a76c3b76393ad90c1c821cded0fcfd";
+        sha256 = "wQehJgq6r+f5bV8h4zHjt5J/jz1q4HwgEhJpwhkiRYU=";
       };
-      version = "5.16-rc8";
-      modDirVersion = "5.16.0-rc8";
+      version = "5.16";
+      modDirVersion = "5.16.0";
     };
   });
 
