@@ -5,30 +5,7 @@
     options kvm-amd avic=1
   '';
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxPackages_5_15.kernel.override {
-    argsOverride = {
-      src = pkgs.fetchFromGitHub {
-        owner = "blitz";
-        repo = "linux";
-        rev = "fd1ecada79a76c3b76393ad90c1c821cded0fcfd";
-        sha256 = "wQehJgq6r+f5bV8h4zHjt5J/jz1q4HwgEhJpwhkiRYU=";
-      };
-      version = "5.16";
-      modDirVersion = "5.16.0";
-    };
-  });
-
-  boot.kernelPatches = [
-    {
-      name = "amd-cppc";
-      patch = null;
-      extraConfig = ''
-        X86_AMD_PSTATE y
-      '';
-    }
-  ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   
   services.thinkfan = {
     enable = true;
