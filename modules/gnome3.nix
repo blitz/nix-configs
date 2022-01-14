@@ -3,9 +3,18 @@ let
   emacsWithPackages = (pkgs.emacsPackagesNgGen pkgs.emacs).emacsWithPackages;
 in
 {
-  # For video loopback in OBS Studio
-  # boot.extraModulePackages = with config.boot.kernelPackages;
-  #   [ v4l2loopback ];
+  nixpkgs.overlays = [
+    (self: super: {
+      gnome = super.gnome // {
+        geary = super.gnome.geary.overrideAttrs (old: {
+          patches = [
+            # https://gitlab.gnome.org/GNOME/geary/-/issues/1320
+            ../patches/geary/0001-smtp-don-t-use-domain-for-EHLO-if-it-s-not-a-FQDN.patch
+          ];
+        });
+      };
+    })
+  ];
 
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
@@ -18,6 +27,7 @@ in
     #   enableSSHSupport = true;
     # };
 
+    geary.enable = true;
     steam.enable = true;
   };
 
@@ -52,8 +62,7 @@ in
     nixpkgs-fmt
     okular
     gimp
-    #obs-studio
-    #obs-v4l2sink # This needs manual configuration to work :(
+    clinfo
 
     # Emacs
     (emacsWithPackages

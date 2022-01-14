@@ -1,12 +1,35 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/laptop.nix
+    ./modules/obs-studio.nix
+    ./cachix.nix
+    ./nixbuild.nix
+  ];
+
   boot.extraModprobeConfig = ''
     options kvm-amd avic=1
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+
+  # For building Raspberry Pi system images.
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  hardware.opengl.extraPackages = [
+    # OpenCL
+    pkgs.rocm-opencl-runtime
+    pkgs.rocm-opencl-icd
+    # AMD's Vulkan Driver
+    pkgs.amdvlk
+  ];
+
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
+
   services.thinkfan = {
     enable = true;
     levels = [

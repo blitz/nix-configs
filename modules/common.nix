@@ -92,6 +92,7 @@ in {
     wget
     zile
     lm_sensors
+    magic-wormhole
 
     direnv
     nix-direnv

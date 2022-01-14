@@ -16,11 +16,8 @@
     nixosConfigurations.canaan = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./modules/laptop.nix
         ./canaan.nix
         ./canaan-hardware.nix
-        ./cachix.nix
-        ./nixbuild.nix
         nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
       ];
     };
