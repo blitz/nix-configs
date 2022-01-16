@@ -141,7 +141,7 @@ in
   # Swap
   zramSwap.enable = true;
   zramSwap.algorithm = "zstd";
-  zramSwap.memoryPercent = "25%";
+  zramSwap.memoryPercent = 25;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
