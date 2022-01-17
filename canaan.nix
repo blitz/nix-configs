@@ -17,9 +17,6 @@
   # For building Raspberry Pi system images.
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  boot.tmpOnTmpfs = true;
-  boot.tmpOnTmpfsSize = "25%";
-
   hardware.opengl.extraPackages = [
     # OpenCL
     pkgs.rocm-opencl-runtime

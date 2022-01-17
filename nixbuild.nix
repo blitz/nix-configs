@@ -12,7 +12,7 @@
         maxJobs = 10;
         sshKey = "/root/.ssh/id_ed25519";
         sshUser = "root";
-        supportedFeatures = [ "big-parallel" "benchmark" "kvm" ];
+        supportedFeatures = [ "big-parallel" "benchmark" "kvm" "nixos-test" ];
         systems = [ "x86_64-linux" ];
         speedFactor = 2;
       }
