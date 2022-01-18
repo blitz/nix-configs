@@ -18,7 +18,14 @@
       modules = [
         ./canaan.nix
         ./canaan-hardware.nix
-        nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
+
+        # There is a Thinkpad L14 AMD module, but it disables the
+        # IOMMU.
+        nixos-hardware.nixosModules.lenovo-thinkpad
+        nixos-hardware.nixosModules.common-pc-laptop-ssd
+        nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-gpu-amd
       ];
     };
 
@@ -27,8 +34,6 @@
       flake = self;
 
       # Optional. Systems for which to perform CI.
-      # By default, every system attr in the flake will be built.
-      # Example: [ "x86_64-darwin" "aarch64-linux" ];
       systems = [ "x86_64-linux" ];
     };
   };

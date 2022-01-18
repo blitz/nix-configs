@@ -14,21 +14,16 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # For building Raspberry Pi system images.
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  hardware.opengl.extraPackages = [
-    # OpenCL
-    pkgs.rocm-opencl-runtime
-    pkgs.rocm-opencl-icd
-    # AMD's Vulkan Driver
-    pkgs.amdvlk
+  boot.kernelParams = [
+    # Force use of the thinkpad_acpi driver for backlight control.
+    # This allows the backlight save/load systemd service to work.
+    "acpi_backlight=native"
   ];
 
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
-
+  # For building Raspberry Pi system images. Disabled for now, because
+  # we have nixbuild.net.
+  #
+  # boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   services.thinkfan = {
     enable = true;
