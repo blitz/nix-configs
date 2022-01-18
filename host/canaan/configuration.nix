@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./modules/laptop.nix
-    ./modules/obs-studio.nix
-    ./cachix.nix
-    ./nixbuild.nix
+    ../../modules/laptop.nix
+    ../../modules/obs-studio.nix
+    ../../modules/cachix.nix
+    ../../modules/nixbuild.nix
   ];
 
   boot.extraModprobeConfig = ''

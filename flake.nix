@@ -16,8 +16,8 @@
     nixosConfigurations.canaan = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./canaan.nix
-        ./canaan-hardware.nix
+        ./host/canaan/configuration.nix
+        ./host/canaan/hardware-configuration.nix
 
         # There is a Thinkpad L14 AMD module, but it disables the
         # IOMMU.
