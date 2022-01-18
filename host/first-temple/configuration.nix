@@ -16,7 +16,7 @@
     enable = true;
 
     # We rely on nixbuild taking the brunt.
-    concurrentTasks = 6;
+    settings.concurrentTasks = 6;
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
