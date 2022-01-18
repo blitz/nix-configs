@@ -13,9 +13,9 @@ in
       ../../modules/common.nix
       ../../modules/nixbuild.nix
       ../../modules/cachix.nix
-      
-      ./containers.nix
     ];
+
+  services.hercules-ci-agent.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -32,8 +32,6 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   networking.firewall.enable = false;
-
-  networking.nameservers = [ "192.168.178.1" "8.8.8.8" "4.2.2.4" ];
 
   networking.networkmanager.enable = false;
 
