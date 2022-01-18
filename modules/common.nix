@@ -20,6 +20,10 @@ in {
   boot.kernelParams = [ "mitigations=off" ];
 
   boot.cleanTmpDir = true;
+  services.journald.extraConfig = ''
+    SystemMaxUse=250M
+    SystemMaxFileSize=50M
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
