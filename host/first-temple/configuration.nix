@@ -12,7 +12,12 @@
       ../../modules/cachix.nix
     ];
 
-  services.hercules-ci-agent.enable = true;
+  services.hercules-ci-agent = {
+    enable = true;
+
+    # We rely on nixbuild taking the brunt.
+    concurrentTasks = 6;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
