@@ -4,9 +4,6 @@
 
 { config, pkgs, lib, ... }:
 
-let
-  js = import <js>;
-in
 {
   imports =
     [

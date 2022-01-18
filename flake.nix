@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -12,7 +13,7 @@
     flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, flake-compat, flake-compat-ci }: {
+  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, flake-compat, flake-compat-ci }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -38,11 +39,13 @@
 
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-intel
+
+          hercules-ci.nixosModules.agent-service
         ];
       };
     };
 
-    # For Hercules CI.
+    # For Hercules CI, which doesn't natively support flakes (yet).
     ciNix = flake-compat-ci.lib.recurseIntoFlakeWith {
       flake = self;
 
