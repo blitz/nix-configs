@@ -59,7 +59,7 @@ in {
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.ohMyZsh = {
     enable = true;
-    plugins = [ "git" "sudo" "tmux" ];
+    plugins = [ "git" "sudo" ];
   };
   programs.zsh.promptInit = ''
     eval "$(${pkgs.starship}/bin/starship init zsh)"
