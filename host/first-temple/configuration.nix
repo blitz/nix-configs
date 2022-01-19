@@ -21,7 +21,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = "github:blitz/nix-config";
+    flake = "github:blitz/nix-configs";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
