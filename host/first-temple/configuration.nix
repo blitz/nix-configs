@@ -19,6 +19,11 @@
     settings.concurrentTasks = 6;
   };
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:blitz/nix-config";
+  };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.cpu.intel.updateMicrocode = true;
