@@ -70,6 +70,16 @@ in {
   nix.gc.automatic = true;
   nix.optimise.automatic = true;
 
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+
+    extraConfig = ''
+      set -g @tmux_power_theme 'snow'
+      run-shell "${pkgs.tmuxPlugins.power-theme}/share/tmux-plugins/power/tmux-power.tmux"
+    '';
+  };
+
   environment.systemPackages = with pkgs; [
     bc
     bind
@@ -91,7 +101,6 @@ in {
     pv
     pwgen
     tig
-    tmux
     usbutils
     wget
     zile
