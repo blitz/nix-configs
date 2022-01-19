@@ -19,6 +19,11 @@
     settings.concurrentTasks = 6;
   };
 
+  # The XFS FAQ suggests to use no I/O scheduler.
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="[sv]d[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+  '';
+
   system.autoUpgrade = {
     enable = true;
     flake = "github:blitz/nix-configs";
