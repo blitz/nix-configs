@@ -43,6 +43,19 @@
           hercules-ci.nixosModules.agent-service
         ];
       };
+
+      second-temple = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./host/second-temple/configuration.nix
+          ./host/second-temple/hardware-configuration.nix
+
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-cpu-intel
+
+          hercules-ci.nixosModules.agent-service
+        ];
+      };
     };
 
     # For Hercules CI, which doesn't natively support flakes (yet).
