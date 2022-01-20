@@ -16,7 +16,7 @@
     enable = true;
 
     # We rely on nixbuild taking the brunt.
-    settings.concurrentTasks = 6;
+    settings.concurrentTasks = 3;
   };
 
   # The XFS FAQ suggests to use no I/O scheduler.
