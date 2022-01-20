@@ -1,42 +1,49 @@
 { config, pkgs, lib, ... }:
 
-let
-  jsOverlay = import ../overlay;
-
-  hostName = config.networking.hostName;
-
-  domain = config.networking.domain;
-in {
+{
   nix = {
     trustedUsers = [ "root" "julian" ];
 
     package = pkgs.nix_2_4;
     extraOptions = ''
       experimental-features = nix-command flakes
+
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
   # Living on the edge.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
 
+  # Don't accumulate crap.
   boot.cleanTmpDir = true;
   services.journald.extraConfig = ''
     SystemMaxUse=250M
     SystemMaxFileSize=50M
   '';
+  nix.gc.automatic = true;
+  nix.optimise.automatic = true;
+
+  # Swap
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 25;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
   services.chrony.enable = true;
 
-  console.font = "Lat2-Terminus16";
   console.useXkbConfig = true;
 
-  environment.variables = {
-    EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
-  };
-
-  # Firmware Update
+  # Microcode / Firmware Update
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
@@ -44,31 +51,31 @@ in {
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
 
-  # Workaround for https://github.com/NixOS/nixpkgs/issues/10183
-  # networking.extraHosts = ''
-  #   127.0.0.1 ${hostName}.${domain} ${hostName}
-  #   ::1 ${hostName}.${domain} ${hostName}
-  #  '';
   services.resolved.enable = true;
-  #services.nscd.enable = true;
-
   services.tailscale.enable = true;
 
   # Shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [ "git" "sudo" ];
+  environment.variables = {
+    EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
   };
-  programs.zsh.promptInit = ''
-    eval "$(${pkgs.starship}/bin/starship init zsh)"
-  '';
-  programs.zsh.shellInit = ''
-    eval "$(direnv hook zsh)"
-  '';
-  nix.gc.automatic = true;
-  nix.optimise.automatic = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  programs.zsh = {
+    enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      # Adding tmux here will make programs.tmux ineffective.
+      plugins = [ "git" "sudo" ];
+    };
+
+    promptInit = ''
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
+    '';
+    shellInit = ''
+      eval "$(direnv hook zsh)"
+    '';
+  };
 
   programs.tmux = {
     enable = true;
@@ -80,6 +87,8 @@ in {
     '';
   };
 
+  programs.htop.enable = true;
+
   environment.systemPackages = with pkgs; [
     bc
     bind
@@ -89,7 +98,6 @@ in {
     file
     gitFull
     gnupg
-    htop
     inetutils
     libarchive
     man-pages
@@ -114,4 +122,18 @@ in {
   documentation.man.enable = true;
   documentation.dev.enable = true;
   documentation.enable = true;
+
+  users.mutableUsers = false;
+  users.users.julian = {
+    description = "Julian Stecklina";
+    isNormalUser = true;
+    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" ];
+    createHome = true;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErZm6k0S7NahikKEbTQlrOrsLKgr9X+iNoUsGeqDV0F julian@canaan.xn--pl-wia.net"
+    ];
+
+    hashedPassword = "$6$d4Q85PrE$m/mrZqoe6R4oi.2NHoB6gJicQr85yKtnmZBXUeyap7KPGKCp9SLqfPOprY12cJtjCcM3bsXTUVzS3O6n8VNTx0";
+  };
 }

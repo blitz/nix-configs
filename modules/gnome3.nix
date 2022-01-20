@@ -21,29 +21,9 @@ in
   services.pcscd.enable = true;
 
   programs = {
-    # ssh.startAgent = false;
-    # gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
     geary.enable = true;
     steam.enable = true;
   };
-
-  # Flatpak
-  #services.flatpak.enable = true;
-
-  # Direnv
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-  '';
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
-
-  #virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
     firefox
@@ -53,13 +33,9 @@ in
     signal-desktop
     deja-dup
     gnome3.gnome-tweaks
-    gnome3.gnome-usage
     gnome3.gnome-boxes
-    gnome3.gnome-session
-    pkgs.spice-gtk
     gitAndTools.gh
     gparted
-    nixpkgs-fmt
     okular
     gimp
     clinfo
@@ -86,6 +62,9 @@ in
         lsp-ui
         rustic
       ])))
+
+    # Nix dev
+    nixpkgs-fmt
 
     # Rust dev
     rustup
@@ -135,13 +114,9 @@ in
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
+  virtualisation.spiceUSBRedirection.enable = true;
 
   networking.firewall.enable = false;
-
-  # Swap
-  zramSwap.enable = true;
-  zramSwap.algorithm = "zstd";
-  zramSwap.memoryPercent = 25;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -159,7 +134,6 @@ in
     pulse.enable = true;
     jack.enable = true;
   };
-
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -188,11 +162,4 @@ in
   };
 
   hardware.opengl.enable = true;
-
-  users.users.julian = {
-    description = "Julian Stecklina";
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" ];
-    createHome = true;
-  };
 }

@@ -12,8 +12,6 @@
     options kvm-amd avic=1
   '';
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
