@@ -12,6 +12,19 @@
       ../../modules/cachix.nix
     ];
 
+  boot.kernelPatches = [
+    {
+      name = "second-temple-tuning";
+      patch = null;
+      extraConfig = ''
+        X86_SGX y
+
+        X86_EXTENDED_PLATFORM n
+        RETPOLINE n
+      '';
+    }
+  ];
+
   services.hercules-ci-agent = {
     enable = true;
 
@@ -45,7 +58,7 @@
 
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
-  
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
