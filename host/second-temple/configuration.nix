@@ -12,19 +12,6 @@
       ../../modules/cachix.nix
     ];
 
-  boot.kernelPatches = [
-    {
-      name = "second-temple-tuning";
-      patch = null;
-      extraConfig = ''
-        X86_SGX y
-
-        X86_EXTENDED_PLATFORM n
-        RETPOLINE n
-      '';
-    }
-  ];
-
   services.hercules-ci-agent = {
     enable = true;
 
