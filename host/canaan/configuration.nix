@@ -18,6 +18,18 @@
     "acpi_backlight=native"
   ];
 
+  boot.kernelPatches = [
+    {
+      name = "amd-tsc-calibration";
+
+      # This is a workaround to fix the TSC calibration.
+      #
+      # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+      # https://bugzilla.kernel.org/show_bug.cgi?id=208887
+      patch = ../../patches/linux/amd-tsc-calibration-workaround.patch;
+    }
+  ];
+
   # For building Raspberry Pi system images. Disabled for now, because
   # we have nixbuild.net.
   #
