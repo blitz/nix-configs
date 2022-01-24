@@ -18,6 +18,23 @@
     "acpi_backlight=native"
   ];
 
+  nixpkgs.overlays = [
+    (self: super: {
+      linuxPackages_latest = super.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
+        argsOverride = {
+          src = pkgs.fetchFromGitHub {
+            owner = "torvalds";
+            repo = "linux";
+            rev = "e783362eb54cd99b2cac8b3a9aeac942e6f6ac07";
+            sha256 = "fzfjJ/A1Auu6m7+xG8e1Nj/oqk/8RpjQRX5Ei+cVdX8=";
+          };
+          version = "5.17-rc1";
+          modDirVersion = "5.17.0-rc1";
+        };
+      });
+    })
+  ];
+
   boot.kernelPatches = [
     {
       name = "amd-tsc-calibration";
@@ -27,6 +44,14 @@
       # https://bugzilla.kernel.org/show_bug.cgi?id=202525
       # https://bugzilla.kernel.org/show_bug.cgi?id=208887
       patch = ../../patches/linux/amd-tsc-calibration-workaround.patch;
+    }
+
+    {
+      name = "amd-cppc";
+      patch = null;
+      extraConfig = ''
+        X86_AMD_PSTATE y
+      '';
     }
   ];
 
