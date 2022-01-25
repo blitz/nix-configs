@@ -31,6 +31,21 @@
         "type": "github"
       }
     },
+    "flake-compat-ci_2": {
+      "locked": {
+        "lastModified": 1641672839,
+        "narHash": "sha256-Bdwv+DKeEMlRNPDpZxSz0sSrqQBvdKO5fZ8LmvrgCOU=",
+        "owner": "hercules-ci",
+        "repo": "flake-compat-ci",
+        "rev": "e832114bc18376c0f3fa13c19bf5ff253cc6570a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-compat-ci",
+        "type": "github"
+      }
+    },
     "flake-compat_2": {
       "flake": false,
       "locked": {
@@ -39,6 +54,22 @@
         "owner": "edolstra",
         "repo": "flake-compat",
         "rev": "99f1c2157fba4bfe6211a321fd0ee43199025dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-compat_3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641205782,
+        "narHash": "sha256-4jY7RCWUoZ9cKD8co0/4tFARpWB+57+r1bLLvXNJliY=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "b7547d3eed6f32d06102ead8991ec52ab0a4f1a7",
         "type": "github"
       },
       "original": {
@@ -165,6 +196,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1642961095,
+        "narHash": "sha256-RLatktZmvwFBOyqdoIk4qdS4OGKB7aKIvvs4ZP2L8D8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "604c44137d97b5111be1ca5c0d97f6e24fbc5c2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "flake": false,
       "locked": {
@@ -187,7 +234,28 @@
         "flake-compat-ci": "flake-compat-ci",
         "hercules-ci": "hercules-ci",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "tuxedo-nixos": "tuxedo-nixos"
+      }
+    },
+    "tuxedo-nixos": {
+      "inputs": {
+        "flake-compat": "flake-compat_3",
+        "flake-compat-ci": "flake-compat-ci_2",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1643142903,
+        "narHash": "sha256-psHNyOjYCaR+OdkckU7/Pcg9Gl2PnkL69T4ULdqdr6Y=",
+        "owner": "blitz",
+        "repo": "tuxedo-nixos",
+        "rev": "562247f5151529ac3aa7a68db8bf0a36ffdba19c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blitz",
+        "repo": "tuxedo-nixos",
+        "type": "github"
       }
     }
   },

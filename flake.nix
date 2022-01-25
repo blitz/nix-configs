@@ -1,10 +1,17 @@
 {
   description = "System Configuration";
 
-  inputs = {
+  inputs = rec {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
+
+    tuxedo-nixos = {
+      url = "github:blitz/tuxedo-nixos";
+      inputs = {
+        inherit nixpkgs;
+      };
+    };
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -13,7 +20,7 @@
     flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, flake-compat, flake-compat-ci }: {
+  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, tuxedo-nixos, flake-compat, flake-compat-ci }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
