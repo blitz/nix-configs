@@ -26,7 +26,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    firefox
+    firefox-wayland
     chromium
     mpv
     element-desktop
