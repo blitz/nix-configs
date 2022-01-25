@@ -245,11 +245,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1643142903,
-        "narHash": "sha256-psHNyOjYCaR+OdkckU7/Pcg9Gl2PnkL69T4ULdqdr6Y=",
+        "lastModified": 1643143447,
+        "narHash": "sha256-Vvf9W8GHGh5fObQLCL0uUwZXjMrTeNLytr4gwAKBLB0=",
         "owner": "blitz",
         "repo": "tuxedo-nixos",
-        "rev": "562247f5151529ac3aa7a68db8bf0a36ffdba19c",
+        "rev": "2cac0f030fffdc367f556a596be78d6286889808",
         "type": "github"
       },
       "original": {
