@@ -27,6 +27,9 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:blitz/nix-configs";
+    flags = [
+      " --no-write-lock-file"
+    ];
   };
 
   powerManagement.cpuFreqGovernor = "performance";
