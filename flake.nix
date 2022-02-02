@@ -38,6 +38,20 @@
         ];
       };
 
+      babylon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./host/babylon/configuration.nix
+          ./host/babylon/hardware-configuration.nix
+
+          tuxedo-nixos.nixosModule
+
+          nixos-hardware.nixosModules.common-pc-laptop
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
+          nixos-hardware.nixosModules.common-cpu-intel
+        ];
+      };
+
       first-temple = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
