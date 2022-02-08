@@ -3,22 +3,37 @@ let
   emacsWithPackages = (pkgs.emacsPackagesNgGen pkgs.emacs).emacsWithPackages;
 in
 {
-  # For video loopback in OBS Studio
-  # boot.extraModulePackages = with config.boot.kernelPackages;
-  #   [ v4l2loopback ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback video_nr=10 card_label="OBS Video Source" exclusive_caps=1
+  '';
 
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
+  services.gnome.evolution-data-server.enable = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   programs = {
+    evolution = {
+      enable = true;
+      plugins = [ pkgs.evolution-ews ];
+    };
+
     # ssh.startAgent = false;
     # gnupg.agent = {
     #   enable = true;
     #   enableSSHSupport = true;
     # };
 
-    #steam.enable = true;
+    steam = {
+      #enable = true;
+    };
   };
 
   # Flatpak
@@ -49,17 +64,23 @@ in
     gnome3.gnome-session
     pkgs.spice-gtk
     gitAndTools.gh
+    gitAndTools.git-machete
     gparted
     nixpkgs-fmt
     okular
     gimp
+    picocom
+    delta
     #obs-studio
     #obs-v4l2sink # This needs manual configuration to work :(
+    libreoffice-fresh
+    kooha                       # screenrecording
 
     # Emacs
     (emacsWithPackages
       (epkgs: (with epkgs.melpaPackages;
       [
+        clang-format
         cmake-mode
         dante
         dhall-mode
@@ -87,13 +108,37 @@ in
     # stylish-haskell
 
     # Rust dev
-    rustup
+    #rustup
+    gcc
+
+    # C++ dev
+    clang-tools
 
     # ULX3S
     # fujprog
 
+    # Work
+    mattermost-desktop
+
     # Terminal recording
     asciinema
+
+    # Legacy development
+    (pkgs.buildFHSUserEnv {
+      name = "legacy-env";
+      targetPkgs = pkgs: with pkgs; [
+        gcc binutils
+        gnumake coreutils patch zlib zlib.dev curl git m4 bison flex acpica-tools
+        ncurses.dev
+        elfutils.dev
+        openssl openssl.dev
+        cpio pahole gawk perl bc nettools rsync
+        gmp gmp.dev
+        libmpc
+        mpfr mpfr.dev
+        zstd python3Minimal
+      ];
+    })
   ];
 
   fonts = {
@@ -120,7 +165,7 @@ in
   };
 
   # https://github.com/NixOS/nixpkgs/issues/60594
-  security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
+  # security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
 
   networking.firewall.enable = false;
 
@@ -213,6 +258,8 @@ in
     description = "Julian Stecklina";
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" ];
-    createHome = true;
+
+    # This resets permissions to 0700. :(
+    #createHome = true;
   };
 }

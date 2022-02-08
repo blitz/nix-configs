@@ -7,14 +7,14 @@ let
 
   domain = config.networking.domain;
 in {
-  # nix = {
-  #   package = pkgs.nixUnstable;
-  #   extraOptions = ''
-  #     experimental-features = nix-command flakes
-  #   '';
-  # };
+  nix = {
+    trustedUsers = [ "root" "julian" ];
 
-  nix.trustedUsers = [ "root" "julian" ];
+    package = pkgs.nix_2_4;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -23,7 +23,7 @@ in {
   boot.cleanTmpDir = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/Bucharest";
   services.chrony.enable = true;
 
   console.font = "Lat2-Terminus16";
@@ -64,7 +64,10 @@ in {
   programs.zsh.shellInit = ''
     eval "$(direnv hook zsh)"
   '';
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+  };
   nix.optimise.automatic = true;
 
   environment.systemPackages = with pkgs; [
