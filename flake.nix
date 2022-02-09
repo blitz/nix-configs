@@ -3,6 +3,7 @@
 
   inputs = rec {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
 
@@ -20,12 +21,15 @@
     flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, tuxedo-nixos, flake-compat, flake-compat-ci }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, tuxedo-nixos,
+              flake-compat, flake-compat-ci }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./host/canaan/configuration.nix
+          (import ./host/canaan/configuration.nix {
+            pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          })
           ./host/canaan/hardware-configuration.nix
 
           # There is a Thinkpad L14 AMD module, but it disables the

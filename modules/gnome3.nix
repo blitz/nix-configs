@@ -66,10 +66,6 @@ in
     # Nix dev
     nixpkgs-fmt
 
-    # Rust dev
-    rustup
-    clang_12
-
     # Terminal recording
     asciinema
 
