@@ -78,6 +78,21 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1637014545,
+        "narHash": "sha256-26IZAc5yzlD9FlDT54io1oqG/bBoyka+FJk5guaX4x4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "bba5dcc8e0b20ab664967ad83d24d64cb64ec4f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "hercules-ci": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -214,6 +229,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1637453606,
+        "narHash": "sha256-Gy6cwUswft9xqsjWxFYEnx/63/qzaFUwatcbV5GF/GQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8afc4e543663ca0a6a4f496262cd05233737e732",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1644193793,
         "narHash": "sha256-ggCI5LCXwkUJQwjpkr9qDFbQMiK3JvAfeNR4Uy0ny5Q=",
         "owner": "NixOS",
@@ -252,14 +283,34 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "rust-overlay": "rust-overlay",
         "tuxedo-nixos": "tuxedo-nixos"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1644460328,
+        "narHash": "sha256-dUPKwjKtu3JY+uEWCr1gWnn3xOpfYABBg9I9/7KsiBk=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "c61a9719044869263d9a0488df170d8fec7d0ec3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "tuxedo-nixos": {
       "inputs": {
         "flake-compat": "flake-compat_3",
         "flake-compat-ci": "flake-compat-ci_2",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1643143447,

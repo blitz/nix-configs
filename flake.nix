@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
+    rust-overlay.url = "github:oxalica/rust-overlay";
 
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
@@ -21,15 +22,20 @@
     flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, tuxedo-nixos,
-              flake-compat, flake-compat-ci }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, rust-overlay,
+              tuxedo-nixos, flake-compat, flake-compat-ci }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ({ ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlay ];
+
+          })
           (import ./host/canaan/configuration.nix {
             pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
           })
+
           ./host/canaan/hardware-configuration.nix
 
           # There is a Thinkpad L14 AMD module, but it disables the
