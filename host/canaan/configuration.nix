@@ -1,4 +1,3 @@
-{ pkgsUnstable }:
 { config, pkgs, ... }:
 
 {
@@ -7,10 +6,7 @@
     ../../modules/obs-studio.nix
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
-
-    (import ../../modules/rust-dev.nix {
-      inherit pkgsUnstable;
-    })
+    ../../modules/rust-dev.nix
   ];
 
   boot.extraModprobeConfig = ''

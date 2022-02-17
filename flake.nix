@@ -27,15 +27,15 @@
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        # For modules/rust-dev.nix
+        specialArgs = {
+          pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          rust-overlay = rust-overlay.overlay;
+        };
+
         modules = [
-          ({ ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlay ];
-
-          })
-          (import ./host/canaan/configuration.nix {
-            pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          })
-
+          ./host/canaan/configuration.nix
           ./host/canaan/hardware-configuration.nix
 
           # There is a Thinkpad L14 AMD module, but it disables the
