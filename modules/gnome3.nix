@@ -51,8 +51,10 @@ in
   #virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
-    firefox
-    chromium
+    firefox-wayland
+    (chromium.override {
+      commandLineArgs = "--enable-features=VaapiVideoDecoder";
+    })
     mpv
     element-desktop
     signal-desktop
@@ -137,6 +139,7 @@ in
         libmpc
         mpfr mpfr.dev
         zstd python3Minimal
+        file unzip
       ];
     })
   ];

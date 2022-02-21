@@ -23,7 +23,7 @@ in {
   boot.cleanTmpDir = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
+  time.timeZone = "Europe/Berlin";
   services.chrony.enable = true;
 
   console.font = "Lat2-Terminus16";
