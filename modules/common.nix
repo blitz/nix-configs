@@ -8,6 +8,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
 
+      # This is for direnv.
       keep-outputs = true
       keep-derivations = true
     '';
@@ -15,6 +16,10 @@
 
   environment.pathsToLink = [
     "/share/nix-direnv"
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
   ];
 
   # Living on the edge.
