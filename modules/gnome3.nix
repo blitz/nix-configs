@@ -27,7 +27,9 @@ in
 
   environment.systemPackages = with pkgs; [
     firefox-wayland
-    chromium
+    (chromium.override {
+      commandLineArgs = "--enable-features=VaapiVideoDecoder";
+    })
     mpv
     element-desktop
     signal-desktop
@@ -84,6 +86,7 @@ in
         libmpc
         mpfr mpfr.dev
         zstd python3Minimal
+        file unzip
       ];
     })
   ];
