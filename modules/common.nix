@@ -119,6 +119,7 @@
     zile
     lm_sensors
     magic-wormhole
+    nethack
 
     direnv
     nix-direnv
