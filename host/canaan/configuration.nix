@@ -49,7 +49,7 @@
 
     {
       name = "amd-cppc";
-      patch = null;
+      patch = ../../patches/linux/amd-thinkpad-acpi-fix.patch;
       extraConfig = ''
         X86_AMD_PSTATE y
       '';
