@@ -58,6 +58,7 @@
  ;; If there is more than one, they won't work right.
  '(dante-tap-type-time 5)
  '(haskell-stylish-on-save t)
+ '(inhibit-startup-screen t)
  '(lsp-haskell-process-args-hie nil)
  '(lsp-haskell-process-path-hie "haskell-language-server-wrapper")
  '(make-backup-files nil)
