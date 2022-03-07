@@ -26,11 +26,11 @@
           src = pkgs.fetchFromGitHub {
             owner = "torvalds";
             repo = "linux";
-            rev = "7e57714cd0ad2d5bb90e50b5096a0e671dec1ef3";
-            sha256 = "c/Me+nVaoLDOXyg4ngRmEZfiuDMpeyjgB/WS9zp3aDQ=";
+            rev = "ffb217a13a2eaf6d5bd974fc83036a53ca69f1e2";
+            sha256 = "nwr3H9MZP4ZNZrtKQs8Oh4fs2kPQUZUZhpYsdXh7GPc=";
           };
-          version = "5.17-rc6";
-          modDirVersion = "5.17.0-rc6";
+          version = "5.17-rc7";
+          modDirVersion = "5.17.0-rc7";
         };
       });
     })
