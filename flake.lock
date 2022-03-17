@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1637920676,
-        "narHash": "sha256-RIcrgprmcsa8sbIWISkpFqP1uThNzqc2yPoXfUloHyk=",
+        "lastModified": 1647368891,
+        "narHash": "sha256-czmhnXovaf7Qsg1ASXIfr8WOkRPWYVfI7Mc7V9QzvGE=",
         "owner": "hercules-ci",
         "repo": "flake-modules-core",
-        "rev": "184fe3d3b1a05b18a335dac4caa9ba126c6255cb",
+        "rev": "fd84881e00ea7d070f8a11689ae333d15c317213",
         "type": "github"
       },
       "original": {
@@ -138,11 +138,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
-        "lastModified": 1647361305,
-        "narHash": "sha256-NJ7OYqqSwIf8aNtCMcTkKLhuY3q6Hvq6ONseYKvwdZI=",
+        "lastModified": 1647462277,
+        "narHash": "sha256-qaksn1Pk7PSPdgb0hYeLXagG1ht1Z0W8Pw7nJNL8TQQ=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "rev": "11b2a4c60a829b6f5a42ad2afc3ca1dc42a09b0a",
+        "rev": "80a62a99f3a9bdc9995c11545294dc569eca75ca",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1646825982,
-        "narHash": "sha256-uWvS4UFkdE4Iqk1pXhxkZqPsqI+Z2V9VRmLxGUFejbY=",
+        "lastModified": 1647447644,
+        "narHash": "sha256-Di7ZCXjQKEys+jxgl8Mp7a8nowRSeAbzH8c9QNYkw2k=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "816a935bf5aa5f77cb1f03ebfe20ab13b112d0f1",
+        "rev": "32f61571b486efc987baca553fb35df22532ba63",
         "type": "github"
       },
       "original": {
@@ -187,16 +187,16 @@
     },
     "nixos-unstable": {
       "locked": {
-        "lastModified": 1647015821,
-        "narHash": "sha256-58XqUR85OyE2/FvOZDscQ7+l8WgD6mkh5zyALTw24k8=",
+        "lastModified": 1647445921,
+        "narHash": "sha256-lNPvVxLLSN6V9nbEzh1XJpusI4W1M1QHBQVEVqkg1+Q=",
         "owner": "hercules-ci",
         "repo": "nixpkgs",
-        "rev": "fa83349a4af3d9f5ce24db2202241037cdb086cd",
+        "rev": "70e6eb9ec8d548b836f8dedbf63d86a6bd737dc3",
         "type": "github"
       },
       "original": {
         "owner": "hercules-ci",
-        "ref": "haskell-updates",
+        "ref": "haskell-updates-ghc-9.0-stack",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -331,11 +331,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1647311412,
-        "narHash": "sha256-QS/7FRv48jCp/5t9jAgJL+Psx+wuUdwu5g35XHLmpDw=",
+        "lastModified": 1647483960,
+        "narHash": "sha256-DotGgzHOm+MQjoCyOG56n02HBpTak1s7yDH9gyNI8ME=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "e005f7e14ce46b4309ac723ba2c8acbc6c6cee61",
+        "rev": "34dd07a5d195f33b7060468c854b0199b5f7b232",
         "type": "github"
       },
       "original": {
