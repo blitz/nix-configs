@@ -12,16 +12,10 @@
       url = "github:blitz/tuxedo-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
-    flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, rust-overlay,
-              tuxedo-nixos, flake-compat, flake-compat-ci }: {
+              tuxedo-nixos }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -85,14 +79,6 @@
           hercules-ci.nixosModules.agent-service
         ];
       };
-    };
-
-    # For Hercules CI, which doesn't natively support flakes (yet).
-    ciNix = flake-compat-ci.lib.recurseIntoFlakeWith {
-      flake = self;
-
-      # Optional. Systems for which to perform CI.
-      systems = [ "x86_64-linux" ];
     };
   };
 }
