@@ -10,9 +10,7 @@
 
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
-      inputs = {
-        inherit nixpkgs;
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-compat = {

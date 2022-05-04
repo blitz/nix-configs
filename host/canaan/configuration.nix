@@ -19,43 +19,6 @@
     "acpi_backlight=native"
   ];
 
-  nixpkgs.overlays = [
-    (self: super: {
-      linuxPackages_latest = super.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
-        argsOverride = {
-          src = pkgs.fetchFromGitHub {
-            owner = "torvalds";
-            repo = "linux";
-            rev = "f443e374ae131c168a065ea1748feac6b2e76613";
-            sha256 = "MeKtj0igIQZN3KeMLlPYArnpknDvn649O9V8aWNclUg=";
-          };
-          version = "5.17";
-          modDirVersion = "5.17.0";
-        };
-      });
-    })
-  ];
-
-  boot.kernelPatches = [
-    {
-      name = "amd-tsc-calibration";
-
-      # This is a workaround to fix the TSC calibration.
-      #
-      # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-      # https://bugzilla.kernel.org/show_bug.cgi?id=208887
-      patch = ../../patches/linux/amd-tsc-calibration-workaround.patch;
-    }
-
-    {
-      name = "amd-cppc";
-      patch = ../../patches/linux/amd-thinkpad-acpi-fix.patch;
-      extraConfig = ''
-        X86_AMD_PSTATE y
-      '';
-    }
-  ];
-
   # For building Raspberry Pi system images. Disabled for now, because
   # we have nixbuild.net.
   #
