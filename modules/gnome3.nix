@@ -46,6 +46,7 @@ in
     (emacsWithPackages
       (epkgs: (with epkgs.melpaPackages;
       [
+        clang-format
         cmake-mode
         dante
         dhall-mode

@@ -8,11 +8,11 @@
   imports =
     [
       ../../modules/laptop.nix
-      ../../modules/obs-studio.nix
       ../../modules/cachix.nix
+      ../../modules/rust-dev.nix
+      ../../modules/work.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
   hardware.tuxedo-control-center.enable = true;
   nix = {
     binaryCachePublicKeys = [

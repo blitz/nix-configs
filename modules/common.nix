@@ -32,7 +32,10 @@
     SystemMaxUse=250M
     SystemMaxFileSize=50M
   '';
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+  };
   nix.optimise.automatic = true;
 
   # Swap

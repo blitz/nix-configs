@@ -42,6 +42,13 @@
 
       babylon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        # For modules/rust-dev.nix
+        specialArgs = {
+          pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          rust-overlay = rust-overlay.overlay;
+        };
+
         modules = [
           ./host/babylon/configuration.nix
           ./host/babylon/hardware-configuration.nix
