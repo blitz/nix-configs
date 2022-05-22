@@ -27,8 +27,8 @@ in
 
   environment.systemPackages = with pkgs; [
     firefox-wayland
-    (chromium.override {
-      commandLineArgs = "--enable-features=VaapiVideoDecoder";
+    (google-chrome.override {
+      commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder";
     })
     mpv
     element-desktop
