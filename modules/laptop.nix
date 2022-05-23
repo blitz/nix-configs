@@ -69,6 +69,7 @@
         host testsonuc  { hardware ethernet 94:c6:91:10:68:09; fixed-address 192.168.99.5; }
         host atomnuc    { hardware ethernet b4:2e:99:bf:01:a0; fixed-address 192.168.99.6; }
         host serialnuc  { hardware ethernet f4:4d:30:6f:0a:00; fixed-address 192.168.99.7; }
+        host sr650v2    { hardware ethernet 68:05:ca:e3:69:cc; fixed-address 192.168.99.8; }
       }
     '';
   };
