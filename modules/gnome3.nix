@@ -13,6 +13,13 @@ in
           ];
         });
       };
+
+      gnome-console = super.gnome-console.overrideAttrs (old: {
+          patches = [
+            # https://gitlab.gnome.org/GNOME/console/-/issues/147
+            ../patches/gnome-console/no-audible-bell.patch
+          ];
+      });
     })
   ];
 

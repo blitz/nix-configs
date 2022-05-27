@@ -1,0 +1,12 @@
+diff --git a/src/kgx-terminal.c b/src/kgx-terminal.c
+index fc61dbd..44baeea 100644
+--- a/src/kgx-terminal.c
++++ b/src/kgx-terminal.c
+@@ -728,6 +728,7 @@ kgx_terminal_init (KgxTerminal *self)
+   vte_terminal_set_allow_hyperlink (VTE_TERMINAL (self), TRUE);
+   vte_terminal_set_enable_fallback_scrolling (VTE_TERMINAL (self), FALSE);
+   vte_terminal_set_scroll_unit_is_pixels (VTE_TERMINAL (self), TRUE);
++  vte_terminal_set_audible_bell (VTE_TERMINAL (self), FALSE);
+ 
+   g_signal_connect (self, "selection-changed",
+                     G_CALLBACK (selection_changed), NULL);
