@@ -1,9 +1,9 @@
-{ config, pkgs, pkgsUnstable, rust-overlay, ... }:
+{ config, pkgs, ... }:
 {
-  nixpkgs.overlays = [ rust-overlay ];
+  #nixpkgs.overlays = [ rust-overlay ];
 
   environment.systemPackages = [
-    pkgsUnstable.rust-analyzer
+    pkgs.rust-analyzer
     pkgs.gcc
 
     # From rust-overlay

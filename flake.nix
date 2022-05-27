@@ -2,8 +2,7 @@
   description = "System Configuration";
 
   inputs = rec {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -14,19 +13,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, rust-overlay,
+  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay,
               tuxedo-nixos }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        # For modules/rust-dev.nix
-        specialArgs = {
-          pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          rust-overlay = rust-overlay.overlay;
-        };
-
         modules = [
+          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlay ]; })
+
           ./host/canaan/configuration.nix
           ./host/canaan/hardware-configuration.nix
 
@@ -43,13 +38,9 @@
       babylon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        # For modules/rust-dev.nix
-        specialArgs = {
-          pkgsUnstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          rust-overlay = rust-overlay.overlay;
-        };
-
         modules = [
+          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlay ]; })
+
           ./host/babylon/configuration.nix
           ./host/babylon/hardware-configuration.nix
 

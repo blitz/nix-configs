@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  emacsWithPackages = (pkgs.emacsPackagesNgGen pkgs.emacs).emacsWithPackages;
+  emacsWithPackages = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages;
 in
 {
   nixpkgs.overlays = [
@@ -28,7 +28,7 @@ in
   environment.systemPackages = with pkgs; [
     firefox-wayland
     (google-chrome.override {
-      commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder";
+      commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder,VaapiVideoEncoder";
     })
     mpv
     element-desktop
@@ -103,7 +103,7 @@ in
       dina-font
       freefont_ttf
       liberation_ttf
-      mplus-outline-fonts
+      mplus-outline-fonts.githubRelease
       nerdfonts
     ];
   };
