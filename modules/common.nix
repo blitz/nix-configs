@@ -60,7 +60,7 @@
   nixpkgs.config.allowUnfree = true;
 
   services.resolved.enable = true;
-  services.tailscale.enable = true;
+  services.tailscale.enable = false;
 
   # Shell
   environment.variables = {
