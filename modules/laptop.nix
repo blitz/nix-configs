@@ -7,7 +7,7 @@
 
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth.enable = false;
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
   powerManagement.cpuFreqGovernor = "schedutil";
