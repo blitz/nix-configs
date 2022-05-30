@@ -9,7 +9,6 @@
 
       # This is for direnv.
       keep-outputs = true
-      keep-derivations = true
     '';
   };
 
