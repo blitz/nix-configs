@@ -52,19 +52,6 @@
         ];
       };
 
-      first-temple = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./host/first-temple/configuration.nix
-          ./host/first-temple/hardware-configuration.nix
-
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-cpu-intel
-
-          hercules-ci.nixosModules.agent-service
-        ];
-      };
-
       second-temple = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
