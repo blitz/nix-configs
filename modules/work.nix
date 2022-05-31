@@ -11,6 +11,9 @@
     libreoffice-fresh
     kooha
     mattermost-desktop
+
+    # For Hedron development
+    clang-tools
   ];
 
   services = {
