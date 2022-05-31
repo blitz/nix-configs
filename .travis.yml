@@ -1,5 +1,0 @@
-language: nix
-
-# nothing here yet, but we could push to blitz.cachix.org.
-script:
- - true
