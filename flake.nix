@@ -1,7 +1,7 @@
 {
   description = "System Configuration";
 
-  inputs = rec {
+  inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
