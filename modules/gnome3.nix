@@ -76,6 +76,7 @@ in
         lsp-haskell
         lsp-ui
         rustic
+        editorconfig
       ])))
 
     # Nix dev
