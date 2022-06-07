@@ -77,6 +77,7 @@ in
         lsp-ui
         rustic
         editorconfig
+        toml-mode
       ])))
 
     # Nix dev
