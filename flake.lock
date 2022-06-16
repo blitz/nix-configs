@@ -75,11 +75,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
-        "lastModified": 1654270907,
-        "narHash": "sha256-dsHgEHmuk6utfxKFUeIotdY0UcPKELdx+bpdNPzSKck=",
+        "lastModified": 1655108975,
+        "narHash": "sha256-BVE61UMEhmXTCkMLoIyuOfGjV0Z4yHNtIiC5VYe02FM=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "rev": "b645080a14e87fbaf4ea108d40a1daec149e2074",
+        "rev": "2ee7b49b01068d0fbd5bec61fdcd12b525dab5d7",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1654622265,
-        "narHash": "sha256-AltUA8bPbXeRgzcDhQEURVHqQhTByxk6Xtgf+CYmEFk=",
+        "lastModified": 1655278232,
+        "narHash": "sha256-H6s7tnHYiDKFCcLADS4sl1sUq0dDJuRQXCieguk/6SA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "11e805f9935f6ab4b049351ac14f2d1aa93cf1d3",
+        "rev": "8b538fcb329a7bc3d153962f17c509ee49166973",
         "type": "github"
       },
       "original": {
@@ -211,11 +211,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1654742703,
-        "narHash": "sha256-KoS4Fqyj20G0JzTH3zreFxPE8f+H0fKHxbBiS5FI8a0=",
+        "lastModified": 1655347556,
+        "narHash": "sha256-JZ06EaeHi9sbbO3n8qYZ8KzDfSbDlPVRHI6Pw4sAxRE=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "b37b28553b1009f34fc6ca06ba87329e2a584a98",
+        "rev": "1cc3dc5aec863c2f724a46f7086fb011004a4e6e",
         "type": "github"
       },
       "original": {
