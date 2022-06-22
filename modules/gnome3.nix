@@ -53,6 +53,9 @@ in
     okular
     gimp
     clinfo
+    intel-gpu-tools
+    radeontop
+    zoom-us
 
     # Emacs
     (emacsWithPackages
