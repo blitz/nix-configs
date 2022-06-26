@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+set -eux
+
+SCRIPT_DIR=$(dirname -- "$( readlink -f -- "$0"; )";)
+ROOT_DIR="$SCRIPT_DIR"/..
+
+cd "$ROOT_DIR"
+
+# Fetch other changes from the central repo.
+git fetch origin
+git switch master
+git merge --ff-only origin/master
+
+# Update flakes
+nix flake update --commit-lock-file
+
+# Rebuild NixOS
+#
+# Avoid using remote builders here, because this typically slows
+# things down.
+sudo nixos-rebuild -L boot --flake . --builders ""
+
+# If everything worked, we publish our changes.
+git push
