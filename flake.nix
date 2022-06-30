@@ -20,7 +20,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlay ]; })
+          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlays.default ]; })
 
           ./host/canaan/configuration.nix
           ./host/canaan/hardware-configuration.nix
@@ -39,7 +39,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlay ]; })
+          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlays.default ]; })
 
           ./host/babylon/configuration.nix
           ./host/babylon/hardware-configuration.nix
