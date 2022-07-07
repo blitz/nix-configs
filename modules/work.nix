@@ -11,6 +11,7 @@
     libreoffice-fresh
     kooha
     mattermost-desktop
+    teams
 
     # For Hedron development
     clang-tools
