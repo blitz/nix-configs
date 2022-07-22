@@ -21,7 +21,6 @@
   ];
 
   # Living on the edge.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
 
   # Don't accumulate crap.
