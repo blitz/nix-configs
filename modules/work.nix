@@ -9,12 +9,14 @@
     picocom
     delta
     libreoffice-fresh
-    kooha
     mattermost-desktop
     teams
 
     # For Hedron development
     clang-tools
+    (pkgs.writeShellScriptBin "qemu-uefi" ''
+      exec qemu-system-x86_64 -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd "$@"
+    '')
   ];
 
   services = {
