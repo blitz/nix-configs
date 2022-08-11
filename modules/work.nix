@@ -9,7 +9,6 @@
     picocom
     delta
     libreoffice-fresh
-    mattermost-desktop
     teams
 
     # For Hedron development
