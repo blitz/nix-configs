@@ -28,11 +28,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Nice boot
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "breeze";
-  boot.initrd.systemd.enable = true;
-
   networking.hostName = "babylon";
 
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
