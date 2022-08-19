@@ -13,10 +13,23 @@
 
     # For Hedron development
     clang-tools
-    (pkgs.writeShellScriptBin "qemu-uefi" ''
-      exec qemu-system-x86_64 -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd "$@"
-    '')
-  ];
+  ] ++ (
+    let
+      qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
+        exec ${pkgs.qemu}/bin/qemu-system-x86_64 \
+              -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+              -m 4096 -display none -serial stdio "$@"
+      '';
+      qemuUefiTftp = pkgs.writeShellScriptBin "qemu-uefi-tftp" ''
+        exec ${qemuUefi}/bin/qemu-uefi \
+              -boot n -device virtio-net,netdev=n1 -netdev user,id=n1,tftp=$HOME/Public/tftp,bootfile=ipxe.efi \
+              "$@"
+        '';
+    in [
+      qemuUefi
+      qemuUefiTftp
+    ]
+  );
 
   services = {
     onedrive.enable = true;
