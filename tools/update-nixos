@@ -19,7 +19,7 @@ nix flake update --commit-lock-file
 #
 # Avoid using remote builders here, because this typically slows
 # things down.
-sudo nixos-rebuild -L boot --flake . --builders ""
+sudo nixos-rebuild -L boot --flake .
 
 # If everything worked, we publish our changes.
 git push
