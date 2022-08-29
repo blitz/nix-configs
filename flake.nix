@@ -6,6 +6,10 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    dwarffs = {
+      url = "github:edolstra/dwarffs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
@@ -13,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay,
+  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
               tuxedo-nixos }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
@@ -49,6 +53,9 @@
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.common-cpu-intel
+
+          # For debugging.
+          dwarffs.nixosModules.dwarffs
         ];
       };
 
