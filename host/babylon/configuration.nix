@@ -13,6 +13,8 @@
       ../../modules/work.nix
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   hardware.tuxedo-control-center.enable = true;
   nix = {
     binaryCachePublicKeys = [
