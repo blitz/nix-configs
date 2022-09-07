@@ -43,7 +43,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
+  time.timeZone = "Europe/Berlin";
   services.chrony.enable = true;
 
   console.useXkbConfig = true;
