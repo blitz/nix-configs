@@ -9,7 +9,7 @@
     picocom
     delta
     libreoffice-fresh
-    teams
+    #teams
 
     # For Hedron development
     clang-tools

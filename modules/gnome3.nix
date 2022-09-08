@@ -55,7 +55,7 @@ in
     clinfo
     intel-gpu-tools
     radeontop
-    zoom-us
+    #zoom-us
 
     # Emacs
     (emacsWithPackages
