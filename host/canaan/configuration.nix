@@ -7,6 +7,7 @@
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
     ../../modules/rust-dev.nix
+    ../../modules/co2monitor.nix
   ];
 
   # We need at least 5.18 for decent power management on AMD.
