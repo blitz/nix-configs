@@ -15,16 +15,24 @@
       url = "github:blitz/tuxedo-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    riff = {
+      url = "github:DeterminateSystems/riff";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
-              tuxedo-nixos }: {
+              tuxedo-nixos, riff }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlays.default ]; })
+          ({ ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ riff.defaultPackage.x86_64-linux ];
+          })
 
           ./host/canaan/configuration.nix
           ./host/canaan/hardware-configuration.nix
@@ -43,7 +51,10 @@
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ rust-overlay.overlays.default ]; })
+          ({ ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ riff.defaultPackage.x86_64-linux ];
+          })
 
           ./host/babylon/configuration.nix
           ./host/babylon/hardware-configuration.nix
