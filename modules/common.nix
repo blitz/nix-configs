@@ -43,7 +43,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/Madrid";
   services.chrony.enable = true;
 
   console.useXkbConfig = true;
