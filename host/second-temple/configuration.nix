@@ -37,21 +37,19 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   networking.hostName = "second-temple"; # Define your hostname.
 
+  # We use Wi-Fi via Network Manager.
+  networking.networkmanager.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  networking.firewall.enable = false;
-
-  networking.networkmanager.enable = false;
-
-  networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 }
