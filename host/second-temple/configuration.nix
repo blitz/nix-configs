@@ -13,6 +13,7 @@
       #../../modules/nixbuild.nix
 
       ../../modules/cachix.nix
+      ../../modules/co2monitor.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
