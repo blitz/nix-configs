@@ -53,6 +53,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # This box is not exposed to the internet.
+  networking.firewall.enable = false;
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
