@@ -15,6 +15,8 @@
       ../../modules/cachix.nix
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   services.hercules-ci-agent = {
     enable = true;
 
