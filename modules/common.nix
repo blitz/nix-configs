@@ -56,8 +56,11 @@
   # Package Overlay
   nixpkgs.config.allowUnfree = true;
 
-  services.resolved.enable = true;
   services.tailscale.enable = true;
+  services.resolved.enable = true;
+
+  # Needed by tailscale.
+  networking.firewall.checkReversePath = "loose";
 
   # Shell
   environment.variables = {
