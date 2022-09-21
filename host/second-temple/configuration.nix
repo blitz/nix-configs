@@ -8,7 +8,10 @@
   imports =
     [
       ../../modules/common.nix
-      ../../modules/nixbuild.nix
+
+      # Nixbuild seems to be ratelimited by crates.io, which breaks builds.
+      #../../modules/nixbuild.nix
+
       ../../modules/cachix.nix
     ];
 
