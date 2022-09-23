@@ -3,15 +3,16 @@
   nix = {
     binaryCachePublicKeys = [
       "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
-      "binary-cache-v2.vpn.cyberus-technology.de:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
+      # For binary-cache-v2
+      "cyberus-1:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
     ];
     trustedBinaryCaches = [
       "https://binary-cache.vpn.cyberus-technology.de?priority=15"
       "https://binary-cache-v2.vpn.cyberus-technology.de?priority=10"
     ];
     extraOptions = ''
-      extra-substituters = https://binary-cache.vpn.cyberus-technology.de
-      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de
+      extra-substituters = https://binary-cache.vpn.cyberus-technology.de?priority=15
+      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de?priority=10
    '';
   };
 
