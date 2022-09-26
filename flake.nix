@@ -20,10 +20,15 @@
       url = "github:DeterminateSystems/riff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    co2-exporter = {
+      url = "github:blitz/co2-exporter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
-              tuxedo-nixos, riff }: {
+              tuxedo-nixos, riff, co2-exporter }: {
     nixosConfigurations = {
       canaan = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
