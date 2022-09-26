@@ -16,6 +16,8 @@
       ../../modules/co2monitor.nix
     ];
 
+  services.co2-exporter.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.hercules-ci-agent = {

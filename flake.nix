@@ -77,7 +77,16 @@
 
       second-temple = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
         modules = [
+          ({ config, ... }: {
+            nixpkgs.overlays = [
+              (prev: final: {
+                co2-exporter = co2-exporter.packages."${config.nixpkgs.system}".default;
+              })
+            ];
+          })
+
           ./host/second-temple/configuration.nix
           ./host/second-temple/hardware-configuration.nix
 
