@@ -34,9 +34,9 @@
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: {
+          ({ config, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ riff.defaultPackage.x86_64-linux ];
+            environment.systemPackages = [ riff.defaultPackage."${config.nixpkgs.system}" ];
           })
 
           ./host/canaan/configuration.nix
@@ -56,9 +56,9 @@
         system = "x86_64-linux";
 
         modules = [
-          ({ ... }: {
+          ({ config, ... }: {
             nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ riff.defaultPackage.x86_64-linux ];
+            environment.systemPackages = [ riff.defaultPackage."${config.nixpkgs.system}" ];
           })
 
           ./host/babylon/configuration.nix
