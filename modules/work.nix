@@ -106,6 +106,8 @@
       option ipxe.sdi code 40 = unsigned integer 8;
       option ipxe.nfs code 41 = unsigned integer 8;
 
+      option user-class code 77 = string;
+
       subnet 192.168.99.0 netmask 255.255.255.0 {
         range dynamic-bootp 192.168.99.100 192.168.99.253;
         option routers 192.168.99.1;
@@ -117,6 +119,11 @@
 
         # Speed up DHCP if no ProxyDHCP is in the network.
         option ipxe.no-pxedhcp 1;
+
+        class "iPXE" {
+          match if exists user-class and option user-class = "iPXE";
+          filename "ipxe-default.cfg";
+        }
 
         class "UEFI-64-1" {
           match if substring(option vendor-class-identifier, 0, 20) = "PXEClient:Arch:00007";
@@ -153,6 +160,36 @@
       enable = true;
       root = "/home/julian/Public/tftp";
       extraOptions = [ "--bind-address 192.168.99.1" ];
+    };
+  };
+
+  # Meshcommander will listen on http://127.0.0.1:3000
+  systemd.services.meshcommander = {
+    description = "Meshcommander AMT Tooling";
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+
+    restartIfChanged = true; # set to false, if restarting is problematic
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.nodePackages.meshcommander}/bin/meshcommander";
+      DynamicUser = true;
+
+      Environment = [
+        "NODE_ENV=production"
+        "HOME=/var/lib/meshcommander"
+      ];
+
+      Restart = "always";
+      RestartSec = "10";
+
+      #RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+      StateDirectory = "meshcommander";
+      WorkingDirectory = "/var/lib/meshcommander";
+
+      AmbientCapabilities="cap_net_bind_service";
     };
   };
 
