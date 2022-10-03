@@ -94,6 +94,9 @@
           nixos-hardware.nixosModules.common-cpu-intel
 
           hercules-ci.nixosModules.agent-service
+
+          # For debugging.
+          dwarffs.nixosModules.dwarffs
         ];
       };
     };
