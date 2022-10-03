@@ -22,10 +22,11 @@
 
   services.hercules-ci-agent = {
     enable = true;
-
-    # We rely on nixbuild taking the brunt.
-    settings.concurrentTasks = 5;
+    settings.concurrentTasks = 4;
   };
+
+  # Nix 2.8.1 has problems with Hercules CI.
+  nix.package = pkgs.nixUnstable;
 
   # The XFS FAQ suggests to use no I/O scheduler.
   services.udev.extraRules = ''
