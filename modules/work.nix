@@ -27,6 +27,11 @@
     libreoffice-fresh
     #teams
 
+    # For Intel AMT.
+    #
+    # Meshcommander will listen on http://127.0.0.1:3000
+    pkgs.nodePackages.meshcommander
+
     # For Hedron development
     clang-tools
   ] ++ (
@@ -160,36 +165,6 @@
       enable = true;
       root = "/home/julian/Public/tftp";
       extraOptions = [ "--bind-address 192.168.99.1" ];
-    };
-  };
-
-  # Meshcommander will listen on http://127.0.0.1:3000
-  systemd.services.meshcommander = {
-    description = "Meshcommander AMT Tooling";
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-
-    restartIfChanged = true; # set to false, if restarting is problematic
-
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.nodePackages.meshcommander}/bin/meshcommander";
-      DynamicUser = true;
-
-      Environment = [
-        "NODE_ENV=production"
-        "HOME=/var/lib/meshcommander"
-      ];
-
-      Restart = "always";
-      RestartSec = "10";
-
-      #RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
-      StateDirectory = "meshcommander";
-      WorkingDirectory = "/var/lib/meshcommander";
-
-      AmbientCapabilities="cap_net_bind_service";
     };
   };
 
