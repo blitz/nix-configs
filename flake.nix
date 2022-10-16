@@ -64,7 +64,7 @@
           ./host/babylon/configuration.nix
           ./host/babylon/hardware-configuration.nix
 
-          tuxedo-nixos.nixosModule
+          tuxedo-nixos.nixosModules.default
 
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc-laptop-ssd
