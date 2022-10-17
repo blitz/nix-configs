@@ -55,7 +55,6 @@ in
     clinfo
     intel-gpu-tools
     radeontop
-    #zoom-us
 
     # Emacs
     (emacsWithPackages
@@ -81,13 +80,12 @@ in
         rustic
         editorconfig
         toml-mode
+        ggtags
       ])))
 
-    # Nix dev
+    # Development
     nixpkgs-fmt
-
-    # Terminal recording
-    asciinema
+    global
 
     # Legacy Coding
     msmtp
@@ -105,6 +103,7 @@ in
         mpfr mpfr.dev
         zstd python3Minimal
         file unzip
+        global
       ];
     })
   ];
