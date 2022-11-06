@@ -99,6 +99,17 @@
           dwarffs.nixosModules.dwarffs
         ];
       };
+
+      hercules-ci-01 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          ./host/hercules-ci-01/configuration.nix
+          ./host/hercules-ci-01/hardware-configuration.nix
+
+          hercules-ci.nixosModules.agent-service
+        ];
+      };
     };
   };
 }
