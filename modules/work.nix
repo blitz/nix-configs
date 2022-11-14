@@ -2,17 +2,15 @@
 
   nix = {
     binaryCachePublicKeys = [
-      "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
-      # For binary-cache-v2
       "cyberus-1:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
+      "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
     ];
     trustedBinaryCaches = [
-      "https://binary-cache.vpn.cyberus-technology.de?priority=15"
-      "https://binary-cache-v2.vpn.cyberus-technology.de?priority=10"
+      "https://binary-cache-v2.vpn.cyberus-technology.de"
+      "https://binary-cache.vpn.cyberus-technology.de"
     ];
     extraOptions = ''
-      extra-substituters = https://binary-cache.vpn.cyberus-technology.de?priority=15
-      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de?priority=10
+      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de https://binary-cache.vpn.cyberus-technology.de
    '';
   };
 
@@ -30,7 +28,10 @@
     # For Intel AMT.
     #
     # Meshcommander will listen on http://127.0.0.1:3000
-    pkgs.nodePackages.meshcommander
+    nodePackages.meshcommander
+
+    # To avoid Intel AMT
+    remmina
 
     # For Hedron development
     clang-tools
