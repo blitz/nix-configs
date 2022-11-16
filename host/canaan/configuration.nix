@@ -9,9 +9,6 @@
     ../../modules/rust-dev.nix
   ];
 
-  # We need at least 5.18 for decent power management on AMD.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.extraModprobeConfig = ''
     options kvm-amd avic=1
   '';

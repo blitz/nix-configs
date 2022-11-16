@@ -13,8 +13,6 @@
       ../../modules/work.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   hardware.tuxedo-control-center.enable = true;
 
   # Use the systemd-boot EFI boot loader.
