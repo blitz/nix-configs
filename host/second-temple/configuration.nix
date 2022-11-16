@@ -13,10 +13,7 @@
       #../../modules/nixbuild.nix
 
       ../../modules/cachix.nix
-      ../../modules/co2monitor.nix
     ];
-
-  services.co2-exporter.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
