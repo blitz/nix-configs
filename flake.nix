@@ -32,6 +32,15 @@
         hercules-ci-effects.flakeModule
       ];
 
+      hercules-ci.flake-update = {
+        enable = true;
+        createPullRequest = false;
+
+        when = {
+          hour = 0;
+        };
+      };
+
       flake = {
         nixosConfigurations = {
           canaan = nixpkgs.lib.nixosSystem {
