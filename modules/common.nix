@@ -2,7 +2,7 @@
 
 {
   nix = {
-    trustedUsers = [ "root" "julian" ];
+    settings.trusted-users = [ "root" "julian" ];
 
     extraOptions = ''
       experimental-features = nix-command flakes

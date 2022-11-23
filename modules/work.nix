@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }: {
 
   nix = {
-    binaryCachePublicKeys = [
+    settings.trusted-public-keys = [
       "cyberus-1:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
       "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
     ];
-    trustedBinaryCaches = [
+    settings.substituters = [
       "https://binary-cache-v2.vpn.cyberus-technology.de"
       "https://binary-cache.vpn.cyberus-technology.de"
     ];
