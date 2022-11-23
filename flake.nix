@@ -8,6 +8,10 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devenv = {
+      url = "github:cachix/devenv/v0.3";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     dwarffs = {
       url = "github:edolstra/dwarffs";
@@ -26,7 +30,7 @@
   };
 
   outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos, riff, flake-parts,
-              hercules-ci-effects }:
+              hercules-ci-effects, devenv }:
     flake-parts.lib.mkFlake { inherit self; } {
       imports = [
         hercules-ci-effects.flakeModule
@@ -49,7 +53,10 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                environment.systemPackages = [ riff.defaultPackage."${config.nixpkgs.system}" ];
+                environment.systemPackages = [
+                  riff.defaultPackage."${config.nixpkgs.system}"
+                  devenv.defaultPackage."${config.nixpkgs.system}"
+                ];
               })
 
               ./host/canaan/configuration.nix
