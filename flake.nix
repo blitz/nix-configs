@@ -79,6 +79,8 @@
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
                 environment.systemPackages = [ riff.defaultPackage."${config.nixpkgs.system}" ];
+
+                hardware.tuxedo-control-center.package = tuxedo-nixos.packages.x86_64-linux.default;
               })
 
               ./host/babylon/configuration.nix

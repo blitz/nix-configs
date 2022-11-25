@@ -30,14 +30,19 @@ in
   programs = {
     geary.enable = true;
     steam.enable = true;
+
+    firefox = {
+      # error: The option `environment.etc."firefox/policies/policies.json".source' is used but not defined.
+      # enable = true;
+      #
+      # Weird sticky tool-tip bug:
+      # https://bugzilla.mozilla.org/show_bug.cgi?id=1569439
+      #
+      # package = pkgs.firefox-wayland;
+    };
   };
 
   environment.systemPackages = with pkgs; [
-    # Weird sticky tool-tip bug:
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1569439
-    #
-    # firefox-wayland
-    firefox
 
     (google-chrome.override {
       commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder,VaapiVideoEncoder";
@@ -55,6 +60,7 @@ in
     clinfo
     intel-gpu-tools
     radeontop
+    firefox-wayland
 
     # Emacs
     (emacsWithPackages
