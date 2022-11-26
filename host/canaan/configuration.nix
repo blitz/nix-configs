@@ -3,7 +3,7 @@
 {
   imports = [
     ../../modules/laptop.nix
-    ../../modules/obs-studio.nix
+    #../../modules/obs-studio.nix
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
     ../../modules/rust-dev.nix

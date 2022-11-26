@@ -66,7 +66,6 @@
               # IOMMU.
               nixos-hardware.nixosModules.lenovo-thinkpad
               nixos-hardware.nixosModules.common-pc-laptop-ssd
-              nixos-hardware.nixosModules.common-pc-laptop-acpi_call
               nixos-hardware.nixosModules.common-cpu-amd
               nixos-hardware.nixosModules.common-gpu-amd
             ];
