@@ -14,11 +14,18 @@
   '';
 
   powerManagement.powertop.enable = true;
-  
+
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
     "acpi_backlight=native"
+  ];
+
+  boot.kernelPatches = [
+    {
+      name = "think-lmi-fwupd-compat";
+      patch = ../../patches/linux/0001-platform-x86-think-lmi-expose-type-attribute.patch;
+    }
   ];
 
   # For building Raspberry Pi system images. Disabled for now, because
