@@ -13,6 +13,8 @@
     options kvm-amd avic=1
   '';
 
+  powerManagement.powertop.enable = true;
+  
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
