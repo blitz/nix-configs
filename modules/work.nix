@@ -6,7 +6,7 @@
       "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
     ];
     settings.substituters = [
-      "https://binary-cache-v2.vpn.cyberus-technology.de"
+      "http://binary-cache-v2.vpn.cyberus-technology.de"
       "https://binary-cache.vpn.cyberus-technology.de"
     ];
     extraOptions = ''
