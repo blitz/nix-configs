@@ -14,6 +14,11 @@
    '';
   };
 
+  boot.loader.systemd-boot.extraEntries."svp.conf" = ''
+     title SVP
+     efi /svp/loader.efi
+  '';
+
   programs.evolution = {
     enable = true;
     plugins = [ pkgs.evolution-ews ];
