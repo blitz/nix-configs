@@ -29,9 +29,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos, riff, flake-parts,
-              hercules-ci-effects, devenv }:
-    flake-parts.lib.mkFlake { inherit self; } {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos,
+                     riff, flake-parts, hercules-ci-effects, devenv }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
       ];
