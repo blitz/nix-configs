@@ -22,10 +22,10 @@
   ];
 
   boot.kernelPatches = [
-    {
-      name = "think-lmi-fwupd-compat";
-      patch = ../../patches/linux/0001-platform-x86-think-lmi-expose-type-attribute.patch;
-    }
+    # {
+    #   name = "think-lmi-fwupd-compat";
+    #   patch = ../../patches/linux/0001-platform-x86-think-lmi-expose-type-attribute.patch;
+    # }
   ];
 
   # For building Raspberry Pi system images. Disabled for now, because
