@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv = {
@@ -30,20 +29,11 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos,
-                     riff, flake-parts, hercules-ci-effects, devenv }:
+                     riff, flake-parts, devenv }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        hercules-ci-effects.flakeModule
+        # Nothing here yet.
       ];
-
-      hercules-ci.flake-update = {
-        enable = true;
-        createPullRequest = false;
-
-        when = {
-          hour = 0;
-        };
-      };
 
       flake = {
         nixosConfigurations = {
