@@ -20,6 +20,21 @@ in
           ../patches/gnome-console/no-audible-bell.patch
         ];
       });
+
+      # Until statmake is updated to >=6.0.
+      python310 = super.python310.override {
+        packageOverrides = python-self: python-super: {
+          statmake = python-super.statmake.overrideAttrs (attrs: {
+            version = "0.6.0";
+            src = super.fetchFromGitHub {
+              owner = "daltonmaag";
+              repo = attrs.pname;
+              rev = "refs/tags/v0.6.0";
+              hash = "sha256-3BZ71JVvj7GCojM8ycu160viPj8BLJ1SiW86Df2fzsw=";
+            };
+          });
+        };
+      };
     })
   ];
 
