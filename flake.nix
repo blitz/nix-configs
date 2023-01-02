@@ -18,16 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    riff = {
-      url = "github:DeterminateSystems/riff";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos,
-                     riff, flake-parts, hercules-ci-effects }:
+                     flake-parts, hercules-ci-effects }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
@@ -50,9 +45,6 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                environment.systemPackages = [
-                  riff.defaultPackage."${config.nixpkgs.system}"
-                ];
               })
 
               ./host/canaan/configuration.nix
@@ -73,8 +65,6 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                environment.systemPackages = [ riff.defaultPackage."${config.nixpkgs.system}" ];
-
                 hardware.tuxedo-control-center.package = tuxedo-nixos.packages.x86_64-linux.default;
               })
 
