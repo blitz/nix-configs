@@ -22,6 +22,33 @@
   ];
 
   boot.kernelPatches = [
+    {
+      name = "kernel-tuning";
+      patch = null;
+      ignoreConfigErrors = true;
+      extraConfig = ''
+        MCORE2 y
+        X86_5LEVEL n
+        X86_INTEL_MEMORY_PROTECTION_KEYS n
+        EFI_MIXED n
+        RETPOLINE n
+        RANDOMIZE_BASE n
+
+        NR_CPUS 64
+        SCHED_CORE n
+        PROFILING n
+        DEBUG_LIST n
+        X86_DEBUG_FPU n
+        SCHED_DEBUG n
+        DYNAMIC_DEBUG n
+        PREEMPT_DYNAMIC n
+
+        I2C y
+        AGP n
+        DRM y
+        DRM_AMDGPU y
+      '';
+    }
     # {
     #   name = "think-lmi-fwupd-compat";
     #   patch = ../../patches/linux/0001-platform-x86-think-lmi-expose-type-attribute.patch;
