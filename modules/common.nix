@@ -2,13 +2,26 @@
 
 {
   nix = {
-    settings.trusted-users = [ "root" "julian" ];
+    settings = {
+      trusted-users = [ "root" "julian" ];
+
+      # Does this have performance impact?
+      auto-optimise-store = true;
+    };
+
+    daemonCPUSchedPolicy = "batch";
 
     extraOptions = ''
       experimental-features = nix-command flakes
 
       # This is for direnv.
       keep-outputs = true
+
+      # See https://jackson.dev/post/nix-reasonable-defaults/
+      connect-timeout = 5
+      log-lines = 25
+      warn-dirty = false
+      fallback = true
     '';
   };
 
