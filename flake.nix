@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     hercules-ci = {
@@ -31,10 +33,17 @@
       url = "github:hercules-ci/hercules-ci-effects";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.rust-overlay.follows = "rust-overlay";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos,
-                     flake-parts, hercules-ci-effects }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
+                     tuxedo-nixos, flake-parts, hercules-ci-effects, lanzaboote }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
