@@ -60,7 +60,7 @@
 
       flake = {
         nixosConfigurations = {
-          canaan = nixpkgs.lib.nixosSystem {
+          canaan = nixpkgs-unstable.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
