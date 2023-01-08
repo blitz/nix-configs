@@ -4,8 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    hercules-ci.url = "github:hercules-ci/hercules-ci-agent";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    hercules-ci = {
+      url = "github:hercules-ci/hercules-ci-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     dwarffs = {
@@ -18,7 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs, tuxedo-nixos,
