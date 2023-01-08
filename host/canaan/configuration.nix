@@ -55,7 +55,10 @@
   services.power-profiles-daemon.enable = true;
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+
+  # XXX Disabled for lanzaboote.
+  boot.loader.systemd-boot.enable = false;
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "canaan";

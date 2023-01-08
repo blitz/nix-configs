@@ -77,6 +77,17 @@
               nixos-hardware.nixosModules.common-pc-laptop-ssd
               nixos-hardware.nixosModules.common-cpu-amd
               nixos-hardware.nixosModules.common-gpu-amd
+
+              lanzaboote.nixosModules.lanzaboote
+
+              ({ config, ... }: {
+                boot.lanzaboote = {
+                  enable = true;
+
+                  configurationLimit = 20;
+                  pkiBundle = "/etc/secureboot";
+                };
+              })
             ];
           };
 
