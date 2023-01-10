@@ -144,6 +144,7 @@
 
   documentation.man.enable = true;
   documentation.dev.enable = true;
+  documentation.doc.enable = false;
   documentation.enable = true;
 
   users.mutableUsers = false;
