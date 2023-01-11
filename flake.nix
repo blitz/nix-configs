@@ -80,7 +80,11 @@
 
               lanzaboote.nixosModules.lanzaboote
 
-              ({ config, ... }: {
+              ({ config, pkgs, ... }: {
+                environment.systemPackages = [
+                  pkgs.sbctl
+                ];
+
                 boot.lanzaboote = {
                   enable = true;
 
