@@ -7,10 +7,12 @@
     ];
     settings.substituters = [
       "http://binary-cache-v2.vpn.cyberus-technology.de"
-      "https://binary-cache.vpn.cyberus-technology.de"
+
+      # Too slow for normal use.
+      # "https://binary-cache.vpn.cyberus-technology.de"
     ];
     extraOptions = ''
-      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de https://binary-cache.vpn.cyberus-technology.de
+      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de
    '';
   };
 
