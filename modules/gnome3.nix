@@ -33,12 +33,11 @@ in
 
     firefox = {
       # error: The option `environment.etc."firefox/policies/policies.json".source' is used but not defined.
-      # enable = true;
+      enable = true;
       #
       # Weird sticky tool-tip bug:
       # https://bugzilla.mozilla.org/show_bug.cgi?id=1569439
-      #
-      # package = pkgs.firefox-wayland;
+      package = pkgs.firefox-wayland;
     };
   };
 
@@ -60,7 +59,6 @@ in
     clinfo
     intel-gpu-tools
     radeontop
-    firefox-wayland
 
     # Gaming
     wineWowPackages.unstableFull
