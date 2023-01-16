@@ -327,11 +327,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1673644475,
-        "narHash": "sha256-vtzy66FqvlxxoPCN1UsobMEwCg80lWzS+IMiCC67VGA=",
+        "lastModified": 1673767281,
+        "narHash": "sha256-n/fw5y+ub+oHF7HdSoyoZPFl6TXhj3zy6BqHsBOjsEk=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "ab456b9b1e8e3773d6084ff653f622b2e7ae91dc",
+        "rev": "d7ea77b426e61cea18998f352a4e84fb67713020",
         "type": "github"
       },
       "original": {
@@ -451,11 +451,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1673440569,
-        "narHash": "sha256-FQ5o0yI+MH9MgfseeGDsVIIpIqv3BCgq+0NzncuZ9Zo=",
+        "lastModified": 1673803274,
+        "narHash": "sha256-zaJDlHFXewT4KUsidMpRcPE+REymGH1Y3Eoc3Pjv4Xs=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "88016c96c3c338aa801695cdd9f186820bcfe4d6",
+        "rev": "7bd6b87b3712e68007823e8dd5c37ee9b114fee3",
         "type": "github"
       },
       "original": {
@@ -708,11 +708,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1673749717,
-        "narHash": "sha256-hgrw8w/AThRWfVafx3EO3/TQlGcUou4nui8X47cVhXo=",
+        "lastModified": 1673836088,
+        "narHash": "sha256-cAlfrHbX9sLcRdydMP8vhyxZChlVHqkEkumgc2LK4FY=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "aab6eb2dfc7a1e42d94b6f24ef13639ff8544af4",
+        "rev": "8f201a1adfddf715b708befd18164c8cbe65a268",
         "type": "github"
       },
       "original": {
