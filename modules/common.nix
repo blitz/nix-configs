@@ -37,6 +37,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
 
+  # Make dm-crypt fast in the early boot phases.
+  boot.initrd.availableKernelModules = [
+    "aesni_intel"
+    "cryptd"
+  ];
+
   # Don't accumulate crap.
   boot.cleanTmpDir = true;
   services.journald.extraConfig = ''
