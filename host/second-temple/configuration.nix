@@ -15,6 +15,13 @@
       ../../modules/cachix.nix
     ];
 
+  # To build cross-platform binaries.
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv32-linux"
+    "riscv64-linux"
+  ];
+
   services.hercules-ci-agent = {
     enable = true;
     settings.concurrentTasks = 4;
