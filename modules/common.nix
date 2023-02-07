@@ -51,7 +51,7 @@
   '';
   nix.gc = {
     automatic = true;
-    dates = "monthly";
+    dates = lib.mkDefault "monthly";
   };
   nix.optimise.automatic = true;
 

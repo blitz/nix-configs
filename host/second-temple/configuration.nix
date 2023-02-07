@@ -27,8 +27,10 @@
     settings.concurrentTasks = 4;
   };
 
-  # Nix 2.8.1 has problems with Hercules CI.
-  nix.package = pkgs.nixUnstable;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
 
   # The XFS FAQ suggests to use no I/O scheduler.
   services.udev.extraRules = ''
