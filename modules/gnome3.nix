@@ -27,15 +27,8 @@ in
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
-  # Disabled due to amdvlk breakage on 32-bit.
-  hardware.opengl.driSupport32Bit = false;
-
   programs = {
     geary.enable = true;
-
-    # See driSupport32Bit above.
-    #
-    # steam.enable = true;
 
     firefox = {
       # error: The option `environment.etc."firefox/policies/policies.json".source' is used but not defined.
@@ -62,12 +55,6 @@ in
     gparted
     okular
     gimp
-    clinfo
-    intel-gpu-tools
-    radeontop
-
-    # Gaming
-    wineWowPackages.unstableFull
 
     # Emacs
     (emacsWithPackages

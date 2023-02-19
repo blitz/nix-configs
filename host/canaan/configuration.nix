@@ -7,6 +7,7 @@
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
     ../../modules/rust-dev.nix
+    ../../modules/games.nix
   ];
 
   boot.extraModprobeConfig = ''
