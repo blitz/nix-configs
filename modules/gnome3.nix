@@ -42,9 +42,13 @@ in
 
   environment.systemPackages = with pkgs; [
 
-    (google-chrome.override {
-      commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder,VaapiVideoEncoder";
-    })
+    # AMD GPUs crap their pants with hardware decoding in online meetings.
+    #
+    # (google-chrome.override {
+    #   commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder,VaapiVideoEncoder";
+    # })
+    google-chrome
+
     mpv
     element-desktop
     signal-desktop
