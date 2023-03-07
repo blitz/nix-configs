@@ -5,15 +5,43 @@
       "cyberus-1:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
       "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
     ];
+
     settings.substituters = [
       "http://binary-cache-v2.vpn.cyberus-technology.de"
 
       # Too slow for normal use.
       # "https://binary-cache.vpn.cyberus-technology.de"
     ];
+
     extraOptions = ''
       extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de
    '';
+
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "remote-builder.vpn.cyberus-technology.de";
+        sshUser = "builder";
+        systems = [ "x86_64-linux" "aarch64-linux" ];
+        maxJobs = 100;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      }
+    ];
+  };
+
+  programs.ssh = {
+    extraConfig = ''
+      Host remote-builder.vpn.cyberus-technology.de
+        PubkeyAcceptedKeyTypes ssh-ed25519
+        IdentityFile ~/.ssh/id_ed25519
+    '';
+
+    knownHosts = {
+      nixbuild = {
+        hostNames = [ "remote-builder.vpn.cyberus-technology.de" ];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwdIPCDHFhao84ZoHgphp+hzYH9ot+L2gSDFD8HrMyw";
+      };
+    };
   };
 
   boot.loader.systemd-boot.extraEntries."svp.conf" = ''
