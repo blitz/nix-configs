@@ -15,23 +15,6 @@
 
   hardware.tuxedo-control-center.enable = true;
 
-  nixpkgs.overlays = [
-    (self: super: {
-      linuxPackages_latest = super.linuxPackages_latest.extend (lpself: lpsuper: {
-        tuxedo-keyboard = super.linuxPackages_latest.tuxedo-keyboard.overrideAttrs (oldAttrs: {
-          version = "3.1.4";
-
-          src = pkgs.fetchFromGitHub {
-            owner = "tuxedocomputers";
-            repo = "tuxedo-keyboard";
-            rev = "v3.1.4";
-            sha256 = "h6+br+JPEItym83MaVt+xo6o/zMtTv8+wsBoTeYa2AM=";
-          };
-        });
-      });
-    })
-  ];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
