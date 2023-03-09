@@ -13,6 +13,19 @@
       ../../modules/work.nix
     ];
 
+  boot.kernelPatches = [
+    {
+      name = "go-faster-config";
+      patch = null;
+      extraConfig = ''
+        SPECULATION_MITIGATIONS n
+        DEBUG_PREEMPT n
+        X86_DEBUG_FPU n
+        MCORE2 y
+      '';
+    }
+  ];
+
   hardware.tuxedo-control-center.enable = true;
 
   # Use the systemd-boot EFI boot loader.
