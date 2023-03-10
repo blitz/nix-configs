@@ -23,7 +23,7 @@
         hostName = "remote-builder.vpn.cyberus-technology.de";
         sshUser = "builder";
         systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 100;
+        maxJobs = 8;
         supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       }
     ];
