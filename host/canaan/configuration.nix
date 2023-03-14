@@ -10,24 +10,46 @@
     ../../modules/games.nix
   ];
 
+  # Quiet boot
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 3;
+  boot.kernelParams = [
+    "quiet" "udev.log_level=3"
+
+    # Force use of the thinkpad_acpi driver for backlight control.
+    # This allows the backlight save/load systemd service to work.
+    "acpi_backlight=native"
+  ] ;
+
+  boot.initrd.systemd.enable = true;
+  boot.initrd.availableKernelModules = [
+    # TPM disk image unlock
+    "tpm_crb"
+
+    # Get system up faster. Loading the amdgpu driver early reduces
+    # flickering.
+    "snd_sof_amd_renoir"
+    "snd_pci_acp3x"
+    "amdgpu"
+    "thinkpad_acpi"
+    "i2c_piix4"
+    "sp5100_tco"
+    "k10temp"
+    "nvme"
+    "ehci_pci"
+    "xhci_pci"
+    "ccp"
+    "snd_hda_intel"
+  ];
+
+  boot.plymouth.enable = true;
+
+  # Who doesn't like fast virtualization.
   boot.extraModprobeConfig = ''
     options kvm-amd avic=1
   '';
 
   powerManagement.powertop.enable = true;
-
-  boot.kernelParams = [
-    # Force use of the thinkpad_acpi driver for backlight control.
-    # This allows the backlight save/load systemd service to work.
-    "acpi_backlight=native"
-  ];
-
-  boot.kernelPatches = [
-    # {
-    #   name = "think-lmi-fwupd-compat";
-    #   patch = ../../patches/linux/0001-platform-x86-think-lmi-expose-type-attribute.patch;
-    # }
-  ];
 
   # For building Raspberry Pi system images. Disabled for now, because
   # we have nixbuild.net.
