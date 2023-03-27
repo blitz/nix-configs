@@ -22,27 +22,9 @@
   ] ;
 
   boot.initrd.systemd.enable = true;
-  boot.initrd.availableKernelModules = [
-    # TPM disk image unlock
-    "tpm_crb"
-
-    # Get system up faster. Loading the amdgpu driver early reduces
-    # flickering.
-    "snd_sof_amd_renoir"
-    "snd_pci_acp3x"
-    "amdgpu"
-    "thinkpad_acpi"
-    "i2c_piix4"
-    "sp5100_tco"
-    "k10temp"
-    "nvme"
-    "ehci_pci"
-    "xhci_pci"
-    "ccp"
-    "snd_hda_intel"
-  ];
-
   boot.plymouth.enable = true;
+  hardware.amdgpu.loadInInitrd = true;
+  hardware.amdgpu.opencl = true;
 
   # Who doesn't like fast virtualization.
   boot.extraModprobeConfig = ''

@@ -134,6 +134,33 @@
               dwarffs.nixosModules.dwarffs
             ];
           };
+
+          installation-media = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+
+            modules = [
+              ./host/installation-media/configuration.nix
+            ];
+          };
+
+          ig-11 = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+
+            modules = [
+              ./host/ig-11/configuration.nix
+              ./host/ig-11/hardware-configuration.nix
+
+              # There is a Thinkpad L14 AMD module, but it disables the
+              # IOMMU.
+              nixos-hardware.nixosModules.lenovo-thinkpad
+              nixos-hardware.nixosModules.common-pc-ssd
+
+              # TODO Enable pstate later.
+              nixos-hardware.nixosModules.common-cpu-amd
+              nixos-hardware.nixosModules.common-gpu-amd
+            ];
+
+          };
         };
       };
       systems = [
