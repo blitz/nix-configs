@@ -395,11 +395,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
-        "lastModified": 1680257632,
-        "narHash": "sha256-9MMO198QNgjYH9G6uTVRQPoktA3xjhTtgclSyZpl628=",
+        "lastModified": 1680449544,
+        "narHash": "sha256-Vvf7JlX/wZFJNhCaB9QqmqQbhgmuZ2QRoMXgpPy/0B4=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "rev": "46ad6140a76feb4f46ac5f13ec3c811baba6a063",
+        "rev": "7f046e522aa3f37e3e9d0558869c056d4dff1ed6",
         "type": "github"
       },
       "original": {
@@ -857,11 +857,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680315536,
-        "narHash": "sha256-0AsBuKssJMbcRcw4HJQwJsUHhZxR5+gaf6xPQayhR44=",
+        "lastModified": 1680488274,
+        "narHash": "sha256-0vYMrZDdokVmPQQXtFpnqA2wEgCCUXf5a3dDuDVshn0=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "5c8c151bdd639074a0051325c16df1a64ee23497",
+        "rev": "7ec2ff598a172c6e8584457167575b3a1a5d80d8",
         "type": "github"
       },
       "original": {
