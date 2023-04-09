@@ -11,6 +11,7 @@
       ../../modules/cachix.nix
       ../../modules/rust-dev.nix
       ../../modules/work.nix
+      ../../modules/games.nix
     ];
 
   hardware.tuxedo-control-center.enable = true;
