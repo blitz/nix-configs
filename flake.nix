@@ -9,7 +9,7 @@
 
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     rust-overlay = {
@@ -118,7 +118,7 @@
             ];
           };
 
-          second-temple = nixpkgs.lib.nixosSystem {
+          second-temple = nixpkgs-unstable.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
