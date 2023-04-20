@@ -34,7 +34,7 @@
       "inputs": {
         "nix": "nix",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {

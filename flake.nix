@@ -21,7 +21,7 @@
 
     dwarffs = {
       url = "github:edolstra/dwarffs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     tuxedo-nixos = {
@@ -80,6 +80,9 @@
 
               lanzaboote.nixosModules.lanzaboote
 
+              # For debugging.
+              dwarffs.nixosModules.dwarffs
+
               ({ config, pkgs, ... }: {
                 environment.systemPackages = [
                   pkgs.sbctl
@@ -112,9 +115,6 @@
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-laptop-ssd
               nixos-hardware.nixosModules.common-cpu-intel
-
-              # For debugging.
-              dwarffs.nixosModules.dwarffs
             ];
           };
 
