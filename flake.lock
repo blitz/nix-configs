@@ -436,18 +436,17 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
-        "nixpkgs-test": "nixpkgs-test",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_3",
         "rust-overlay": [
           "rust-overlay"
         ]
       },
       "locked": {
-        "lastModified": 1682286247,
-        "narHash": "sha256-TdYt/X9FS+oJMWQtGRt/JS/Hhgygigh/VUpL1KlfywY=",
+        "lastModified": 1682378017,
+        "narHash": "sha256-WmuqqaHfDEXoNDcZ7jT4XdOxJqVbbVFZa89BtmLMENQ=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "efff933460dbf9e1ea416ece962055b5c8a3d7cd",
+        "rev": "b21c4007afaf461834da091afe7ba8b37331de65",
         "type": "github"
       },
       "original": {
@@ -666,29 +665,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-test": {
-      "locked": {
-        "lastModified": 1679009563,
-        "narHash": "sha256-jizICiQOqUcYFNHRNNOo69bfyNo36iyuRAHem5z68LQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "371d3778c4f9cee7d5cf014e6ce400d57366570f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "qemu-boot-disk-using-make-disk-image",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1682181988,
-        "narHash": "sha256-CYWhlNi16cjGzMby9h57gpYE59quBcsHPXiFgX4Sw5k=",
+        "lastModified": 1682268651,
+        "narHash": "sha256-2eZriMhnD24Pmb8ideZWZDiXaAVe6LzJrHQiNPck+Lk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6c43a3495a11e261e5f41e5d7eda2d71dae1b2fe",
+        "rev": "e78d25df6f1036b3fa76750ed4603dd9d5fe90fc",
         "type": "github"
       },
       "original": {
@@ -716,11 +699,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1682173319,
-        "narHash": "sha256-tPhOpJJ+wrWIusvGgIB2+x6ILfDkEgQMX0BTtM5vd/4=",
+        "lastModified": 1682303062,
+        "narHash": "sha256-x+KAADp27lbxeoPXLUMxKcRsUUHDlg+qVjt5PjgBw9A=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ee7ec1c71adc47d2e3c2d5eb0d6b8fbbd42a8d1c",
+        "rev": "f5364316e314436f6b9c8fd50592b18920ab18f9",
         "type": "github"
       },
       "original": {
