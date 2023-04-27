@@ -77,7 +77,12 @@
   nixpkgs.config.allowUnfree = true;
 
   services.tailscale.enable = true;
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+
+    # This leads to spurious failures?
+    dnssec = "false";
+  };
 
   # Needed by tailscale.
   networking.firewall.checkReversePath = "loose";
