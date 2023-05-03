@@ -15,6 +15,9 @@
       ../../modules/cachix.nix
     ];
 
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_1;
+
+
   # To build cross-platform binaries.
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
