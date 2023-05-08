@@ -7,11 +7,14 @@
 {
   imports =
     [
-      ../../modules/laptop.nix
+      ../../modules/common.nix
+      ../../modules/gnome3.nix
       ../../modules/cachix.nix
-      ../../modules/nixbuild.nix
       ../../modules/games.nix
     ];
+
+  networking.networkmanager.enable = true;
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   # Quiet boot
   boot.initrd.verbose = false;
@@ -22,10 +25,6 @@
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
-
-  # /boot is not big enough.
-  #
-  # hardware.amdgpu.loadInInitrd = true;
 
   hardware.amdgpu.opencl = true;
 
