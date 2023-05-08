@@ -15,8 +15,7 @@
       ../../modules/cachix.nix
     ];
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_1;
-
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_15;
 
   # To build cross-platform binaries.
   boot.binfmt.emulatedSystems = [
