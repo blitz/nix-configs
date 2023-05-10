@@ -31,11 +31,7 @@ in
     geary.enable = true;
 
     firefox = {
-      # error: The option `environment.etc."firefox/policies/policies.json".source' is used but not defined.
       enable = true;
-      #
-      # Weird sticky tool-tip bug:
-      # https://bugzilla.mozilla.org/show_bug.cgi?id=1569439
       package = pkgs.firefox-wayland;
     };
   };
