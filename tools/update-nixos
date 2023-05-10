@@ -21,3 +21,4 @@ sudo nixos-rebuild -L boot --flake .
 
 # If everything worked, we publish our changes.
 git push
+git push origin master:flake-update
