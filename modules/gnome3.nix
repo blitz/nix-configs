@@ -81,11 +81,17 @@ in
         editorconfig
         toml-mode
         ggtags
+        elm-mode
       ])))
 
     # Development
     nixpkgs-fmt
     global
+
+    # Elm Development
+    elmPackages.elm-format
+    elmPackages.elm-language-server
+    elmPackages.elm
 
     # Legacy Coding
     msmtp
