@@ -135,13 +135,13 @@
             ];
           };
 
-          installation-media = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+          # installation-media = nixpkgs.lib.nixosSystem {
+          #   system = "x86_64-linux";
 
-            modules = [
-              ./host/installation-media/configuration.nix
-            ];
-          };
+          #   modules = [
+          #     ./host/installation-media/configuration.nix
+          #   ];
+          # };
 
           ig-11 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
