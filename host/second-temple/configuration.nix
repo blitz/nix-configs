@@ -13,6 +13,7 @@
       #../../modules/nixbuild.nix
 
       ../../modules/cachix.nix
+      ../../modules/home-assistant.nix
     ];
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_15;
