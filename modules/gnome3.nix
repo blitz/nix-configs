@@ -82,6 +82,7 @@ in
         toml-mode
         ggtags
         elm-mode
+        (epkgs.callPackage ../emacs/promela-mode.nix {})
       ])))
 
     # Development
