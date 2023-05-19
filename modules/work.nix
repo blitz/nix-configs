@@ -223,4 +223,20 @@
       internalInterfaces = [ "enp53s0" ];
     };
   };
+
+  # Elm development hacks
+  services.nginx = {
+    enable = true;
+    defaultListenAddresses = [ "127.0.0.1" "[::1]" ];
+    defaultHTTPListenPort = 3000;
+
+    virtualHosts."localhost" =  {
+      locations."/" = {
+        proxyPass = "http://sotest:3000";
+        extraConfig = ''
+          add_header Access-Control-Allow-Origin *;
+        '';
+      };
+    };
+  };
 }
