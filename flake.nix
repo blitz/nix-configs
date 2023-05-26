@@ -26,11 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tuxedo-nixos = {
-      url = "github:blitz/tuxedo-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +45,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
-                     tuxedo-nixos, flake-parts, hercules-ci-effects, lanzaboote, tuxedo-rs }:
+                     flake-parts, hercules-ci-effects, lanzaboote, tuxedo-rs }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
