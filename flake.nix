@@ -42,10 +42,15 @@
       inputs.rust-overlay.follows = "rust-overlay";
       inputs.flake-parts.follows = "flake-parts";
     };
+
+    tuxedo-rs = {
+      url = "github:AaronErhardt/tuxedo-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
-                     tuxedo-nixos, flake-parts, hercules-ci-effects, lanzaboote }:
+                     tuxedo-nixos, flake-parts, hercules-ci-effects, lanzaboote, tuxedo-rs }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
@@ -106,13 +111,12 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                hardware.tuxedo-control-center.package = tuxedo-nixos.packages.x86_64-linux.default;
               })
 
               ./host/babylon/configuration.nix
               ./host/babylon/hardware-configuration.nix
 
-              tuxedo-nixos.nixosModules.default
+              tuxedo-rs.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-laptop-ssd

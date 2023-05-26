@@ -14,7 +14,10 @@
       ../../modules/games.nix
     ];
 
-  hardware.tuxedo-control-center.enable = true;
+  services.tuxedo-rs = {
+    enable = true;
+    tailor_gui.enable = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
