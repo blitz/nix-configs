@@ -50,7 +50,7 @@
   ];
 
   # Don't accumulate crap.
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   services.journald.extraConfig = ''
     SystemMaxUse=250M
     SystemMaxFileSize=50M
