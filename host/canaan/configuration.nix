@@ -7,7 +7,7 @@
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
     ../../modules/rust-dev.nix
-    ../../modules/games.nix
+    #../../modules/games.nix
   ];
 
   # Quiet boot
