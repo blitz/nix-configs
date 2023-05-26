@@ -2,14 +2,13 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
@@ -21,7 +20,7 @@
 
     dwarffs = {
       url = "github:edolstra/dwarffs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     tuxedo-nixos = {
@@ -36,13 +35,13 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
       inputs.flake-parts.follows = "flake-parts";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
                      tuxedo-nixos, flake-parts, hercules-ci-effects, lanzaboote }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
@@ -60,7 +59,7 @@
 
       flake = {
         nixosConfigurations = {
-          canaan = nixpkgs-unstable.lib.nixosSystem {
+          canaan = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
@@ -118,7 +117,7 @@
             ];
           };
 
-          second-temple = nixpkgs-unstable.lib.nixosSystem {
+          second-temple = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
