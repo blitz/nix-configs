@@ -16,8 +16,6 @@
       ../../modules/home-assistant.nix
     ];
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_15;
-
   # To build cross-platform binaries.
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
