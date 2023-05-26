@@ -8,7 +8,10 @@
 
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
+
+      # This breaks Hercules CI's cachix version.
+      #
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
