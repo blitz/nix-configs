@@ -10,6 +10,45 @@
     #../../modules/games.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev:
+      let
+        valgrind = prev.valgrind.overrideAttrs (attrs: {
+          patches = attrs.patches ++ [
+            (prev.fetchurl {
+              url = "https://github.com/jtojnar/nixpkgs/raw/4fc9bb0d8cfad756eb929acd3be92a7019f8ef97/pkgs/development/tools/analysis/valgrind/Support-NIX_DEBUG_INFO_DIRS.patch";
+              hash = "sha256-kd7azMA00Kd+f8RWPYAS2bMEXB6xlhwL2yeTqDaAiQ8=";
+            })
+          ];
+        });
+      in {
+        gnome = prev.gnome.overrideScope' (gfinal: gprev: {
+          gnome-session = gprev.gnome-session.overrideAttrs (attrs: {
+            preFixup = ''
+            # Also replaces the wrapper creation from original preFixup
+            substituteInPlace "$out/bin/gnome-session" \
+              --replace "$out/libexec/gnome-session-binary" "${prev.coreutils}/bin/env XDG_DATA_DIRS=$out/share:$GSETTINGS_SCHEMAS_PATH:${gprev.gnome-shell}/share:\$XDG_DATA_DIRS XDG_CONFIG_DIRS=${gprev.gnome-settings-daemon}/etc/xdg:\$XDG_CONFIG_DIRS NIX_DEBUG_INFO_DIRS=$debug/lib/debug:${prev.glib.debug}/lib/debug ${valgrind}/bin/valgrind --leak-check=full --error-exitcode=1 $out/libexec/gnome-session-binary"
+          '';
+          });
+        });
+      })
+  ];
+  
+  # Session restart debug
+  services.xserver.displayManager.gdm.debug = true;
+  services.xserver.desktopManager.gnome.debug = true;
+  
+  environment.enableDebugInfo = true;
+  environment.systemPackages = [
+    # Explicitly install to get debug symbols.
+    pkgs.gnome.gnome-shell
+    pkgs.gnome.mutter
+    pkgs.gnome.gnome-session
+    pkgs.glib
+    pkgs.gjs
+    pkgs.spidermonkey_102
+  ];
+
   # Quiet boot
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 3;
