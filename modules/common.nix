@@ -43,6 +43,14 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
 
+  # Should not be relevant anymore for 6.3.4.
+  boot.kernelPatches = [
+    {
+      name = "fix-xfs-metadata-corruption";
+      patch = ../patches/linux/fix-xfs-corruption-6.3.3.patch;
+    }
+  ];
+
   # Make dm-crypt fast in the early boot phases.
   boot.initrd.availableKernelModules = [
     "aesni_intel"
