@@ -8,8 +8,6 @@
         "valid-lifetime": 600,
         "max-valid-lifetime": 7200,
         "authoritative": true,
-        "valid-lifetime": 600,
-        "max-valid-lifetime": 7200,
         "option-def": [
             //    /// Kea does not allow redefinition of options
             //    {
@@ -285,12 +283,12 @@
                         "code": 3,
                         "data": "192.168.99.1"
                     },
-                    {
-                        "space": "dhcp4",
-                        "name": "root-path",
-                        "code": 17,
-                        "data": ""
-                    },
+                    // {
+                    //     "space": "dhcp4",
+                    //     "name": "root-path",
+                    //     "code": 17,
+                    //     "data": ""
+                    // },
                     {
                         "space": "dhcp4",
                         "name": "domain-name-servers",

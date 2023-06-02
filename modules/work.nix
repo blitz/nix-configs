@@ -88,8 +88,16 @@
     ]
   );
 
+  # The damn libvirtd dnsmasq binds to all devices on the DHCP port.
+  # systemd.services.kea-dhcp4-server.before = [ "libvirtd.service" ];
+
   services = {
     onedrive.enable = true;
+
+    kea.dhcp4 = {
+      # enable = true;
+      configFile = ./work-kea-dhcp4.json;
+    };
 
     dhcpd4 = {
       enable = true;
