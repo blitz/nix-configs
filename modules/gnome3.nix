@@ -136,6 +136,8 @@ in
     enable = true;
     onBoot = "ignore";
     onShutdown = "shutdown";
+    qemu.swtpm.enable = true;
+    qemu.ovmf.enable = true;
   };
   virtualisation.spiceUSBRedirection.enable = true;
 
