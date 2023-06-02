@@ -236,7 +236,7 @@
   services.nginx = {
     enable = true;
     defaultListenAddresses = [ "127.0.0.1" "[::1]" ];
-    defaultHTTPListenPort = 3000;
+    defaultHTTPListenPort = 3001;
 
     virtualHosts."localhost" =  {
       locations."/" = {
