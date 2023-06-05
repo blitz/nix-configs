@@ -11,7 +11,7 @@
       ../../modules/cachix.nix
       ../../modules/rust-dev.nix
       ../../modules/work.nix
-      ../../modules/games.nix
+      #../../modules/games.nix
     ];
 
   services.tuxedo-rs = {
