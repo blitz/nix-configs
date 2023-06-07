@@ -56,6 +56,8 @@ in
     okular
     gimp
 
+    gnomeExtensions.tailscale-status
+
     # Emacs
     (emacsWithPackages
       (epkgs: (with epkgs.melpaPackages;
