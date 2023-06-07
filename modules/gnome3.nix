@@ -51,6 +51,7 @@ in
     deja-dup
     gnome3.gnome-tweaks
     gnome3.gnome-boxes
+    virt-manager
     gitAndTools.gh
     gparted
     okular
