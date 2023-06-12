@@ -139,9 +139,16 @@ in
     enable = true;
     onBoot = "ignore";
     onShutdown = "shutdown";
+
+    # This doesn't really work. I currently pass /dev/tpm0 through to the guest.
     qemu.swtpm.enable = true;
+
+    # For UEFI Secure Boot support.
     qemu.ovmf.enable = true;
+    qemu.ovmf.packages = [ pkgs.OVMFFull.fd ];
   };
+
+  # USB Passthrough
   virtualisation.spiceUSBRedirection.enable = true;
 
   networking.firewall.enable = false;
