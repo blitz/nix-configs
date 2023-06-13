@@ -72,7 +72,6 @@
 
     picocom
     delta
-    libreoffice-fresh
     _1password-gui
 
     # For Intel AMT.
