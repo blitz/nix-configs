@@ -55,6 +55,21 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Model checking
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        # Nothing here yet.
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-tlaplus";
+          publisher = "alygin";
+          version = "1.5.4";
+          sha256 = "";
+        }
+      ];
+    })
+    tlaplus
+
     picocom
     delta
     libreoffice-fresh
