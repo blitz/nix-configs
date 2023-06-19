@@ -350,11 +350,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
-        "lastModified": 1686692834,
-        "narHash": "sha256-EFjJ/r4iYVKO+XdL15g9bzOKbCExTGeqNEVHSn0H7/E=",
+        "lastModified": 1687124707,
+        "narHash": "sha256-BEC2y7zwDI/Saeupr9rijLvwb0OoqTD9vntlcyciyrM=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "823ad6b70bf09b91c3a9dd9a64678ec80ba3c1ee",
+        "rev": "c758cdad465e0c8174db57dc493f51a89f0e3372",
         "type": "github"
       },
       "original": {
@@ -639,11 +639,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1686968542,
-        "narHash": "sha256-Gjlj7UeHqMFRAYyefeoLnSjLo8V+0XheIamojNEyTbE=",
+        "lastModified": 1687055571,
+        "narHash": "sha256-UvLoO6u5n9TzY80BpM4DaacxvyJl7u9mm9CA72d309g=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "01d84cd842e48e89be67e4c2d9dc46aa7709adc5",
+        "rev": "2de557c780dcb127128ae987fca9d6c2b0d7dc0f",
         "type": "github"
       },
       "original": {
