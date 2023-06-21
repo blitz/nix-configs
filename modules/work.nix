@@ -64,11 +64,12 @@
           name = "vscode-tlaplus";
           publisher = "alygin";
           version = "1.5.4";
-          sha256 = "";
+          sha256 = "vZU0XIw/067gFFqfbhAoWYv8Why1YSM3WJ+bT4hAyVU=";
         }
       ];
     })
     tlaplus
+    jdk
 
     picocom
     delta
