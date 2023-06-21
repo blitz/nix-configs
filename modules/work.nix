@@ -55,22 +55,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Model checking
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        # Nothing here yet.
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "vscode-tlaplus";
-          publisher = "alygin";
-          version = "1.5.4";
-          sha256 = "vZU0XIw/067gFFqfbhAoWYv8Why1YSM3WJ+bT4hAyVU=";
-        }
-      ];
-    })
-    tlaplus
-    jdk
-
     picocom
     delta
     _1password-gui
@@ -82,9 +66,6 @@
 
     # To avoid Intel AMT
     remmina
-
-    # For Hedron development
-    clang-tools
   ] ++ (
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''

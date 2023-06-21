@@ -9,7 +9,7 @@
     [
       ../../modules/laptop.nix
       ../../modules/cachix.nix
-      ../../modules/rust-dev.nix
+      ../../modules/coding.nix
       ../../modules/work.nix
       #../../modules/games.nix
     ];

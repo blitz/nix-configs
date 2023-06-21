@@ -58,64 +58,6 @@ in
     gimp
 
     gnomeExtensions.tailscale-status
-
-    # Emacs
-    (emacsWithPackages
-      (epkgs: (with epkgs.melpaPackages;
-      [
-        clang-format
-        cmake-mode
-        dante
-        dhall-mode
-        direnv
-        flymake-hlint
-        haskell-mode
-        hlint-refactor
-        magit
-        markdown-mode
-        nasm-mode
-        nix-mode
-        use-package
-        yaml-mode
-        lsp-mode
-        lsp-haskell
-        lsp-ui
-        rustic
-        editorconfig
-        toml-mode
-        ggtags
-        elm-mode
-        (epkgs.callPackage ../emacs/promela-mode.nix {})
-      ])))
-
-    # Development
-    nixpkgs-fmt
-    global
-
-    # Elm Development
-    elmPackages.elm-format
-    elmPackages.elm-language-server
-    elmPackages.elm
-
-    # Legacy Coding
-    msmtp
-    (pkgs.buildFHSUserEnv {
-      name = "legacy-env";
-      targetPkgs = pkgs: with pkgs; [
-        gcc binutils
-        gnumake coreutils patch zlib zlib.dev curl git m4 bison flex acpica-tools
-        ncurses.dev
-        elfutils.dev
-        openssl openssl.dev
-        cpio pahole gawk perl bc nettools rsync
-        gmp gmp.dev
-        libmpc
-        mpfr mpfr.dev
-        zstd python3Minimal
-        file unzip
-        global
-      ];
-    })
   ];
 
   fonts = {

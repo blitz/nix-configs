@@ -6,7 +6,7 @@
     #../../modules/obs-studio.nix
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
-    ../../modules/rust-dev.nix
+    ../../modules/coding.nix
     #../../modules/games.nix
   ];
 
