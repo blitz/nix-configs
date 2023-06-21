@@ -16,7 +16,7 @@
       ../../modules/home-assistant.nix
     ];
 
-  # To build cross-platform binaries.
+  # For cross-platform builds.
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "riscv32-linux"
