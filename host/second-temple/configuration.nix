@@ -30,7 +30,7 @@
 
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "monthly";
   };
 
   # The XFS FAQ suggests to use no I/O scheduler.
