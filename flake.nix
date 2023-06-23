@@ -147,6 +147,7 @@
 
             modules = [
               ./host/third-temple/configuration.nix
+              hercules-ci.nixosModules.agent-service
             ];
           };
 

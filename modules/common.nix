@@ -48,7 +48,7 @@
   ];
 
   # Make dm-crypt fast in the early boot phases.
-  boot.initrd.availableKernelModules = [
+  boot.initrd.availableKernelModules = lib.optionals (config.system == "x86_64-linux") [
     "aesni_intel"
     "cryptd"
   ];

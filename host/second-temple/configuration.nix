@@ -18,7 +18,9 @@
 
   # For cross-platform builds.
   boot.binfmt.emulatedSystems = [
-    "aarch64-linux"
+    # We have third-temple for this.
+    # "aarch64-linux"
+
     "riscv32-linux"
     "riscv64-linux"
   ];
