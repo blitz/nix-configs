@@ -43,8 +43,18 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, hercules-ci, rust-overlay, dwarffs,
-                     flake-parts, hercules-ci-effects, lanzaboote, tuxedo-rs }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , nixos-hardware
+    , hercules-ci
+    , rust-overlay
+    , dwarffs
+    , flake-parts
+    , hercules-ci-effects
+    , lanzaboote
+    , tuxedo-rs
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         hercules-ci-effects.flakeModule
@@ -132,6 +142,14 @@
             ];
           };
 
+          third-temple = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+
+            modules = [
+              ./host/third-temple/configuration.nix
+            ];
+          };
+
           # installation-media = nixpkgs.lib.nixosSystem {
           #   system = "x86_64-linux";
 
@@ -160,7 +178,6 @@
       systems = [
         "x86_64-linux"
       ];
-      perSystem = { config, ... }: {
-      };
+      perSystem = { config, ... }: { };
     };
 }
