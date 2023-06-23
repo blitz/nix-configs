@@ -69,6 +69,11 @@
         };
       };
 
+      herculesCI.ciSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+
       flake = {
         nixosConfigurations = {
           canaan = nixpkgs.lib.nixosSystem {
@@ -176,9 +181,12 @@
           };
         };
       };
+
       systems = [
         "x86_64-linux"
+        "aarch64-linux"
       ];
+
       perSystem = { config, ... }: { };
     };
 }
