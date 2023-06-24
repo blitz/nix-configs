@@ -8,6 +8,7 @@
   imports =
     [
       ../../modules/common.nix
+      ../../modules/tailscale-exit-node.nix
 
       # Nixbuild seems to be ratelimited by crates.io, which breaks builds.
       #../../modules/nixbuild.nix

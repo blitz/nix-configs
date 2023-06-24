@@ -4,6 +4,7 @@
     ./networking.nix # generated at runtime by nixos-infect
 
     ../../modules/common.nix
+    ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
   ];
 

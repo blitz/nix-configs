@@ -11,6 +11,7 @@
       ../../modules/cachix.nix
       ../../modules/coding.nix
       ../../modules/work.nix
+      ../../modules/tailscale-client.nix
       #../../modules/games.nix
     ];
 

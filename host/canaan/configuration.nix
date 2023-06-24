@@ -7,6 +7,7 @@
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
     ../../modules/coding.nix
+    ../../modules/tailscale-client.nix
     #../../modules/games.nix
   ];
 
