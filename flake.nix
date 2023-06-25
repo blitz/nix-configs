@@ -168,6 +168,10 @@
             system = "x86_64-linux";
 
             modules = [
+              ({ config, ... }: {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              })
+
               ./host/ig-11/configuration.nix
               ./host/ig-11/hardware-configuration.nix
 
