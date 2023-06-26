@@ -30,6 +30,9 @@ in
   programs = {
     geary.enable = true;
 
+    # Geary seems pretty dead. :(
+    evolution.enable = true;
+
     firefox = {
       enable = true;
       package = pkgs.firefox-wayland;
