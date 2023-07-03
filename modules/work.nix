@@ -197,13 +197,14 @@
     };
 
     atftpd = {
-      enable = true;
+      # We are test driving obiwan for now.
+      # enable = true;
       root = "/home/julian/Public/tftp";
       extraOptions = [ "--bind-address 192.168.99.1" ];
     };
 
     obiwan = {
-      # enable = true;
+      enable = true;
       root = "/home/julian/Public/tftp";
       listenAddress = "192.168.99.1";
     };
