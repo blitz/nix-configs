@@ -41,6 +41,11 @@
       url = "github:AaronErhardt/tuxedo-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    obiwan = {
+      url = "github:blitz/obiwan";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -54,6 +59,7 @@
     , hercules-ci-effects
     , lanzaboote
     , tuxedo-rs
+    , obiwan
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
@@ -126,6 +132,7 @@
               ./host/babylon/hardware-configuration.nix
 
               tuxedo-rs.nixosModules.default
+              obiwan.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-laptop-ssd
