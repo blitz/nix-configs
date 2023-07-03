@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }: {
 
   environment.systemPackages = with pkgs; [
+    # Github / Gitlab
+    gitAndTools.gh
+    glab
+
     # Model checking
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
