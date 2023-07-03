@@ -714,11 +714,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2"
       },
       "locked": {
-        "lastModified": 1688419362,
-        "narHash": "sha256-goWNaA/jQ5CJMA1Cdm4fzJgSfPtKxK5xaX/snhrLfP4=",
+        "lastModified": 1688420892,
+        "narHash": "sha256-M3s83hRKUFc4fo4m8gNJ4yUsIjolej5X83koTyYJMb4=",
         "owner": "blitz",
         "repo": "obiwan",
-        "rev": "95a8a52fcd2fd6817bd298da95e15a9a726c9d4d",
+        "rev": "a961ff30deef903a155775ba37ab6c0aac0b962c",
         "type": "github"
       },
       "original": {
