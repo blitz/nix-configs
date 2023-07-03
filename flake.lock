@@ -447,11 +447,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1686830987,
-        "narHash": "sha256-1XLTM0lFr3NV+0rd55SQW/8oQ3ACnqlYcda3FelIwHU=",
+        "lastModified": 1688396386,
+        "narHash": "sha256-2E/aH+s6dkr0sMM6994wVhzVC/ZyvDPtr5Svcosodik=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "04e4ab63b9eed2452edee1bb698827e1cb8265c6",
+        "rev": "4571985e314cb9f30901df8ff6eede8951e6b60f",
         "type": "github"
       },
       "original": {
@@ -714,11 +714,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2"
       },
       "locked": {
-        "lastModified": 1688308646,
-        "narHash": "sha256-G7q6x7T7RCwM2ZS4QF4/ESnLpr3RhfRKttU+WHUPwX0=",
+        "lastModified": 1688419362,
+        "narHash": "sha256-goWNaA/jQ5CJMA1Cdm4fzJgSfPtKxK5xaX/snhrLfP4=",
         "owner": "blitz",
         "repo": "obiwan",
-        "rev": "8728bb91634dff74888cfa3f99c8cb72c6c3ab26",
+        "rev": "95a8a52fcd2fd6817bd298da95e15a9a726c9d4d",
         "type": "github"
       },
       "original": {
@@ -863,11 +863,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1688265347,
-        "narHash": "sha256-oe3kLnNvw2VWbG4Rp6IWUO5Uu5gF8J2oq8DbqbCsdZ4=",
+        "lastModified": 1688351637,
+        "narHash": "sha256-CLTufJ29VxNOIZ8UTg0lepsn3X03AmopmaLTTeHDCL4=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "b8f3db465405014039985f1c5cea92cc29e1b3b5",
+        "rev": "f9b92316727af9e6c7fee4a761242f7f46880329",
         "type": "github"
       },
       "original": {
