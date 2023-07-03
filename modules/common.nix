@@ -40,7 +40,7 @@
   ];
 
   # Living on the edge.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_3;
   boot.kernelParams = [ "mitigations=off" ];
 
   boot.kernelPatches = [
