@@ -62,9 +62,9 @@
     global
 
     # Elm Development
-    elmPackages.elm-format
-    elmPackages.elm-language-server
-    elmPackages.elm
+    # elmPackages.elm-format
+    # elmPackages.elm-language-server
+    # elmPackages.elm
 
     # Rust development
     pkgs.rust-analyzer

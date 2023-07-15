@@ -237,7 +237,7 @@
 
   # Elm development hacks
   services.nginx = {
-    enable = true;
+    # enable = true;
     defaultListenAddresses = [ "127.0.0.1" "[::1]" ];
     defaultHTTPListenPort = 3001;
 
