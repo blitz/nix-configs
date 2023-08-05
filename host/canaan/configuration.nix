@@ -8,7 +8,7 @@
     ../../modules/nixbuild.nix
     ../../modules/coding.nix
     ../../modules/tailscale-client.nix
-    #../../modules/games.nix
+    ../../modules/games.nix
   ];
 
   # Quiet boot
