@@ -5,15 +5,6 @@ in
 {
   nixpkgs.overlays = [
     (self: super: {
-      gnome = super.gnome // {
-        geary = super.gnome.geary.overrideAttrs (old: {
-          patches = (old.patches or []) ++ [
-            # https://gitlab.gnome.org/GNOME/geary/-/issues/1320
-            ../patches/geary/0001-smtp-don-t-use-domain-for-EHLO-if-it-s-not-a-FQDN.patch
-          ];
-        });
-      };
-
       gnome-console = super.gnome-console.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
           # https://gitlab.gnome.org/GNOME/console/-/issues/147
@@ -28,9 +19,6 @@ in
   services.pcscd.enable = true;
 
   programs = {
-    geary.enable = true;
-
-    # Geary seems pretty dead. :(
     evolution.enable = true;
 
     firefox = {
