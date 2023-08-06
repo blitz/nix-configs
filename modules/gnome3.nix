@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 let
+  # At some point we should switch to emacs29-pgtk to get Wayland support.
   emacsWithPackages = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages;
 in
 {
@@ -27,6 +28,10 @@ in
     };
   };
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   environment.systemPackages = with pkgs; [
 
     # AMD GPUs crap their pants with hardware decoding in online meetings.
@@ -37,8 +42,11 @@ in
     google-chrome
 
     mpv
+
+    # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
     element-desktop
     signal-desktop
+
     deja-dup
     gnome3.gnome-tweaks
     gnome3.gnome-boxes
