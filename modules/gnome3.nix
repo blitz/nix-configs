@@ -96,7 +96,7 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.mfcl8690cdwcupswrapper ];
 
   # Enable sound.
   sound.enable = true;
