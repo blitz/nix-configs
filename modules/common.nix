@@ -64,6 +64,7 @@
     dates = lib.mkDefault "monthly";
   };
   nix.optimise.automatic = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   # Swap
   zramSwap = {
