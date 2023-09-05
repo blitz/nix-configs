@@ -44,7 +44,11 @@
 
     obiwan = {
       url = "github:blitz/obiwan";
-      inputs.nixpkgs.follows = "nixpkgs";
+
+      # Breaks the build, because we force an older Rust compiler onto
+      # the code.
+      #
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

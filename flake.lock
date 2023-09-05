@@ -736,6 +736,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1693843476,
+        "narHash": "sha256-0T1iTp/+HNgi/b03bB4JA5LkaUS31CCBKhbti6Jb/RA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "278796c737d3fa1e2c516d49720adb451198dc4d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "obiwan": {
       "inputs": {
         "advisory-db": "advisory-db",
@@ -743,9 +759,7 @@
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts_5",
         "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_5",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2"
       },
       "locked": {
