@@ -937,11 +937,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695607919,
-        "narHash": "sha256-PU6yIbHXdm3W8bBlhO6aL+VIjK5UQCRnOvCqa1lYQ6M=",
+        "lastModified": 1695694299,
+        "narHash": "sha256-0CucEiOZzOVHwmGDJKNXLj7aDYOqbRtqChp9nbGrh18=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "014e0035c262e5506f904829e6b925ee3cfdb55e",
+        "rev": "c89a55d2d91cf55234466934b25deeffa365188a",
         "type": "github"
       },
       "original": {
@@ -1019,11 +1019,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1693354930,
-        "narHash": "sha256-yGjxna+jbs6nOZeDQuVwbKYAnj9Qmdr/h6FOacD9giw=",
+        "lastModified": 1695761463,
+        "narHash": "sha256-bk17vI1gLHayvCWfmZdCMqgmbJFOTDaaCaHcj9cLpMY=",
         "owner": "AaronErhardt",
         "repo": "tuxedo-rs",
-        "rev": "a1338dba111b422b5fc6dcb9c710b61a9594a191",
+        "rev": "a77a9f6c64e6dd1ede3511934392cbc16271ef6b",
         "type": "github"
       },
       "original": {
