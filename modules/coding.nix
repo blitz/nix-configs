@@ -29,7 +29,7 @@
     jdk
 
     # Emacs
-    (emacsWithPackages
+    ((emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
       (epkgs: (with epkgs.melpaPackages;
       [
         clang-format

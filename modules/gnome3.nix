@@ -1,8 +1,4 @@
 { config, pkgs, ... }:
-let
-  # At some point we should switch to emacs29-pgtk to get Wayland support.
-  emacsWithPackages = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages;
-in
 {
   nixpkgs.overlays = [
     (self: super: {
