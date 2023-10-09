@@ -1037,16 +1037,17 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1696452819,
-        "narHash": "sha256-BOmlPisJLHE0W+MyVTAnL/nfNimFxW6pSQZab9uw60g=",
+        "lastModified": 1695761463,
+        "narHash": "sha256-bk17vI1gLHayvCWfmZdCMqgmbJFOTDaaCaHcj9cLpMY=",
         "owner": "AaronErhardt",
         "repo": "tuxedo-rs",
-        "rev": "b5ce23303b0e40c5fc2bb5afc1b38bbfe84a289c",
+        "rev": "a77a9f6c64e6dd1ede3511934392cbc16271ef6b",
         "type": "github"
       },
       "original": {
         "owner": "AaronErhardt",
         "repo": "tuxedo-rs",
+        "rev": "a77a9f6c64e6dd1ede3511934392cbc16271ef6b",
         "type": "github"
       }
     }

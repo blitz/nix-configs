@@ -38,7 +38,8 @@
     };
 
     tuxedo-rs = {
-      url = "github:AaronErhardt/tuxedo-rs";
+      # TODO Remove with NixOS 23.05. There is no hardware.tuxedo-rs in Nixpkgs.
+      url = "github:AaronErhardt/tuxedo-rs/a77a9f6c64e6dd1ede3511934392cbc16271ef6b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
