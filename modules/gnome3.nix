@@ -8,14 +8,6 @@
           ../patches/gnome-console/no-audible-bell.patch
         ];
       });
-
-      gnome = super.gnome // {
-        gnome-session = super.gnome.gnome-session.overrideAttrs (old: {
-          patches = (old.patches or []) ++ [
-            ../patches/gnome-session/0001-gsm-manager-Fix-Inhibit-DBus-method-handler.patch
-          ];
-        });
-      };
     })
   ];
 
