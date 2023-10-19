@@ -62,6 +62,7 @@
     nil
     nix-diff
     nix-output-monitor          # nom
+    nixpkgs-review
 
     # Misc
     global
