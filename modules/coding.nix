@@ -60,10 +60,11 @@
     # Nix
     nixpkgs-fmt
     nil
+    nix-diff
+    nix-output-monitor          # nom
 
     # Misc
     global
-    nix-output-monitor          # nom
 
     # Elm Development
     # elmPackages.elm-format
