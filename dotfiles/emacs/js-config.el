@@ -29,6 +29,7 @@
 
 (require 'lsp)
 (require 'lsp-haskell)
+(require 'lsp-nix)
 
 ;; Hooks so haskell and literate haskell major modes trigger LSP setup
 (add-hook 'haskell-mode-hook #'lsp)
@@ -61,6 +62,7 @@
  '(inhibit-startup-screen t)
  '(lsp-haskell-process-args-hie nil)
  '(lsp-haskell-process-path-hie "haskell-language-server-wrapper")
+ '(lsp-nix-nil-formatter ["nixpkgs-fmt"])
  '(make-backup-files nil)
  '(nix-nixfmt-bin "nixpkgs-fmt")
  '(ring-bell-function 'ignore)

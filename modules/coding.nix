@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
     # Github / Gitlab
@@ -57,9 +57,13 @@
         (epkgs.callPackage ../emacs/promela-mode.nix { })
       ])))
 
-    # Misc
+    # Nix
     nixpkgs-fmt
+    nil
+
+    # Misc
     global
+    nix-output-monitor          # nom
 
     # Elm Development
     # elmPackages.elm-format

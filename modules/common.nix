@@ -142,7 +142,6 @@
     file
     gitFull
     gnupg
-    inetutils
     libarchive
     man-pages
     nix-top
