@@ -61,6 +61,7 @@
     nixpkgs-fmt
     nil
     nix-diff
+    nix-tree
     nix-output-monitor          # nom
     nixpkgs-review
 
