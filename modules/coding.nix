@@ -66,6 +66,7 @@
 
     # Misc
     global
+    gdb
 
     # Elm Development
     # elmPackages.elm-format
