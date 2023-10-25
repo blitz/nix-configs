@@ -139,6 +139,8 @@
               tuxedo-rs.nixosModules.default
               obiwan.nixosModules.default
 
+              dwarffs.nixosModules.dwarffs
+
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-laptop-ssd
               nixos-hardware.nixosModules.common-cpu-intel
