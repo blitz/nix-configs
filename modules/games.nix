@@ -7,11 +7,6 @@
     wineWowPackages.unstableFull
     lutris
 
-    # Debugging
-    clinfo
-    intel-gpu-tools
-    radeontop
-
     # Podcasting
     zoom-us
   ];

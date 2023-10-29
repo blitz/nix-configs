@@ -6,27 +6,27 @@
     glab
 
     # Model checking
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        ms-vscode.hexeditor
-        ms-vscode.cpptools
-        ms-vscode.cmake-tools
-        ms-vscode.makefile-tools
-        ms-vscode-remote.remote-ssh
-        rust-lang.rust-analyzer
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "vscode-tlaplus";
-          publisher = "alygin";
-          version = "1.5.4";
-          sha256 = "vZU0XIw/067gFFqfbhAoWYv8Why1YSM3WJ+bT4hAyVU=";
-        }
-      ];
-    })
+    # (vscode-with-extensions.override {
+    #   vscodeExtensions = with vscode-extensions; [
+    #     ms-vscode.hexeditor
+    #     ms-vscode.cpptools
+    #     ms-vscode.cmake-tools
+    #     ms-vscode.makefile-tools
+    #     ms-vscode-remote.remote-ssh
+    #     rust-lang.rust-analyzer
+    #   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    #     {
+    #       name = "vscode-tlaplus";
+    #       publisher = "alygin";
+    #       version = "1.5.4";
+    #       sha256 = "vZU0XIw/067gFFqfbhAoWYv8Why1YSM3WJ+bT4hAyVU=";
+    #     }
+    #   ];
+    # })
 
     # Model checking
-    tlaplus
-    jdk
+    # tlaplus
+    # jdk
 
     # Emacs
     ((emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages

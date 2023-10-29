@@ -29,7 +29,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-
     # AMD GPUs crap their pants with hardware decoding in online meetings.
     #
     # (google-chrome.override {
@@ -52,6 +51,11 @@
     gimp
 
     gnomeExtensions.tailscale-status
+
+    # Debugging
+    clinfo
+    intel-gpu-tools
+    radeontop
   ];
 
   fonts = {
