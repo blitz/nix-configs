@@ -78,6 +78,9 @@
     pkgs.rust-analyzer
     pkgs.gcc
 
+    # C++ development
+    pkgs.clang-tools_16         # We want the newest one for clangd/LSP
+
     # From rust-overlay
     (pkgs.rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" ];
