@@ -104,6 +104,8 @@
               ./host/canaan/configuration.nix
               ./host/canaan/hardware-configuration.nix
 
+              home-manager.nixosModules.default
+
               # There is a Thinkpad L14 AMD module, but it disables the
               # IOMMU.
               nixos-hardware.nixosModules.lenovo-thinkpad

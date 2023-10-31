@@ -9,6 +9,7 @@
     ../../modules/coding.nix
     ../../modules/tailscale-client.nix
     #../../modules/games.nix
+    ../../modules/home-manager.nix
   ];
 
   # Quiet boot

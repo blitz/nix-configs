@@ -28,12 +28,11 @@
 ;; Haskell
 
 (require 'lsp)
-(require 'lsp-haskell)
+(require 'lsp-ui)
 (require 'lsp-nix)
 
-;; Hooks so haskell and literate haskell major modes trigger LSP setup
-(add-hook 'haskell-mode-hook #'lsp)
-(add-hook 'haskell-literate-mode-hook #'lsp)
+(add-hook 'nix-mode-hook #'lsp-deferred)
+(add-hook 'c-mode-common-hook #'lsp-deferred)
 
 ;; (require 'haskell-interactive-mode)
 ;; (require 'haskell-process)
