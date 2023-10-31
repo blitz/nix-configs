@@ -6,6 +6,11 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
 
@@ -57,6 +62,7 @@
     inputs@{ self
     , nixpkgs
     , nixos-hardware
+    , home-manager
     , hercules-ci
     , rust-overlay
     , dwarffs
