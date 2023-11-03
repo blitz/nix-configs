@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -14,6 +14,9 @@
       ../../modules/tailscale-client.nix
       #../../modules/games.nix
     ];
+
+  # Downgrade because of nixpkgs#265187.
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
 
   services.tuxedo-rs = {
     enable = true;
