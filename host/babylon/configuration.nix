@@ -15,9 +15,6 @@
       #../../modules/games.nix
     ];
 
-  # Downgrade because of nixpkgs#265187.
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
-
   services.tuxedo-rs = {
     enable = true;
     tailor_gui.enable = true;
