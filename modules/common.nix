@@ -38,14 +38,7 @@
   boot.kernelParams = [ "mitigations=off" ];
 
   boot.kernelPatches = [
-    {
-      name = "workaround-nixpkgs-265187";
-      patch = null;
-      extraStructuredConfig = {
-        FRAMEBUFFER_CONSOLE_DETECT_PRIMARY = lib.kernel.yes;
-        DRM_FBDEV_EMULATION = lib.kernel.yes;
-      };
-    }
+    # Nothing here.
   ];
 
   # Make dm-crypt fast in the early boot phases.
