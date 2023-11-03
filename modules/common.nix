@@ -33,16 +33,9 @@
     (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
   ];
 
-  # TODO Where does this come from?
-  nixpkgs.config.permittedInsecurePackages = [
-    "nodejs-14.21.3"
-    "openssl-1.1.1t"
-  ];
-
   # Living on the edge.
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
-
 
   boot.kernelPatches = [
     {
