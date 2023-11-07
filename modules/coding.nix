@@ -125,6 +125,10 @@
         file
         unzip
         global
+
+        # make isoimage
+        syslinux
+        cdrkit                  # genisoimage
       ];
     })
   ];
