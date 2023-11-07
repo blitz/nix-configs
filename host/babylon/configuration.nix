@@ -15,6 +15,10 @@
       #../../modules/games.nix
     ];
 
+  boot.kernelParams = [
+    "split_lock_detect=off"
+  ];
+
   services.tuxedo-rs = {
     enable = true;
     tailor_gui.enable = true;
