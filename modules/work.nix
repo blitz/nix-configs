@@ -96,7 +96,8 @@
     };
 
     dhcpd4 = {
-      enable = true;
+      # enable = true;
+
       interfaces = [ "enp53s0" ];
 
       extraConfig = ''
@@ -204,7 +205,8 @@
     };
 
     obiwan = {
-      enable = true;
+      # enable = true;
+
       root = "/home/julian/Public/tftp";
       listenAddress = "192.168.99.1";
     };
