@@ -453,11 +453,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1699469975,
-        "narHash": "sha256-TVYObcXFB6c3z5vF/aLZKDL7u+Rt0OZLWpvIdMcJZ4Q=",
+        "lastModified": 1699626196,
+        "narHash": "sha256-/arAIgFkEOTss4BsppCJn1DIBxvx1ESgWOj9CJqx4lQ=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "bc0fd4e1d9cbba5f8dce5df845246d77eb7c01d6",
+        "rev": "81975f3bc4a7f3f4c689c43645110c2e1aac56b2",
         "type": "github"
       },
       "original": {
@@ -674,11 +674,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2"
       },
       "locked": {
-        "lastModified": 1699395976,
-        "narHash": "sha256-8uIPXkGOs3pU/EyllDIs4Rt4iwSml2VkttAcxnOA2dA=",
+        "lastModified": 1699577001,
+        "narHash": "sha256-tSqhU/e7faUDBS3kenq0L9OxlfNx7h2M3aSx7CBZj0k=",
         "owner": "blitz",
         "repo": "obiwan",
-        "rev": "f3b39e72865fd3704727fb38d4c4f1f34103bc7f",
+        "rev": "2044bf72991a5878cffae25e0561f75a7b6e4ca2",
         "type": "github"
       },
       "original": {
@@ -822,11 +822,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699495996,
-        "narHash": "sha256-m0LWmnEJhHTY4gJX9HPsQ8voZptvr1Sx6dXkk9Xp0sI=",
+        "lastModified": 1699582387,
+        "narHash": "sha256-sPmUXPDl+cEi+zFtM5lnAs7dWOdRn0ptZ4a/qHwvNDk=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "603e4962d7d2225ba2caf66b0eabfcaa9a93c490",
+        "rev": "41f7b0618052430d3a050e8f937030d00a2fcced",
         "type": "github"
       },
       "original": {
