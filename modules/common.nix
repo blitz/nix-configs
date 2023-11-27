@@ -25,14 +25,6 @@
     '';
   };
 
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
-
-  nixpkgs.overlays = [
-    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
-  ];
-
   # Living on the edge.
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
@@ -97,6 +89,11 @@
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
   };
   users.defaultUserShell = pkgs.zsh;
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   programs.zsh = {
     enable = true;
