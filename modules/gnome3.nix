@@ -53,7 +53,7 @@
     };
 
     enableGhostscriptFonts = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       corefonts
       dina-font
       freefont_ttf
