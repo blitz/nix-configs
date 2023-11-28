@@ -1,16 +1,5 @@
 { config, pkgs, ... }:
 {
-  nixpkgs.overlays = [
-    (self: super: {
-      gnome-console = super.gnome-console.overrideAttrs (old: {
-        patches = (old.patches or []) ++ [
-          # https://gitlab.gnome.org/GNOME/console/-/issues/147
-          ../patches/gnome-console/no-audible-bell.patch
-        ];
-      });
-    })
-  ];
-
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
@@ -67,7 +56,7 @@
     };
 
     enableGhostscriptFonts = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       corefonts
       dina-font
       freefont_ttf

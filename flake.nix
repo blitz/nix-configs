@@ -2,12 +2,12 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -47,15 +47,6 @@
       url = "github:AaronErhardt/tuxedo-rs/a77a9f6c64e6dd1ede3511934392cbc16271ef6b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    obiwan = {
-      url = "github:blitz/obiwan";
-
-      # Breaks the build, because we force an older Rust compiler onto
-      # the code.
-      #
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -70,7 +61,6 @@
     , hercules-ci-effects
     , lanzaboote
     , tuxedo-rs
-    , obiwan
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
@@ -144,8 +134,9 @@
               ./host/babylon/configuration.nix
               ./host/babylon/hardware-configuration.nix
 
+              home-manager.nixosModules.default
+
               tuxedo-rs.nixosModules.default
-              obiwan.nixosModules.default
 
               dwarffs.nixosModules.dwarffs
 
