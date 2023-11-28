@@ -134,6 +134,8 @@
               ./host/babylon/configuration.nix
               ./host/babylon/hardware-configuration.nix
 
+              home-manager.nixosModules.default
+
               tuxedo-rs.nixosModules.default
 
               dwarffs.nixosModules.dwarffs
