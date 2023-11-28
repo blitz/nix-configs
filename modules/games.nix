@@ -6,8 +6,5 @@
     # Gaming
     wineWowPackages.unstableFull
     lutris
-
-    # Podcasting
-    zoom-us
   ];
 }

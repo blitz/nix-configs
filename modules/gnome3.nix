@@ -52,6 +52,9 @@
 
     gnomeExtensions.tailscale-status
 
+    # Podcasting and Meetings
+    zoom-us
+
     # Debugging
     clinfo
     intel-gpu-tools
