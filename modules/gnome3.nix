@@ -27,8 +27,12 @@
 
     mpv
 
+    # Matrix
+    # TODO Waiting for https://github.com/NixOS/nixpkgs/pull/270599
+    # fractal
+    (pkgs.callPackage ../pkgs/fractal {})
+
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
-    element-desktop
     signal-desktop
 
     deja-dup
