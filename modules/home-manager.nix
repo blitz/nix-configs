@@ -8,7 +8,7 @@
         package = pkgs.gitAndTools.gitFull;
 
         userName = config.users.users.julian.description;
-        userEmail = "js@alien8.de";
+        userEmail = if config.networking.hostName == "babylon" then "julian.stecklina@cyberus-technology.de" else "js@alien8.de";
 
         aliases = {
           sed = "! git grep -z --full-name -l '.' | xargs -0 sed -i -e";
