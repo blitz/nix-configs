@@ -13,6 +13,7 @@
       ../../modules/games.nix
       ../../modules/coding.nix
       ../../modules/tailscale-client.nix
+      ../../modules/home-manager.nix
     ];
 
   networking.networkmanager.enable = true;

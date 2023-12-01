@@ -194,6 +194,8 @@
               ./host/ig-11/configuration.nix
               ./host/ig-11/hardware-configuration.nix
 
+              home-manager.nixosModules.default
+
               nixos-hardware.nixosModules.common-pc-ssd
 
               # TODO Enable pstate later.
