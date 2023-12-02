@@ -14,7 +14,9 @@
       #../../modules/nixbuild.nix
 
       ../../modules/cachix.nix
-      # ../../modules/home-assistant.nix
+
+      ../../modules/home-manager.nix
+      ../../modules/coding.nix
     ];
 
   # For cross-platform builds.

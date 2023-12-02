@@ -150,8 +150,14 @@
             system = "x86_64-linux";
 
             modules = [
+              ({ config, ... }: {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              })
+
               ./host/second-temple/configuration.nix
               ./host/second-temple/hardware-configuration.nix
+
+              home-manager.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
