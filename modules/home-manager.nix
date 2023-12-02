@@ -23,7 +23,9 @@
 
       emacs = {
         enable = true;
-        package = pkgs.emacs29-pgtk;
+        package = if config.services.xserver.desktopManager.gnome.enable
+                  then pkgs.emacs29-pgtk
+                  else pkgs.emacs29-nox;
 
         extraConfig = builtins.readFile ../dotfiles/emacs/js-config.el;
 

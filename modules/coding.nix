@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
     # Github / Gitlab
@@ -27,35 +27,6 @@
     # Model checking
     # tlaplus
     # jdk
-
-    # Emacs
-    ((emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
-      (epkgs: (with epkgs.melpaPackages;
-      [
-        clang-format
-        cmake-mode
-        dante
-        dhall-mode
-        direnv
-        flymake-hlint
-        haskell-mode
-        hlint-refactor
-        magit
-        markdown-mode
-        nasm-mode
-        nix-mode
-        use-package
-        yaml-mode
-        lsp-mode
-        lsp-haskell
-        lsp-ui
-        rustic
-        editorconfig
-        toml-mode
-        ggtags
-        elm-mode
-        (epkgs.callPackage ../emacs/promela-mode.nix { })
-      ])))
 
     # Nix
     nixpkgs-fmt
