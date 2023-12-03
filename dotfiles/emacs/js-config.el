@@ -2,10 +2,10 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
 
-(if (display-graphic-p)
-    (invert-face 'default))
+(when (display-graphic-p)
+    (invert-face 'default)
+    (scroll-bar-mode -1))
 
 ;; MELPA
 
