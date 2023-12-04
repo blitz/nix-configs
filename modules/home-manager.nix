@@ -10,6 +10,8 @@
         userName = config.users.users.julian.description;
         userEmail = if config.networking.hostName == "babylon" then "julian.stecklina@cyberus-technology.de" else "js@alien8.de";
 
+        lfs.enable = true;
+
         aliases = {
           sed = "! git grep -z --full-name -l '.' | xargs -0 sed -i -e";
           unstage = "reset HEAD --";
@@ -18,6 +20,8 @@
         extraConfig = {
           init.defaultBranch = "master";
           sendemail.smtpserver = "${pkgs.msmtp}/bin/msmtp";
+          rebase.autosquash = true;
+          diff.algorithm = "patience";
         };
       };
 
