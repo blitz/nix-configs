@@ -99,10 +99,19 @@
         unzip
         global
 
+        # Rust support
+        rustc
+        rust-bindgen
+
         # make isoimage
         syslinux
         cdrkit                  # genisoimage
       ];
+
+      profile = ''
+        export RUST_LIB_SRC=${pkgs.rustPlatform.rustLibSrc}
+        unset LD_LIBRARY_PATH
+      '';
     })
   ];
 
