@@ -6,6 +6,8 @@
     ../../modules/common.nix
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
+
+    ../../modules/plausible.nix
   ];
 
   services.hercules-ci-agent = {
@@ -15,7 +17,7 @@
 
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "daily";
   };
 
   system.autoUpgrade = {
@@ -27,8 +29,8 @@
   };
 
   zramSwap.enable = true;
-  networking.hostName = "third-temple";
-  networking.domain = "";
+  networking.hostName = "analytics";
+  networking.domain = "x86.lol";
   services.openssh.enable = true;
 
   # This value determines the NixOS release with which your system is to be

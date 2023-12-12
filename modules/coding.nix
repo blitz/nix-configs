@@ -1,5 +1,10 @@
 { config, pkgs, ... }: {
 
+  nix.extraOptions = ''
+    # This is for direnv.
+    keep-outputs = true
+  '';
+
   environment.systemPackages = with pkgs; [
     # Github / Gitlab
     gitAndTools.gh
