@@ -170,7 +170,7 @@
             system = "aarch64-linux";
 
             modules = [
-              ./host/third-temple/configuration.nix
+              ./host/analytics/configuration.nix
               hercules-ci.nixosModules.agent-service
             ];
           };
