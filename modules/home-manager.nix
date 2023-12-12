@@ -2,13 +2,15 @@
 {
   home-manager.users.julian = { pkgs, ... }: {
 
-    programs = {
+    programs = let
+      isWork = config.networking.hostName == "babylon";
+    in {
       git = {
         enable = true;
         package = pkgs.gitAndTools.gitFull;
 
         userName = config.users.users.julian.description;
-        userEmail = if config.networking.hostName == "babylon" then "julian.stecklina@cyberus-technology.de" else "js@alien8.de";
+        userEmail = if isWork then "julian.stecklina@cyberus-technology.de" else "js@alien8.de";
 
         lfs.enable = true;
 
@@ -19,9 +21,19 @@
 
         extraConfig = {
           init.defaultBranch = "master";
-          sendemail.smtpserver = "${pkgs.msmtp}/bin/msmtp";
+
+          sendemail = if isWork then {
+            smtpserver = "smtp.office365.com";
+            smtpuser = "julian.stecklina@cyberus-technology.de";
+            smtpencryption = "tls";
+            port = 587;
+          } else {
+            # TODO
+          };
+
           rebase.autosquash = true;
           diff.algorithm = "patience";
+          credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
         };
       };
 

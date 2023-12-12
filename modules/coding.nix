@@ -60,7 +60,6 @@
     })
 
     # Legacy Coding
-    msmtp
     (pkgs.buildFHSUserEnv {
       name = "legacy-env";
       targetPkgs = pkgs: with pkgs; [
