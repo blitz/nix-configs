@@ -166,11 +166,11 @@
             ];
           };
 
-          analytics = nixpkgs.lib.nixosSystem {
+          plausible = nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
 
             modules = [
-              ./host/analytics/configuration.nix
+              ./host/plausible/configuration.nix
               hercules-ci.nixosModules.agent-service
             ];
           };

@@ -29,7 +29,7 @@
   };
 
   zramSwap.enable = true;
-  networking.hostName = "analytics";
+  networking.hostName = "plausible";
   networking.domain = "x86.lol";
   services.openssh.enable = true;
 
