@@ -16,6 +16,9 @@
     };
   };
 
+  # This should probably use LoadCredential.
+  systemd.services.plausible.serviceConfig.EnvironmentFile = "/var/lib/plausible-google-search";
+
   services.nginx.enable = true;
 
   services.nginx.virtualHosts."${config.networking.hostName}.${config.networking.domain}" = {
