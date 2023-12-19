@@ -41,12 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-
-    tuxedo-rs = {
-      # TODO Remove with NixOS 23.05. There is no hardware.tuxedo-rs in Nixpkgs.
-      url = "github:AaronErhardt/tuxedo-rs/a77a9f6c64e6dd1ede3511934392cbc16271ef6b";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -60,7 +54,6 @@
     , flake-parts
     , hercules-ci-effects
     , lanzaboote
-    , tuxedo-rs
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
@@ -135,8 +128,6 @@
               ./host/babylon/hardware-configuration.nix
 
               home-manager.nixosModules.default
-
-              tuxedo-rs.nixosModules.default
 
               dwarffs.nixosModules.dwarffs
 

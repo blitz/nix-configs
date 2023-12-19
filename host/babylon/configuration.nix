@@ -20,9 +20,9 @@
     "split_lock_detect=off"
   ];
 
-  services.tuxedo-rs = {
+  hardware.tuxedo-rs = {
     enable = true;
-    tailor_gui.enable = true;
+    tailor-gui.enable = true;
   };
 
   # Use the systemd-boot EFI boot loader.
