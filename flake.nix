@@ -166,6 +166,14 @@
             ];
           };
 
+          chat = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+
+            modules = [
+              ./host/chat/configuration.nix
+            ];
+          };
+
           # installation-media = nixpkgs.lib.nixosSystem {
           #   system = "x86_64-linux";
 

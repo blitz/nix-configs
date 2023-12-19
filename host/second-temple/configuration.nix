@@ -43,13 +43,7 @@
     ACTION=="add|change", KERNEL=="[sv]d[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:blitz/nix-configs";
-    flags = [
-      " --no-write-lock-file"
-    ];
-  };
+  system.autoUpgrade.enable = true;
 
   powerManagement.cpuFreqGovernor = "schedutil";
 

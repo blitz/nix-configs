@@ -22,6 +22,17 @@
     '';
   };
 
+  system.autoUpgrade = {
+    # We set this per host.
+    #
+    # enable = true;
+
+    flake = "github:blitz/nix-configs";
+    flags = [
+      " --no-write-lock-file"
+    ];
+  };
+
   # Living on the edge.
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
@@ -145,7 +156,6 @@
     zile
     lm_sensors
     magic-wormhole
-    nethack
 
     direnv
     nix-direnv
