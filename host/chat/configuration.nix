@@ -6,6 +6,7 @@
     ../../modules/common.nix
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
+    ../../modules/matrix-synapse.nix
   ];
 
   system.autoUpgrade.enable = true;

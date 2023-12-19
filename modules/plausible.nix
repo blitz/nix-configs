@@ -39,7 +39,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "foo@bar.com";
+    defaults.email = "julian.stecklina+acme@gmail.com";
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
