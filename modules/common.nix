@@ -178,6 +178,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEdmNCi+XT6V9hrvJMHbnQfGY23zcHfnxjqaq4ZG3k27 julian@second-temple"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIiTyh7jJD9x8N64kgUGDgeo3F96i5Av3tHvwePHq5 julian@babylon"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK64yCNWgpDacHh2QJuA+2k+LoloS5ZfaqIojO5cfBoj julian@ig-11"
+      # ChromeOS
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKM4s1xxRGZ/cC2NY6IacVckNtMSprrJ3AIKQSj5BQO Private"
     ];
 
     hashedPassword = "$6$d4Q85PrE$m/mrZqoe6R4oi.2NHoB6gJicQr85yKtnmZBXUeyap7KPGKCp9SLqfPOprY12cJtjCcM3bsXTUVzS3O6n8VNTx0";
