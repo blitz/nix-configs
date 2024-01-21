@@ -99,7 +99,7 @@
               lanzaboote.nixosModules.lanzaboote
 
               # For debugging.
-              dwarffs.nixosModules.dwarffs
+              # dwarffs.nixosModules.dwarffs
 
               ({ config, pkgs, ... }: {
                 environment.systemPackages = [
@@ -129,7 +129,7 @@
 
               home-manager.nixosModules.default
 
-              dwarffs.nixosModules.dwarffs
+              # dwarffs.nixosModules.dwarffs
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-laptop-ssd
