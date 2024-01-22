@@ -27,10 +27,18 @@
 
     mpv
 
-    # Matrix
-    # TODO Waiting for https://github.com/NixOS/nixpkgs/pull/270599
-    # fractal
-    (pkgs.callPackage ../pkgs/fractal {})
+    # Matrix (fractal 6 from unstable)
+    (let
+      rust = pkgs.rust-bin.stable.latest.default;
+    in
+      pkgs.callPackage ../pkgs/fractal {
+        cargo = rust;
+        rustc = rust;
+        rustPlatform = pkgs.makeRustPlatform {
+          rustc = rust;
+          cargo = rust;
+        };
+      })
 
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
     signal-desktop
