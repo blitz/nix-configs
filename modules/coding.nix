@@ -7,7 +7,8 @@
 
   environment.systemPackages = with pkgs; [
     # Github / Gitlab
-    gitAndTools.gh
+    gh
+    git-imerge
     glab
 
     # Model checking
@@ -65,6 +66,7 @@
     })
 
     # Legacy Coding
+    # TODO Replace this with a mkShell environment with ncurses available.
     (pkgs.buildFHSUserEnv {
       name = "legacy-env";
       targetPkgs = pkgs: with pkgs; [
