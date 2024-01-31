@@ -54,11 +54,6 @@
     delta
     _1password-gui
 
-    # For Intel AMT.
-    #
-    # Meshcommander will listen on http://127.0.0.1:3000
-    nodePackages.meshcommander
-
     # To avoid Intel AMT
     remmina
   ] ++ (

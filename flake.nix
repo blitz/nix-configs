@@ -137,6 +137,23 @@
             ];
           };
 
+          avalon = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+
+            modules = [
+              ({ config, ... }: {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              })
+
+              ./host/avalon/configuration.nix
+              ./host/avalon/hardware-configuration.nix
+
+              home-manager.nixosModules.default
+
+              nixos-hardware.nixosModules.framework-13-7040-amd
+            ];
+          };
+
           second-temple = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
