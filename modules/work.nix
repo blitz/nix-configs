@@ -53,6 +53,7 @@
     picocom
     delta
     _1password-gui
+    pika-backup
 
     # To avoid Intel AMT
     remmina

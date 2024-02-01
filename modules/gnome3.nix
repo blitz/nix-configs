@@ -47,6 +47,7 @@
     deja-dup
     gnome3.gnome-tweaks
     gnome3.gnome-boxes
+    gnome3.cheese
     virt-manager
     gparted
     okular
