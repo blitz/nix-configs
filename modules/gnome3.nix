@@ -57,6 +57,7 @@
 
     # Podcasting and Meetings
     zoom-us
+    gnome-network-displays
 
     # Debugging
     clinfo
