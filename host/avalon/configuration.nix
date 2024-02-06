@@ -18,6 +18,9 @@
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
+  # AMDGPU issues
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

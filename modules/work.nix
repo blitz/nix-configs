@@ -49,11 +49,18 @@
     plugins = [ pkgs.evolution-ews ];
   };
 
+  # For UEFI in libvirt / gnome-boxes etc.
+  virtualisation.libvirtd.enable = true;
+
   environment.systemPackages = with pkgs; [
     picocom
     delta
     _1password-gui
     pika-backup
+    virt-manager
+
+    # For UEFI in libvirt?
+    OVMFFull
 
     # To avoid Intel AMT
     remmina
