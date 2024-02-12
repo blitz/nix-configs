@@ -3,7 +3,7 @@
   home-manager.users.julian = { pkgs, ... }: {
 
     programs = let
-      isWork = config.networking.hostName == "babylon";
+      isWork = config.networking.hostName == "babylon" || config.networking.hostName == "avalon";
     in {
       git = {
         enable = true;
