@@ -18,8 +18,15 @@
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
-  # AMDGPU issues
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPatches = [
+    # AMDGPU issues
+    #
+    # https://community.frame.work/t/tracking-graphical-corruption-in-fedora-39-amd-3-03-bios/39073/180
+    {
+      name = "framework-display-issues";
+      patch = ../../patches/linux/framework-display-issues.patch;
+    }
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
