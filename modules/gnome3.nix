@@ -41,8 +41,8 @@
       })
 
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
-    signal-desktop
-    drawio
+    #signal-desktop
+    #drawio
 
     deja-dup
     gnome3.gnome-tweaks
