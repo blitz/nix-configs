@@ -59,6 +59,9 @@
     zoom-us
     gnome-network-displays
 
+    # Casual gaming
+    cataclysm-dda-git
+
     # Debugging
     clinfo
     intel-gpu-tools
