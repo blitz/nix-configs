@@ -18,6 +18,12 @@
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
+  boot.kernelParams = [
+    "efi_pstore.pstore_disable=1"
+    "memmap=0x2000000$0x188000000" "ramoops.mem_address=0x188000000" "ramoops.mem_size=0x2000000" "ramoops.ecc=1" "ramoops.record_size=0x200000" "ramoops.console_size=0" "ramoops.ftrace_size=0" "ramoops.pmsg_size=0"
+  ];
+  boot.initrd.kernelModules = [ "ramoops" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
