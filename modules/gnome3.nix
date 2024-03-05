@@ -60,7 +60,7 @@
     gnome-network-displays
 
     # Casual gaming
-    cataclysm-dda-git
+    cataclysm-dda
 
     # Debugging
     clinfo
