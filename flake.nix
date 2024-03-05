@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -46,6 +47,7 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , nixpkgs-unstable
     , nixos-hardware
     , home-manager
     , hercules-ci
@@ -143,6 +145,12 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ rust-overlay.overlays.default ];
+
+                # For AMD GPU issues until 6.8 is out.
+                boot.kernelPackages = let
+                  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+                in
+                  unstablePkgs.linuxPackages_testing;
               })
 
               ./host/avalon/configuration.nix
