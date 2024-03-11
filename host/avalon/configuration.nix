@@ -39,8 +39,9 @@
   # Hack
   services.fwupd.daemonSettings.OnlyTrusted = false;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader. We use lanzaboote.
+  # boot.loader.systemd-boot.enable = true;
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.amdgpu.loadInInitrd = true;
