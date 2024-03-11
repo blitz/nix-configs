@@ -159,6 +159,21 @@
               home-manager.nixosModules.default
 
               nixos-hardware.nixosModules.framework-13-7040-amd
+
+              lanzaboote.nixosModules.lanzaboote
+
+              ({ config, pkgs, ... }: {
+                environment.systemPackages = [
+                  pkgs.sbctl
+                ];
+
+                boot.lanzaboote = {
+                  enable = true;
+
+                  configurationLimit = 20;
+                  pkiBundle = "/etc/secureboot";
+                };
+              })
             ];
           };
 
