@@ -14,6 +14,7 @@
       ../../modules/tailscale-client.nix
       #../../modules/games.nix
       ../../modules/home-manager.nix
+      ../../modules/intel-sriov.nix
     ];
 
   boot.kernelParams = [
