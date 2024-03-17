@@ -11,9 +11,6 @@
 
   system.autoUpgrade.enable = true;
 
-  # /boot is very small.
-  boot.loader.grub.configurationLimit = 3;
-
   networking.hostName = "chat";
   networking.domain = "x86.lol";
 

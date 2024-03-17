@@ -59,7 +59,7 @@
   };
   nix.optimise.automatic = true;
   boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.grub.configurationLimit = 5;
+  boot.loader.grub.configurationLimit = 3;
 
   # Swap
   zramSwap = {
