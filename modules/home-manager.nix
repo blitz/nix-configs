@@ -2,9 +2,25 @@
 {
   home-manager.users.julian = { pkgs, ... }: {
 
+    home.file.".config/rustfmt/rustfmt.toml".text = ''
+      edition = "2021"
+    '';
+
     programs = let
       isWork = config.networking.hostName == "babylon" || config.networking.hostName == "avalon";
     in {
+      ssh = {
+        enable = true;
+        forwardAgent = true;
+
+        matchBlocks = {
+          "artemis" = {
+            hostname = "artemis";
+            user = "jstecklina";
+          };
+        };
+      };
+
       git = {
         enable = true;
         package = pkgs.gitAndTools.gitFull;
