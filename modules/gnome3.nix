@@ -29,7 +29,7 @@
 
     # Matrix (fractal 6 from unstable)
     (let
-      rust = pkgs.rust-bin.stable.latest.default;
+      rust = pkgs.fenix.stable.toolchain;
     in
       pkgs.callPackage ../pkgs/fractal {
         cargo = rust;

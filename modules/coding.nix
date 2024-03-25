@@ -54,16 +54,18 @@
     # elmPackages.elm
 
     # Rust development
-    pkgs.rust-analyzer
+    pkgs.rust-analyzer-nightly
     pkgs.gcc
+    (pkgs.fenix.stable.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
 
     # C++ development
-    pkgs.clang-tools_16         # We want the newest one for clangd/LSP
-
-    # From rust-overlay
-    (pkgs.rust-bin.stable.latest.default.override {
-      extensions = [ "rust-src" ];
-    })
+    pkgs.clang-tools_17         # We want the newest one for clangd/LSP
 
     # Legacy Coding
     # TODO Replace this with a mkShell environment with ncurses available.
@@ -104,10 +106,6 @@
         file
         unzip
         global
-
-        # Rust support
-        rustc
-        rust-bindgen
 
         # make isoimage
         syslinux

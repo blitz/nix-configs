@@ -19,8 +19,8 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -49,7 +49,7 @@
     , nixos-hardware
     , home-manager
     , hercules-ci
-    , rust-overlay
+    , fenix
     , dwarffs
     , flake-parts
     , hercules-ci-effects
@@ -81,7 +81,7 @@
 
             modules = [
               ({ config, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ fenix.overlays.default ];
               })
 
               ./host/canaan/configuration.nix
@@ -121,7 +121,7 @@
 
             modules = [
               ({ config, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ fenix.overlays.default ];
               })
 
               ./host/babylon/configuration.nix
@@ -142,7 +142,7 @@
 
             modules = [
               ({ config, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ fenix.overlays.default ];
               })
 
               ./host/avalon/configuration.nix
@@ -174,7 +174,7 @@
 
             modules = [
               ({ config, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ fenix.overlays.default ];
               })
 
               ./host/second-temple/configuration.nix
@@ -219,7 +219,7 @@
 
             modules = [
               ({ config, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ fenix.overlays.default ];
               })
 
               ./host/ig-11/configuration.nix
