@@ -66,57 +66,5 @@
 
     # C++ development
     pkgs.clang-tools_17         # We want the newest one for clangd/LSP
-
-    # Legacy Coding
-    # TODO Replace this with a mkShell environment with ncurses available.
-    (pkgs.buildFHSUserEnv {
-      name = "legacy-env";
-      targetPkgs = pkgs: with pkgs; [
-        gcc
-        binutils
-        gnumake
-        coreutils
-        patch
-        zlib
-        zlib.dev
-        curl
-        git
-        m4
-        bison
-        flex
-        acpica-tools
-        ncurses.dev
-        elfutils.dev
-        openssl
-        openssl.dev
-        cpio
-        pahole
-        gawk
-        perl
-        bc
-        nettools
-        rsync
-        gmp
-        gmp.dev
-        libmpc
-        mpfr
-        mpfr.dev
-        zstd
-        python3Minimal
-        file
-        unzip
-        global
-
-        # make isoimage
-        syslinux
-        cdrkit                  # genisoimage
-      ];
-
-      profile = ''
-        export RUST_LIB_SRC=${pkgs.rustPlatform.rustLibSrc}
-        unset LD_LIBRARY_PATH
-      '';
-    })
   ];
-
 }
