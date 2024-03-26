@@ -33,7 +33,7 @@
     # options netconsole netconsole=9999@192.168.1.89/wlp1s0,9999@192.168.1.52/80:32:53:08:d3:b5
 
     # Who doesn't like fast virtualization.
-    options kvm-amd avic=1 force_avic=1 nested=0
+    options kvm-amd avic=1 force_avic=1 nested=1
   '';
 
   # Hack
