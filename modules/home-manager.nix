@@ -15,7 +15,7 @@
 
         matchBlocks = {
           "*" = {
-            identityfile = [
+            identityFile = [
               "~/.ssh/id_ed25519"
               "~/.id_pika"
               "~/.ssh/id_ecdsa_sk"
