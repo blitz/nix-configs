@@ -14,6 +14,14 @@
         forwardAgent = true;
 
         matchBlocks = {
+          "*" = {
+            identityfile = [
+              "~/.ssh/id_ed25519"
+              "~/.id_pika"
+              "~/.ssh/id_ecdsa_sk"
+            ];
+          };
+
           "artemis" = {
             hostname = "artemis";
             user = "jstecklina";
