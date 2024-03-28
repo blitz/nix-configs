@@ -18,7 +18,18 @@
     ];
 
   boot.kernelParams = [
-    "split_lock_detect=off"
+    #"split_lock_detect=off"
+  ];
+
+  boot.kernelPatches = [
+    {
+      name = "builtin-cmdline";
+      patch = ../../patches/linux/0001-x86-boot-Pull-up-cmdline-preparation-again.patch;
+      extraStructuredConfig = {
+        CMDLINE_BOOL = lib.kernel.yes;
+        CMDLINE = lib.kernel.freeform "split_lock_detect=off";
+      };
+    }
   ];
 
   hardware.tuxedo-rs = {
