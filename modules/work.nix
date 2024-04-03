@@ -56,7 +56,6 @@
     picocom
     delta
     _1password-gui
-    pika-backup
     virt-manager
 
     # For UEFI in libvirt?

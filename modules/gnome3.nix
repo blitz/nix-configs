@@ -44,10 +44,9 @@
     signal-desktop
     #drawio
 
-    deja-dup
+    pika-backup
     gnome3.gnome-tweaks
     gnome3.gnome-boxes
-    gnome3.cheese
     virt-manager
     gparted
     okular
