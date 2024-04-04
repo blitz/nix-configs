@@ -19,8 +19,9 @@
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
   boot.extraModprobeConfig = ''
-    # Who doesn't like fast virtualization.
-    options kvm-amd avic=1 force_avic=1 nested=1
+    # Who doesn't like fast virtualization. But AVIC may be buggy...
+    #  avic=1 force_avic=1
+    options kvm-amd nested=1
   '';
 
   # Bootloader. We use lanzaboote.
