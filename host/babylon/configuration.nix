@@ -17,6 +17,9 @@
       ../../modules/intel-sriov.nix
     ];
 
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
   boot.kernelParams = [
     #"split_lock_detect=off"
   ];
