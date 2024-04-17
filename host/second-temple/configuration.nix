@@ -63,7 +63,7 @@
   # This box is not exposed to the internet.
   networking.firewall.enable = false;
 
-  nix.settings.supported-features = [
+  nix.settings.system-features = [
     "gccarch-x86-64-v2"
   ];
 

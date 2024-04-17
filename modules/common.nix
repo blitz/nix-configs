@@ -89,9 +89,6 @@
     dnssec = "false";
   };
 
-  # Needed by tailscale.
-  networking.firewall.checkReversePath = "loose";
-
   # Shell
   environment.variables = {
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";

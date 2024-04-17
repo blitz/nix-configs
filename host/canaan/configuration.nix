@@ -71,7 +71,7 @@
   networking.hostName = "canaan";
   networking.domain = "localhost";
 
-  nix.settings.supported-features = [
+  nix.settings.system-features = [
     "gccarch-znver2"
     "gccarch-x86-64-v2" "gccarch-x86-64-v3"
   ];
