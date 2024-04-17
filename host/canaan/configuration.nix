@@ -71,6 +71,11 @@
   networking.hostName = "canaan";
   networking.domain = "localhost";
 
+  nix.settings.supported-features = [
+    "gccarch-znver2"
+    "gccarch-x86-64-v2" "gccarch-x86-64-v3"
+  ];
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

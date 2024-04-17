@@ -34,6 +34,11 @@
 
   networking.hostName = "avalon";
 
+  nix.settings.supported-features = [
+    "gccarch-znver2" "gccarch-znver3" "gccarch-znver4"
+    "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
+  ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
