@@ -8,7 +8,8 @@
     evolution.enable = true;
 
     firefox = {
-      enable = true;
+      # We switched to Chrome for now.
+      enable = false;
       package = pkgs.firefox-wayland;
     };
   };
@@ -18,12 +19,13 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # AMD GPUs crap their pants with hardware decoding in online meetings.
-    #
-    # (google-chrome.override {
-    #   commandLineArgs = "--ozone-platform-hint=auto --use-gl=egl --enable-features=VaapiVideoDecoder,VaapiVideoEncoder";
-    # })
-    google-chrome
+    # Lots of hardware craps its pants with hardware decoding in online meetings.
+    (google-chrome.override {
+      commandLineArgs =
+        if config.networking.hostName == "avalon"
+        then "--ozone-platform-hint=auto --enable-features=VaapiVideoDecoder,VaapiVideoEncoder"
+        else "--ozone-platform-hint=auto";
+    })
 
     mpv
 
