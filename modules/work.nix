@@ -24,7 +24,9 @@
         sshUser = "builder";
         systems = [ "x86_64-linux" "aarch64-linux" ];
         maxJobs = 8;
-        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+        supportedFeatures = [
+          "nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
+        ];
       }
     ];
   };
