@@ -43,6 +43,11 @@
             smtpuser = "julian.stecklina@cyberus-technology.de";
             smtpencryption = "tls";
             port = 587;
+
+            linux = {
+              tocmd = "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nol";
+              cccmd = "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom";
+            };
           } else {
             # TODO
           };
