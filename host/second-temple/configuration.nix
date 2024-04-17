@@ -64,6 +64,7 @@
   networking.firewall.enable = false;
 
   nix.settings.system-features = [
+    "kvm" "nixos-test" "big-parallel" "benchmark"
     "gccarch-x86-64-v2"
   ];
 

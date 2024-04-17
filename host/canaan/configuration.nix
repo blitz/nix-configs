@@ -72,6 +72,7 @@
   networking.domain = "localhost";
 
   nix.settings.system-features = [
+    "kvm" "nixos-test" "big-parallel" "benchmark"
     "gccarch-znver2"
     "gccarch-x86-64-v2" "gccarch-x86-64-v3"
   ];
