@@ -220,6 +220,12 @@
             modules = [
               ({ config, ... }: {
                 nixpkgs.overlays = [ fenix.overlays.default ];
+
+                nixpkgs.hostPlatform = {
+                  gcc.arch = "znver3";
+                  gcc.tune = "znver3";
+                  system = "x86_64-linux";
+                };
               })
 
               ./host/ig-11/configuration.nix
