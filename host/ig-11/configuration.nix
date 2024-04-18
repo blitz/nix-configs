@@ -46,6 +46,11 @@
   networking.hostName = "ig-11";
   networking.domain = "localhost";
 
+  nix.settings.system-features = [
+    "kvm" "nixos-test" "big-parallel" "benchmark"
+    "gccarch-znver2" "gccarch-znver3"
+    "gccarch-x86-64-v2" "gccarch-x86-64-v3"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
