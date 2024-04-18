@@ -93,6 +93,13 @@
       };
     };
 
+    # Enable experimental fractional scaling support in Gnome 45.
+    dconf.settings = {
+      "org/gnome/mutter" = {
+        experimental-features = [ "scale-monitor-framebuffer" ];
+      };
+    };
+
     home.stateVersion = "23.05";
   };
 }
