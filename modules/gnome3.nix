@@ -22,9 +22,12 @@
     # Lots of hardware craps its pants with hardware decoding in online meetings.
     (google-chrome.override {
       commandLineArgs =
+        # TODO Change this back to "auto" when the following issue is resolved.
+        #
+        # https://github.com/NixOS/nixpkgs/issues/306471
         if config.networking.hostName == "avalon"
-        then "--ozone-platform-hint=auto --enable-features=VaapiVideoDecoder,VaapiVideoEncoder"
-        else "--ozone-platform-hint=auto";
+        then "--ozone-platform-hint=x11 --enable-features=VaapiVideoDecoder,VaapiVideoEncoder"
+        else "--ozone-platform-hint=x11";
     })
 
     mpv
