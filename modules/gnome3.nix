@@ -8,8 +8,8 @@
     evolution.enable = true;
 
     firefox = {
-      # We switched to Chrome for now.
-      enable = false;
+      # We switched to Chrome for now, but Chrome is kaputt. 🫠
+      enable = true;
       package = pkgs.firefox-wayland;
     };
   };
