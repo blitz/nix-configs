@@ -6,5 +6,8 @@
     # Gaming
     wineWowPackages.unstableFull
     lutris
+
+    # Casual gaming
+    cataclysm-dda
   ];
 }

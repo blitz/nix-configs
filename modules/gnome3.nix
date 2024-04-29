@@ -57,14 +57,14 @@
     okular
     gimp
 
+    # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
+    v4l-utils
+
     gnomeExtensions.tailscale-status
 
     # Podcasting and Meetings
     zoom-us
     gnome-network-displays
-
-    # Casual gaming
-    cataclysm-dda
 
     # Debugging
     clinfo
