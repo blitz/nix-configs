@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
@@ -21,13 +21,14 @@
   environment.systemPackages = with pkgs; [
     # Lots of hardware craps its pants with hardware decoding in online meetings.
     (google-chrome.override {
-      commandLineArgs =
-        # TODO Change this back to "auto" when the following issue is resolved.
-        #
+      commandLineArgs = [
         # https://github.com/NixOS/nixpkgs/issues/306471
-        if config.networking.hostName == "avalon"
-        then "--ozone-platform-hint=x11 --enable-features=VaapiVideoDecoder,VaapiVideoEncoder"
-        else "--ozone-platform-hint=x11";
+        "--enable-features=UseOzonePlatform"
+
+        "--ozone-platform-hint=wayland"
+      ]
+      ++ (lib.optional (config.networking.hostName == "avalon")
+        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder");
     })
 
     mpv
