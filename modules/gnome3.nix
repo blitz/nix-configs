@@ -6,12 +6,7 @@
 
   programs = {
     evolution.enable = true;
-
-    firefox = {
-      # We switched to Chrome for now, but Chrome is kaputt. 🫠
-      enable = true;
-      package = pkgs.firefox-wayland;
-    };
+    virt-manager.enable = true;
   };
 
   environment.sessionVariables = {
@@ -53,7 +48,6 @@
     pika-backup
     gnome3.gnome-tweaks
     gnome3.gnome-boxes
-    virt-manager
     gparted
     okular
     gimp
