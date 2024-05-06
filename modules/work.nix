@@ -57,7 +57,6 @@
   environment.systemPackages = with pkgs; [
     picocom
     delta
-    _1password-gui
     virt-manager
 
     # For UEFI in libvirt?

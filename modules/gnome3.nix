@@ -7,6 +7,9 @@
   programs = {
     evolution.enable = true;
     virt-manager.enable = true;
+
+    _1password.enable = true;
+    _1password-gui.enable = true;
   };
 
   environment.sessionVariables = {

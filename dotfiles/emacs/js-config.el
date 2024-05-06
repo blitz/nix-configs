@@ -7,6 +7,16 @@
     (invert-face 'default)
     (scroll-bar-mode -1))
 
+;; Write all temporary files somewhere else
+;;
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Not-writing-files-to-the-current-directory.html
+(setq lock-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/aux/\\1" t)))
+(setq auto-save-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/aux/\\1" t)))
+(setq backup-directory-alist
+      '((".*" . "~/.emacs.d/aux/")))
+
 ;; MELPA
 
 (require 'package)
@@ -34,10 +44,6 @@
 
 (add-hook 'nix-mode-hook #'lsp-deferred)
 (add-hook 'c-mode-common-hook #'lsp-deferred)
-
-;; (require 'haskell-interactive-mode)
-;; (require 'haskell-process)
-;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;; GNU Global
 
