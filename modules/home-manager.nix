@@ -73,22 +73,23 @@
             dante
             dhall-mode
             direnv
+            editorconfig
             flymake-hlint
+            ggtags
             haskell-mode
             hlint-refactor
+            lsp-haskell
+            lsp-mode
+            lsp-ui
             magit
             markdown-mode
             nasm-mode
             nix-mode
-            use-package
-            yaml-mode
-            lsp-mode
-            lsp-haskell
-            lsp-ui
             rustic
-            editorconfig
             toml-mode
-            ggtags
+            use-package
+            web-mode
+            yaml-mode
           ]));
       };
     };
