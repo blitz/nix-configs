@@ -30,19 +30,7 @@
     })
 
     mpv
-
-    # Matrix (fractal 6 from unstable)
-    (let
-      rust = pkgs.fenix.stable.toolchain;
-    in
-      pkgs.callPackage ../pkgs/fractal {
-        cargo = rust;
-        rustc = rust;
-        rustPlatform = pkgs.makeRustPlatform {
-          rustc = rust;
-          cargo = rust;
-        };
-      })
+    fractal
 
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
     signal-desktop
