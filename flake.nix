@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
 
@@ -50,6 +55,7 @@
     , nixpkgs-unstable
     , nixos-hardware
     , home-manager
+    , home-manager-unstable
     , hercules-ci
     , fenix
     , dwarffs
@@ -150,7 +156,7 @@
               ./host/avalon/configuration.nix
               ./host/avalon/hardware-configuration.nix
 
-              home-manager.nixosModules.default
+              home-manager-unstable.nixosModules.default
 
               nixos-hardware.nixosModules.framework-13-7040-amd
 
