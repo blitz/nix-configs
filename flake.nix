@@ -7,6 +7,17 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +73,8 @@
     , flake-parts
     , hercules-ci-effects
     , lanzaboote
+    , lix
+    , lix-module
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
@@ -159,6 +172,9 @@
               home-manager-unstable.nixosModules.default
 
               nixos-hardware.nixosModules.framework-13-7040-amd
+
+              # Living on the edge.
+              lix-module.nixosModules.default
 
               lanzaboote.nixosModules.lanzaboote
 
