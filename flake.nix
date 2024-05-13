@@ -177,7 +177,7 @@
             ];
           };
 
-          second-temple = nixpkgs.lib.nixosSystem {
+          second-temple = nixpkgs-unstable.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
@@ -188,7 +188,7 @@
               ./host/second-temple/configuration.nix
               ./host/second-temple/hardware-configuration.nix
 
-              home-manager.nixosModules.default
+              home-manager-unstable.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
