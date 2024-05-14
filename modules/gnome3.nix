@@ -6,7 +6,6 @@
 
   programs = {
     evolution.enable = true;
-    virt-manager.enable = true;
 
     # This is still weird and we end up with lots of 1password processes?
     #
@@ -40,7 +39,6 @@
 
     pika-backup
     gnome3.gnome-tweaks
-    gnome3.gnome-boxes
     gparted
     okular
     gimp
@@ -76,25 +74,16 @@
     ];
   };
 
-  # For GNOME Boxes
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-    onShutdown = "shutdown";
-
-    # For UEFI Secure Boot support.
-    qemu.ovmf.enable = true;
-    qemu.ovmf.packages = [ pkgs.OVMFFull.fd ];
-    qemu.runAsRoot = false;
-
-    # For TPM 2.0
-    qemu.swtpm.enable = true;
-  };
-
-  # USB Passthrough
-  virtualisation.spiceUSBRedirection.enable = true;
-
   networking.firewall.enable = false;
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+
+    enableKvm = true;
+    addNetworkInterface = false;
+    enableExtensionPack = false;
+    enableHardening = false;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
