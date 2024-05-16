@@ -50,11 +50,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1715581585,
-        "narHash": "sha256-/JjvIn1NXW3yOaDcD8Me987/QcXjo+rhg+uThasPAnI=",
+        "lastModified": 1715754333,
+        "narHash": "sha256-u3B+RvDD/kPxMS0Dkm+x+BlzfCqghT3kdev+1UYKvis=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "2c4905096782e8e908205e7fa54ef987fba62793",
+        "rev": "795a549e443c9690a74a042408600f13091e8b51",
         "type": "github"
       },
       "original": {
@@ -398,11 +398,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715442723,
-        "narHash": "sha256-pXMH7lqr5bT2FjH/3tEdTT/+1+hKx+15WkcGKycWWSM=",
+        "lastModified": 1715801730,
+        "narHash": "sha256-7X/FAfjyQxh8mgpbNPsGoh9Dxi1Q0jF4OOJQBntCUJM=",
         "ref": "refs/heads/main",
-        "rev": "87b7b7e4bd936301b139e472589d1966b136f45f",
-        "revCount": 76,
+        "rev": "7e8a5498db41de8c67315b4a2a4f82a2072ee73b",
+        "revCount": 77,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/nixos-module"
       },
@@ -541,11 +541,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1715542476,
-        "narHash": "sha256-FF593AtlzQqa8JpzrXyRws4CeKbc5W86o8tHt4nRfIg=",
+        "lastModified": 1715668745,
+        "narHash": "sha256-xp62OkRkbUDNUc6VSqH02jB0FbOS+MsfMb7wL1RJOfA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "44072e24566c5bcc0b7aa9178a0104f4cfffab19",
+        "rev": "9ddcaffecdf098822d944d4147dd8da30b4e6843",
         "type": "github"
       },
       "original": {
@@ -606,11 +606,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1715255944,
-        "narHash": "sha256-vLLgYpdtKBaGYTamNLg1rbRo1bPXp4Jgded/gnprPVw=",
+        "lastModified": 1715714902,
+        "narHash": "sha256-JnvpKHfDip0xq+ThdXFnNkYsV0Z0Q7ukFuW+W30vGhw=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "5bf2f85c8054d80424899fa581db1b192230efb5",
+        "rev": "c0732c9f0f91bdc31d8da320be16d1db06c848d8",
         "type": "github"
       },
       "original": {
