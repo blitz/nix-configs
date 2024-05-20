@@ -172,6 +172,26 @@
             ];
           };
 
+          first-temple = nixpkgs-unstable.lib.nixosSystem {
+            system = "x86_64-linux";
+
+            modules = [
+              ({ config, ... }: {
+                nixpkgs.overlays = [ fenix.overlays.default ];
+              })
+
+              ./host/first-temple/configuration.nix
+              ./host/first-temple/hardware-configuration.nix
+
+              home-manager-unstable.nixosModules.default
+
+              nixos-hardware.nixosModules.common-pc-ssd
+              nixos-hardware.nixosModules.common-cpu-intel
+
+              hercules-ci.nixosModules.agent-service
+            ];
+          };
+
           second-temple = nixpkgs-unstable.lib.nixosSystem {
             system = "x86_64-linux";
 
