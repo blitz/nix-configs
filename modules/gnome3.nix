@@ -32,6 +32,7 @@
 
     mpv
     fractal
+    element-desktop
 
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
     signal-desktop
