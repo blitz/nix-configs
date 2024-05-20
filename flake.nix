@@ -137,27 +137,6 @@
             ];
           };
 
-          babylon = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-
-            modules = [
-              ({ config, ... }: {
-                nixpkgs.overlays = [ fenix.overlays.default ];
-              })
-
-              ./host/babylon/configuration.nix
-              ./host/babylon/hardware-configuration.nix
-
-              home-manager.nixosModules.default
-
-              # dwarffs.nixosModules.dwarffs
-
-              nixos-hardware.nixosModules.common-pc-laptop
-              nixos-hardware.nixosModules.common-pc-laptop-ssd
-              nixos-hardware.nixosModules.common-cpu-intel
-            ];
-          };
-
           avalon = nixpkgs-unstable.lib.nixosSystem {
             system = "x86_64-linux";
 
