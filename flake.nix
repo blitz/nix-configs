@@ -2,8 +2,7 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -18,14 +17,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-23.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    home-manager-unstable = {
+    home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hercules-ci = {
@@ -63,10 +62,8 @@
   outputs =
     inputs@{ self
     , nixpkgs
-    , nixpkgs-unstable
     , nixos-hardware
     , home-manager
-    , home-manager-unstable
     , hercules-ci
     , fenix
     , dwarffs
@@ -137,7 +134,7 @@
             ];
           };
 
-          avalon = nixpkgs-unstable.lib.nixosSystem {
+          avalon = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
@@ -148,7 +145,7 @@
               ./host/avalon/configuration.nix
               ./host/avalon/hardware-configuration.nix
 
-              home-manager-unstable.nixosModules.default
+              home-manager.nixosModules.default
 
               nixos-hardware.nixosModules.framework-13-7040-amd
 
@@ -172,7 +169,7 @@
             ];
           };
 
-          first-temple = nixpkgs-unstable.lib.nixosSystem {
+          first-temple = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
@@ -183,7 +180,7 @@
               ./host/first-temple/configuration.nix
               ./host/first-temple/hardware-configuration.nix
 
-              home-manager-unstable.nixosModules.default
+              home-manager.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
@@ -192,7 +189,7 @@
             ];
           };
 
-          second-temple = nixpkgs-unstable.lib.nixosSystem {
+          second-temple = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             modules = [
@@ -203,7 +200,7 @@
               ./host/second-temple/configuration.nix
               ./host/second-temple/hardware-configuration.nix
 
-              home-manager-unstable.nixosModules.default
+              home-manager.nixosModules.default
 
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
