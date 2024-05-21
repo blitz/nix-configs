@@ -156,7 +156,10 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": [
+          "kernelDev",
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1710146030,
@@ -175,6 +178,24 @@
     "flake-utils_2": {
       "inputs": {
         "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -304,6 +325,32 @@
         "type": "github"
       }
     },
+    "kernelDev": {
+      "inputs": {
+        "fenix": [
+          "fenix"
+        ],
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay",
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1716292964,
+        "narHash": "sha256-Bz9P+yHNxRxfHDFe5VqhjG+ok1zIMhj7Vus5ZHJLgGI=",
+        "owner": "blitz",
+        "repo": "kernel-dev",
+        "rev": "15ae485eb8384b4bf0abce6beb15130f823254ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blitz",
+        "repo": "kernel-dev",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -311,12 +358,12 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1713369831,
@@ -367,7 +414,7 @@
     },
     "lix-module": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "flakey-profile": "flakey-profile",
         "lix": [
           "lix"
@@ -557,6 +604,7 @@
         "hercules-ci": "hercules-ci",
         "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
+        "kernelDev": "kernelDev",
         "lanzaboote": "lanzaboote",
         "lix": "lix",
         "lix-module": "lix-module",
@@ -584,6 +632,31 @@
     "rust-overlay": {
       "inputs": {
         "flake-utils": [
+          "kernelDev",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "kernelDev",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715134005,
+        "narHash": "sha256-oujsCgNiQnZoQntNkkNkA7BhCmUvf9FLWj+2oGT2Jvc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a8bfc2569a1965c0da8711d289d973f0011b441a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "flake-utils": [
           "lanzaboote",
           "flake-utils"
         ],
@@ -608,6 +681,21 @@
     },
     "systems": {
       "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "owner": "nix-systems",
@@ -621,7 +709,7 @@
         "type": "github"
       }
     },
-    "systems_2": {
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

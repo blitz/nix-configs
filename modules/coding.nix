@@ -64,6 +64,9 @@
       "rustfmt"
     ])
 
+    # Linux kernel development. See: https://github.com/blitz/kernel-dev
+    kernelDevTools
+
     # C++ development
     pkgs.clang-tools_17         # We want the newest one for clangd/LSP
   ];
