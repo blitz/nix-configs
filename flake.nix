@@ -201,26 +201,6 @@
               ];
             };
 
-            second-temple = nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-
-              modules = [
-                ({ config, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
-                })
-
-                ./host/second-temple/configuration.nix
-                ./host/second-temple/hardware-configuration.nix
-
-                home-manager.nixosModules.default
-
-                nixos-hardware.nixosModules.common-pc-ssd
-                nixos-hardware.nixosModules.common-cpu-intel
-
-                hercules-ci.nixosModules.agent-service
-              ];
-            };
-
             plausible = nixpkgs.lib.nixosSystem {
               system = "aarch64-linux";
 
