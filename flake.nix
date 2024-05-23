@@ -2,7 +2,7 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05-small";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
