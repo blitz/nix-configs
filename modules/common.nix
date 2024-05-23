@@ -167,7 +167,7 @@
   users.users.julian = {
     description = "Julian Stecklina";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" ];
+    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" "vboxusers" ];
     createHome = true;
 
     openssh.authorizedKeys.keys = [
