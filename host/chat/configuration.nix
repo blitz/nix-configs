@@ -7,6 +7,7 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
     ../../modules/matrix-synapse.nix
+    ../../modules/matrix-coturn.nix
   ];
 
   system.autoUpgrade.enable = true;
