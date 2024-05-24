@@ -321,6 +321,7 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "release-24.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -551,16 +552,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1716455778,
-        "narHash": "sha256-Ajydm+MYaw9ByHQL3VlIeEC3sz1FV0xqCemYkUJbeek=",
+        "lastModified": 1716408587,
+        "narHash": "sha256-el71IUaQdEmntmd51GBpkJs/Hqh6S4dmfmUGP8GQaME=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "949de71e4c63608be9ad324918a0d3801b274179",
+        "rev": "1a7abfa62e8a36f7f2dbe463722ed9ea31be5e43",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-24.05-small",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
