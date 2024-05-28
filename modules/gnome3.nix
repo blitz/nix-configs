@@ -107,11 +107,11 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.xkbOptions = "ctrl:nocaps";
+  services.xserver.xkb.options = "ctrl:nocaps";
 
   # Enable touchpad support.
   hardware.trackpoint.enable = false;
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Enable the Gnome3.
   services.xserver.displayManager.gdm.enable = true;
@@ -122,7 +122,7 @@
     enable = true;
 
     # Needs nscd
-    nssmdns = true;
+    nssmdns4 = true;
 
     publish = {
       enable = true;
