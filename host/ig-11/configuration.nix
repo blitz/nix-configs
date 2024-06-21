@@ -29,7 +29,7 @@
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
 
-  hardware.amdgpu.opencl = true;
+  hardware.amdgpu.opencl.enable = true;
 
   # Who doesn't like fast virtualization.
   boot.extraModprobeConfig = ''
