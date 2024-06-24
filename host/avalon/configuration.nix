@@ -30,7 +30,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.amdgpu.loadInInitrd = true;
-  hardware.amdgpu.opencl.enable = true;
+  #hardware.amdgpu.opencl.enable = true;
 
   networking.hostName = "avalon";
 
