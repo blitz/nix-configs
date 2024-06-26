@@ -8,9 +8,6 @@
 
     settings.substituters = [
       "http://binary-cache-v2.vpn.cyberus-technology.de"
-
-      # Too slow for normal use.
-      # "https://binary-cache.vpn.cyberus-technology.de"
     ];
 
     extraOptions = ''
@@ -51,19 +48,12 @@
     plugins = [ pkgs.evolution-ews ];
   };
 
-  # For UEFI in libvirt / gnome-boxes etc.
-  virtualisation.libvirtd.enable = true;
-
   environment.systemPackages = with pkgs; [
-    picocom
-    delta
-    virt-manager
+    # For merging PDFs
+    pdftk
 
-    # For UEFI in libvirt?
-    OVMFFull
-
-    # To avoid Intel AMT
-    remmina
+    # For testing
+    qemu
   ] ++ (
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
@@ -81,6 +71,19 @@
       qemuUefiTftp
     ]
   );
+
+  virtualisation.libvirtd = {
+    enable = true;
+
+    qemu.ovmf.packages = with pkgs; [
+      OVMFFull.fd
+
+      # Only for AArch64 support.
+      pkgsCross.aarch64-multiplatform.OVMF.fd
+    ];
+  };
+
+  virtualisation.podman.enable = true;
 
   services = {
     onedrive.enable = true;
