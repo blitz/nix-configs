@@ -26,8 +26,11 @@
 
         "--ozone-platform-hint=wayland"
       ]
-      ++ (lib.optional (config.networking.hostName == "avalon")
-        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder");
+      # The encoding seems to cause video stuttering:
+      #
+      # ++ (lib.optional (config.networking.hostName == "avalon")
+      #   "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
+      ;
     })
 
     mpv
