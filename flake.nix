@@ -221,27 +221,27 @@
             #   ];
             # };
 
-            ig-11 = nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+            # ig-11 = nixpkgs.lib.nixosSystem {
+            #   system = "x86_64-linux";
 
-              modules = [
-                ({ config, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
-                })
+            #   modules = [
+            #     ({ config, ... }: {
+            #       nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
+            #     })
 
-                ./host/ig-11/configuration.nix
-                ./host/ig-11/hardware-configuration.nix
+            #     ./host/ig-11/configuration.nix
+            #     ./host/ig-11/hardware-configuration.nix
 
-                home-manager.nixosModules.default
+            #     home-manager.nixosModules.default
 
-                nixos-hardware.nixosModules.common-pc-ssd
+            #     nixos-hardware.nixosModules.common-pc-ssd
 
-                # TODO Enable pstate later.
-                nixos-hardware.nixosModules.common-cpu-amd
-                nixos-hardware.nixosModules.common-gpu-amd
-              ];
+            #     # TODO Enable pstate later.
+            #     nixos-hardware.nixosModules.common-cpu-amd
+            #     nixos-hardware.nixosModules.common-gpu-amd
+            #   ];
 
-            };
+            # };
           };
       };
 
