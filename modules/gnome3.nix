@@ -43,6 +43,7 @@
 
     pika-backup
     gnome3.gnome-tweaks
+    gnome3.gnome-boxes
     gparted
     okular
     gimp
