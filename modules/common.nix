@@ -152,7 +152,7 @@
     wget
     zile
     lm_sensors
-    magic-wormhole
+    unzip
 
     direnv
     nix-direnv
