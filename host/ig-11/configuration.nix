@@ -8,6 +8,7 @@
   imports =
     [
       ../../modules/common.nix
+      ../../modules/amdgpu.nix
       ../../modules/gnome3.nix
       ../../modules/cachix.nix
       ../../modules/games.nix
@@ -28,8 +29,6 @@
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
-
-  #hardware.amdgpu.opencl.enable = true;
 
   # Who doesn't like fast virtualization.
   boot.extraModprobeConfig = ''

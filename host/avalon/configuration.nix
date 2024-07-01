@@ -8,6 +8,7 @@
   imports =
     [
       ../../modules/laptop.nix
+      ../../modules/amdgpu.nix
       ../../modules/cachix.nix
       ../../modules/coding.nix
       ../../modules/work.nix
@@ -28,9 +29,6 @@
   # boot.loader.systemd-boot.enable = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
-
-  hardware.amdgpu.loadInInitrd = true;
-  #hardware.amdgpu.opencl.enable = true;
 
   networking.hostName = "avalon";
 

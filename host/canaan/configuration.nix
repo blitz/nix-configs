@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/laptop.nix
+    ../../modules/amdgpu.nix
     #../../modules/obs-studio.nix
     ../../modules/cachix.nix
     ../../modules/nixbuild.nix
@@ -25,8 +26,6 @@
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
-  hardware.amdgpu.loadInInitrd = true;
-  #hardware.amdgpu.opencl.enable = true;
 
   # Who doesn't like fast virtualization.
   boot.extraModprobeConfig = ''
