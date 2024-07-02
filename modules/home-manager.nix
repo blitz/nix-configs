@@ -14,6 +14,11 @@
         forwardAgent = true;
 
         matchBlocks = {
+          "*" = {
+            extraOptions = {
+              "IdentityAgent" = "~/.1password/agent.sock";
+            };
+          };
           "artemis" = {
             hostname = "artemis";
             user = "jstecklina";

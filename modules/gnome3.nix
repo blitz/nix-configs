@@ -8,9 +8,14 @@
     evolution.enable = true;
 
     # This is still weird and we end up with lots of 1password processes?
-    #
-    # _1password.enable = true;
-    # _1password-gui.enable = true;
+    _1password = {
+      enable = true;
+    };
+
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "julian" ];
+    };
   };
 
   environment.sessionVariables = {
