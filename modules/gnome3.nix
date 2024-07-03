@@ -5,6 +5,13 @@
   services.pcscd.enable = true;
 
   programs = {
+    appimage = {
+      enable = true;
+
+      # Allow directly executing AppImage files.
+      binfmt = true;
+    };
+
     evolution.enable = true;
 
     # This is still weird and we end up with lots of 1password processes?
