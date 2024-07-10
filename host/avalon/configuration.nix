@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -24,6 +24,16 @@
     #  avic=1 force_avic=1
     options kvm-amd nested=1
   '';
+
+  boot.kernelPatches = [
+    {
+      name = "liveupdate-config";
+      patch = null;
+      extraConfig = ''
+        LIVEPATCH y
+      '';
+    }
+  ];
 
   # Bootloader. We use lanzaboote.
   # boot.loader.systemd-boot.enable = true;
