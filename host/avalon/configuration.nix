@@ -25,15 +25,20 @@
     options kvm-amd nested=1
   '';
 
-  boot.kernelPatches = [
-    {
-      name = "liveupdate-config";
-      patch = null;
-      extraConfig = ''
-        LIVEPATCH y
-      '';
-    }
-  ];
+  nixpkgs = {
+    overlays = [
+      (self: super: {
+        linuxPackages_latest = self.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
+          structuredExtraConfig = with lib.kernel; {
+            LIVEPATCH = yes;
+            HYPERVISOR_GUEST = lib.mkForce no;
+            PARAVIRT = lib.mkForce no;
+          };
+          ignoreConfigErrors = true;
+        });
+      })
+    ];
+  };
 
   # Bootloader. We use lanzaboote.
   # boot.loader.systemd-boot.enable = true;
