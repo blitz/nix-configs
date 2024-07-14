@@ -13,10 +13,6 @@ git switch master
 git merge --ff-only origin/master
 git merge --no-edit origin/flake-update
 
-# Rebuild NixOS
-#
-# Avoid using remote builders here, because this typically slows
-# things down.
 sudo nixos-rebuild -L boot --flake .
 
 # If everything worked, we publish our changes.
