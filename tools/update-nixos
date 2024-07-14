@@ -11,7 +11,7 @@ cd "$ROOT_DIR"
 git fetch origin
 git switch master
 git merge --ff-only origin/master
-git merge origin/flake-update
+git merge --no-edit origin/flake-update
 
 # Rebuild NixOS
 #
