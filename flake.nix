@@ -6,14 +6,8 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90.0-rc1";
-      flake = false;
-    };
-
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.lix.follows = "lix";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -76,7 +70,6 @@
     , flake-parts
     , hercules-ci-effects
     , lanzaboote
-    , lix
     , lix-module
     , kernelDev
     , gitlab-timelogs
