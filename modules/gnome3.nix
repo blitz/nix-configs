@@ -73,6 +73,7 @@
     clinfo
     intel-gpu-tools
     radeontop
+    libva-utils
   ];
 
   fonts = {
