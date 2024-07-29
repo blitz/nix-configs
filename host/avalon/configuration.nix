@@ -33,6 +33,17 @@
             LIVEPATCH = yes;
             HYPERVISOR_GUEST = lib.mkForce no;
             PARAVIRT = lib.mkForce no;
+            X86_KERNEL_IBT = lib.mkForce no;
+
+            # Not strictly necessary, but not useful on AMD either.
+            X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
+            X86_USER_SHADOW_STACK = lib.mkForce no;
+            X86_CET = lib.mkForce no;
+
+            # Butter smooth desktop.
+            PREEMPT_DYNAMIC = lib.mkForce no;
+            PREEMPT_VOLUNTARY = lib.mkForce no;
+            PREEMPT = lib.mkForce yes;
           };
           ignoreConfigErrors = true;
         });
