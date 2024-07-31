@@ -29,7 +29,7 @@
 
   services.hercules-ci-agent = {
     enable = true;
-    settings.concurrentTasks = 1;
+    settings.concurrentTasks = 2;
   };
 
   nix.gc = {
