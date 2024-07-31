@@ -74,7 +74,7 @@
     , kernelDev
     , gitlab-timelogs
     }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
       imports = [
         hercules-ci-effects.flakeModule
       ];
@@ -99,7 +99,8 @@
             kernelDevOverlayX86 = final: prev: {
               inherit (kernelDev.packages.x86_64-linux) kernelDevTools;
             };
-          in {
+          in
+          {
             canaan = nixpkgs.lib.nixosSystem {
               system = "x86_64-linux";
 
@@ -140,12 +141,17 @@
               ];
             };
 
-            avalon = nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+            avalon = withSystem "x86_64-linux" (ctx@{ config, inputs', ... }: nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                packages = config.packages;
+              };
 
               modules = [
-                ({ config, ... }: {
+                ({ config, packages, ... }: {
                   nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
+                  environment.systemPackages = [
+                    packages.gitlab-timelogs
+                  ];
                 })
 
                 ./host/avalon/configuration.nix
@@ -176,7 +182,7 @@
                   };
                 })
               ];
-            };
+            });
 
             first-temple = nixpkgs.lib.nixosSystem {
               system = "x86_64-linux";
@@ -252,6 +258,8 @@
         "aarch64-linux"
       ];
 
-      perSystem = { config, ... }: { };
-    };
+      perSystem = { config, pkgs, ... }: {
+        packages.gitlab-timelogs = pkgs.callPackage ./pkgs/gitlab-timelogs { };
+      };
+    });
 }
