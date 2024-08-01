@@ -61,7 +61,7 @@
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
         exec ${pkgs.qemu}/bin/qemu-system-x86_64 \
-          -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMFFull.fd}/FV/OVMF.fd \
+          -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
           "$@"
       '';
     in [
