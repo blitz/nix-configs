@@ -112,6 +112,10 @@ in
       ++ (lib.optional config.programs._1password-gui.enable config.programs._1password-gui.package);
     in
       {
+        ".config/mpv/mpv.conf".text = ''
+          hwdec=auto
+        '';
+
         ".config/rustfmt/rustfmt.toml".text = ''
           edition = "2021"
         '';
