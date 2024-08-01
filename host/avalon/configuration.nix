@@ -19,6 +19,13 @@
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
+  # Quiet boot
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 3;
+  boot.kernelParams = [
+    "quiet" "udev.log_level=3"
+  ];
+
   boot.extraModprobeConfig = ''
     # Who doesn't like fast virtualization. But AVIC may be buggy...
     #  avic=1 force_avic=1
