@@ -52,11 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
     };
-
-    gitlab-timelogs = {
-      url = "github:phip1611/gitlab-timelogs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -72,7 +67,6 @@
     , lanzaboote
     , lix-module
     , kernelDev
-    , gitlab-timelogs
     }:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
       imports = [
@@ -163,9 +157,6 @@
 
                 # Living on the edge.
                 lix-module.nixosModules.default
-
-                # Provide gitlab-timelogs CLI utility
-                gitlab-timelogs.nixosModules.default
 
                 lanzaboote.nixosModules.lanzaboote
 

@@ -3,28 +3,6 @@
     "crane": {
       "inputs": {
         "nixpkgs": [
-          "gitlab-timelogs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1720025378,
-        "narHash": "sha256-zlIdj0oLvMEHlllP/7tvY+kE987xsN4FPux6WHSOh00=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "087e08a41009bf083d51ab35d8e30b1b7eafa7b0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "ref": "master",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
-    "crane_2": {
-      "inputs": {
-        "nixpkgs": [
           "lanzaboote",
           "nixpkgs"
         ]
@@ -138,27 +116,6 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "gitlab-timelogs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1719994518,
-        "narHash": "sha256-pQMhCCHyQGRzdfAkdJ4cIWiw+JNuWsTX7f0ZYSyz0VY=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "9227223f6d922fee3c7b190b2cc238a99527bbb7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": [
           "hercules-ci",
           "nixpkgs"
         ]
@@ -177,7 +134,7 @@
         "type": "github"
       }
     },
-    "flake-parts_4": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
           "hercules-ci-effects",
@@ -273,29 +230,6 @@
         "type": "github"
       }
     },
-    "gitlab-timelogs": {
-      "inputs": {
-        "crane": "crane",
-        "flake-parts": "flake-parts_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1720885649,
-        "narHash": "sha256-6W36xyAwnHQrHsLeuk1a9FV+0Py1yfd39S6EiC5Ke28=",
-        "owner": "phip1611",
-        "repo": "gitlab-timelogs",
-        "rev": "7a78e14cbee93f7a00aa027f4df3db0ac620f75f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phip1611",
-        "repo": "gitlab-timelogs",
-        "type": "github"
-      }
-    },
     "haskell-flake": {
       "locked": {
         "lastModified": 1684780604,
@@ -314,7 +248,7 @@
     },
     "hercules-ci": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
         "haskell-flake": "haskell-flake",
         "nixpkgs": "nixpkgs_2"
       },
@@ -334,7 +268,7 @@
     },
     "hercules-ci-effects": {
       "inputs": {
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -383,7 +317,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay_2",
+        "rust-overlay": "rust-overlay",
         "systems": "systems"
       },
       "locked": {
@@ -402,7 +336,7 @@
     },
     "lanzaboote": {
       "inputs": {
-        "crane": "crane_2",
+        "crane": "crane",
         "flake-compat": "flake-compat_2",
         "flake-parts": [
           "flake-parts"
@@ -411,7 +345,7 @@
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay_3"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1722329086,
@@ -638,7 +572,6 @@
         "dwarffs": "dwarffs",
         "fenix": "fenix",
         "flake-parts": "flake-parts",
-        "gitlab-timelogs": "gitlab-timelogs",
         "hercules-ci": "hercules-ci",
         "hercules-ci-effects": "hercules-ci-effects",
         "home-manager": "home-manager",
@@ -668,28 +601,6 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "gitlab-timelogs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1720059535,
-        "narHash": "sha256-h/O3PoV3KvQG4tC5UpANBZOsptAZCzEGiwyi+3oSpYc=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "8deeed2dfa21837c7792b46b6a9b2e73f97b472b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "ref": "master",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
-      "inputs": {
         "flake-utils": [
           "kernelDev",
           "flake-utils"
@@ -713,7 +624,7 @@
         "type": "github"
       }
     },
-    "rust-overlay_3": {
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "lanzaboote",
