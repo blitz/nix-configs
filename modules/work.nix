@@ -57,7 +57,17 @@
 
     # For customer interaction
     citrix_workspace
-  ];
+  ] ++ (
+    let
+      qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
+        exec ${pkgs.qemu}/bin/qemu-system-x86_64 \
+          -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMFFull.fd}/FV/OVMF.fd \
+          "$@"
+      '';
+    in [
+      qemuUefi
+    ]
+  );
 
   virtualisation.libvirtd = {
     enable = true;
