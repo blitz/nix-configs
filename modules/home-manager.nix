@@ -92,6 +92,7 @@ in
             use-package
             web-mode
             yaml-mode
+            go-mode
           ]));
       };
     };
