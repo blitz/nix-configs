@@ -115,6 +115,9 @@
                 nixos-hardware.nixosModules.common-cpu-amd
                 nixos-hardware.nixosModules.common-gpu-amd
 
+                # Living on the edge.
+                lix-module.nixosModules.default
+
                 lanzaboote.nixosModules.lanzaboote
 
                 # For debugging.
