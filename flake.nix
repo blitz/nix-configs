@@ -207,6 +207,14 @@
               ];
             };
 
+            plausible-next = nixpkgs.lib.nixosSystem {
+              system = "aarch64-linux";
+
+              modules = [
+                ./host/plausible-next/configuration.nix
+              ];
+            };
+
             chat = nixpkgs.lib.nixosSystem {
               system = "aarch64-linux";
 
