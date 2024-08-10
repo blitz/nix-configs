@@ -7,7 +7,7 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
 
-    #../../modules/plausible.nix
+    ../../modules/plausible.nix
   ];
 
   nix.gc = {
