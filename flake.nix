@@ -203,15 +203,6 @@
 
               modules = [
                 ./host/plausible/configuration.nix
-                hercules-ci.nixosModules.agent-service
-              ];
-            };
-
-            plausible-next = nixpkgs.lib.nixosSystem {
-              system = "aarch64-linux";
-
-              modules = [
-                ./host/plausible-next/configuration.nix
               ];
             };
 
