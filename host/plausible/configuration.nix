@@ -25,7 +25,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "plausible-next";
+  networking.hostName = "plausible";
   networking.domain = "x86.lol";
   services.openssh.enable = true;
 
