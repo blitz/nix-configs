@@ -93,6 +93,9 @@ in
             web-mode
             yaml-mode
             go-mode
+            flycheck-grammarly
+            flycheck-inline
+            flycheck-pos-tip
           ]));
       };
     };

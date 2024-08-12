@@ -25,6 +25,13 @@
 
 (require 'use-package)
 
+;; Flycheck
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode)
+  ;(flycheck-pos-tip-mode)
+  (flycheck-grammarly-setup))
+
 ;; Misc Coding
 
 (show-paren-mode 1)
