@@ -5,6 +5,11 @@ in
 {
   home-manager.users.julian = { pkgs, ... }: {
 
+    home.sessionVariables = {
+      # ssh-copy-id needs this.
+      SSH_AUTH_SOCK = "/home/julian/.1password/agent.sock";
+    };
+
     programs = {
       ssh = {
         enable = true;
