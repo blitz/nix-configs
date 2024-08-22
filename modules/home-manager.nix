@@ -123,6 +123,18 @@ in
         ".config/rustfmt/rustfmt.toml".text = ''
           edition = "2021"
         '';
+        ".config/zed/settings.json".text = let
+          zedSettings = {
+            lsp = {
+              "rust-analyzer" = {
+                binary = {
+                  path = "/run/current-system/sw/bin/rust-analyzer";
+                };
+              };
+            };
+          };
+        in
+          builtins.toJSON zedSettings;
       } //
       builtins.listToAttrs (map
         (pkg: {
