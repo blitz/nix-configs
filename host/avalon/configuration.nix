@@ -32,6 +32,14 @@
     options kvm-amd nested=1
   '';
 
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPatches = [
+    {
+      name = "tap-debug";
+      patch = ./tap-debug.patch;
+    }
+  ];
+
   nixpkgs = {
     overlays = [
       (self: super: {

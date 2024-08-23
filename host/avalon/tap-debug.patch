@@ -1,0 +1,199 @@
+diff --git a/drivers/net/tap.c b/drivers/net/tap.c
+index e7212a64a591..a5749e1de79b 100644
+--- a/drivers/net/tap.c
++++ b/drivers/net/tap.c
+@@ -150,8 +150,10 @@ static int tap_enable_queue(struct tap_dev *tap, struct file *file,
+ 
+ 	ASSERT_RTNL();
+ 
+-	if (q->enabled)
++	if (q->enabled) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		goto out;
++	}
+ 
+ 	err = 0;
+ 	rcu_assign_pointer(tap->taps[tap->numvtaps], q);
+@@ -192,8 +194,10 @@ static int tap_disable_queue(struct tap_queue *q)
+ 	struct tap_queue *nq;
+ 
+ 	ASSERT_RTNL();
+-	if (!q->enabled)
++	if (!q->enabled) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return -EINVAL;
++	}
+ 
+ 	tap = rtnl_dereference(q->tap);
+ 
+@@ -420,6 +424,7 @@ int tap_get_minor(dev_t major, struct tap_dev *tap)
+ 	rcu_read_lock();
+ 	tap_major = tap_get_major(MAJOR(major));
+ 	if (!tap_major) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		retval = -EINVAL;
+ 		goto unlock;
+ 	}
+@@ -655,8 +660,10 @@ static ssize_t tap_get_user(struct tap_queue *q, void *msg_control,
+ 		vnet_hdr_len = READ_ONCE(q->vnet_hdr_sz);
+ 
+ 		err = -EINVAL;
+-		if (len < vnet_hdr_len)
++		if (len < vnet_hdr_len) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			goto err;
++		}
+ 		len -= vnet_hdr_len;
+ 
+ 		err = -EFAULT;
+@@ -671,13 +678,17 @@ static ssize_t tap_get_user(struct tap_queue *q, void *msg_control,
+ 				 tap16_to_cpu(q, vnet_hdr.csum_start) +
+ 				 tap16_to_cpu(q, vnet_hdr.csum_offset) + 2);
+ 		err = -EINVAL;
+-		if (tap16_to_cpu(q, vnet_hdr.hdr_len) > len)
++		if (tap16_to_cpu(q, vnet_hdr.hdr_len) > len) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			goto err;
++		}
+ 	}
+ 
+ 	err = -EINVAL;
+-	if (unlikely(len < ETH_HLEN))
++	if (unlikely(len < ETH_HLEN)) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		goto err;
++	}
+ 
+ 	if (msg_control && sock_flag(&q->sk, SOCK_ZEROCOPY)) {
+ 		struct iov_iter i;
+@@ -801,8 +812,10 @@ static ssize_t tap_put_user(struct tap_queue *q,
+ 		struct virtio_net_hdr vnet_hdr;
+ 
+ 		vnet_hdr_len = READ_ONCE(q->vnet_hdr_sz);
+-		if (iov_iter_count(iter) < vnet_hdr_len)
++		if (iov_iter_count(iter) < vnet_hdr_len) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			return -EINVAL;
++		}
+ 
+ 		if (virtio_net_hdr_from_skb(skb, &vnet_hdr,
+ 					    tap_is_little_endian(q), true,
+@@ -935,15 +948,19 @@ static int tap_ioctl_set_queue(struct file *file, unsigned int flags)
+ 	int ret;
+ 
+ 	tap = tap_get_tap_dev(q);
+-	if (!tap)
++	if (!tap) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return -EINVAL;
++	}
+ 
+ 	if (flags & IFF_ATTACH_QUEUE)
+ 		ret = tap_enable_queue(tap, file, q);
+ 	else if (flags & IFF_DETACH_QUEUE)
+ 		ret = tap_disable_queue(q);
+-	else
++	else {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		ret = -EINVAL;
++	}
+ 
+ 	tap_put_tap_dev(tap);
+ 	return ret;
+@@ -1026,9 +1043,10 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 			return -EFAULT;
+ 
+ 		ret = 0;
+-		if ((u & ~TAP_IFFEATURES) != (IFF_NO_PI | IFF_TAP))
++		if ((u & ~TAP_IFFEATURES) != (IFF_NO_PI | IFF_TAP)) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			ret = -EINVAL;
+-		else
++		} else
+ 			q->flags = (q->flags & ~TAP_IFFEATURES) | u;
+ 
+ 		return ret;
+@@ -1066,8 +1084,10 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 	case TUNSETSNDBUF:
+ 		if (get_user(s, sp))
+ 			return -EFAULT;
+-		if (s <= 0)
++		if (s <= 0) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			return -EINVAL;
++		}
+ 
+ 		q->sk.sk_sndbuf = s;
+ 		return 0;
+@@ -1081,8 +1101,10 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 	case TUNSETVNETHDRSZ:
+ 		if (get_user(s, sp))
+ 			return -EFAULT;
+-		if (s < (int)sizeof(struct virtio_net_hdr))
++		if (s < (int)sizeof(struct virtio_net_hdr)) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			return -EINVAL;
++		}
+ 
+ 		q->vnet_hdr_sz = s;
+ 		return 0;
+@@ -1112,8 +1134,10 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 		/* let the user check for future flags */
+ 		if (arg & ~(TUN_F_CSUM | TUN_F_TSO4 | TUN_F_TSO6 |
+ 			    TUN_F_TSO_ECN | TUN_F_UFO |
+-			    TUN_F_USO4 | TUN_F_USO6))
++			    TUN_F_USO4 | TUN_F_USO6)) {
++			pr_err("%s: %d\n", __func__, __LINE__);
+ 			return -EINVAL;
++		}
+ 
+ 		rtnl_lock();
+ 		ret = set_offload(q, arg);
+@@ -1151,6 +1175,7 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 		return ret;
+ 
+ 	default:
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return -EINVAL;
+ 	}
+ }
+@@ -1179,6 +1204,7 @@ static int tap_get_user_xdp(struct tap_queue *q, struct xdp_buff *xdp)
+ 
+ 	if (unlikely(xdp->data_end - xdp->data < ETH_HLEN)) {
+ 		err = -EINVAL;
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		goto err;
+ 	}
+ 
+@@ -1262,6 +1288,7 @@ static int tap_recvmsg(struct socket *sock, struct msghdr *m,
+ 	int ret;
+ 	if (flags & ~(MSG_DONTWAIT|MSG_TRUNC)) {
+ 		kfree_skb(skb);
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return -EINVAL;
+ 	}
+ 	ret = tap_do_read(q, &m->msg_iter, flags & MSG_DONTWAIT, skb);
+@@ -1293,8 +1320,10 @@ static const struct proto_ops tap_socket_ops = {
+ struct socket *tap_get_socket(struct file *file)
+ {
+ 	struct tap_queue *q;
+-	if (file->f_op != &tap_fops)
++	if (file->f_op != &tap_fops) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return ERR_PTR(-EINVAL);
++	}
+ 	q = file->private_data;
+ 	if (!q)
+ 		return ERR_PTR(-EBADFD);
+@@ -1306,8 +1335,10 @@ struct ptr_ring *tap_get_ptr_ring(struct file *file)
+ {
+ 	struct tap_queue *q;
+ 
+-	if (file->f_op != &tap_fops)
++	if (file->f_op != &tap_fops) {
++		pr_err("%s: %d\n", __func__, __LINE__);
+ 		return ERR_PTR(-EINVAL);
++	}
+ 	q = file->private_data;
+ 	if (!q)
+ 		return ERR_PTR(-EBADFD);
