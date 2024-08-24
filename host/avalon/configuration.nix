@@ -32,40 +32,6 @@
     options kvm-amd nested=1
   '';
 
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
-  boot.kernelPatches = [
-    {
-      name = "tap-debug";
-      patch = ./tap-debug.patch;
-    }
-  ];
-
-  nixpkgs = {
-    overlays = [
-      (self: super: {
-        linuxPackages_latest = self.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
-          structuredExtraConfig = with lib.kernel; {
-            LIVEPATCH = yes;
-            HYPERVISOR_GUEST = lib.mkForce no;
-            PARAVIRT = lib.mkForce no;
-            X86_KERNEL_IBT = lib.mkForce no;
-
-            # Not strictly necessary, but not useful on AMD either.
-            X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
-            X86_USER_SHADOW_STACK = lib.mkForce no;
-            X86_CET = lib.mkForce no;
-
-            # Butter smooth desktop.
-            PREEMPT_DYNAMIC = lib.mkForce no;
-            PREEMPT_VOLUNTARY = lib.mkForce no;
-            PREEMPT = lib.mkForce yes;
-          };
-          ignoreConfigErrors = true;
-        });
-      })
-    ];
-  };
-
   # Bootloader. We use lanzaboote.
   # boot.loader.systemd-boot.enable = true;
 
