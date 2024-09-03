@@ -128,6 +128,12 @@ in
         ".config/rustfmt/rustfmt.toml".text = ''
           edition = "2021"
         '';
+
+        # For gnome-boxes
+        ".config/libvirt/qemu.conf".text = ''
+          nvram = [ "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
+        '';
+
         ".config/zed/settings.json".text = let
           zedSettings = {
             lsp = {

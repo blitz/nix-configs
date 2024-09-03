@@ -69,17 +69,6 @@
     ]
   );
 
-  virtualisation.libvirtd = {
-    enable = true;
-
-    qemu.ovmf.packages = with pkgs; [
-      OVMFFull.fd
-
-      # Only for AArch64 support.
-      pkgsCross.aarch64-multiplatform.OVMF.fd
-    ];
-  };
-
   virtualisation.podman.enable = true;
 
   services = {

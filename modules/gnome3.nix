@@ -92,6 +92,18 @@
     ];
   };
 
+  # For gnome-boxes
+  virtualisation.libvirtd = {
+    enable = true;
+
+    qemu.ovmf.packages = with pkgs; [
+      OVMFFull.fd
+
+      # Only for AArch64 support.
+      pkgsCross.aarch64-multiplatform.OVMF.fd
+    ];
+  };
+
   networking.firewall.enable = false;
 
   virtualisation.virtualbox.host = {
