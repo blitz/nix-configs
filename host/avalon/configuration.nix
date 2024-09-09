@@ -36,7 +36,7 @@
   nixpkgs = {
     overlays = [
       (self: super: {
-        linuxPackages_latest = self.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
+        linuxPackages_latest = self.linuxPackagesFor ((super.linuxPackages_latest.kernel.override {
           stdenv = pkgs.llvmPackages_latest.stdenv;
 
           structuredExtraConfig = with lib.kernel; {
@@ -66,7 +66,12 @@
 
           # There are lots of PARAVIRT-related options that don't apply, if we disable PARAVIRT.
           ignoreConfigErrors = true;
-        });
+        }).overrideAttrs (old: {
+          # Breaks with clang otherwise:
+          #
+          # error: argument unused during compilation: '-fno-strict-overflow'
+          hardeningDisable = old.hardeningDisable ++ [ "strictoverflow" ];
+        }));
       })
     ];
   };
