@@ -79,9 +79,16 @@
   networking.hostName = "avalon";
 
   nix.settings.system-features = [
-    "kvm" "nixos-test" "big-parallel" "benchmark"
-    "gccarch-znver2" "gccarch-znver3" "gccarch-znver4"
-    "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
+    "kvm"
+    "nixos-test"
+    "big-parallel"
+    "benchmark"
+    "gccarch-znver2"
+    "gccarch-znver3"
+    "gccarch-znver4"
+    "gccarch-x86-64-v2"
+    "gccarch-x86-64-v3"
+    "gccarch-x86-64-v4"
   ];
 
   # This value determines the NixOS release from which the default
