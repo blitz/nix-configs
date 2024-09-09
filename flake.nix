@@ -6,6 +6,8 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +60,7 @@
     inputs@{ self
     , nixpkgs
     , nixos-hardware
+    , nixpkgs-unstable
     , home-manager
     , hercules-ci
     , fenix
@@ -250,8 +253,10 @@
         "aarch64-linux"
       ];
 
-      perSystem = { config, pkgs, ... }: {
-        packages.gitlab-timelogs = pkgs.callPackage ./pkgs/gitlab-timelogs { };
+      perSystem = { config, pkgs, system, ... }: {
+        packages = {
+          inherit (nixpkgs-unstable.legacyPackages."${system}") gitlab-timelogs;
+        };
       };
     });
 }
