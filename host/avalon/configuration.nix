@@ -33,6 +33,44 @@
     options kvm-amd nested=1
   '';
 
+  nixpkgs = {
+    overlays = [
+      (self: super: {
+        linuxPackages_latest = self.linuxPackagesFor (super.linuxPackages_latest.kernel.override {
+          stdenv = pkgs.llvmPackages_latest.stdenv;
+
+          structuredExtraConfig = with lib.kernel; {
+            # LIVEPATCH = yes;
+
+            # TODO This currently fails, because we need the build
+            # process to use lld instead of the bfd linker.
+            #
+            # LTO_CLANG_FULL = yes;
+
+            # This kernel is only used on baremetal.
+            HYPERVISOR_GUEST = lib.mkForce no;
+            PARAVIRT = lib.mkForce no;
+
+            # Not used.
+            FTRACE = lib.mkForce no;
+            KPROBES = lib.mkForce no;
+
+            # Not strictly necessary, but not useful on AMD either.
+            X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
+            X86_USER_SHADOW_STACK = lib.mkForce no;
+            X86_CET = lib.mkForce no;
+
+            # No need to dynamically set this.
+            PREEMPT_DYNAMIC = no;
+          };
+
+          # There are lots of PARAVIRT-related options that don't apply, if we disable PARAVIRT.
+          ignoreConfigErrors = true;
+        });
+      })
+    ];
+  };
+
   # Bootloader. We use lanzaboote.
   # boot.loader.systemd-boot.enable = true;
 
