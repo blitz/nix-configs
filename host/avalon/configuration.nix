@@ -36,7 +36,7 @@
   nixpkgs = {
     overlays = [
       (self: super: {
-        linuxPackages_latest = self.linuxPackagesFor ((super.linuxPackages_latest.kernel.override {
+        linuxPackages_latest = (self.linuxPackagesFor ((super.linuxPackages_latest.kernel.override {
           stdenv = pkgs.llvmPackages_latest.stdenv;
 
           structuredExtraConfig = with lib.kernel; {
@@ -71,7 +71,11 @@
           #
           # error: argument unused during compilation: '-fno-strict-overflow'
           hardeningDisable = old.hardeningDisable ++ [ "strictoverflow" ];
-        }));
+        }))).extend (final: prev: {
+          framework-laptop-kmod = prev.framework-laptop-kmod.overrideAttrs (old: {
+            hardeningDisable = (old.hardeningDisable or []) ++ [ "strictoverflow" ];
+          });
+        });
       })
     ];
   };
