@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -9,6 +9,9 @@
     ../../modules/matrix-synapse.nix
     ../../modules/matrix-coturn.nix
   ];
+
+  # /boot doesn't have a lot of space.
+  boot.loader.grub.configurationLimit = lib.mkForce 2;
 
   system.autoUpgrade.enable = true;
 
