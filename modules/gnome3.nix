@@ -38,10 +38,9 @@
 
         "--ozone-platform-hint=wayland"
       ]
-      # The encoding seems to cause video stuttering:
-      #
-      # ++ (lib.optional (config.networking.hostName == "avalon")
-      #   "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
+      # The hardware encoding seems to cause video stuttering. But hey, longer battery life!
+      ++ (lib.optional (config.networking.hostName == "avalon")
+        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
       ;
     })
 
