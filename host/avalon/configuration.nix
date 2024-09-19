@@ -71,14 +71,13 @@
           #
           # error: argument unused during compilation: '-fno-strict-overflow'
           hardeningDisable = old.hardeningDisable ++ [ "strictoverflow" ];
-        }))).extend (final: prev: {
-          framework-laptop-kmod = prev.framework-laptop-kmod.overrideAttrs (old: {
-            hardeningDisable = (old.hardeningDisable or []) ++ [ "strictoverflow" ];
-          });
-        });
+        })));
       })
     ];
   };
+
+  # Not needed anymore since 6.11 for AMD.
+  hardware.framework.enableKmod = false;
 
   # Bootloader. We use lanzaboote.
   # boot.loader.systemd-boot.enable = true;
