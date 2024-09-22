@@ -55,10 +55,12 @@
             FTRACE = lib.mkForce no;
             KPROBES = lib.mkForce no;
 
+            # AMD doesn't have IBT, but shadow stacks (since Zen 3)!
+            X86_USER_SHADOW_STACK = yes;
+            X86_CET = yes;
+
             # Not strictly necessary, but not useful on AMD either.
             X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
-            X86_USER_SHADOW_STACK = lib.mkForce no;
-            X86_CET = lib.mkForce no;
 
             # No need to dynamically set this.
             PREEMPT_DYNAMIC = no;
