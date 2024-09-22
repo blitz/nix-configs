@@ -14,6 +14,7 @@
       ../../modules/work.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
+      ../../modules/keybase.nix
     ];
 
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
