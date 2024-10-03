@@ -8,6 +8,8 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixpkgs-unstable-llvm.url = "github:blitz/nixpkgs/kernel-lld";
+
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +63,7 @@
     , nixpkgs
     , nixos-hardware
     , nixpkgs-unstable
+    , nixpkgs-unstable-llvm
     , home-manager
     , hercules-ci
     , fenix
@@ -147,8 +150,47 @@
               };
 
               modules = [
-                ({ config, packages, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
+                ({ config, packages, lib, ... }: {
+                  nixpkgs.overlays = [
+                    fenix.overlays.default
+                    kernelDevOverlayX86
+
+                    (self: super: let
+                      pkgsLLVM = nixpkgs-unstable-llvm.legacyPackages.x86_64-linux.pkgsLLVM;
+                    in {
+                      linuxPackages_latest = (self.linuxPackagesFor ((pkgsLLVM.linuxPackages_latest.kernel.override {
+                        structuredExtraConfig = with lib.kernel; {
+                          LTO_CLANG_FULL = yes;
+
+                          # This kernel is only used on baremetal.
+                          HYPERVISOR_GUEST = lib.mkForce no;
+                          PARAVIRT = lib.mkForce no;
+
+                          # Not used.
+                          FTRACE = lib.mkForce no;
+                          KPROBES = lib.mkForce no;
+
+                          # AMD doesn't have IBT, but shadow stacks (since Zen 3)!
+                          X86_USER_SHADOW_STACK = yes;
+
+                          # Not strictly necessary, but not useful on AMD either.
+                          X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
+
+                          # No need to dynamically set this.
+                          PREEMPT_DYNAMIC = no;
+                        };
+
+                        # There are lots of PARAVIRT-related options that don't apply, if we disable PARAVIRT.
+                        ignoreConfigErrors = true;
+                      }).overrideAttrs (old: {
+                        # Breaks with clang otherwise:
+                        #
+                        # error: argument unused during compilation: '-fno-strict-overflow'
+                        #hardeningDisable = old.hardeningDisable ++ [ "strictoverflow" ];
+                      })));
+                    })
+                  ];
+
                   environment.systemPackages = [
                     packages.gitlab-timelogs
                   ];

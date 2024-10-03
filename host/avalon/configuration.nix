@@ -34,51 +34,6 @@
     options kvm-amd nested=1
   '';
 
-  nixpkgs = {
-    overlays = [
-      (self: super: {
-        linuxPackages_latest = (self.linuxPackagesFor ((super.linuxPackages_latest.kernel.override {
-          stdenv = pkgs.llvmPackages_latest.stdenv;
-
-          structuredExtraConfig = with lib.kernel; {
-            # LIVEPATCH = yes;
-
-            # TODO This currently fails, because we need the build
-            # process to use lld instead of the bfd linker.
-            #
-            # LTO_CLANG_FULL = yes;
-
-            # This kernel is only used on baremetal.
-            HYPERVISOR_GUEST = lib.mkForce no;
-            PARAVIRT = lib.mkForce no;
-
-            # Not used.
-            FTRACE = lib.mkForce no;
-            KPROBES = lib.mkForce no;
-
-            # AMD doesn't have IBT, but shadow stacks (since Zen 3)!
-            X86_USER_SHADOW_STACK = yes;
-            X86_CET = yes;
-
-            # Not strictly necessary, but not useful on AMD either.
-            X86_INTEL_MEMORY_PROTECTION_KEYS = lib.mkForce no;
-
-            # No need to dynamically set this.
-            PREEMPT_DYNAMIC = no;
-          };
-
-          # There are lots of PARAVIRT-related options that don't apply, if we disable PARAVIRT.
-          ignoreConfigErrors = true;
-        }).overrideAttrs (old: {
-          # Breaks with clang otherwise:
-          #
-          # error: argument unused during compilation: '-fno-strict-overflow'
-          hardeningDisable = old.hardeningDisable ++ [ "strictoverflow" ];
-        })));
-      })
-    ];
-  };
-
   # Not needed anymore since 6.11 for AMD.
   hardware.framework.enableKmod = false;
 
