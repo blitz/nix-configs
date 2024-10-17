@@ -54,6 +54,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
     };
+
+    nix-link-cleanup = {
+      url = "github:blitz/nix-link-cleanup";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -70,6 +75,7 @@
     , lanzaboote
     , lix-module
     , kernelDev
+    , nix-link-cleanup
     }:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
       imports = [
@@ -123,6 +129,8 @@
 
                 lanzaboote.nixosModules.lanzaboote
 
+                nix-link-cleanup.nixosModules.default
+
                 # For debugging.
                 # dwarffs.nixosModules.dwarffs
 
@@ -130,6 +138,8 @@
                   environment.systemPackages = [
                     pkgs.sbctl
                   ];
+
+                  programs.nix-link-cleanup.enable = true;
 
                   boot.lanzaboote = {
                     enable = true;
@@ -170,10 +180,14 @@
 
                 lanzaboote.nixosModules.lanzaboote
 
+                nix-link-cleanup.nixosModules.default
+
                 ({ config, pkgs, ... }: {
                   environment.systemPackages = [
                     pkgs.sbctl
                   ];
+
+                  programs.nix-link-cleanup.enable = true;
 
                   boot.lanzaboote = {
                     enable = true;
