@@ -33,11 +33,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    dwarffs = {
-      url = "github:edolstra/dwarffs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hercules-ci-effects = {
       url = "github:hercules-ci/hercules-ci-effects";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +64,6 @@
     , home-manager
     , hercules-ci
     , fenix
-    , dwarffs
     , flake-parts
     , hercules-ci-effects
     , lanzaboote
