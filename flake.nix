@@ -170,8 +170,6 @@
                 ./host/first-temple/configuration.nix
                 ./host/first-temple/hardware-configuration.nix
 
-                home-manager.nixosModules.default
-
                 nixos-hardware.nixosModules.common-pc-ssd
                 nixos-hardware.nixosModules.common-cpu-intel
 
@@ -209,8 +207,6 @@
               modules = [
                 ./host/ig-11/configuration.nix
                 ./host/ig-11/hardware-configuration.nix
-
-                home-manager.nixosModules.default
 
                 nixos-hardware.nixosModules.common-pc-ssd
 
