@@ -102,32 +102,36 @@
             kernelDevOverlayX86 = final: prev: {
               inherit (kernelDev.packages.x86_64-linux) kernelDevTools;
             };
+
+            nixosSystem = { system, modules }: nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              specialArgs = {
+                inherit inputs;
+              };
+
+              modules = modules ++ [
+                {
+                  nixpkgs.overlays = [
+                    fenix.overlays.default
+                    kernelDevOverlayX86
+                  ];
+                }
+              ];
+            };
           in
           {
-            canaan = nixpkgs.lib.nixosSystem {
+            canaan = nixosSystem {
               system = "x86_64-linux";
 
               modules = [
-                ({ config, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
-                })
-
                 ./host/canaan/configuration.nix
                 ./host/canaan/hardware-configuration.nix
 
                 home-manager.nixosModules.default
 
-                # There is a Thinkpad L14 AMD module, but it disables the
-                # IOMMU.
-                nixos-hardware.nixosModules.lenovo-thinkpad
-                nixos-hardware.nixosModules.common-pc-laptop-ssd
-                nixos-hardware.nixosModules.common-cpu-amd
-                nixos-hardware.nixosModules.common-gpu-amd
-
                 # Living on the edge.
                 lix-module.nixosModules.default
-
-                lanzaboote.nixosModules.lanzaboote
 
                 nix-link-cleanup.nixosModules.default
 
@@ -135,18 +139,7 @@
                 # dwarffs.nixosModules.dwarffs
 
                 ({ config, pkgs, ... }: {
-                  environment.systemPackages = [
-                    pkgs.sbctl
-                  ];
-
                   programs.nix-link-cleanup.enable = true;
-
-                  boot.lanzaboote = {
-                    enable = true;
-
-                    configurationLimit = 20;
-                    pkiBundle = "/etc/secureboot";
-                  };
                 })
               ];
             };

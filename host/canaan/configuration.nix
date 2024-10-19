@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ../../modules/secure-boot.nix
+    ../../modules/thinkpad-l14-amd.nix
     ../../modules/laptop.nix
     ../../modules/amdgpu.nix
     #../../modules/obs-studio.nix
@@ -18,11 +20,7 @@
   boot.consoleLogLevel = 3;
   boot.kernelParams = [
     "quiet" "udev.log_level=3"
-
-    # Force use of the thinkpad_acpi driver for backlight control.
-    # This allows the backlight save/load systemd service to work.
-    "acpi_backlight=native"
-  ] ;
+  ];
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
