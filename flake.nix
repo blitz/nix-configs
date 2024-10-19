@@ -108,6 +108,7 @@
 
               specialArgs = {
                 inherit inputs;
+                packages = self.packages."$system";
               };
 
               modules = modules ++ [
@@ -128,8 +129,6 @@
                 ./host/canaan/configuration.nix
                 ./host/canaan/hardware-configuration.nix
 
-                home-manager.nixosModules.default
-
                 # Living on the edge.
                 lix-module.nixosModules.default
 
@@ -144,62 +143,30 @@
               ];
             };
 
-            avalon = withSystem "x86_64-linux" (ctx@{ config, inputs', ... }: nixpkgs.lib.nixosSystem {
-              specialArgs = {
-                packages = config.packages;
-              };
+            avalon = nixosSystem {
+              system = "x86_64-linux";
 
               modules = [
-                ({ config, packages, lib, ... }: {
-                  nixpkgs.overlays = [
-                    fenix.overlays.default
-                    kernelDevOverlayX86
-                  ];
-
-                  environment.systemPackages = [
-                    packages.gitlab-timelogs
-                  ];
-                })
-
                 ./host/avalon/configuration.nix
                 ./host/avalon/hardware-configuration.nix
-
-                home-manager.nixosModules.default
 
                 nixos-hardware.nixosModules.framework-13-7040-amd
 
                 # Living on the edge.
                 lix-module.nixosModules.default
 
-                lanzaboote.nixosModules.lanzaboote
-
                 nix-link-cleanup.nixosModules.default
 
                 ({ config, pkgs, ... }: {
-                  environment.systemPackages = [
-                    pkgs.sbctl
-                  ];
-
                   programs.nix-link-cleanup.enable = true;
-
-                  boot.lanzaboote = {
-                    enable = true;
-
-                    configurationLimit = 20;
-                    pkiBundle = "/etc/secureboot";
-                  };
                 })
               ];
-            });
+            };
 
-            first-temple = nixpkgs.lib.nixosSystem {
+            first-temple = nixosSystem {
               system = "x86_64-linux";
 
               modules = [
-                ({ config, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
-                })
-
                 ./host/first-temple/configuration.nix
                 ./host/first-temple/hardware-configuration.nix
 
@@ -236,14 +203,10 @@
             #   ];
             # };
 
-            ig-11 = nixpkgs.lib.nixosSystem {
+            ig-11 = nixosSystem {
               system = "x86_64-linux";
 
               modules = [
-                ({ config, ... }: {
-                  nixpkgs.overlays = [ fenix.overlays.default kernelDevOverlayX86 ];
-                })
-
                 ./host/ig-11/configuration.nix
                 ./host/ig-11/hardware-configuration.nix
 

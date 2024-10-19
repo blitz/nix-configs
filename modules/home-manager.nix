@@ -1,8 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, lib, ... }:
 let
   isWork = config.networking.hostName == "babylon" || config.networking.hostName == "avalon";
 in
 {
+  imports = [
+    inputs.home-manager.nixosModules.default
+  ];
+
   home-manager.users.julian = { pkgs, ... }: {
 
     home.sessionVariables = {

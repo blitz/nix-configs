@@ -7,6 +7,7 @@
 {
   imports =
     [
+      ../../modules/secure-boot.nix
       ../../modules/laptop.nix
       ../../modules/amdgpu.nix
       ../../modules/cachix.nix
