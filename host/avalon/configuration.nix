@@ -27,6 +27,9 @@
   boot.kernelParams = [
     "quiet"
     "udev.log_level=3"
+
+    # https://gitlab.freedesktop.org/drm/amd/-/issues/3647
+    "amdgpu.dcdebugmask=0x10"
   ];
 
   boot.extraModprobeConfig = ''
