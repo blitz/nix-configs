@@ -38,7 +38,7 @@
   boot.kernelParams = [ "mitigations=off" ];
 
   # https://github.com/tailscale/tailscale/issues/13863
-  boot.kernelPatches = lib.optional (config.boot.kernelPackages.kernel.version == "6.11.4") {
+  boot.kernelPatches = lib.optional (config.boot.kernelPackages.kernel.version == "6.11.4" || config.boot.kernelPackages.kernel.version == "6.11.5") {
     name = "unbreak-tailscale";
     patch = ../patches/linux/fix-tailscale-6.11.4.patch;
   };
