@@ -35,24 +35,8 @@
   boot.extraModprobeConfig = ''
     # Who doesn't like fast virtualization. But AVIC may be buggy...
     #  avic=1 force_avic=1
-    options kvm-amd nested=1
+    options kvm-amd nested=0
   '';
-
-  boot.kernelPatches = [
-    {
-      name = "crashdump-config";
-      patch = null;
-      extraStructuredConfig = with lib.kernel; {
-        # kpatch is not able to handle IBT yet.
-        X86_KERNEL_IBT = lib.mkForce no;
-
-        LIVEPATCH = yes;
-      };
-
-      # There is some fallout from disabling PARAVIRT.
-      ignoreConfigErrors = true;
-    }
-  ];
 
   # Not needed anymore since 6.11 for AMD.
   hardware.framework.enableKmod = false;
