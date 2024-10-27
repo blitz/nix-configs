@@ -36,12 +36,9 @@
   # Living on the edge.
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
-
-  # https://github.com/tailscale/tailscale/issues/13863
-  boot.kernelPatches = lib.optional (config.boot.kernelPackages.kernel.version == "6.11.4" || config.boot.kernelPackages.kernel.version == "6.11.5") {
-    name = "unbreak-tailscale";
-    patch = ../patches/linux/fix-tailscale-6.11.4.patch;
-  };
+  boot.kernelPatches = [
+    # Nothing here at the moment.
+  ];
 
   # Make dm-crypt fast in the early boot phases.
   boot.initrd.availableKernelModules = lib.optionals (config.system == "x86_64-linux") [
