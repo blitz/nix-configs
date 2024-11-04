@@ -102,7 +102,7 @@
 
               specialArgs = {
                 inherit inputs;
-                packages = self.packages."$system";
+                packages = self.packages."${system}";
               };
 
               modules = modules ++ [
