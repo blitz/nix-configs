@@ -122,15 +122,6 @@
               modules = [
                 ./host/canaan/configuration.nix
                 ./host/canaan/hardware-configuration.nix
-
-                # Living on the edge.
-                lix-module.nixosModules.default
-
-                nix-link-cleanup.nixosModules.default
-
-                ({ config, pkgs, ... }: {
-                  programs.nix-link-cleanup.enable = true;
-                })
               ];
             };
 
@@ -140,17 +131,6 @@
               modules = [
                 ./host/avalon/configuration.nix
                 ./host/avalon/hardware-configuration.nix
-
-                nixos-hardware.nixosModules.framework-13-7040-amd
-
-                # Living on the edge.
-                lix-module.nixosModules.default
-
-                nix-link-cleanup.nixosModules.default
-
-                ({ config, pkgs, ... }: {
-                  programs.nix-link-cleanup.enable = true;
-                })
               ];
             };
 
@@ -160,11 +140,6 @@
               modules = [
                 ./host/first-temple/configuration.nix
                 ./host/first-temple/hardware-configuration.nix
-
-                nixos-hardware.nixosModules.common-pc-ssd
-                nixos-hardware.nixosModules.common-cpu-intel
-
-                hercules-ci.nixosModules.agent-service
               ];
             };
 
@@ -191,11 +166,6 @@
                 ./host/ig-11/configuration.nix
                 ./host/ig-11/hardware-configuration.nix
 
-                nixos-hardware.nixosModules.common-pc-ssd
-
-                # TODO Enable pstate later.
-                nixos-hardware.nixosModules.common-cpu-amd
-                nixos-hardware.nixosModules.common-gpu-amd
               ];
             };
           };

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -16,6 +16,8 @@
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
       ../../modules/keybase.nix
+
+      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
 
   fileSystems."/".options = [ "rw" "discard" "relatime" ];

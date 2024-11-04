@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
+  imports = [
+    inputs.lix-module.nixosModules.default
+    inputs.nix-link-cleanup.nixosModules.default
+  ];
+
+  programs.nix-link-cleanup.enable = true;
+
   nix = {
     settings = {
       trusted-users = [ "root" "julian" ];

@@ -49,7 +49,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gitlab-timelogs
+    packages.gitlab-timelogs
 
     # For merging PDFs
     pdftk

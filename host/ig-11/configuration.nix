@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -15,6 +15,10 @@
       ../../modules/coding.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
+
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-gpu-amd
     ];
 
   networking.networkmanager.enable = true;
