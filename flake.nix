@@ -128,9 +128,6 @@
 
                 nix-link-cleanup.nixosModules.default
 
-                # For debugging.
-                # dwarffs.nixosModules.dwarffs
-
                 ({ config, pkgs, ... }: {
                   programs.nix-link-cleanup.enable = true;
                 })
@@ -171,7 +168,7 @@
               ];
             };
 
-            plausible = nixpkgs.lib.nixosSystem {
+            plausible = nixosSystem {
               system = "aarch64-linux";
 
               modules = [
@@ -179,7 +176,7 @@
               ];
             };
 
-            chat = nixpkgs.lib.nixosSystem {
+            chat = nixosSystem {
               system = "aarch64-linux";
 
               modules = [
