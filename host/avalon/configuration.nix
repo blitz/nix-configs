@@ -15,7 +15,7 @@
       ../../modules/work.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
-      ../../modules/keybase.nix
+      # ../../modules/keybase.nix
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
