@@ -53,8 +53,8 @@
     #drawio
 
     pika-backup
-    gnome3.gnome-tweaks
-    gnome3.gnome-boxes
+    gnome-tweaks
+    gnome-boxes
     gparted
     okular
     gimp
@@ -116,9 +116,6 @@
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.mfcl8690cdwcupswrapper ];
 
-  # Enable sound.
-  sound.enable = true;
-
   hardware.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
@@ -156,5 +153,5 @@
     };
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 }

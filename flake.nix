@@ -2,11 +2,9 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11-small";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
@@ -60,7 +58,6 @@
     inputs@{ self
     , nixpkgs
     , nixos-hardware
-    , nixpkgs-unstable
     , home-manager
     , hercules-ci
     , fenix
@@ -178,7 +175,7 @@
 
       perSystem = { config, pkgs, system, ... }: {
         packages = {
-          inherit (nixpkgs-unstable.legacyPackages."${system}") gitlab-timelogs;
+          # Nothing here yet.
         };
       };
     });

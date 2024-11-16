@@ -1,4 +1,4 @@
-{ config, pkgs, lib, packages, ... }: {
+{ config, pkgs, lib, ... }: {
 
   nix = {
     settings.trusted-public-keys = [
@@ -49,7 +49,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    packages.gitlab-timelogs
+    gitlab-timelogs
 
     # For merging PDFs
     pdftk

@@ -2,7 +2,10 @@
 
 {
   imports = [
-    inputs.lix-module.nixosModules.default
+    # Fails to build for aarch64 under binfmt.
+    #
+    # inputs.lix-module.nixosModules.default
+
     inputs.nix-link-cleanup.nixosModules.default
   ];
 
