@@ -37,7 +37,9 @@
   boot.extraModprobeConfig = ''
     # Who doesn't like fast virtualization. But AVIC may be buggy...
     #  avic=1 force_avic=1
-    options kvm-amd nested=0
+    #
+    # See: https://bugzilla.kernel.org/show_bug.cgi?id=219009
+    options kvm-amd vls=0
   '';
 
   # Not needed anymore since 6.11 for AMD.
