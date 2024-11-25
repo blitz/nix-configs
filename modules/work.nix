@@ -57,6 +57,9 @@
     # For testing
     qemu
 
+    # Can't avoid those Word documents...
+    libreoffice-fresh
+
     # For customer interaction
     citrix_workspace
   ] ++ (
