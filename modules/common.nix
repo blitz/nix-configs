@@ -143,7 +143,7 @@
     bind
     cachix
     dmidecode
-    dstat
+    dool                        # dstat is EOL
     file
     gitFull
     gnupg
