@@ -23,6 +23,12 @@
       enable = true;
       polkitPolicyOwners = [ "julian" ];
     };
+
+    # This interfers with 1password.
+    ssh = {
+      enableAskPassword = false;
+      startAgent = false;
+    };
   };
 
   environment.sessionVariables = {
