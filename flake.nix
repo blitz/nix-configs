@@ -113,14 +113,16 @@
             };
           in
           {
-            canaan = nixosSystem {
-              system = "x86_64-linux";
+            # This laptop is currently not running NixOS.
+            #
+            # canaan = nixosSystem {
+            #   system = "x86_64-linux";
 
-              modules = [
-                ./host/canaan/configuration.nix
-                ./host/canaan/hardware-configuration.nix
-              ];
-            };
+            #   modules = [
+            #     ./host/canaan/configuration.nix
+            #     ./host/canaan/hardware-configuration.nix
+            #   ];
+            # };
 
             avalon = nixosSystem {
               system = "x86_64-linux";
