@@ -164,7 +164,6 @@
               modules = [
                 ./host/ig-11/configuration.nix
                 ./host/ig-11/hardware-configuration.nix
-
               ];
             };
           };
@@ -178,6 +177,18 @@
       perSystem = { config, pkgs, system, ... }: {
         packages = {
           # Nothing here yet.
+        };
+
+        legacyPackages = {
+          homeConfigurations = {
+            chromeos = inputs.home-manager.lib.homeManagerConfiguration {
+              modules = [
+                ./home-modules/chromeos.nix
+              ];
+
+              inherit pkgs;
+            };
+          };
         };
       };
     });
