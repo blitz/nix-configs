@@ -1,6 +1,23 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./common.nix
+  ];
+
+  targets.genericLinux.enable = true;
+
+  home.packages = with pkgs; [
+    gh
+
+    nixpkgs-fmt
+    nil
+    nix-diff
+    nix-tree
+    nix-output-monitor
+    nixpkgs-review
+
+    rust-analyzer
+    cargo
+    rustc
   ];
 
   nix = {
@@ -18,7 +35,7 @@
     };
   };
 
-  programs.emacs.package = pkgs.emacs30-nox;
+  programs.emacs.package = pkgs.emacs30;
 
   programs.tmux = {
     enable = true;
@@ -43,17 +60,26 @@
 
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
+    settings = {
+      # On ChromeOS this will always light up with "[Systemd]".
+      container.disabled = true;
+    };
   };
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.home-manager.enable = true;
+
+  # Make applications visible to ChromeOS:
+  # https://nixos.wiki/wiki/Installing_Nix_on_Crostini
+  xdg.configFile."systemd/user/cros-garcon.service.d/override.conf".text = ''
+    [Service]
+    Environment="PATH=%h/.nix-profile/bin:/usr/local/sbin:/usr/local/bin:/usr/local/games:/usr/sbin:/usr/bin:/usr/games:/sbin:/bin"
+    Environment="XDG_DATA_DIRS=%h/.nix-profile/share:%h/.local/share:%h/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
+  '';
 
   home.stateVersion = "24.11";
   home.username = "blitz";

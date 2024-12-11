@@ -1,5 +1,25 @@
 { pkgs, lib, ... }: {
 
+  home.packages = with pkgs; [
+    bc
+    cachix
+    dmidecode
+    dool                        # dstat is EOL
+    file
+    gnupg
+    libarchive
+    man-pages
+    nix-top
+    nmap
+    psmisc
+    pv
+    pwgen
+    tig
+    wget
+    zile
+    unzip
+  ];
+  
   nixpkgs.config.allowUnfree = true;
 
   programs = {

@@ -139,32 +139,20 @@
   programs.htop.enable = true;
 
   environment.systemPackages = with pkgs; [
-    bc
     bind
     cachix
     dmidecode
     dool                        # dstat is EOL
-    file
-    gitFull
-    gnupg
-    libarchive
     man-pages
-    nix-top
     nmap
     parted
     pciutils
     psmisc
     pv
     pwgen
-    tig
     usbutils
     wget
     zile
-    lm_sensors
-    unzip
-
-    direnv
-    nix-direnv
   ];
 
   documentation.man.enable = true;
