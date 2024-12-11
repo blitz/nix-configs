@@ -18,8 +18,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   programs.emacs.package = pkgs.emacs30-nox;
 
   programs.tmux = {
