@@ -43,6 +43,8 @@
     };
   };
 
+  services.flatpak.enable = true;
+
   programs.evolution = {
     enable = true;
     plugins = [ pkgs.evolution-ews ];
@@ -63,6 +65,9 @@
 
     # For testing
     qemu
+
+    # For flatpack
+    gnome-software
 
     # Can't avoid those Word documents...
     libreoffice-fresh
