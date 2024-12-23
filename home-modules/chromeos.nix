@@ -18,7 +18,15 @@
     rust-analyzer
     cargo
     rustc
+
+    fractal
+    gcr                         # Needed for pinentry
   ];
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "secrets" ];
+  };
 
   nix = {
     package = pkgs.nixVersions.latest;
