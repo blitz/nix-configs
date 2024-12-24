@@ -11,6 +11,7 @@
       ../../modules/tailscale-exit-node.nix
       ../../modules/cachix.nix
       ../../modules/home-manager.nix
+      ../../modules/lto-linux.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
