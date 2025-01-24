@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ./common.nix
   ];
@@ -26,6 +26,13 @@
   services.gnome-keyring = {
     enable = true;
     components = [ "secrets" ];
+  };
+
+  # Workaround gnome-keyring only starting with a graphical session,
+  # which we don't have on ChromeOS. Just start it always.
+  systemd.user.services.gnome-keyring = {
+    Unit.PartOf = lib.mkForce [ "default.target" ];
+    Install.WantedBy = lib.mkForce [ "default.target" ];
   };
 
   nix = {
