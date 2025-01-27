@@ -28,6 +28,11 @@
     ];
   };
 
+  # For cross-platform builds.
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
+
   programs.ssh = {
     extraConfig = ''
       Host remote-builder.vpn.cyberus-technology.de
