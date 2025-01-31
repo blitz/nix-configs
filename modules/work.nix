@@ -87,11 +87,10 @@
     # For flatpack
     gnome-software
 
-    # Can't avoid those Word documents...
-    libreoffice-fresh
+    # Embedded development
+    picocom
+    rkdeveloptool
 
-    # For customer interaction
-    citrix_workspace
   ] ++ (
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
