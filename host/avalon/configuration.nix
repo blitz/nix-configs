@@ -13,6 +13,7 @@
       ../../modules/cachix.nix
       ../../modules/coding.nix
       ../../modules/work.nix
+      ../../modules/work-dhcp.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
       # ../../modules/keybase.nix
