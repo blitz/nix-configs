@@ -44,7 +44,7 @@
   };
 
   # Living on the edge.
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
   boot.kernelPatches = [
     # Nothing here at the moment.
