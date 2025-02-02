@@ -91,7 +91,7 @@
       freefont_ttf
       liberation_ttf
       mplus-outline-fonts.githubRelease
-      nerdfonts
+      # nerdfonts
     ];
   };
 
