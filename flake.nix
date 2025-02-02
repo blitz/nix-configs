@@ -52,6 +52,11 @@
       url = "github:blitz/nix-link-cleanup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -67,6 +72,7 @@
     , lix-module
     , kernelDev
     , nix-link-cleanup
+    , disko
     }:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
       imports = [
@@ -164,6 +170,15 @@
               modules = [
                 ./host/ig-11/configuration.nix
                 ./host/ig-11/hardware-configuration.nix
+              ];
+            };
+
+            canaan = nixosSystem {
+              system = "x86_64-linux";
+
+              modules = [
+                inputs.disko.nixosModules.disko
+                ./host/canaan/configuration.nix
               ];
             };
           };
