@@ -109,14 +109,14 @@
 
   networking.firewall.enable = false;
 
-  virtualisation.virtualbox.host = {
-    enable = true;
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
 
-    enableKvm = true;
-    addNetworkInterface = false;
-    enableExtensionPack = false;
-    enableHardening = false;
-  };
+  #   enableKvm = true;
+  #   addNetworkInterface = false;
+  #   enableExtensionPack = false;
+  #   enableHardening = false;
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
