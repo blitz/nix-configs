@@ -51,25 +51,25 @@
     })
 
     mpv
-    fractal
-    element-desktop
+    # fractal
+    # element-desktop
 
     # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
-    signal-desktop
+    # signal-desktop
     #drawio
 
     pika-backup
     gnome-tweaks
     gnome-boxes
     gparted
-    okular
+    # okular
     gimp
 
     # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
     v4l-utils
 
     # Podcasting and Meetings
-    zoom-us
+    # zoom-us
     gnome-network-displays
 
     # Debugging
@@ -91,7 +91,7 @@
       freefont_ttf
       liberation_ttf
       mplus-outline-fonts.githubRelease
-      nerdfonts
+      # nerdfonts
     ];
   };
 

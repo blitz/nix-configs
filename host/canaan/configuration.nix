@@ -11,7 +11,10 @@
       ../../modules/home-manager.nix
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "usbhid" ];
+  boot.initrd.availableKernelModules = [
+    # TODO trim down later
+    "nvme" "ehci_pci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "ahci" "uas" "sdhci_pci"
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
