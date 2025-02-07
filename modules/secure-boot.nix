@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, lib, ... }: {
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
@@ -11,6 +11,6 @@
     enable = true;
 
     configurationLimit = 10;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = lib.mkDefault "/etc/secureboot";
   };
 }
