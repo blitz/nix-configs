@@ -119,17 +119,6 @@
             };
           in
           {
-            # This laptop is currently not running NixOS.
-            #
-            # canaan = nixosSystem {
-            #   system = "x86_64-linux";
-
-            #   modules = [
-            #     ./host/canaan/configuration.nix
-            #     ./host/canaan/hardware-configuration.nix
-            #   ];
-            # };
-
             avalon = nixosSystem {
               system = "x86_64-linux";
 
@@ -192,18 +181,6 @@
       perSystem = { config, pkgs, system, ... }: {
         packages = {
           # Nothing here yet.
-        };
-
-        legacyPackages = {
-          homeConfigurations = {
-            chromeos = inputs.home-manager.lib.homeManagerConfiguration {
-              modules = [
-                ./home-modules/chromeos.nix
-              ];
-
-              inherit pkgs;
-            };
-          };
         };
       };
     });
