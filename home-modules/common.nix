@@ -19,6 +19,7 @@
     zile
     unzip
     inetutils                   # telnet
+    jq
   ];
   
   nixpkgs.config.allowUnfree = true;
