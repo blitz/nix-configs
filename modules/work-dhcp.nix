@@ -10,8 +10,8 @@
     wait-online.enable = false;
 
     
-    networks."10-eth0" = {
-      matchConfig.Name = "eth0";
+    networks."10-usb-ethernet" = {
+      matchConfig.Name = "enp193s0f3u1u2";
 
       # Set a static IP for the interface
       address = [ "192.168.111.1/24" ];
