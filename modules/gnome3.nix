@@ -69,7 +69,7 @@
     v4l-utils
 
     # Podcasting and Meetings
-    zoom-us
+    # zoom-us
     gnome-network-displays
 
     # Debugging
