@@ -61,8 +61,6 @@
     };
   };
 
-  services.flatpak.enable = true;
-
   programs.evolution = {
     enable = true;
     plugins = [ pkgs.evolution-ews ];
@@ -90,6 +88,7 @@
     # Embedded development
     picocom
     rkdeveloptool
+    attic-client
 
   ] ++ (
     let
@@ -106,7 +105,7 @@
   virtualisation.podman.enable = true;
 
   virtualisation.virtualbox.host = {
-    enable = true;
+    # enable = true;
 
     enableKvm = true;
     addNetworkInterface = false;
