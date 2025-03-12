@@ -71,15 +71,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(dante-tap-type-time 5)
- '(haskell-stylish-on-save t)
  '(inhibit-startup-screen t)
- '(lsp-haskell-process-args-hie nil)
- '(lsp-haskell-process-path-hie "haskell-language-server-wrapper")
  '(lsp-nix-nil-formatter ["nixpkgs-fmt"])
  '(make-backup-files nil)
  '(nix-nixfmt-bin "nixpkgs-fmt")
  '(ring-bell-function 'ignore)
- '(rustic-analyzer-command '("/home/julian/.cargo/bin/rust-analyzer"))
  '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values '((dante-methods stack))))
 (custom-set-faces
