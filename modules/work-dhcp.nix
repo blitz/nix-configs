@@ -3,7 +3,7 @@
     tcpdump
   ];
   
-  networking.networkmanager.unmanaged = [ "eth0" ];
+  networking.networkmanager.unmanaged = [ "enp193s0f3u1u2" ];
 
   systemd.network = {
     enable = true;
