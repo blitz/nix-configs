@@ -22,7 +22,7 @@
     jq
     fzf
   ];
-  
+
   nixpkgs.config.allowUnfree = true;
 
   programs = {
@@ -58,6 +58,13 @@
         rebase.autosquash = true;
         diff.algorithm = "patience";
         credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+
+        # https://b4.docs.kernel.org/en/latest/contributor/send.html
+        b4.send-endpoint-web = "https://lkml.kernel.org/_b4_submit";
+        patatt = {
+          signingkey = "ed25519:20250320";
+          selector = "20250320";
+        };
       };
     };
 
