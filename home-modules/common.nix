@@ -20,6 +20,7 @@
     unzip
     inetutils                   # telnet
     jq
+    fzf
   ];
   
   nixpkgs.config.allowUnfree = true;
@@ -68,13 +69,10 @@
         [
           clang-format
           cmake-mode
-          dante
-          dhall-mode
           direnv
           editorconfig
           flymake-hlint
           ggtags
-          haskell-mode
           hlint-refactor
           lsp-haskell
           lsp-mode
@@ -88,10 +86,10 @@
           use-package
           web-mode
           yaml-mode
-          go-mode
           flycheck-grammarly
           flycheck-inline
           flycheck-pos-tip
+          fzf
         ]));
     };
   };
