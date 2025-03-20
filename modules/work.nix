@@ -89,7 +89,7 @@
     picocom
     rkdeveloptool
     attic-client
-
+    b4
   ] ++ (
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
