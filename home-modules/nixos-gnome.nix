@@ -12,19 +12,6 @@
   programs.emacs.package = pkgs.emacs30-pgtk;
 
   programs.git.userEmail = "julian.stecklina@cyberus-technology.de";
-  programs.git.extraConfig = {
-    sendemail = {
-      smtpserver = "smtp.office365.com";
-      smtpuser = "julian.stecklina@cyberus-technology.de";
-      smtpencryption = "tls";
-      port = 587;
-
-      linux = {
-        tocmd = "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nol";
-        cccmd = "`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom";
-      };
-    };
-  };
 
   # Enable experimental fractional scaling support in Gnome 45.
   dconf.settings = {
