@@ -53,13 +53,19 @@
 
   system.autoUpgrade.enable = true;
 
+  # Networking
+  systemd.network.enable = true;
+  networking = {
+    useNetworkd = true;
+    useDHCP = false;
+    interfaces.eno2.useDHCP = true;
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "first-temple"; # Define your hostname.
-
-  networking.networkmanager.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
