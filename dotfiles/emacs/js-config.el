@@ -82,6 +82,10 @@
 
 (keymap-global-set "C-f" 'fzf-git)
 
+;; Grepping
+
+(rg-enable-default-bindings)
+
 ;; Customize
 
 (custom-set-variables

@@ -21,6 +21,7 @@
     inetutils                   # telnet
     jq
     fzf
+    ripgrep
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -97,6 +98,7 @@
           flycheck-inline
           flycheck-pos-tip
           fzf
+          rg
         ]));
     };
   };
