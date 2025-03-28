@@ -54,7 +54,10 @@
     # elmPackages.elm
 
     # Rust development
-    pkgs.rust-analyzer-nightly
+    # TODO Uncomment when fenix has a newer version
+    #pkgs.rust-analyzer-nightly
+    pkgs.rust-analyzer
+
     pkgs.gcc
     (pkgs.fenix.stable.withComponents [
       "cargo"
