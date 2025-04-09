@@ -82,7 +82,7 @@
           flymake-hlint
           ggtags
           hlint-refactor
-          lsp-haskell
+          company
           lsp-mode
           lsp-ui
           magit
