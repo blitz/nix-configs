@@ -18,7 +18,6 @@
     wget
     zile
     unzip
-    inetutils                   # telnet
     jq
     fzf
     ripgrep
