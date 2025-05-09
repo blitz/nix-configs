@@ -21,7 +21,14 @@
       inputs.nixos-hardware.nixosModules.common-gpu-amd
     ];
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
+  systemd.network.enable = true;
+  networking = {
+    useNetworkd = true;
+    useDHCP = false;
+    interfaces.enp4s0.useDHCP = true;
+  };
+
   powerManagement.cpuFreqGovernor = "schedutil";
 
   # Quiet boot
