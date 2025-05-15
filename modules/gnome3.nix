@@ -61,6 +61,7 @@
     pika-backup
     gnome-tweaks
     gnome-boxes
+    virt-manager
     gparted
     okular
     gimp
@@ -99,12 +100,10 @@
   virtualisation.libvirtd = {
     enable = true;
 
-    qemu.ovmf.packages = with pkgs; [
-      OVMFFull.fd
-
-      # Only for AArch64 support.
-      pkgsCross.aarch64-multiplatform.OVMF.fd
-    ];
+    qemu = {
+      swtpm.enable = true;
+      ovmf.packages = [ pkgs.OVMFFull.fd ];
+    };
   };
 
   networking.firewall.enable = false;
