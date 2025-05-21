@@ -6,12 +6,12 @@
     options v4l2loopback video_nr=10 card_label="OBS Video Source" exclusive_caps=1
   '';
 
-  environment.systemPackages = with pkgs; [
-    # OBS Studio
-    (wrapOBS {
-      plugins = [
-        # Add plugins here.
-      ];
-    })
-  ];
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
+  };
 }
