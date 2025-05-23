@@ -21,8 +21,6 @@
     jq
     fzf
     ripgrep
-
-    # TODO This has a module in 25.05: programs.mergiraf.enable
     mergiraf
   ];
 
@@ -56,8 +54,6 @@
         unstage = "reset HEAD --";
       };
 
-      attributes = [ "* merge=mergiraf" ];
-
       extraConfig = {
         init.defaultBranch = "main";
         rebase.autosquash = true;
@@ -69,11 +65,6 @@
         patatt = {
           signingkey = "ed25519:20250320";
           selector = "20250320";
-        };
-
-        merge.mergiraf = {
-          name = "mergiraf";
-          driver = "${lib.getExe pkgs.mergiraf} merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
         };
       };
     };
