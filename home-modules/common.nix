@@ -91,7 +91,7 @@
           nix-mode
           rustic
           toml-mode
-          use-package
+          #use-package
           web-mode
           yaml-mode
           flycheck-grammarly
