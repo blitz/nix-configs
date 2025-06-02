@@ -8,12 +8,6 @@
       baseUrl = "https://${config.networking.hostName}.${config.networking.domain}/";
       secretKeybaseFile = "/var/lib/plausible-secret-keybase";
     };
-
-    adminUser = {
-      email = "js@alien8.de";
-      activate = true;
-      passwordFile = "/var/lib/plausible-pw";
-    };
   };
 
   # This should probably use LoadCredential.
