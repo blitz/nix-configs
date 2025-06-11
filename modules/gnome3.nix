@@ -63,7 +63,7 @@
     gnome-boxes
     virt-manager
     gparted
-    kdePackages.okular
+    papers
     gimp
 
     # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
