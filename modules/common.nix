@@ -43,6 +43,9 @@
     ];
   };
 
+  # Working around: https://discourse.nixos.org/t/run0-not-working-right/62772/4
+  security.pam.services.systemd-run0 = {};
+
   # Living on the edge.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
