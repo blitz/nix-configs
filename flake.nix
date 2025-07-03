@@ -63,6 +63,10 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    authentik = {
+      url = "github:nix-community/authentik-nix";
+    };
   };
 
   outputs =
@@ -79,7 +83,7 @@
     , kernelDev
     , nix-link-cleanup
     , disko
-    , sbomnix
+    , ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
       imports = [

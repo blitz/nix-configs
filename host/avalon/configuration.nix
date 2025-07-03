@@ -19,7 +19,8 @@
       # ../../modules/keybase.nix
       ../../modules/aarch64-remote.nix
       ../../modules/obs-studio.nix
-      ../../modules/testing-keycloak.nix
+      #../../modules/testing-keycloak.nix
+      #../../modules/testing-authentik.nix
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
       inputs.lix-module.nixosModules.default
