@@ -84,6 +84,7 @@
 
     # For testing
     qemu
+    cloud-hypervisor
 
     # For flatpack
     gnome-software
@@ -96,12 +97,20 @@
   ] ++ (
     let
       qemuUefi = pkgs.writeShellScriptBin "qemu-uefi" ''
-        exec ${pkgs.qemu}/bin/qemu-system-x86_64 \
+        exec ${lib.getExe' pkgs.qemu "qemu-system-x86_64"} \
           -machine q35,accel=kvm -cpu host -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+          "$@"
+      '';
+
+      # In newer Nixpkgs, the OVMF path will change.
+      cloudHypervisorUefi = pkgs.writeShellScriptBin "cloud-hypervisor-uefi" ''
+        exec ${lib.getExe pkgs.cloud-hypervisor} \
+          --kernel ${pkgs.OVMF-cloud-hypervisor.fd}/FV/CLOUDHV.fd \
           "$@"
       '';
     in [
       qemuUefi
+      cloudHypervisorUefi
     ]
   );
 
