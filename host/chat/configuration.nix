@@ -7,7 +7,7 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
     ../../modules/matrix-synapse.nix
-    ../../modules/matrix-coturn.nix
+    #../../modules/matrix-coturn.nix
   ];
 
   # /boot doesn't have a lot of space.
