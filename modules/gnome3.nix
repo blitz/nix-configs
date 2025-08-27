@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib, ... }:
 {
   # Yubikey / GPG
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
@@ -36,7 +36,7 @@
   };
 
   environment.systemPackages = let
-    pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${config.nixpkgs.system}.pkgsLLVM;
+    pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${config.nixpkgs.system};
   in
     with pkgs; [
       # Lots of hardware craps its pants with hardware decoding in online meetings.
