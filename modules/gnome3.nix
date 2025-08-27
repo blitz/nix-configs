@@ -35,50 +35,53 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  environment.systemPackages = with pkgs; [
-    # Lots of hardware craps its pants with hardware decoding in online meetings.
-    (google-chrome.override {
-      commandLineArgs = [
-        # https://github.com/NixOS/nixpkgs/issues/306471
-        "--enable-features=UseOzonePlatform"
+  environment.systemPackages = let
+    pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${config.nixpkgs.system}.pkgsLLVM;
+  in
+    with pkgs; [
+      # Lots of hardware craps its pants with hardware decoding in online meetings.
+      (google-chrome.override {
+        commandLineArgs = [
+          # https://github.com/NixOS/nixpkgs/issues/306471
+          "--enable-features=UseOzonePlatform"
 
-        "--ozone-platform-hint=wayland"
-      ]
-      # The hardware encoding seems to cause video stuttering. But hey, longer battery life!
-      ++ (lib.optional (config.networking.hostName == "avalon")
-        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
-      ;
-    })
+          "--ozone-platform-hint=wayland"
+        ]
+        # The hardware encoding seems to cause video stuttering. But hey, longer battery life!
+        ++ (lib.optional (config.networking.hostName == "avalon")
+          "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
+        ;
+      })
 
-    mpv
-    fractal
-    element-desktop
+      mpv
+      pkgsUnstable.fractal
+      pkgsUnstable.element-desktop
 
-    # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
-    #signal-desktop
-    #drawio
+      # These can run directly under Wayland as they are Electron apps. See NIXOS_OZONE_WL above.
+      #signal-desktop
+      #drawio
 
-    pika-backup
-    gnome-tweaks
-    gnome-boxes
-    virt-manager
-    gparted
-    papers
-    gimp
+      pika-backup
+      gnome-tweaks
+      gnome-boxes
+      virt-manager
+      gparted
+      papers
+      gimp
 
-    # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
-    v4l-utils
+      # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
+      v4l-utils
 
-    # Podcasting and Meetings
-    # zoom-us
-    gnome-network-displays
+      # Podcasting and Meetings
+      # zoom-us
+      gnome-network-displays
 
-    # Debugging
-    clinfo
-    intel-gpu-tools
-    radeontop
-    libva-utils
-  ];
+      # Debugging
+      clinfo
+      intel-gpu-tools
+      radeontop
+      libva-utils
+    ];
 
   fonts = {
     fontDir = {

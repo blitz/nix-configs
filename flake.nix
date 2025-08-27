@@ -4,8 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-    # See hosts/avalon/configuration.nix
-    # nixpkgs-unstable.url = "github:RossComputerGuy/nixpkgs/fix/rustc-llvm";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
