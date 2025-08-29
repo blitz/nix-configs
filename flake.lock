@@ -773,16 +773,16 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1756266583,
-        "narHash": "sha256-cr748nSmpfvnhqSXPiCfUPxRz2FJnvf/RjJGvFfaCsM=",
-        "owner": "NixOS",
+        "lastModified": 1756495021,
+        "narHash": "sha256-F8jhzjl1mgzRZ7eP2tW98O6Z8U8uisqCGMjFxBLzrcc=",
+        "owner": "blitz",
         "repo": "nixpkgs",
-        "rev": "8a6d5427d99ec71c64f0b93d45778c889005d9c2",
+        "rev": "6d47b6ee77afa47e651b6484881e934fc3985b3a",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "owner": "blitz",
+        "ref": "llvm-kernel",
         "repo": "nixpkgs",
         "type": "github"
       }
