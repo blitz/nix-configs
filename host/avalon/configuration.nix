@@ -23,7 +23,7 @@
       #../../modules/testing-authentik.nix
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-      inputs.lix-module.nixosModules.default
+      #inputs.lix-module.nixosModules.default
     ];
 
   fileSystems."/".options = [ "rw" "discard" "relatime" ];

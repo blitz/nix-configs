@@ -13,8 +13,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     hercules-ci = {
@@ -112,7 +112,7 @@
               inherit (kernelDev.packages.x86_64-linux) kernelDevTools;
             };
 
-            nixosSystem = { system, modules }: nixpkgs.lib.nixosSystem {
+            nixosSystem = { system, modules, nixpkgs ? inputs.nixpkgs }: nixpkgs.lib.nixosSystem {
               inherit system;
 
               specialArgs = {
@@ -133,6 +133,7 @@
           {
             avalon = nixosSystem {
               system = "x86_64-linux";
+              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 ./host/avalon/configuration.nix
@@ -142,6 +143,7 @@
 
             first-temple = nixosSystem {
               system = "x86_64-linux";
+              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 ./host/first-temple/configuration.nix
@@ -167,6 +169,7 @@
 
             ig-11 = nixosSystem {
               system = "x86_64-linux";
+              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 ./host/ig-11/configuration.nix
@@ -176,6 +179,7 @@
 
             canaan = nixosSystem {
               system = "x86_64-linux";
+              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 inputs.disko.nixosModules.disko
