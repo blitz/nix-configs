@@ -26,23 +26,24 @@
       #inputs.lix-module.nixosModules.default
     ];
 
-  boot.kernelPackages =
-    let
-      pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${config.nixpkgs.system}.pkgsLLVM;
-    in
-      lib.mkForce pkgsUnstable.linuxPackages_latest;
+  boot.kernelPackages = lib.mkForce pkgs.pkgsLLVM.linuxPackages_latest;
 
   boot.kernelPatches = [
     {
       name = "clang-lto";
       patch = null;
+
       structuredExtraConfig = with lib.kernel; {
-        #LTO_CLANG_THIN = yes;
-        #CFI_CLANG = yes;
+        # This somehow breaks Rust support. Not sure why yet.
+        #
+        # LTO_CLANG_THIN = yes;
+
+        CFI_ICALL_NORMALIZE_INTEGERS = yes;
+        CFI_CLANG = yes;
       };
     }
   ];
-  
+
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
