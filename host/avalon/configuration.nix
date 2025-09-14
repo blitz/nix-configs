@@ -26,6 +26,23 @@
       #inputs.lix-module.nixosModules.default
     ];
 
+  boot.kernelPackages =
+    let
+      pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${config.nixpkgs.system}.pkgsLLVM;
+    in
+      lib.mkForce pkgsUnstable.linuxPackages_latest;
+
+  boot.kernelPatches = [
+    {
+      name = "clang-lto";
+      patch = null;
+      structuredExtraConfig = with lib.kernel; {
+        #LTO_CLANG_THIN = yes;
+        #CFI_CLANG = yes;
+      };
+    }
+  ];
+  
   fileSystems."/".options = [ "rw" "discard" "relatime" ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
