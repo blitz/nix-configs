@@ -71,6 +71,6 @@
     kernelDevTools
 
     # C++ development
-    pkgs.clang-tools_17         # We want the newest one for clangd/LSP
+    pkgs.clang-tools
   ];
 }

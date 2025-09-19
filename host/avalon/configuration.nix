@@ -21,9 +21,9 @@
       #../../modules/obs-studio.nix
       #../../modules/testing-keycloak.nix
       #../../modules/testing-authentik.nix
+      ../../modules/lix.nix
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-      #inputs.lix-module.nixosModules.default
     ];
 
   boot.kernelPackages = lib.mkForce pkgs.pkgsLLVM.linuxPackages_latest;

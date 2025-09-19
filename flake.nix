@@ -7,11 +7,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -80,7 +75,6 @@
     , flake-parts
     , hercules-ci-effects
     , lanzaboote
-    , lix-module
     , kernelDev
     , nix-link-cleanup
     , disko
