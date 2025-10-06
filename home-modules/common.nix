@@ -22,6 +22,7 @@
     fzf
     ripgrep
     mergiraf
+    nix-index
   ];
 
   nixpkgs.config.allowUnfree = true;
