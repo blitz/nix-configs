@@ -30,13 +30,15 @@
       # SECURITY_LOCKDOWN_LSM y
       # SECURITY_LOCKDOWN_LSM_EARLY y
       # LOCK_DOWN_KERNEL_FORCE_INTEGRITY y
-      extraConfig = ''
-        MODULE_SIG y
-        MODULE_SIG_FORCE y
-        MODULE_SIG_ALL y
 
-        TRIM_UNUSED_KSYMS y
-      '';
+      # Disabled: Incompatible with bcachefs module
+      # extraConfig = ''
+      #   MODULE_SIG y
+      #   MODULE_SIG_FORCE y
+      #   MODULE_SIG_ALL y
+
+      #   TRIM_UNUSED_KSYMS y
+      # '';
     }
   ];
 }
