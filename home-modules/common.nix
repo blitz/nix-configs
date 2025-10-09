@@ -31,7 +31,7 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      
+
       matchBlocks = {
         "*" = {
           forwardAgent = true;
@@ -120,19 +120,33 @@
       ".config/libvirt/qemu.conf".text = ''
         nvram = [ "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
       '';
-
-      ".config/zed/settings.json".text =
-        let
-          zedSettings = {
-            lsp = {
-              "rust-analyzer" = {
-                binary = {
-                  path = "/run/current-system/sw/bin/rust-analyzer";
-                };
-              };
-            };
-          };
-        in
-        builtins.toJSON zedSettings;
     };
+
+  programs.zed-editor = {
+    enable = true;
+
+    userSettings = {
+      lsp = {
+        "rust-analyzer" = {
+          binary = {
+            path = "/run/current-system/sw/bin/rust-analyzer";
+          };
+        };
+      };
+    };
+
+    # This generates the keymap file, but doesn't work. Weird!
+    #
+    # userKeymaps = [
+    #   {
+    #     context = "Editor";
+
+    #     # Emacs-like code navigation.
+    #     bindings = {
+    #       "alt+." = "editor::GoToDefinition";
+    #       "alt+," = "pane::GoBack";
+    #     };
+    #   }
+    # ];
+  };
 }
