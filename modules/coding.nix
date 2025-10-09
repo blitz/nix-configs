@@ -44,9 +44,9 @@
 
     # Misc
     global
-    gdb
-    trace-cmd
-    kernelshark
+    # gdb
+    # trace-cmd
+    # kernelshark
 
     # Elm Development
     # elmPackages.elm-format
