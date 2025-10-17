@@ -13,14 +13,10 @@
       ../../modules/cachix.nix
       ../../modules/coding.nix
       ../../modules/work.nix
-      ../../modules/work-dhcp.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
-      # ../../modules/keybase.nix
       ../../modules/aarch64-remote.nix
       #../../modules/obs-studio.nix
-      #../../modules/testing-keycloak.nix
-      #../../modules/testing-authentik.nix
       ../../modules/lix.nix
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd

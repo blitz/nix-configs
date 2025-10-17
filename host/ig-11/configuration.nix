@@ -8,13 +8,19 @@
   imports =
     [
       ../../modules/common.nix
+      ../../modules/gnome3.nix
       ../../modules/amdgpu.nix
-      #../../modules/gnome3.nix
       ../../modules/cachix.nix
-      ../../modules/games.nix
       ../../modules/coding.nix
+      ../../modules/work.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
+      # ../../modules/keybase.nix
+      ../../modules/aarch64-remote.nix
+      #../../modules/obs-studio.nix
+      #../../modules/testing-keycloak.nix
+      #../../modules/testing-authentik.nix
+      ../../modules/lix.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-amd

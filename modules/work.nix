@@ -116,22 +116,7 @@
 
   virtualisation.podman.enable = true;
 
-  virtualisation.virtualbox.host = {
-    # enable = true;
-
-    enableKvm = true;
-    addNetworkInterface = false;
-    enableExtensionPack = false;
-    enableHardening = false;
-  };
-
   services = {
     onedrive.enable = true;
-  };
-
-  networking = {
-    networkmanager = {
-      enable = true;
-    };
   };
 }
