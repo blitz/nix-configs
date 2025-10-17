@@ -131,6 +131,11 @@
           binary = {
             path = "/run/current-system/sw/bin/rust-analyzer";
           };
+          initialization_options = {
+            check = {
+              command = "clippy";
+            };
+          };
         };
       };
     };
