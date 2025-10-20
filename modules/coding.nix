@@ -1,4 +1,30 @@
-{ config, pkgs, ... }: {
+{ config, flakeSelf, inputs, pkgs, ... }:
+let
+  fenixToolchain = pkgs.fenix.stable.withComponents [
+    "cargo"
+    "clippy"
+    "rust-src"
+    "rustc"
+    "rustfmt"
+  ];
+in {
+
+  nixpkgs.overlays = [
+    inputs.fenix.overlays.default
+
+    (final: prev: {
+      inherit (inputs.kernelDev.packages.x86_64-linux) kernelDevTools;
+    })
+
+    (final: prev: {
+      cloud-hypervisor = prev.cloud-hypervisor.override {
+        rustPlatform = pkgs.makeRustPlatform {
+          cargo = fenixToolchain;
+          rustc = fenixToolchain;
+        };
+      };
+    })
+  ];
 
   nix.extraOptions = ''
     # This is for direnv.
@@ -8,31 +34,7 @@
   environment.systemPackages = with pkgs; [
     # Github / Gitlab
     gh
-    git-imerge
     glab
-
-    # Model checking
-    # (vscode-with-extensions.override {
-    #   vscodeExtensions = with vscode-extensions; [
-    #     ms-vscode.hexeditor
-    #     ms-vscode.cpptools
-    #     ms-vscode.cmake-tools
-    #     ms-vscode.makefile-tools
-    #     ms-vscode-remote.remote-ssh
-    #     rust-lang.rust-analyzer
-    #   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    #     {
-    #       name = "vscode-tlaplus";
-    #       publisher = "alygin";
-    #       version = "1.5.4";
-    #       sha256 = "vZU0XIw/067gFFqfbhAoWYv8Why1YSM3WJ+bT4hAyVU=";
-    #     }
-    #   ];
-    # })
-
-    # Model checking
-    # tlaplus
-    # jdk
 
     # Nix
     nixpkgs-fmt
@@ -54,18 +56,14 @@
     # elmPackages.elm
 
     # Rust development
-    # TODO Uncomment when fenix has a newer version
-    #pkgs.rust-analyzer-nightly
-    pkgs.rust-analyzer
-
+    pkgs.rust-analyzer-nightly
     pkgs.gcc
-    (pkgs.fenix.stable.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-    ])
+    fenixToolchain
+
+    # This should reference the correct architecture...
+    (pkgs.writeShellScriptBin "cloud-hypervisor-dev" ''
+      nix develop ${flakeSelf}#nixosConfigurations.ig-11.pkgs.cloud-hypervisor
+    '')
 
     # Linux kernel development. See: https://github.com/blitz/kernel-dev
     kernelDevTools

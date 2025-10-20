@@ -102,26 +102,14 @@
       flake = {
         nixosConfigurations =
           let
-            kernelDevOverlayX86 = final: prev: {
-              inherit (kernelDev.packages.x86_64-linux) kernelDevTools;
-            };
-
             nixosSystem = { system, modules, nixpkgs ? inputs.nixpkgs }: nixpkgs.lib.nixosSystem {
-              inherit system;
+              inherit system modules;
 
               specialArgs = {
                 inherit inputs;
+                flakeSelf = self;
                 packages = self.packages."${system}";
               };
-
-              modules = modules ++ [
-                {
-                  nixpkgs.overlays = [
-                    fenix.overlays.default
-                    kernelDevOverlayX86
-                  ];
-                }
-              ];
             };
           in
           {

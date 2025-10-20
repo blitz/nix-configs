@@ -27,12 +27,17 @@
       inputs.nixos-hardware.nixosModules.common-gpu-amd
     ];
 
-  networking.networkmanager.enable = false;
+  networking.networkmanager = {
+    enable = true;
+    unmanaged = [
+      # "enp4s0"
+    ];
+  };
   systemd.network.enable = true;
   networking = {
     useNetworkd = true;
     useDHCP = false;
-    interfaces.enp4s0.useDHCP = true;
+    # interfaces.enp4s0.useDHCP = true;
   };
 
   powerManagement.cpuFreqGovernor = "schedutil";
