@@ -105,27 +105,18 @@
   environment.variables = {
     EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
   };
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = config.programs.fish.package;
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
 
-    ohMyZsh = {
-      enable = true;
-      # Adding tmux here will make programs.tmux ineffective.
-      plugins = [ "git" "sudo" ];
-    };
-
-    promptInit = ''
-      eval "$(${pkgs.starship}/bin/starship init zsh)"
-    '';
     shellInit = ''
-      eval "$(direnv hook zsh)"
+      eval "$(direnv hook fish)"
     '';
   };
 
