@@ -8,6 +8,7 @@
   imports =
     [
       ../../modules/common.nix
+      ../../modules/awesome-kernel.nix
       ../../modules/gnome3.nix
       ../../modules/amdgpu.nix
       ../../modules/cachix.nix
