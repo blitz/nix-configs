@@ -19,7 +19,7 @@
       auto-optimise-store = true;
     };
 
-    daemonCPUSchedPolicy = "batch";
+    daemonCPUSchedPolicy = "idle";
 
     extraOptions = ''
       experimental-features = nix-command flakes
