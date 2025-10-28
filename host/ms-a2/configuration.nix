@@ -34,12 +34,16 @@
       # "enp4s0"
     ];
   };
+
   systemd.network.enable = true;
+  systemd.network.wait-online.enable = false;
+
   networking = {
     useNetworkd = true;
     useDHCP = false;
     # interfaces.enp4s0.useDHCP = true;
   };
+
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
