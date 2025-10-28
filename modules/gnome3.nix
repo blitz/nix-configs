@@ -36,6 +36,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.paperwm
+
     # Lots of hardware craps its pants with hardware decoding in online meetings.
     (google-chrome.override {
       commandLineArgs = [
