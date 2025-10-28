@@ -15,30 +15,33 @@
    '';
 
     distributedBuilds = true;
-    buildMachines = [
-      {
-        hostName = "remote-builder.vpn.cyberus-technology.de";
-        sshUser = "builder";
-        systems = [
-          "x86_64-linux"
-          # Only has last resort. (Slow!)
-          # "aarch64-linux"
-        ];
-        maxJobs = 8;
-        supportedFeatures = [
-          "nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
-        ];
-      }
 
-      {
-        hostName = "aarch64-01";
-        protocol = "ssh-ng";
-        systems = [ "aarch64-linux" ];
-        maxJobs = 40;
-        speedFactor = 2;
-        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      }
-    ];
+    # Not really useful anymore.
+    #
+    # buildMachines = [
+    #   {
+    #     hostName = "remote-builder.vpn.cyberus-technology.de";
+    #     sshUser = "builder";
+    #     systems = [
+    #       "x86_64-linux"
+    #       # Only has last resort. (Slow!)
+    #       # "aarch64-linux"
+    #     ];
+    #     maxJobs = 8;
+    #     supportedFeatures = [
+    #       "nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
+    #     ];
+    #   }
+
+    #   {
+    #     hostName = "aarch64-01";
+    #     protocol = "ssh-ng";
+    #     systems = [ "aarch64-linux" ];
+    #     maxJobs = 40;
+    #     speedFactor = 2;
+    #     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    #   }
+    # ];
   };
 
   # For cross-platform builds.
