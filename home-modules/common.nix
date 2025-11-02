@@ -47,17 +47,19 @@
       enable = true;
       package = pkgs.gitFull;
 
-      userName = "Julian Stecklina";
-      userEmail = lib.mkDefault "js@alien8.de";
-
       lfs.enable = true;
 
-      aliases = {
-        sed = "! git grep -z --full-name -l '.' | xargs -0 sed -i -e";
-        unstage = "reset HEAD --";
-      };
+      settings = {
+        user = {
+          name = "Julian Stecklina";
+          email = lib.mkDefault "js@alien8.de";
+        };
 
-      extraConfig = {
+        alias = {
+          sed = "! git grep -z --full-name -l '.' | xargs -0 sed -i -e";
+          unstage = "reset HEAD --";
+        };
+
         init.defaultBranch = "main";
         rebase.autosquash = true;
         diff.algorithm = "patience";
