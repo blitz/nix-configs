@@ -45,7 +45,7 @@
 
     git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
+      package = pkgs.gitFull;
 
       userName = "Julian Stecklina";
       userEmail = lib.mkDefault "js@alien8.de";
@@ -61,7 +61,7 @@
         init.defaultBranch = "main";
         rebase.autosquash = true;
         diff.algorithm = "patience";
-        credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+        credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
 
         # https://b4.docs.kernel.org/en/latest/contributor/send.html
         b4.send-endpoint-web = "https://lkml.kernel.org/_b4_submit";
