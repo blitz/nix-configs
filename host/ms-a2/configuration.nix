@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -27,6 +27,11 @@
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
     ];
+
+  # AMD GPU driver issues...
+  #
+  # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
 
   networking.networkmanager = {
     enable = true;
