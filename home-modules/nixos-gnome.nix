@@ -11,7 +11,7 @@
 
   programs.emacs.package = pkgs.emacs30-pgtk;
 
-  programs.git.userEmail = "julian.stecklina@cyberus-technology.de";
+  programs.git.settings.user.email = "julian.stecklina@cyberus-technology.de";
 
   # Enable experimental fractional scaling support in Gnome 45.
   dconf.settings = {
