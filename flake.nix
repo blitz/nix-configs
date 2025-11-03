@@ -149,16 +149,6 @@
               ];
             };
 
-            ig-11 = nixosSystem {
-              system = "x86_64-linux";
-              nixpkgs = inputs.nixpkgs-unstable;
-
-              modules = [
-                ./host/ig-11/configuration.nix
-                ./host/ig-11/hardware-configuration.nix
-              ];
-            };
-
             canaan = nixosSystem {
               system = "x86_64-linux";
               nixpkgs = inputs.nixpkgs-unstable;
