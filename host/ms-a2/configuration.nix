@@ -34,6 +34,9 @@
   # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
 
+  hardware.amdgpu.opencl.enable = true;
+  hardware.amdgpu.initrd.enable = true;
+
   networking.networkmanager = {
     enable = true;
     unmanaged = [
