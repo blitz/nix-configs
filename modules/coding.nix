@@ -62,7 +62,7 @@ in {
 
     # This should reference the correct architecture...
     (pkgs.writeShellScriptBin "cloud-hypervisor-dev" ''
-      exec nix develop ${flakeSelf}#nixosConfigurations.ig-11.pkgs.cloud-hypervisor "$@"
+      exec nix develop ${flakeSelf}#nixosConfigurations.ms-a2.pkgs.cloud-hypervisor "$@"
     '')
 
     # Linux kernel development. See: https://github.com/blitz/kernel-dev
