@@ -57,12 +57,12 @@ in {
     # elmPackages.elm
 
     # Rust development
-    pkgs.rust-analyzer-nightly
-    pkgs.gcc
+    rust-analyzer-nightly
+    gcc
     fenixToolchain
 
     # This should reference the correct architecture...
-    (pkgs.writeShellScriptBin "cloud-hypervisor-dev" ''
+    (writeShellScriptBin "cloud-hypervisor-dev" ''
       exec nix develop ${flakeSelf}#nixosConfigurations.ms-a2.pkgs.cloud-hypervisor "$@"
     '')
 
@@ -70,6 +70,6 @@ in {
     kernelDevTools
 
     # C++ development
-    pkgs.clang-tools
+    clang-tools
   ];
 }
