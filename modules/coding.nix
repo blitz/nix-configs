@@ -35,6 +35,7 @@ in {
     # Github / Gitlab
     gh
     glab
+    git-imerge
 
     # Nix
     nixpkgs-fmt
