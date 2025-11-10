@@ -139,6 +139,18 @@
             };
           };
         };
+
+        "nixd" = {
+          binary = {
+            path = "/run/current-system/sw/bin/nixd";
+          };
+        };
+
+        "nil" = {
+          binary = {
+            path = "/run/current-system/sw/bin/nil";
+          };
+        };
       };
     };
 

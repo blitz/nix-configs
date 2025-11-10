@@ -44,6 +44,8 @@ in {
     nix-tree
     nix-output-monitor          # nom
     nixpkgs-review
+    nixd
+    nil
 
     # Misc
     global
