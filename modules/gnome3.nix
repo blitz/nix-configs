@@ -130,7 +130,6 @@
   services.xserver.xkb.options = "ctrl:nocaps";
 
   # Enable touchpad support.
-  hardware.trackpoint.enable = false;
   services.libinput.enable = true;
 
   # Enable the Gnome3.
@@ -149,6 +148,11 @@
       workstation = true;
     };
   };
+
+  # "Shokz Loop120 by Shokz Consumer Control" sends POWER button
+  # events that are really annoying. We could do udev gymnastics, but
+  # let's just disable the power button handling.
+  services.logind.settings.Login.HandlePowerKey = "ignore";
 
   hardware.graphics.enable = true;
 }
