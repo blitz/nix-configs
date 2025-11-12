@@ -2,19 +2,14 @@
 
   nix = {
     settings.trusted-public-keys = [
-      "cyberus-1:0jjMD2b+guloGW27ZToxDQApCoWj+4ONW9v8VH/Bv0Q="
-      "binary-cache.vpn.cyberus-technology.de:qhg25lVqyCT4sDOqxY6GJx8NF3F86eAJFCQjZK/db7Y="
+      "ctrl-os:baPzGxj33zp/P+GAIJXsr8ss9Law+qEEFViX1+flbv8="
     ];
 
     settings.substituters = [
-      "http://binary-cache-v2.vpn.cyberus-technology.de"
+      "https://cache.ctrl-os.com/"
     ];
 
-    extraOptions = ''
-      extra-substituters = http://binary-cache-v2.vpn.cyberus-technology.de
-   '';
-
-    distributedBuilds = true;
+    # distributedBuilds = true;
 
     # Not really useful anymore.
     #
@@ -49,20 +44,20 @@
     "aarch64-linux"
   ];
 
-  programs.ssh = {
-    extraConfig = ''
-      Host remote-builder.vpn.cyberus-technology.de
-        PubkeyAcceptedKeyTypes ssh-ed25519
-        IdentityFile ~/.ssh/id_ed25519
-    '';
+  # programs.ssh = {
+  #   extraConfig = ''
+  #     Host remote-builder.vpn.cyberus-technology.de
+  #       PubkeyAcceptedKeyTypes ssh-ed25519
+  #       IdentityFile ~/.ssh/id_ed25519
+  #   '';
 
-    knownHosts = {
-      nixbuild = {
-        hostNames = [ "remote-builder.vpn.cyberus-technology.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwdIPCDHFhao84ZoHgphp+hzYH9ot+L2gSDFD8HrMyw";
-      };
-    };
-  };
+  #   knownHosts = {
+  #     nixbuild = {
+  #       hostNames = [ "remote-builder.vpn.cyberus-technology.de" ];
+  #       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwdIPCDHFhao84ZoHgphp+hzYH9ot+L2gSDFD8HrMyw";
+  #     };
+  #   };
+  # };
 
   programs.evolution = {
     enable = true;
