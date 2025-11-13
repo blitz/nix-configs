@@ -35,7 +35,8 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # Pulled in by element?
+  # Can go after this PR hits unstable:
+  # https://github.com/NixOS/nixpkgs/pull/460637
   nixpkgs.config.permittedInsecurePackages = [
     "jitsi-meet-1.0.8792"
   ];
