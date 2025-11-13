@@ -17,13 +17,13 @@
 
       # Does this have performance impact?
       auto-optimise-store = true;
+
+      experimental-features = [ "nix-command" "flakes" ];
     };
 
     daemonCPUSchedPolicy = "idle";
 
     extraOptions = ''
-      experimental-features = nix-command flakes
-
       # See https://jackson.dev/post/nix-reasonable-defaults/
       connect-timeout = 5
       log-lines = 25

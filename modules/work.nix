@@ -1,14 +1,12 @@
 { inputs, config, pkgs, lib, ... }: {
 
+  imports = [
+    inputs.ctrl-os-modules.nixosModules.developer
+  ];
+
+  ctrl-os.developer.enable = true;
+
   nix = {
-    settings.trusted-public-keys = [
-      "ctrl-os:baPzGxj33zp/P+GAIJXsr8ss9Law+qEEFViX1+flbv8="
-    ];
-
-    settings.substituters = [
-      "https://cache.ctrl-os.com/"
-    ];
-
     # distributedBuilds = true;
 
     # Not really useful anymore.

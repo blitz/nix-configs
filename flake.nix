@@ -5,6 +5,8 @@
     nixpkgs.url = "https://channels.nixos.org/nixos-25.05/nixexprs.tar.xz";
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
+    ctrl-os-modules.url = "github:cyberus-ctrl-os/ctrl-os-modules";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
@@ -58,10 +60,6 @@
       url = "github:tiiuae/sbomnix";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    authentik = {
-      url = "github:nix-community/authentik-nix";
     };
   };
 
