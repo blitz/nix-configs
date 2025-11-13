@@ -35,6 +35,12 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  # Pulled in by element?
+  nixpkgs.config.permittedInsecurePackages = [
+    "jitsi-meet-1.0.8792"
+  ];
+
+
   environment.systemPackages = with pkgs; [
     gnomeExtensions.paperwm
 
