@@ -72,9 +72,6 @@
   environment.systemPackages = with pkgs; [
     gitlab-timelogs
 
-    # SBOMs
-    inputs.sbomnix.packages.${pkgs.system}.sbomnix
-
     # For merging PDFs
     pdftk
 

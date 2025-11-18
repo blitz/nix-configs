@@ -55,12 +55,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    sbomnix = {
-      url = "github:tiiuae/sbomnix";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -173,17 +167,5 @@
         "x86_64-linux"
         "aarch64-linux"
       ];
-
-      perSystem = { config, pkgs, system, lib, ... }: {
-
-        # Make it possible to generate an SBOM for all NixOS configurations.
-        #
-        # packages = lib.attrsets.concatMapAttrs (k: v: lib.optionalAttrs (v.pkgs.system == system) {
-        #   # sbomnix needs to rebuild the derivation to generate a runtime SBOM and thus can't run here.
-        #   "make-sbom-${k}" = pkgs.writeShellScriptBin "sbom-${k}" ''
-        #     ${lib.getExe' inputs.sbomnix.packages.${system}.sbomnix "sbomnix"} ${v.config.system.build.toplevel.outPath} "$@"
-        #   '';
-        # }) self.nixosConfigurations;
-      };
     });
 }
