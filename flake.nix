@@ -37,8 +37,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
+     };
 
     kernelDev = {
       url = "github:blitz/kernel-dev";
