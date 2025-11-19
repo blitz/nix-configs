@@ -35,11 +35,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1763025893,
-        "narHash": "sha256-AANGwJVnFOHOxR1xZP7o3WebnAonqrA/eP1xMIrT65U=",
+        "lastModified": 1763564709,
+        "narHash": "sha256-5sLGH0iEk/qcp+lHbeMfhB0zG8EJldGXRr3d9L7HLGg=",
         "owner": "cyberus-ctrl-os",
         "repo": "ctrl-os-modules",
-        "rev": "669890666130a0dd0a1a24d8c6fac1a89a15f048",
+        "rev": "9c6d2cda1c5ac0dcd9a70e907e0c82b3bd6985e0",
         "type": "github"
       },
       "original": {
