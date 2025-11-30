@@ -2,8 +2,7 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-25.05/nixexprs.tar.xz";
-    nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
     ctrl-os-modules.url = "github:cyberus-ctrl-os/ctrl-os-modules";
 
@@ -11,7 +10,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hercules-ci = {
@@ -106,7 +105,6 @@
           {
             avalon = nixosSystem {
               system = "x86_64-linux";
-              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 ./host/avalon/configuration.nix
@@ -116,7 +114,6 @@
 
             first-temple = nixosSystem {
               system = "x86_64-linux";
-              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 ./host/first-temple/configuration.nix
@@ -142,7 +139,6 @@
 
             canaan = nixosSystem {
               system = "x86_64-linux";
-              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 inputs.disko.nixosModules.disko
@@ -152,7 +148,6 @@
 
             ms-a2 = nixosSystem {
               system = "x86_64-linux";
-              nixpkgs = inputs.nixpkgs-unstable;
 
               modules = [
                 inputs.disko.nixosModules.disko
