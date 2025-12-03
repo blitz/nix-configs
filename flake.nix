@@ -34,7 +34,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nikstur/lanzaboote/auto-generate-enroll";
       inputs.nixpkgs.follows = "nixpkgs";
      };
 

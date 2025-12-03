@@ -2,7 +2,7 @@
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
-  
+
   environment.systemPackages = [
     pkgs.sbctl
   ];
@@ -12,6 +12,17 @@
 
     configurationLimit = 10;
     pkiBundle = lib.mkDefault "/etc/secureboot";
+
+    allowUnsigned = true;
+
+    autoGenerateKeys.enable = true;
+    autoEnrollKeys = {
+      enable = true;
+
+      includeMicrosoftKeys = true;
+    };
+
+    settings.secure-boot-enroll = "force";
   };
 
   boot.kernelPatches = [
@@ -27,18 +38,20 @@
       # Kernel lockdown is currently disabled because it prevents suspend-to-ram?
       # [268876.864150] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
       #
-      # SECURITY_LOCKDOWN_LSM y
-      # SECURITY_LOCKDOWN_LSM_EARLY y
-      # LOCK_DOWN_KERNEL_FORCE_INTEGRITY y
 
       # Disabled: Incompatible with bcachefs module
-      # extraConfig = ''
-      #   MODULE_SIG y
-      #   MODULE_SIG_FORCE y
-      #   MODULE_SIG_ALL y
+      extraConfig = ''
+        MODULE_SIG y
+        MODULE_SIG_FORCE y
+        MODULE_SIG_ALL y
 
-      #   TRIM_UNUSED_KSYMS y
-      # '';
+        TRIM_UNUSED_KSYMS y
+
+        SECURITY_LOCKDOWN_LSM y
+        SECURITY_LOCKDOWN_LSM_EARLY y
+        LOCK_DOWN_KERNEL_FORCE_INTEGRITY y
+      '';
     }
   ];
+
 }

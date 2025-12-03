@@ -8,6 +8,7 @@
   imports =
     [
       ../../modules/common.nix
+      ../../modules/secure-boot.nix
       #../../modules/awesome-kernel.nix
       ../../modules/gnome3.nix
       ../../modules/amdgpu.nix
@@ -73,7 +74,8 @@
 
   services.power-profiles-daemon.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
+  # We use lanzaboote.
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.openssh.enable = true;
