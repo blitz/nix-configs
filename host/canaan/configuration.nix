@@ -9,7 +9,7 @@
       ../../modules/coding.nix
       ../../modules/tailscale-client.nix
       ../../modules/home-manager.nix
-      ../../modules/secure-boot.nix
+      # ../../modules/secure-boot.nix
       ../../modules/quiet-boot.nix
     ];
 
@@ -25,8 +25,7 @@
     "nvme" "ehci_pci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "ahci" "uas" "sdhci_pci"
   ];
 
-  # Bootloader. We use lanzaboote.
-  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.lanzaboote.pkiBundle = "/var/lib/sbctl";
