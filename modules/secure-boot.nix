@@ -16,13 +16,7 @@
     allowUnsigned = true;
 
     autoGenerateKeys.enable = true;
-    autoEnrollKeys = {
-      enable = true;
-
-      includeMicrosoftKeys = true;
-    };
-
-    settings.secure-boot-enroll = "force";
+    autoEnrollKeys.enable = true;
   };
 
   boot.kernelPatches = [
