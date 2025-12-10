@@ -28,9 +28,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.lanzaboote.pkiBundle = "/var/lib/sbctl";
-
-
   services.thinkfan = {
     enable = true;
     levels = [
