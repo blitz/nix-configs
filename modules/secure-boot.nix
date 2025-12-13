@@ -32,8 +32,6 @@
       # Kernel lockdown is currently disabled because it prevents suspend-to-ram?
       # [268876.864150] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
       #
-
-      # Disabled: Incompatible with bcachefs module
       extraConfig = ''
         MODULE_SIG y
         MODULE_SIG_FORCE y
