@@ -48,7 +48,7 @@ in {
     nil
 
     # Misc
-    global
+    # global
     # gdb
     # trace-cmd
     # kernelshark
