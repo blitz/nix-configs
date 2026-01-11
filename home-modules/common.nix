@@ -127,6 +127,9 @@
   programs.zed-editor = {
     enable = true;
 
+    # https://github.com/NixOS/nixpkgs/pull/478690
+    package = pkgs.zed-editor.overrideAttrs (old: { doCheck = false; });
+
     userSettings = {
       lsp = {
         "rust-analyzer" = {
