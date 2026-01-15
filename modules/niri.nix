@@ -17,5 +17,13 @@
     # To get a useful tray bar.
     waybar
     pavucontrol
+
+    # TODO Migrate packages from the gnome3 module.
+    # papers
+    # ...
   ];
+
+  xdg.mime.defaultApplications = {
+    "application/pdf" = "org.gnome.Papers.desktop";
+  };
 }
