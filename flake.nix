@@ -79,6 +79,13 @@
         enable = true;
         createPullRequest = false;
 
+        nix.package = { pkgs, ... }: pkgs.lixPkgs.lix;
+
+        baseMerge = {
+          enable = true;
+          method = "reset";
+        };
+
         when = {
           hour = 0;
         };
