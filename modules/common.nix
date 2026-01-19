@@ -98,7 +98,7 @@
     enable = true;
 
     # This leads to spurious failures?
-    dnssec = "false";
+    # settings.Resolve.DNSSEC = false;
   };
 
   # Shell
