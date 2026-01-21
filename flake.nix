@@ -79,7 +79,7 @@
         enable = true;
         createPullRequest = false;
 
-        nix.package = { pkgs, ... }: pkgs.lixPkgs.lix;
+        nix.package = { pkgs, ... }: pkgs.lixPackageSets.stable.lix;
 
         baseMerge = {
           enable = true;
