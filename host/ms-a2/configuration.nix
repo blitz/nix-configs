@@ -23,7 +23,9 @@
       #../../modules/testing-keycloak.nix
       #../../modules/testing-authentik.nix
       ../../modules/lix.nix
-      ../../modules/niri.nix      
+      ../../modules/niri.nix
+
+      # ../../modules/vms.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-amd
