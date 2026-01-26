@@ -37,20 +37,13 @@
   # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
 
-  networking.networkmanager = {
-    enable = true;
-    unmanaged = [
-      # "enp4s0"
-    ];
-  };
-
   systemd.network.enable = true;
   systemd.network.wait-online.enable = false;
 
   networking = {
     useNetworkd = true;
     useDHCP = false;
-    # interfaces.enp4s0.useDHCP = true;
+    interfaces.enp3s0.useDHCP = true;
   };
 
 
