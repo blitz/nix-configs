@@ -67,7 +67,7 @@
     #signal-desktop
     #drawio
 
-    pika-backup
+    #pika-backup
     gnome-tweaks
     gnome-boxes
     virt-manager
