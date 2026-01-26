@@ -31,14 +31,14 @@ in {
     ];
 
     virtualMachines = {
-      demo3 = {
+      demo2 = {
         # The image to boot (must be a RAW image for now).
         image = imageRaw; # We use the previously prepared disk image.
         imageSize = 4096; # Specify the disk size (MiB) of the virtual machine image here.
 
         # The characteristics of the VM.
-        cores = 2; # Specify the amount of CPU cores the VM should have.
-        memorySize = 2048; # MiB
+        cores = 4; # Specify the amount of CPU cores the VM should have.
+        memorySize = 8192; # MiB
         network = "default";
 
         # Start the VM at boot time.
@@ -46,17 +46,28 @@ in {
 
         cloudInitUserConfigFile = yaml.generate "cloud-init-user-config.yaml" {
 
-          users = [
-            {
-              name = "julian";
-              ssh_import_id = [
-                "gh:blitz"
-              ];
-            }
-          ];
+          system_info.default_user.name = "nixos"; # The user name inside the virtual machine.
+          password = "nixos"; # The initial password of the nixos user.
 
-          ssh_pwauth = true;
-          chpasswd.expire = false;
+          # For demo and testing purposes only!
+          chpasswd.expire = false; # Disable password expiry.
+          ssh_pwauth = true; # Enable password authentication.
+
+          # users = [
+          #   {
+          #     name = "julian";
+          #     groups = [ "sudo" ];
+          #     shell = "/bin/bash";
+          #     sudo = "ALL=(ALL) NOPASSWD:ALL";
+          #   }
+          # ];
+
+          # chpasswd = {
+          #   list = [
+          #     "julian:julian"
+          #   ];
+          #   expire = false; 
+          # };
         };
 
         cloudInitNetworkConfigFile = yaml.generate "cloud-init-network-config.yaml" {
