@@ -26,12 +26,17 @@ in {
   ctrl-os.vms = {
     gatewayInterface = "enp3s0";
 
-    networks.default.allowedTCPPorts = [
-      "2222:192.168.20.3:22"
-    ];
+    networks.default = {
+      externalIP = "192.168.10.2";
+      gatewayIP = "192.168.20.1";
+
+      allowedTCPPorts = [
+        "2222:192.168.20.3:22"
+      ];
+    };
 
     virtualMachines = {
-      demo2 = {
+      demo = {
         # The image to boot (must be a RAW image for now).
         image = imageRaw; # We use the previously prepared disk image.
         imageSize = 4096; # Specify the disk size (MiB) of the virtual machine image here.
@@ -66,7 +71,7 @@ in {
           #   list = [
           #     "julian:julian"
           #   ];
-          #   expire = false; 
+          #   expire = false;
           # };
         };
 
