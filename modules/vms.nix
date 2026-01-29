@@ -5,14 +5,18 @@ let
     url = "https://cloud-images.ubuntu.com/noble/20260108/noble-server-cloudimg-amd64.img";
     sha256 = "sha256-AHhsCTan3ZGmsHlBymC7VmUpdeDnL52s9zyIetpCCWY=";
   };
-  imageRaw = pkgs.runCommand "ubuntu-image.raw" {
-    nativeBuildInputs = [ pkgs.qemu-utils ];
-  } ''
+
+  imageRaw = pkgs.runCommand "ubuntu-image.raw"
+    {
+      nativeBuildInputs = [ pkgs.qemu-utils ];
+    } ''
     qemu-img convert -O raw ${image} $out
   '';
 
   yaml = pkgs.formats.yaml { };
-in {
+in
+{
+
   imports = [
     inputs.ctrl-os-modules.nixosModules.vms
   ];
@@ -42,7 +46,7 @@ in {
         imageSize = 4096; # Specify the disk size (MiB) of the virtual machine image here.
 
         # The characteristics of the VM.
-        cores = 4; # Specify the amount of CPU cores the VM should have.
+        cores = 8; # Specify the amount of CPU cores the VM should have.
         memorySize = 8192; # MiB
         network = "default";
 
@@ -57,22 +61,6 @@ in {
           # For demo and testing purposes only!
           chpasswd.expire = false; # Disable password expiry.
           ssh_pwauth = true; # Enable password authentication.
-
-          # users = [
-          #   {
-          #     name = "julian";
-          #     groups = [ "sudo" ];
-          #     shell = "/bin/bash";
-          #     sudo = "ALL=(ALL) NOPASSWD:ALL";
-          #   }
-          # ];
-
-          # chpasswd = {
-          #   list = [
-          #     "julian:julian"
-          #   ];
-          #   expire = false;
-          # };
         };
 
         cloudInitNetworkConfigFile = yaml.generate "cloud-init-network-config.yaml" {

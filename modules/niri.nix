@@ -26,4 +26,7 @@
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.gnome.Papers.desktop";
   };
+
+  # For things like gparted on niri.
+  security.soteria.enable = true;
 }

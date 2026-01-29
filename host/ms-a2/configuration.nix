@@ -2,14 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   imports =
     [
       ../../modules/common.nix
       ../../modules/secure-boot.nix
-      #../../modules/awesome-kernel.nix
       ../../modules/gnome3.nix
       ../../modules/amdgpu.nix
       ../../modules/cachix.nix
@@ -25,7 +24,7 @@
       ../../modules/lix.nix
       ../../modules/niri.nix
 
-      ../../modules/vms.nix
+      # ../../modules/vms.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-amd
