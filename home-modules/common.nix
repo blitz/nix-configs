@@ -20,8 +20,6 @@
     unzip
     jq
     fzf
-    ripgrep
-    mergiraf
     nix-index
   ];
 

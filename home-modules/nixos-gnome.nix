@@ -9,11 +9,11 @@
   programs.git.settings.user.email = "julian.stecklina@cyberus-technology.de";
 
   # Enable experimental fractional scaling support in Gnome 45.
-  dconf.settings = {
-    "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
-    };
-  };
+  # dconf.settings = {
+  #   "org/gnome/mutter" = {
+  #     experimental-features = [ "scale-monitor-framebuffer" ];
+  #   };
+  # };
 
   # Autostart hack from:
   # https://github.com/nix-community/home-manager/issues/3447#issuecomment-2213029759
