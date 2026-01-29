@@ -144,15 +144,6 @@
               ];
             };
 
-            canaan = nixosSystem {
-              system = "x86_64-linux";
-
-              modules = [
-                inputs.disko.nixosModules.disko
-                ./host/canaan/configuration.nix
-              ];
-            };
-
             ms-a2 = nixosSystem {
               system = "x86_64-linux";
 
