@@ -4,12 +4,7 @@
     ./common.nix
   ];
 
-  programs.ssh.matchBlocks."artemis" = {
-    hostname = "artemis";
-    user = "jstecklina";
-  };
-
-  programs.emacs.package = pkgs.emacs30-pgtk;
+  programs.emacs.package = pkgs.emacs-pgtk;
 
   programs.git.settings.user.email = "julian.stecklina@cyberus-technology.de";
 
