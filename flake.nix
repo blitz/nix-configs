@@ -161,6 +161,14 @@
                 ./host/ms-a2/configuration.nix
               ];
             };
+
+            jetson = nixosSystem {
+              system = "aarch64-linux";
+
+              modules = [
+                ./host/jetson/configuration.nix
+              ];
+            };
           };
       };
 

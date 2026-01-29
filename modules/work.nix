@@ -1,10 +1,10 @@
 { inputs, config, pkgs, lib, ... }: {
 
   imports = [
-    inputs.ctrl-os-modules.nixosModules.developer
+    inputs.ctrl-os-modules.nixosModules.profiles
   ];
 
-  ctrl-os.developer.enable = true;
+  ctrl-os.profiles.developer.enable = true;
 
   nix = {
     # distributedBuilds = true;
