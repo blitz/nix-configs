@@ -19,9 +19,12 @@
     ../../modules/home-manager.nix
 
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.ctrl-os-modules.nixosModules.profiles
 
     ./disko.nix
   ];
+
+  ctrl-os.profiles.developer.enable = true;
 
   systemd.network.enable = true;
   systemd.network.wait-online.enable = true;
