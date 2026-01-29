@@ -26,6 +26,17 @@
 
   ctrl-os.profiles.developer.enable = true;
 
+  users.users.nixremote = {
+    description = "Julian Stecklina";
+    isNormalUser = true;
+    extraGroups = [ "kvm" ];
+    createHome = true;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQ6YuhnQ7hdOuzwisoN636iJM/HDgyMNjQC74XyfVtq root@ms-a2"
+    ];
+  };
+
   systemd.network.enable = true;
   systemd.network.wait-online.enable = true;
 

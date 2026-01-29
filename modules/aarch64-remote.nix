@@ -3,27 +3,28 @@
 
   nix.buildMachines = [
     {
-      hostName = "aarch64-01";
+      hostName = "jetson";
       protocol = "ssh-ng";
       systems = [ "aarch64-linux" ];
-      maxJobs = 40;
+
+      maxJobs = 1;              # Not a lot of RAM
       speedFactor = 2;
+
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     }
   ];
 
   programs.ssh.extraConfig = ''
-    Host aarch64-01
-      HostName fd00:5ec:0:8008::3
-      User nixbuild
+    Host jetson
+      HostName jetson.lan
+      User nixremote
       IdentitiesOnly yes
       PubkeyAcceptedKeyTypes ssh-ed25519
       IdentityFile ~/.ssh/id_ed25519
   '';
 
   programs.ssh.knownHosts = {
-    # aarch64-01
-    "fd00:5ec:0:8008::3 ssh-ed25519".publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIH9NXi+pEIjOcsgh6uIcLxyGAP1pnp87E0T8dBj8wahG";
-    "fd00:5ec:0:8008::3 ssh-rsa".publicKey = "AAAAB3NzaC1yc2EAAAADAQABAAACAQDGRUrwjLpjj7fl8npbpUzQiDyWxb2J4Hh788jKMde6Jjsnu8uttN3Uewsu7Dp72gxhLdsrsVrgDLkZ+Omcyr0bG5gvVEw0NSWL4WLiWzacwlF3hMKTnHsFr0resmcGAM4HvLKdyYKO+gC35+BVW+P7XRDWvpuVmhLEmMLcLWGUf0DAYXmxKuNAU7CjGFlRboidXW+kn1BYoo1Erz2aduRpR/HOcs21oL8+vZMFH/Dx7B8Rnk4gbjm0NutDiyrQrJywT0y+cgacJDSn7eZ+q0gJoToDmwMINLuQxHmza4YqSVyaWtqqiVJyQbq88UCUwo25awy2JDdyhHS2LBMwLYlbxeCDuwpFOK7AvYavK13xoOjPqFNBXACv4byI1WlLcPWYQe5PcQKersDqJ7uD8NRhOfExXk82dGJU/SkV7eznK5K9axHBfgvt255WGdqPCjIc2Ii00SmlqlkEuAz6QJw5dOkeZdEXdissN9jH0r41U6FETrfMipnw+bu5uM30zrfRSnVvHcJvuOWJl+utUctowrqjI5b7LztCgqQgLEWaTb0pf4UZ5XLmC54FAqGVWWPNzlY68KRpAUrvrdtIwpFaaIYf+yu2JeDpSxUOh8XqoZxcMQGVpLElCdpReQktNDxo9JusUYmuTD2Prl3Undf07EkPz7R6bor1FYOq2ojodQ==";
+    "jetson.lan ssh-ed25519".publicKey = "AAAAC3NzaC1lZDI1NTE5AAAAIE+w3l9K6bMCh0zAelWQRF3VGaCwPzV5btHgt90vxMr6";
+    "jetson.lan ssh-rsa".publicKey = "AAAAB3NzaC1yc2EAAAADAQABAAACAQDSjRbI8nJQrqSsoIKl22XEkTxw+v5tfS/Rkq0Xxu1rZfXHqTRYfpOClAPDI2O1pG9noV+ByjGRbSsAzSGH0NZk9YfvefRxFZJXyQryiKcFXf+0XQOamN03SaRcY9zcEuBBx7oDj/Q2CvEXeVjxbFEfdZo6hB0C0ZXVRMZtrk6YMjJvfr/N1Kq0uKe8cA5c/alszkA2YBH+r2O7/PTzi2qduiIfj4mD31qzxKwELGu2n1seX8DP09/6TKbhgBNiJnd/fzFeh7X7RoNfYR/lt6Tw+it2T1BDEUzelrner4uD46Zfp9QxHrj8nopbvfzvk6GOnRAplJ08wLnQP3zHE+l2s9uppxiTgY20sIBXqe+uMuNf93dFKFjuMHlCMRoz4FY/BVVplCKXLrshAEOvA8/2J9r6d/yNiR0aF0ltZD/MFkzSwsiCvdYnnjJ2u3YvKlHgAyW0OFTVu2FWdC1EDDrmqDGQUIZlm9ujHVrWZGyUGTwWDfa2ZQ7UJVFncxHTk5okkqw3NwqhcI51dUhMlKiRseFp/wqT05nAVNqTxgoKVs3ccGNV4Vjv/DLhOK9QhGmnW1DbHol98fErQGdqenvlxEcy88pmJgKzkhZMzOf37KgmJf8uS0Zci94Eb8dOszp0ogLsaCPXpAvNKJD3YgN/w1Fhulb7smfumvVbsbleQQ==";
   };
 }
