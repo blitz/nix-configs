@@ -5,7 +5,7 @@
 
   disko.devices = {
     disk = {
-      ms-a2 = {
+      jetson = {
         device = "/dev/nvme0n1";
         type = "disk";
 
