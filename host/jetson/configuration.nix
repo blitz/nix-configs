@@ -26,6 +26,11 @@
 
   ctrl-os.profiles.developer.enable = true;
 
+  nix.settings = {
+    cores = 4;
+    max-jobs = 2;
+  };
+
   users.users.nixremote = {
     description = "Julian Stecklina";
     isNormalUser = true;
