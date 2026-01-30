@@ -34,6 +34,7 @@
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQ6YuhnQ7hdOuzwisoN636iJM/HDgyMNjQC74XyfVtq root@ms-a2"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIiTyh7jJD9x8N64kgUGDgeo3F96i5Av3tHvwePHq5 julian@babylon"
     ];
   };
 
