@@ -37,11 +37,11 @@
         "preCommitHooksNix": "preCommitHooksNix"
       },
       "locked": {
-        "lastModified": 1769482339,
-        "narHash": "sha256-7opbf6fa6mvya21RZT7cmZlxBUp5zIBQaxDj7I3WaFY=",
+        "lastModified": 1769681168,
+        "narHash": "sha256-bszIB68X+kmP+M4sTN8TdM/52mwR2lPaSgQPuXoSaYg=",
         "owner": "cyberus-ctrl-os",
         "repo": "ctrl-os-modules",
-        "rev": "3e6133f953b42f09de57d9963fe0ba2b20c482ac",
+        "rev": "b04445c9cb4486c65ff5bc86eb8fc1525a535c70",
         "type": "github"
       },
       "original": {
@@ -407,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769638001,
-        "narHash": "sha256-hGwdJ/+oo+IRo2TiWV/V8BWWptQihcdFV/olTONaHqg=",
+        "lastModified": 1769723138,
+        "narHash": "sha256-kgkwjs33YfJasADIrHjHcTIDs3wNX0xzJhnUP+oldEw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bd9f031efc634be4b80c5090b9171cc3a9f8e49c",
+        "rev": "175532b6275b34598a0ceb1aef4b9b4006dd4073",
         "type": "github"
       },
       "original": {
