@@ -1,18 +1,4 @@
-{ inputs, pkgs, modulesPath, ... }: {
-  # TODO Will be able to consume this from CTRL-OS modules:
-  # {{
-  nixpkgs.hostPlatform = "aarch64-linux";
-
-  boot.initrd.availableKernelModules = [
-    # Enable PCIe support at boot time
-    "phy_tegra194_p2u"
-    "pcie_tegra194"
-    # Enable USB support for USB Boot
-    "xhci-tegra"
-    "phy-tegra-xusb"
-  ];
-  # }}
-
+{ inputs, pkgs, lib, ... }: {
   imports = [
     ../../modules/common.nix
     ../../modules/cachix.nix
@@ -20,11 +6,18 @@
 
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.ctrl-os-modules.nixosModules.profiles
+    inputs.ctrl-os-modules.nixosModules.hardware
 
     ./disko.nix
   ];
 
+  # The OOT modules want an LTS kernel.
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
+
   ctrl-os.profiles.developer.enable = true;
+  ctrl-os.hardware = {
+    device = "nvidia-jetson-orin-nano-super";
+  };
 
   nix.settings = {
     cores = 4;
