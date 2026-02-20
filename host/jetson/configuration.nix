@@ -11,6 +11,36 @@
     ./disko.nix
   ];
 
+  # Takes too long...
+  documentation.man.generateCaches = false;
+
+  # Booting waits for /dev/tpm0 and /dev/tpmrm0. But it doesn't seem to work?
+  systemd.tpm2.enable = false;
+
+  ctrl-os.hardware.devices.nvidia-jetson-orin-nano-super.enableOotModules = true;
+
+  # Needs https://github.com/cyberus-ctrl-os/ctrl-os-modules/pull/23
+  # ctrl-os.hardware.devices.nvidia-jetson-orin-nano-super.enableHardwareAcceleration = false;
+
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = false;
+  };
+
+  services.desktopManager.gnome.enable = true;
+
+  boot.kernelPatches = [
+    {
+      name = "no-simpledrm";
+      patch = null;
+
+      structuredExtraConfig = with lib.kernel; {
+        # Avoid horrible crashes with the OOT modules for now.
+        DRM_SIMPLEDRM = lib.mkForce no;
+      };
+    }
+  ];
+
   # The OOT modules want an LTS kernel.
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
 
@@ -23,6 +53,8 @@
     cores = 4;
     max-jobs = 2;
   };
+
+  nix.settings.trusted-users = [ "nixremote" ];
 
   users.users.nixremote = {
     description = "Julian Stecklina";
