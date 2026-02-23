@@ -21,6 +21,7 @@
     jq
     fzf
     nix-index
+    ruff
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -145,6 +146,12 @@
         };
 
         "nil" = {
+          binary = {
+            path = "/run/current-system/sw/bin/nil";
+          };
+        };
+
+        "ruff" = {
           binary = {
             path = "/run/current-system/sw/bin/nil";
           };
