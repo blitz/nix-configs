@@ -14,32 +14,34 @@
   # Takes too long...
   documentation.man.generateCaches = false;
 
-  # Booting waits for /dev/tpm0 and /dev/tpmrm0. But it doesn't seem to work?
+  # Booting waits for /dev/tpm0 and /dev/tpmrm0 otherwise and we don't have a TPM2...
+  boot.initrd.systemd.tpm2.enable = false;
   systemd.tpm2.enable = false;
 
   ctrl-os.hardware.devices.nvidia-jetson-orin-nano-super.enableOotModules = true;
 
   # Needs https://github.com/cyberus-ctrl-os/ctrl-os-modules/pull/23
-  # ctrl-os.hardware.devices.nvidia-jetson-orin-nano-super.enableHardwareAcceleration = false;
+  ctrl-os.hardware.devices.nvidia-jetson-orin-nano-super.enableHardwareAcceleration = true;
 
   services.displayManager.gdm = {
-    enable = true;
+    enable = false;
     wayland = false;
   };
 
   services.desktopManager.gnome.enable = true;
 
-  boot.kernelPatches = [
-    {
-      name = "no-simpledrm";
-      patch = null;
+  # boot.kernelPatches = [
+  #   {
+  #     name = "no-simpledrm";
+  #     patch = null;
 
-      structuredExtraConfig = with lib.kernel; {
-        # Avoid horrible crashes with the OOT modules for now.
-        DRM_SIMPLEDRM = lib.mkForce no;
-      };
-    }
-  ];
+  #     structuredExtraConfig = with lib.kernel; {
+  #       # Avoid horrible crashes with the OOT modules for now.
+  #       DRM_SIMPLEDRM = lib.mkForce no;
+  #       FB_SIMPLE = lib.mkForce yes;
+  #     };
+  #   }
+  # ];
 
   # The OOT modules want an LTS kernel.
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
