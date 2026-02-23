@@ -2,7 +2,7 @@
   imports = [
     ../../modules/common.nix
     ../../modules/cachix.nix
-    ../../modules/home-manager.nix
+    # ../../modules/home-manager.nix
 
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.ctrl-os-modules.nixosModules.profiles
