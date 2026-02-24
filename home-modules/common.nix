@@ -22,6 +22,7 @@
     fzf
     nix-index
     ruff
+    package-version-server
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -126,7 +127,14 @@
   programs.zed-editor = {
     enable = true;
 
+    extensions = [
+      "nix"
+      "toml"
+    ];
+
     userSettings = {
+      format_on_save = "off";
+
       lsp = {
         "rust-analyzer" = {
           binary = {
@@ -154,6 +162,12 @@
         "ruff" = {
           binary = {
             path = "/run/current-system/sw/bin/nil";
+          };
+        };
+
+        "package-version-server" = {
+          binary = {
+            path = "/run/current-system/sw/bin/package-version-server";
           };
         };
       };
