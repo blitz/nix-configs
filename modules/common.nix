@@ -47,7 +47,6 @@
   security.pam.services.systemd-run0 = {};
 
   # Living on the edge.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "mitigations=off" ];
   boot.kernelPatches = [
     # Nothing here at the moment.
