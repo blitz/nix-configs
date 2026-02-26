@@ -26,7 +26,8 @@
   services.desktopManager.gnome.enable = true;
 
   # The OOT modules want an LTS kernel.
-  #boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.consoleLogLevel = 7;
 
   ctrl-os.profiles.developer.enable = true;
   ctrl-os.hardware = {
