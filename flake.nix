@@ -4,8 +4,7 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    #ctrl-os-modules.url = "github:cyberus-ctrl-os/ctrl-os-modules";
-    ctrl-os-modules.url = "github:samueldr-at-cyberus/ctrl-os-modules/feature/hw/jetson-orin-nano-super-3d-accel";
+    ctrl-os-modules.url = "github:cyberus-ctrl-os/ctrl-os-modules";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

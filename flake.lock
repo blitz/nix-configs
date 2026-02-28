@@ -37,16 +37,15 @@
         "preCommitHooksNix": "preCommitHooksNix"
       },
       "locked": {
-        "lastModified": 1772072396,
-        "narHash": "sha256-yNPRNlZm4UrtuxFWGPqT0CmcfFPkhM+mgzW6auNywaw=",
-        "owner": "samueldr-at-cyberus",
+        "lastModified": 1772198951,
+        "narHash": "sha256-Zia7d/oP/4ZQWRShyz2epdp0ObLlqxEkBPMSDw7iXGM=",
+        "owner": "cyberus-ctrl-os",
         "repo": "ctrl-os-modules",
-        "rev": "1e011a5bf3d01066419fc19a41a1d031c72e7329",
+        "rev": "1988b4662a85be1038220fbc47260c856d92e9ee",
         "type": "github"
       },
       "original": {
-        "owner": "samueldr-at-cyberus",
-        "ref": "feature/hw/jetson-orin-nano-super-3d-accel",
+        "owner": "cyberus-ctrl-os",
         "repo": "ctrl-os-modules",
         "type": "github"
       }
