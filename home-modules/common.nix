@@ -21,8 +21,6 @@
     jq
     fzf
     nix-index
-    ruff
-    package-version-server
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -133,7 +131,7 @@
     ];
 
     userSettings = {
-      format_on_save = "off";
+      #format_on_save = "off";
 
       lsp = {
         "rust-analyzer" = {
@@ -149,25 +147,25 @@
 
         "nixd" = {
           binary = {
-            path = "/run/current-system/sw/bin/nixd";
+            path = lib.getExe pkgs.nixd;
           };
         };
 
         "nil" = {
           binary = {
-            path = "/run/current-system/sw/bin/nil";
+            path = lib.getExe pkgs.nil;
           };
         };
 
         "ruff" = {
           binary = {
-            path = "/run/current-system/sw/bin/nil";
+            path = lib.getExe pkgs.ruff;
           };
         };
 
         "package-version-server" = {
           binary = {
-            path = "/run/current-system/sw/bin/package-version-server";
+            path = lib.getExe pkgs.package-version-server;
           };
         };
       };
