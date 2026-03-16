@@ -4,6 +4,8 @@
   services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
+  services.flatpak.enable = true;
+
   programs = {
     appimage = {
       enable = true;
