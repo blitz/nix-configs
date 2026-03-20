@@ -69,24 +69,24 @@
     #signal-desktop
     #drawio
 
-    #pika-backup
+    pika-backup
     gnome-tweaks
-    gnome-boxes
-    virt-manager
+    # gnome-boxes
+    # virt-manager
     gparted
     papers
-    gimp
+    # gimp
 
     # Change webcam zoom: v4l2-ctl -d /dev/video2 -c zoom_absolute=150
     v4l-utils
 
     # Podcasting and Meetings
     # zoom-us
-    gnome-network-displays
+    # gnome-network-displays
 
     # Debugging
     clinfo
-    intel-gpu-tools
+    # intel-gpu-tools
     radeontop
     libva-utils
   ];
