@@ -141,8 +141,9 @@
   # Enable touchpad support.
   services.libinput.enable = true;
 
-  # Enable the Gnome3.
-  services.displayManager.gdm.enable = true;
+  # Enable Gnome.
+  #services.displayManager.gdm.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.gnome.enable = true;
   services.gvfs.enable = true;
 
