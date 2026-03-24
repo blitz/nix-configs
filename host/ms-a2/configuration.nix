@@ -23,6 +23,7 @@
       #../../modules/testing-authentik.nix
       ../../modules/lix.nix
       ../../modules/niri.nix
+      ../../modules/secrets.nix
 
       # ../../modules/vms.nix
 
