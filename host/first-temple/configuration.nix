@@ -11,7 +11,7 @@
       ../../modules/tailscale-exit-node.nix
       ../../modules/cachix.nix
       ../../modules/home-manager.nix
-      ../../modules/secrets.nix
+      ../../modules/hercules-ci-worker.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -37,15 +37,6 @@
 
   services.openssh.enable = true;
 
-  services.hercules-ci-agent = {
-    enable = true;
-    settings.concurrentTasks = 2;
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "monthly";
-  };
 
   nix.settings.system-features = [
     "kvm" "nixos-test" "big-parallel" "benchmark"

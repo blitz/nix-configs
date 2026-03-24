@@ -16,4 +16,5 @@ in
   # };
 
   "secrets/cluster-join-token.key.age".publicKeys = [ julian first-temple ];
+  "secrets/binary-caches.json.age".publicKeys = [ julian first-temple ];
 }
