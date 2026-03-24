@@ -3,7 +3,7 @@ let
   julian = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA2r6yTDSfWjVrIzRSlDFrl5cgMcKilexdnW33xPRsil";
   users = [ julian ];
 
-  first-temple = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJDyIr/FSz1cJdcoW69R+NrWzwGK/+3gJpqD1t8L2zE";
+  first-temple = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElqXx/6eB1MYsh4cVp9f4pLrwowRm4WsF7iwa6fOqOY";
   ms-a2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Ay9/64qoCYX8plt8l5Bcc1ddOyIUMG3PHybx6dWk8";
   systems = [
     first-temple
