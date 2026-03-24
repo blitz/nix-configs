@@ -4,8 +4,8 @@
     ./secrets.nix
   ];
 
-  age.secrets.hercules-ci-cluster-join-token.file = ../../secrets/cluster-join-token.key.age;
-  age.secrets.binary-caches.file = ../../secrets/binary-caches.json.age;
+  age.secrets.hercules-ci-cluster-join-token.file = ../secrets/cluster-join-token.key.age;
+  age.secrets.binary-caches.file = ../secrets/binary-caches.json.age;
 
   services.hercules-ci-agent = {
     enable = true;
