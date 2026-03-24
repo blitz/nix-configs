@@ -45,6 +45,7 @@
     git = {
       enable = true;
       package = pkgs.gitFull;
+      signing.format = null;
 
       lfs.enable = true;
 
