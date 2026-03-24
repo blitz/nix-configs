@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   boot.kernelPackages = lib.mkForce pkgs.pkgsLLVM.linuxPackages_latest;
 
   boot.kernelPatches = [

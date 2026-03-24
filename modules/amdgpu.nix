@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   hardware.amdgpu = {
@@ -7,7 +12,7 @@
   };
 
   services.kmscon.enable = true;
-  
+
   boot.kernelPatches = [
     {
       name = "amdgpu";

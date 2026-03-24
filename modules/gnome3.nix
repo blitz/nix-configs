@@ -1,7 +1,16 @@
-{ config, inputs, pkgs, lib, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   # Yubikey / GPG
-  services.udev.packages = [ pkgs.libu2f-host pkgs.yubikey-personalization ];
+  services.udev.packages = [
+    pkgs.libu2f-host
+    pkgs.yubikey-personalization
+  ];
   services.pcscd.enable = true;
 
   services.flatpak.enable = true;
@@ -43,7 +52,6 @@
     "jitsi-meet-1.0.8792"
   ];
 
-
   environment.systemPackages = with pkgs; [
     gnomeExtensions.paperwm
 
@@ -55,9 +63,9 @@
 
         "--ozone-platform-hint=wayland"
       ]
-        # # The hardware encoding seems to cause video stuttering. But hey, longer battery life!
-        # ++ (lib.optional (config.networking.hostName == "avalon")
-        #   "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
+      # # The hardware encoding seems to cause video stuttering. But hey, longer battery life!
+      # ++ (lib.optional (config.networking.hostName == "avalon")
+      #   "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder")
       ;
     })
 
@@ -120,7 +128,10 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.mfcl8690cdwcupswrapper ];
+  services.printing.drivers = [
+    pkgs.hplipWithPlugin
+    pkgs.mfcl8690cdwcupswrapper
+  ];
 
   services.pulseaudio.enable = false;
 

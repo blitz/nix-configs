@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   fqdn = "${config.networking.hostName}.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
@@ -9,8 +14,12 @@ let
     add_header Access-Control-Allow-Origin *;
     return 200 '${builtins.toJSON data}';
   '';
-in {
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+in
+{
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
@@ -67,22 +76,28 @@ in {
     enable = true;
     settings.server_name = fqdn;
     settings.registration_shared_secret = "/var/lib/matrix-shared-registration.secret";
-    
+
     # The public base URL value must match the `base_url` value set in `clientConfig` above.
     # The default value here is based on `server_name`, so if your `server_name` is different
     # from the value of `fqdn` above, you will likely run into some mismatched domain names
     # in client applications.
     settings.public_baseurl = baseUrl;
     settings.listeners = [
-      { port = 8008;
+      {
+        port = 8008;
         bind_addresses = [ "::1" ];
         type = "http";
         tls = false;
         x_forwarded = true;
-        resources = [ {
-          names = [ "client" "federation" ];
-          compress = true;
-        } ];
+        resources = [
+          {
+            names = [
+              "client"
+              "federation"
+            ];
+            compress = true;
+          }
+        ];
       }
     ];
   };

@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   networking.useNetworkd = true;
 
   systemd.network.enable = true;

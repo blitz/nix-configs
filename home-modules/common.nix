@@ -1,10 +1,11 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
 
   home.packages = with pkgs; [
     bc
     cachix
     dmidecode
-    dool                        # dstat is EOL
+    dool # dstat is EOL
     file
     gnupg
     libarchive
@@ -76,8 +77,9 @@
       enable = true;
       extraConfig = builtins.readFile ../dotfiles/emacs/js-config.el;
 
-      extraPackages = (epkgs: (with epkgs.melpaPackages;
-        [
+      extraPackages = (
+        epkgs:
+        (with epkgs.melpaPackages; [
           clang-format
           cmake-mode
           direnv
@@ -102,25 +104,25 @@
           flycheck-pos-tip
           fzf
           rg
-        ]));
+        ])
+      );
     };
   };
 
-  home.file =
-    {
-      ".config/mpv/mpv.conf".text = ''
-        hwdec=auto
-      '';
+  home.file = {
+    ".config/mpv/mpv.conf".text = ''
+      hwdec=auto
+    '';
 
-      ".config/rustfmt/rustfmt.toml".text = ''
-        edition = "2021"
-      '';
+    ".config/rustfmt/rustfmt.toml".text = ''
+      edition = "2021"
+    '';
 
-      # For gnome-boxes
-      ".config/libvirt/qemu.conf".text = ''
-        nvram = [ "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
-      '';
-    };
+    # For gnome-boxes
+    ".config/libvirt/qemu.conf".text = ''
+      nvram = [ "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
+    '';
+  };
 
   programs.zed-editor = {
     enable = true;

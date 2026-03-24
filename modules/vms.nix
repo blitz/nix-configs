@@ -6,12 +6,14 @@ let
     sha256 = "sha256-AHhsCTan3ZGmsHlBymC7VmUpdeDnL52s9zyIetpCCWY=";
   };
 
-  imageRaw = pkgs.runCommand "ubuntu-image.raw"
-    {
-      nativeBuildInputs = [ pkgs.qemu-utils ];
-    } ''
-    qemu-img convert -O raw ${image} $out
-  '';
+  imageRaw =
+    pkgs.runCommand "ubuntu-image.raw"
+      {
+        nativeBuildInputs = [ pkgs.qemu-utils ];
+      }
+      ''
+        qemu-img convert -O raw ${image} $out
+      '';
 
   yaml = pkgs.formats.yaml { };
 in

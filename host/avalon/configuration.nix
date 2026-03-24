@@ -2,27 +2,36 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [
-      ../../modules/secure-boot.nix
-      ../../modules/laptop.nix
-      ../../modules/amdgpu.nix
-      ../../modules/cachix.nix
-      ../../modules/coding.nix
-      ../../modules/work.nix
-      ../../modules/tailscale-client.nix
-      ../../modules/home-manager.nix
-      ../../modules/aarch64-remote.nix
-      #../../modules/obs-studio.nix
-      ../../modules/lix.nix
+  imports = [
+    ../../modules/secure-boot.nix
+    ../../modules/laptop.nix
+    ../../modules/amdgpu.nix
+    ../../modules/cachix.nix
+    ../../modules/coding.nix
+    ../../modules/work.nix
+    ../../modules/tailscale-client.nix
+    ../../modules/home-manager.nix
+    ../../modules/aarch64-remote.nix
+    #../../modules/obs-studio.nix
+    ../../modules/lix.nix
 
-      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-    ];
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+  ];
 
-  fileSystems."/".options = [ "rw" "discard" "relatime" ];
+  fileSystems."/".options = [
+    "rw"
+    "discard"
+    "relatime"
+  ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
   # Quiet boot

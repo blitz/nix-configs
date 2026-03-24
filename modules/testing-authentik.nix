@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [ inputs.authentik.nixosModules.default ];
   config = {
     services.authentik = {

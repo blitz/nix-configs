@@ -1,4 +1,10 @@
-{ config, flakeSelf, inputs, pkgs, ... }:
+{
+  config,
+  flakeSelf,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   fenixToolchain = pkgs.fenix.stable.withComponents [
     "cargo"
@@ -7,7 +13,8 @@ let
     "rustc"
     "rustfmt"
   ];
-in {
+in
+{
 
   nixpkgs.overlays = [
     inputs.fenix.overlays.default
@@ -42,7 +49,7 @@ in {
     nil
     nix-diff
     nix-tree
-    nix-output-monitor          # nom
+    nix-output-monitor # nom
     nixpkgs-review
     nixd
     nil

@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   lixPkgs = pkgs.lixPackageSets.stable;
-in {
+in
+{
   # Infinite recursion?
   #
   # nixpkgs.overlays = [ (final: prev: {

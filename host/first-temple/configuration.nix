@@ -2,22 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ../../modules/common.nix
-      ../../modules/tailscale-exit-node.nix
-      ../../modules/cachix.nix
-      ../../modules/home-manager.nix
-      ../../modules/hercules-ci-worker.nix
+  imports = [
+    ../../modules/common.nix
+    ../../modules/tailscale-exit-node.nix
+    ../../modules/cachix.nix
+    ../../modules/home-manager.nix
+    ../../modules/hercules-ci-worker.nix
 
-      inputs.nixos-hardware.nixosModules.common-pc-ssd
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
 
-      inputs.hercules-ci.nixosModules.agent-service
-    ];
+    inputs.hercules-ci.nixosModules.agent-service
+  ];
 
   environment.systemPackages = with pkgs; [
     # For the connection to jetson.
@@ -37,10 +41,13 @@
 
   services.openssh.enable = true;
 
-
   nix.settings.system-features = [
-    "kvm" "nixos-test" "big-parallel" "benchmark"
-    "gccarch-x86-64-v2" "gccarch-x86-64-v3"
+    "kvm"
+    "nixos-test"
+    "big-parallel"
+    "benchmark"
+    "gccarch-x86-64-v2"
+    "gccarch-x86-64-v3"
   ];
 
   # The XFS FAQ suggests to use no I/O scheduler.

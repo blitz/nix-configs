@@ -1,8 +1,10 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports =
     let
       hwModules = inputs.nixos-hardware.nixosModules;
-    in [
+    in
+    [
       # There is a Thinkpad L14 AMD module, but it disables the
       # IOMMU.
       hwModules.lenovo-thinkpad

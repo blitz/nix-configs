@@ -2,35 +2,39 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [
-      ../../modules/common.nix
-      ../../modules/secure-boot.nix
-      ../../modules/gnome3.nix
-      ../../modules/amdgpu.nix
-      ../../modules/cachix.nix
-      ../../modules/coding.nix
-      ../../modules/work.nix
-      ../../modules/tailscale-client.nix
-      ../../modules/home-manager.nix
-      # ../../modules/keybase.nix
-      ../../modules/aarch64-remote.nix
-      ../../modules/obs-studio.nix
-      #../../modules/testing-keycloak.nix
-      #../../modules/testing-authentik.nix
-      ../../modules/lix.nix
-      ../../modules/niri.nix
-      ../../modules/secrets.nix
+  imports = [
+    ../../modules/common.nix
+    ../../modules/secure-boot.nix
+    ../../modules/gnome3.nix
+    ../../modules/amdgpu.nix
+    ../../modules/cachix.nix
+    ../../modules/coding.nix
+    ../../modules/work.nix
+    ../../modules/tailscale-client.nix
+    ../../modules/home-manager.nix
+    # ../../modules/keybase.nix
+    ../../modules/aarch64-remote.nix
+    ../../modules/obs-studio.nix
+    #../../modules/testing-keycloak.nix
+    #../../modules/testing-authentik.nix
+    ../../modules/lix.nix
+    ../../modules/niri.nix
+    ../../modules/secrets.nix
 
-      # ../../modules/vms.nix
+    # ../../modules/vms.nix
 
-      inputs.nixos-hardware.nixosModules.common-pc-ssd
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-gpu-amd
-    ];
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+  ];
 
   # AMD GPU driver issues...
   #
@@ -46,15 +50,15 @@
     interfaces.enp3s0.useDHCP = true;
   };
 
-
   powerManagement.cpuFreqGovernor = "schedutil";
 
   # Quiet boot
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 3;
   boot.kernelParams = [
-    "quiet" "udev.log_level=3"
-  ] ;
+    "quiet"
+    "udev.log_level=3"
+  ];
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
@@ -76,9 +80,14 @@
   networking.domain = "localhost";
 
   nix.settings.system-features = [
-    "kvm" "nixos-test" "big-parallel" "benchmark"
-    "gccarch-znver2" "gccarch-znver3"
-    "gccarch-x86-64-v2" "gccarch-x86-64-v3"
+    "kvm"
+    "nixos-test"
+    "big-parallel"
+    "benchmark"
+    "gccarch-znver2"
+    "gccarch-znver3"
+    "gccarch-x86-64-v2"
+    "gccarch-x86-64-v3"
   ];
 
   disko.devices = {
@@ -119,7 +128,14 @@
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "thunderbolt"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];

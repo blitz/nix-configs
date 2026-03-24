@@ -36,7 +36,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
-     };
+    };
 
     kernelDev = {
       url = "github:blitz/kernel-dev";
@@ -62,116 +62,132 @@
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , nixos-hardware
-    , home-manager
-    , hercules-ci
-    , fenix
-    , flake-parts
-    , hercules-ci-effects
-    , lanzaboote
-    , kernelDev
-    , nix-link-cleanup
-    , disko
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      hercules-ci,
+      fenix,
+      flake-parts,
+      hercules-ci-effects,
+      lanzaboote,
+      kernelDev,
+      nix-link-cleanup,
+      disko,
+      ...
     }:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, inputs, ... }: {
-      imports = [
-        hercules-ci-effects.flakeModule
-      ];
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { withSystem, inputs, ... }:
+      {
+        imports = [
+          hercules-ci-effects.flakeModule
+        ];
 
-      hercules-ci.flake-update = {
-        enable = true;
-        createPullRequest = false;
-
-        nix.package = { pkgs, ... }: pkgs.lixPackageSets.stable.lix;
-
-        baseMerge = {
+        hercules-ci.flake-update = {
           enable = true;
-          method = "reset";
+          createPullRequest = false;
+
+          nix.package = { pkgs, ... }: pkgs.lixPackageSets.stable.lix;
+
+          baseMerge = {
+            enable = true;
+            method = "reset";
+          };
+
+          when = {
+            hour = 0;
+          };
         };
 
-        when = {
-          hour = 0;
-        };
-      };
+        herculesCI.ciSystems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-      herculesCI.ciSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+        perSystem =
+          { system, pkgs, ... }:
+          {
+            formatter = pkgs.nixfmt-tree;
+          };
 
-      flake = {
-        nixosConfigurations =
-          let
-            nixosSystem = { system, modules, nixpkgs ? inputs.nixpkgs }: nixpkgs.lib.nixosSystem {
-              inherit system modules;
+        flake = {
+          nixosConfigurations =
+            let
+              nixosSystem =
+                {
+                  system,
+                  modules,
+                  nixpkgs ? inputs.nixpkgs,
+                }:
+                nixpkgs.lib.nixosSystem {
+                  inherit system modules;
 
-              specialArgs = {
-                inherit inputs;
-                flakeSelf = self;
-                packages = self.packages."${system}";
+                  specialArgs = {
+                    inherit inputs;
+                    flakeSelf = self;
+                    packages = self.packages."${system}";
+                  };
+                };
+            in
+            {
+              avalon = nixosSystem {
+                system = "x86_64-linux";
+
+                modules = [
+                  ./host/avalon/configuration.nix
+                  ./host/avalon/hardware-configuration.nix
+                ];
+              };
+
+              first-temple = nixosSystem {
+                system = "x86_64-linux";
+
+                modules = [
+                  ./host/first-temple/configuration.nix
+                  ./host/first-temple/hardware-configuration.nix
+                ];
+              };
+
+              plausible = nixosSystem {
+                system = "aarch64-linux";
+
+                modules = [
+                  ./host/plausible/configuration.nix
+                ];
+              };
+
+              chat = nixosSystem {
+                system = "aarch64-linux";
+
+                modules = [
+                  ./host/chat/configuration.nix
+                ];
+              };
+
+              ms-a2 = nixosSystem {
+                system = "x86_64-linux";
+
+                modules = [
+                  inputs.disko.nixosModules.disko
+                  ./host/ms-a2/configuration.nix
+                ];
+              };
+
+              jetson = nixosSystem {
+                system = "aarch64-linux";
+
+                modules = [
+                  ./host/jetson/configuration.nix
+                ];
               };
             };
-          in
-          {
-            avalon = nixosSystem {
-              system = "x86_64-linux";
+        };
 
-              modules = [
-                ./host/avalon/configuration.nix
-                ./host/avalon/hardware-configuration.nix
-              ];
-            };
-
-            first-temple = nixosSystem {
-              system = "x86_64-linux";
-
-              modules = [
-                ./host/first-temple/configuration.nix
-                ./host/first-temple/hardware-configuration.nix
-              ];
-            };
-
-            plausible = nixosSystem {
-              system = "aarch64-linux";
-
-              modules = [
-                ./host/plausible/configuration.nix
-              ];
-            };
-
-            chat = nixosSystem {
-              system = "aarch64-linux";
-
-              modules = [
-                ./host/chat/configuration.nix
-              ];
-            };
-
-            ms-a2 = nixosSystem {
-              system = "x86_64-linux";
-
-              modules = [
-                inputs.disko.nixosModules.disko
-                ./host/ms-a2/configuration.nix
-              ];
-            };
-
-            jetson = nixosSystem {
-              system = "aarch64-linux";
-
-              modules = [
-                ./host/jetson/configuration.nix
-              ];
-            };
-          };
-      };
-
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-    });
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+      }
+    );
 }

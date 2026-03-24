@@ -70,5 +70,8 @@
     defaults.email = "julian.stecklina+acme@gmail.com";
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

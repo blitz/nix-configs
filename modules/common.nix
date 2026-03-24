@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -9,12 +15,18 @@
 
   nix = {
     settings = {
-      trusted-users = [ "root" "julian" ];
+      trusted-users = [
+        "root"
+        "julian"
+      ];
 
       # Does this have performance impact?
       auto-optimise-store = true;
 
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
 
     daemonCPUSchedPolicy = "idle";
@@ -40,7 +52,7 @@
   };
 
   # Working around: https://discourse.nixos.org/t/run0-not-working-right/62772/4
-  security.pam.services.systemd-run0 = {};
+  security.pam.services.systemd-run0 = { };
 
   # Living on the edge.
   boot.kernelParams = [ "mitigations=off" ];
@@ -131,7 +143,7 @@
     bind
     cachix
     dmidecode
-    dool                        # dstat is EOL
+    dool # dstat is EOL
     man-pages
     nmap
     parted
@@ -153,7 +165,16 @@
   users.users.julian = {
     description = "Julian Stecklina";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "kvm" "networkmanager" "dialout" "libvirtd" "docker" "vboxusers" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "kvm"
+      "networkmanager"
+      "dialout"
+      "libvirtd"
+      "docker"
+      "vboxusers"
+    ];
     createHome = true;
 
     openssh.authorizedKeys.keys = [
