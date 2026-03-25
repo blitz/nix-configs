@@ -28,6 +28,7 @@
     ../../modules/lix.nix
     ../../modules/niri.nix
     ../../modules/secrets.nix
+    ../../modules/celler-client.nix
 
     # ../../modules/vms.nix
 
