@@ -9,6 +9,7 @@
     ../../modules/cachix.nix
 
     ../../modules/plausible.nix
+    ../../modules/celler.nix
   ];
 
   nix.gc = {
