@@ -5,6 +5,7 @@ let
 
   first-temple = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElqXx/6eB1MYsh4cVp9f4pLrwowRm4WsF7iwa6fOqOY";
   ms-a2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Ay9/64qoCYX8plt8l5Bcc1ddOyIUMG3PHybx6dWk8";
+  plausible = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICK8+ZrBHGXOZC8u/83u7OoI5ODZrNCGZLg/nKlz/McN";
   systems = [
     first-temple
     ms-a2
@@ -25,5 +26,9 @@ in
   "secrets/binary-caches.json.age".publicKeys = [
     julian
     first-temple
+  ];
+  "secrets/celler-server-token.age".publicKeys = [
+    julian
+    plausible
   ];
 }
