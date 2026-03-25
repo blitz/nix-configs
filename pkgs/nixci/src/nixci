@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+CACHE_NAME=blitz
+FLAKE=.
+
+SYSTEMS=$(nix flake show --json "$FLAKE" | jq -r '.nixosConfigurations | keys[]')
+for SYSTEM in $SYSTEMS; do
+  echo "Building $SYSTEM"
+  nix build --no-link --json "$FLAKE"\#nixosConfigurations.$SYSTEM.config.system.build.toplevel \
+      | jq -r '.[].outputs[]' \
+      | attic push --stdin "$CACHE_NAME"
+done
