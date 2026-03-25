@@ -9,6 +9,8 @@
 {
   imports = [
     inputs.nix-link-cleanup.nixosModules.default
+
+    ./celler-client.nix
   ];
 
   programs.nix-link-cleanup.enable = true;
