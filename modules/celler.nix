@@ -64,20 +64,28 @@
     };
   };
 
-  services.nginx.enable = true;
+  services.nginx = {
+    enable = true;
 
-  services.nginx.virtualHosts."cache.x86.lol" = {
-    forceSSL = true;
-    enableACME = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts."cache.x86.lol" = {
+      forceSSL = true;
+      enableACME = true;
 
-    locations."/" = {
-      proxyPass = "http://${config.services.atticd.settings.listen}";
-      extraConfig = ''
-        proxy_ssl_server_name on;
-        proxy_pass_header Authorization;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header X-Real-IP       $remote_addr;
-      '';
+      locations."/" = {
+        proxyPass = "http://${config.services.atticd.settings.listen}";
+        extraConfig = ''
+          proxy_ssl_server_name on;
+          proxy_pass_header Authorization;
+          proxy_set_header X-Forwarded-For $remote_addr;
+          proxy_set_header X-Real-IP       $remote_addr;
+          proxy_buffering off;
+          client_max_body_size 0;
+        '';
+      };
     };
   };
 
