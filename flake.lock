@@ -728,7 +728,7 @@
         "narHash": "sha256-hvNLo3SaIwi6+Cm5NMLyFQYJrYagpsYap4EfQe9CQpc=",
         "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre975402.68d8aa3d661f/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre975402.68d8aa3d661f/nixexprs.tar.xz?lastModified=1775423009&rev=68d8aa3d661f0e6bd5862291b5bb263b2a6595c9"
       },
       "original": {
         "type": "tarball",
