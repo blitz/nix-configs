@@ -90,6 +90,10 @@
 
 (rg-enable-default-bindings)
 
+;; Tabs are evil
+
+(setq-default indent-tabs-mode nil)
+
 ;; Customize
 
 (custom-set-variables
