@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    ctrl-os-modules.url = "github:cyberus-ctrl-os/ctrl-os-modules";
+    ctrl-os-modules = {
+      url = "github:cyberus-ctrl-os/ctrl-os-modules";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
