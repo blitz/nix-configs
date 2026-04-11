@@ -134,7 +134,7 @@
     ];
 
     userSettings = {
-      #format_on_save = "off";
+      format_on_save = "off";
 
       lsp = {
         "rust-analyzer" = {
