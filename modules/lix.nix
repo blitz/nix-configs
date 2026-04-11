@@ -1,19 +1,33 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  lixPkgs = pkgs.lixPackageSets.stable;
+  cfg = config.blitz.lix;
 in
 {
-  # Infinite recursion?
-  #
-  # nixpkgs.overlays = [ (final: prev: {
-  #   inherit (final.lixPackageSets.stable)
-  #     nixpkgs-review
-  #     nix-direnv
-  #     nix-eval-jobs
-  #     nix-fast-build
-  #     colmena;
-  # }) ];
+  options = {
+    blitz.lix.flavor = lib.mkOption {
+      type = lib.types.enum [
+        "stable"
+        "latest"
+      ];
+      default = "latest";
+    };
+  };
 
-  programs.direnv.nix-direnv.package = lixPkgs.nix-direnv;
-  nix.package = lixPkgs.lix;
+  config =
+    let
+      lixFlavors = {
+        inherit (pkgs.lixPackageSets) stable latest;
+      };
+
+      lixPkgs = lixFlavors.${cfg.flavor};
+    in
+    {
+      programs.direnv.nix-direnv.package = lixPkgs.nix-direnv;
+      nix.package = lixPkgs.lix;
+    };
 }
