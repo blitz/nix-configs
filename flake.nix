@@ -47,6 +47,7 @@
     nix-link-cleanup = {
       url = "github:blitz/nix-link-cleanup";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     disko = {
