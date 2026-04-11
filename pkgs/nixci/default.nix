@@ -6,7 +6,7 @@
   nix-eval-jobs,
   jq,
   nix,
-  attic-client,                 # TODO This should be celler
+  attic-client, # TODO This should be celler
 }:
 stdenvNoCC.mkDerivation {
   name = "nixci";
