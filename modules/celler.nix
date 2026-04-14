@@ -2,27 +2,27 @@
 {
   imports = [
     ./secrets.nix
-    inputs.celler.nixosModules.atticd
+    inputs.celler.nixosModules.cellerd
   ];
 
   age.secrets.atticd-env-file = {
     file = ../secrets/celler-server-token.age;
-    owner = config.services.atticd.user;
-    group = config.services.atticd.group;
+    owner = config.services.cellerd.user;
+    group = config.services.cellerd.group;
   };
 
   services.postgresql = {
     enable = true;
     ensureUsers = [
       {
-        name = config.services.atticd.user;
+        name = config.services.cellerd.user;
         ensureDBOwnership = true;
       }
     ];
-    ensureDatabases = [ "atticd" ];
+    ensureDatabases = [ "cellerd" ];
   };
 
-  services.atticd = {
+  services.cellerd = {
     enable = true;
 
     # Replace with absolute path to your environment file
@@ -34,7 +34,7 @@
       jwt = { };
 
       database = {
-        url = "postgresql:///atticd";
+        url = "postgresql:///cellerd";
       };
 
       storage = {
@@ -45,11 +45,11 @@
       };
 
       chunking = {
-        nar-size-threshold = 128 * 1024;
+        nar-size-threshold = 4 * 1024 * 1024;
 
-        min-size = 128 * 1024;
-        avg-size = 512 * 1024;
-        max-size = 2048 * 1024;
+        min-size = 2 * 1024 * 1024;
+        avg-size = 8 * 1024 * 1024;
+        max-size = 16 * 1024 * 1024;
       };
 
       garbage-collection = {
@@ -76,7 +76,7 @@
       enableACME = true;
 
       locations."/" = {
-        proxyPass = "http://${config.services.atticd.settings.listen}";
+        proxyPass = "http://${config.services.cellerd.settings.listen}";
         extraConfig = ''
           proxy_ssl_server_name on;
           proxy_pass_header Authorization;

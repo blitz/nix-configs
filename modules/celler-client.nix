@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -11,12 +10,12 @@
         "https://cache.x86.lol/blitz"
       ];
       trusted-public-keys = [
-        "blitz:kcxXejFpSOHmN7xdiB3g5vl89ugTXDjZ59thWCArEvw="
+        "blitz:2+sGBneZ99Gz4bIWifuLiHXDPINTgQgmhaFKUhNwpsU="
       ];
     };
   };
 
   environment.systemPackages = [
-    inputs.celler.packages.${pkgs.stdenv.system}.attic-client
+    inputs.celler.packages.${pkgs.stdenv.system}.celler
   ];
 }
