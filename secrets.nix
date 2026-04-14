@@ -22,10 +22,12 @@ in
   "secrets/cluster-join-token.key.age".publicKeys = [
     julian
     first-temple
+    ms-a2
   ];
   "secrets/binary-caches.json.age".publicKeys = [
     julian
     first-temple
+    ms-a2
   ];
   "secrets/celler-server-token.age".publicKeys = [
     julian

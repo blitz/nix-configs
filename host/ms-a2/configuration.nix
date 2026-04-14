@@ -28,6 +28,7 @@
     ../../modules/lix.nix
     ../../modules/niri.nix
     ../../modules/secrets.nix
+    ../../modules/hercules-ci-worker.nix
 
     # ../../modules/vms.nix
 
