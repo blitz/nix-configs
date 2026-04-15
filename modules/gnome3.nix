@@ -117,7 +117,7 @@
 
   # For gnome-boxes
   virtualisation.libvirtd = {
-    enable = true;
+    enable = false;
 
     qemu = {
       swtpm.enable = true;
