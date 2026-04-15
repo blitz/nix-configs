@@ -82,8 +82,22 @@
           proxy_pass_header Authorization;
           proxy_set_header X-Forwarded-For $remote_addr;
           proxy_set_header X-Real-IP       $remote_addr;
-          proxy_buffering off;
+
+          # Uploads
+          proxy_request_buffering off;
           client_max_body_size 0;
+          client_body_buffer_size 128k;
+
+          # Downloads
+          proxy_buffering off;
+          proxy_max_temp_file_size 0;
+
+          # Very forgiving timeouts. These are inactivity timeouts, not total
+          # time timeouts. We need to debug why celler is slow to respond sometimes!
+          proxy_connect_timeout 60s;
+          proxy_send_timeout 600s;
+          proxy_read_timeout 600s;
+          send_timeout 600s;
         '';
       };
     };
