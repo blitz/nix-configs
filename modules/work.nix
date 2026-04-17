@@ -86,7 +86,7 @@
 
       # For testing
       qemu
-      cloud-hypervisor
+      # cloud-hypervisor
 
       # For flatpack
       gnome-software

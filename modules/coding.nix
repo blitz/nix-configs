@@ -22,15 +22,6 @@ in
     (final: prev: {
       inherit (inputs.kernelDev.packages.x86_64-linux) kernelDevTools;
     })
-
-    (final: prev: {
-      cloud-hypervisor = prev.cloud-hypervisor.override {
-        rustPlatform = pkgs.makeRustPlatform {
-          cargo = fenixToolchain;
-          rustc = fenixToolchain;
-        };
-      };
-    })
   ];
 
   nix.extraOptions = ''
@@ -69,11 +60,6 @@ in
     rust-analyzer-nightly
     gcc
     fenixToolchain
-
-    # This should reference the correct architecture...
-    (writeShellScriptBin "cloud-hypervisor-dev" ''
-      exec nix develop ${flakeSelf}#nixosConfigurations.ms-a2.pkgs.cloud-hypervisor "$@"
-    '')
 
     # Linux kernel development. See: https://github.com/blitz/kernel-dev
     kernelDevTools
