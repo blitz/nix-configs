@@ -8,12 +8,8 @@
 
 {
   imports = [
-    inputs.nix-link-cleanup.nixosModules.default
-
     ./celler-client.nix
   ];
-
-  programs.nix-link-cleanup.enable = true;
 
   nix = {
     settings = {
@@ -156,6 +152,7 @@
     usbutils
     wget
     zile
+    nh
   ];
 
   documentation.man.enable = true;

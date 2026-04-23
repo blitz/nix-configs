@@ -47,12 +47,6 @@
       inputs.fenix.follows = "fenix";
     };
 
-    nix-link-cleanup = {
-      url = "github:blitz/nix-link-cleanup";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,7 +77,6 @@
       hercules-ci-effects,
       lanzaboote,
       kernelDev,
-      nix-link-cleanup,
       disko,
       ...
     }:
