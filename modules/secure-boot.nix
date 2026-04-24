@@ -16,13 +16,22 @@
   boot.lanzaboote = {
     enable = true;
 
-    configurationLimit = 10;
+    configurationLimit = 8;
     pkiBundle = lib.mkDefault "/etc/secureboot";
 
     allowUnsigned = true;
 
     autoGenerateKeys.enable = true;
     autoEnrollKeys.enable = true;
+
+    measuredBoot = {
+      enable = true;
+      pcrs = [
+        0
+        4
+        7
+      ];
+    };
   };
 
   boot.kernelPatches = [
