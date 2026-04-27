@@ -13,7 +13,7 @@ git switch master
 git merge --ff-only origin/master
 git merge --no-edit origin/flake-update
 
-sudo nixos-rebuild --fast -L boot --flake .
+nh os boot .
 
 # If everything worked, we publish our changes.
 git push
