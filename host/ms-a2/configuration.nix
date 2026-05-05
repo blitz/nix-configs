@@ -22,7 +22,7 @@
     ../../modules/home-manager.nix
     # ../../modules/keybase.nix
     ../../modules/aarch64-remote.nix
-    ../../modules/obs-studio.nix
+    # ../../modules/obs-studio.nix
     #../../modules/testing-keycloak.nix
     #../../modules/testing-authentik.nix
     ../../modules/lix.nix
