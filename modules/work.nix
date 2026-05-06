@@ -13,56 +13,10 @@
 
   ctrl-os.profiles.developer.enable = true;
 
-  nix = {
-    # distributedBuilds = true;
-
-    # Not really useful anymore.
-    #
-    # buildMachines = [
-    #   {
-    #     hostName = "remote-builder.vpn.cyberus-technology.de";
-    #     sshUser = "builder";
-    #     systems = [
-    #       "x86_64-linux"
-    #       # Only has last resort. (Slow!)
-    #       # "aarch64-linux"
-    #     ];
-    #     maxJobs = 8;
-    #     supportedFeatures = [
-    #       "nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v2" "gccarch-x86-64-v3" "gccarch-x86-64-v4"
-    #     ];
-    #   }
-
-    #   {
-    #     hostName = "aarch64-01";
-    #     protocol = "ssh-ng";
-    #     systems = [ "aarch64-linux" ];
-    #     maxJobs = 40;
-    #     speedFactor = 2;
-    #     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    #   }
-    # ];
-  };
-
   # For cross-platform builds.
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
-
-  # programs.ssh = {
-  #   extraConfig = ''
-  #     Host remote-builder.vpn.cyberus-technology.de
-  #       PubkeyAcceptedKeyTypes ssh-ed25519
-  #       IdentityFile ~/.ssh/id_ed25519
-  #   '';
-
-  #   knownHosts = {
-  #     nixbuild = {
-  #       hostNames = [ "remote-builder.vpn.cyberus-technology.de" ];
-  #       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwdIPCDHFhao84ZoHgphp+hzYH9ot+L2gSDFD8HrMyw";
-  #     };
-  #   };
-  # };
 
   programs.evolution = {
     enable = true;
@@ -79,7 +33,7 @@
   environment.systemPackages =
     with pkgs;
     [
-      gitlab-timelogs
+      # gitlab-timelogs
 
       # For merging PDFs
       pdftk
@@ -92,10 +46,9 @@
       gnome-software
 
       # Embedded development
-      picocom
-      rkdeveloptool
-      attic-client
-      b4
+      # picocom
+      # rkdeveloptool
+      # b4
     ]
     ++ (
       let
@@ -114,11 +67,11 @@
       in
       [
         qemuUefi
-        cloudHypervisorUefi
+        # cloudHypervisorUefi
       ]
     );
 
-  virtualisation.podman.enable = true;
+  # virtualisation.podman.enable = true;
 
   services = {
     onedrive.enable = true;
