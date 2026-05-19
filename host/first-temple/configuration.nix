@@ -6,6 +6,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 
@@ -22,6 +23,25 @@
 
     inputs.hercules-ci.nixosModules.agent-service
   ];
+
+  systemd.services.celler-upload = {
+    description = "Upload everything to Celler cache";
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+
+    serviceConfig = {
+      # This currently requires manually logging in once.
+      ExecStart = "${lib.getExe pkgs.celler} watch-store blitz";
+
+      User = "julian";
+      WorkingDirectory = "/home/julian"; # Optional: set the starting directory
+
+      # How the service should restart if it crashes
+      Restart = "on-failure";
+      RestartSec = "10s";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     # For the connection to jetson.

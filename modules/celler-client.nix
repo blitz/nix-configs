@@ -15,7 +15,13 @@
     };
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      inherit (inputs.celler.packages.${pkgs.stdenv.system}) celler;
+    })
+  ];
+
   environment.systemPackages = [
-    inputs.celler.packages.${pkgs.stdenv.system}.celler
+    pkgs.celler
   ];
 }
