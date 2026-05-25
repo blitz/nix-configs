@@ -24,13 +24,6 @@
   boot.initrd.systemd.tpm2.enable = false;
   systemd.tpm2.enable = false;
 
-  services.displayManager.gdm = {
-    enable = false;
-    wayland = false;
-  };
-
-  services.desktopManager.gnome.enable = true;
-
   # The OOT modules want an LTS kernel.
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.consoleLogLevel = 7;
