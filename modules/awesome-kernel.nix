@@ -12,8 +12,7 @@
         #
         # LTO_CLANG_THIN = yes;
 
-        CFI_ICALL_NORMALIZE_INTEGERS = yes;
-        CFI_CLANG = yes;
+        CFI = yes;
       };
     }
   ];
