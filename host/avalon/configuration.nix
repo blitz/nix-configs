@@ -12,6 +12,7 @@
 
 {
   imports = [
+    ../../modules/awesome-kernel.nix
     ../../modules/secure-boot.nix
     ../../modules/laptop.nix
     ../../modules/amdgpu.nix
