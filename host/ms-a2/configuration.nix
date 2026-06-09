@@ -64,6 +64,9 @@
   boot.kernelParams = [
     "quiet"
     "udev.log_level=3"
+
+    # Weird NVMe controller issues?
+    "pcie_aspm=off"
   ];
 
   boot.initrd.systemd.enable = true;
