@@ -37,6 +37,11 @@
     inputs.nixos-hardware.nixosModules.common-gpu-amd
   ];
 
+  # Fix Shokz USB dongle volume issues.
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", ATTRS{idVendor}=="3511", ATTRS{idProduct}=="2f06", RUN+="${pkgs.alsa-utils}/bin/amixer -c %n sset PCM 100%%"
+'';
+
   # AMD GPU driver issues...
   #
   # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
