@@ -45,7 +45,7 @@
   # AMD GPU driver issues...
   #
   # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
+  # boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
 
   systemd.network.enable = true;
   systemd.network.wait-online.enable = false;
