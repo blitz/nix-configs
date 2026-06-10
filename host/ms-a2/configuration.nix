@@ -65,8 +65,10 @@
     "quiet"
     "udev.log_level=3"
 
-    # Weird NVMe controller issues?
+    # Suggested by Minisforum support for PCIe link errors.
     "pcie_aspm=off"
+    "pcie_port_pm=off"
+    "nvme_core.default_ps_max_latency_us=0"
   ];
 
   boot.initrd.systemd.enable = true;
