@@ -6,6 +6,11 @@
 }:
 
 {
+  boot.kernelParams = [
+    # May help with AMDGPU gfxhub page faults
+    "amdgpu.sg_display=0"
+  ];
+
   hardware.amdgpu = {
     #initrd.enable = true;
     opencl.enable = true;

@@ -37,15 +37,19 @@
     inputs.nixos-hardware.nixosModules.common-gpu-amd
   ];
 
-  # Fix Shokz USB dongle volume issues.
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", ATTRS{idVendor}=="3511", ATTRS{idProduct}=="2f06", RUN+="${pkgs.alsa-utils}/bin/amixer -c %n sset PCM 100%%"
+    # Tag the Shokz dongle and trigger the systemd service, passing the card number (%n)
+    ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", ATTRS{idVendor}=="3511", ATTRS{idProduct}=="2f06", TAG+="systemd", ENV{SYSTEMD_WANTS}+="shokz-volume@%n.service"
 '';
 
-  # AMD GPU driver issues...
-  #
-  # https://gitlab.freedesktop.org/drm/amd/-/issues/4592
-  # boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_12;
+  systemd.services."shokz-volume@" = {
+    description = "Force Shokz Dongle hardware volume to 100%";
+    serviceConfig = {
+      Type = "oneshot";
+      # %i grabs the card number passed from udev.
+      ExecStart = "${pkgs.alsa-utils}/bin/amixer -c %i sset PCM 100%%";
+    };
+  };
 
   systemd.network.enable = true;
   systemd.network.wait-online.enable = false;
