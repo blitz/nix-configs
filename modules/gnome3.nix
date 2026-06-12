@@ -46,12 +46,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # Can go after this PR hits unstable:
-  # https://github.com/NixOS/nixpkgs/pull/460637
-  nixpkgs.config.permittedInsecurePackages = [
-    "jitsi-meet-1.0.8792"
-  ];
-
   environment.systemPackages = with pkgs; [
     gnomeExtensions.paperwm
 
