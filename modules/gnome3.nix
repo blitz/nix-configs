@@ -62,8 +62,8 @@
         # Might cause issues.
         # "--enable-features=VaapiVideoEncoder"
 
-        "--enable-features=Vulkan"
-        "--use-angle=vulkan"
+        # "--enable-features=Vulkan"
+        # "--use-angle=vulkan"
       ];
     })
 
