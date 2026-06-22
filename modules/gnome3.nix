@@ -92,9 +92,12 @@
 
     # Debugging
     clinfo
-    # intel-gpu-tools
     radeontop
     libva-utils
+
+    xournalpp
+    alsa-utils                  # for alsamixer
+    super-productivity
   ];
 
   fonts = {
