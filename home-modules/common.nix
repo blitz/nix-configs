@@ -31,14 +31,9 @@
       enable = true;
       enableDefaultConfig = false;
 
-      matchBlocks = {
-        "*" = {
-          forwardAgent = true;
-
-          extraOptions = {
-            "IdentityAgent" = "~/.1password/agent.sock";
-          };
-        };
+      settings."*" = {
+        ForwardAgent = true;
+        IdentityAgent = "~/.1password/agent.sock";
       };
     };
 
