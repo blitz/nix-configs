@@ -5,7 +5,9 @@
   lib,
   ...
 }:
-
+let
+  hasSwapPartition = (builtins.length config.swapDevices) != 0;
+in
 {
   imports = [
     ./celler-client.nix
@@ -79,11 +81,21 @@
   boot.loader.grub.configurationLimit = 3;
 
   # Swap
+
+  ## Only useful if there is no swap partition.
   zramSwap = {
-    enable = true;
+    enable = !hasSwapPartition;
     algorithm = "zstd";
     memoryPercent = 25;
   };
+
+  ## Fully integrated into the Swap subsystem.
+  boot.zswap = {
+    enable = hasSwapPartition;
+    maxPoolPercent = 25;
+    compressor = "zstd";
+  };
+
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
