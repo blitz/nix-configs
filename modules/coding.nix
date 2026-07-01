@@ -1,6 +1,4 @@
 {
-  config,
-  flakeSelf,
   inputs,
   pkgs,
   ...
@@ -18,6 +16,7 @@ in
 
   nixpkgs.overlays = [
     inputs.fenix.overlays.default
+    inputs.nom.overlays.default
 
     (final: prev: {
       inherit (inputs.kernelDev.packages.x86_64-linux) kernelDevTools;
