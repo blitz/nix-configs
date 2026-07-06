@@ -94,16 +94,27 @@
   networking.hostName = "ms-a2";
   networking.domain = "localhost";
 
-  nix.settings.system-features = [
-    "kvm"
-    "nixos-test"
-    "big-parallel"
-    "benchmark"
-    "gccarch-znver2"
-    "gccarch-znver3"
-    "gccarch-x86-64-v2"
-    "gccarch-x86-64-v3"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "auto-allocate-uids"
+      "cgroups"
+    ];
+
+    auto-allocate-uids = true;
+    use-cgroups = true;
+
+    system-features = [
+      "uid-range"
+      "kvm"
+      "nixos-test"
+      "big-parallel"
+      "benchmark"
+      "gccarch-znver2"
+      "gccarch-znver3"
+      "gccarch-x86-64-v2"
+      "gccarch-x86-64-v3"
+    ];
+  };
 
   disko.devices = {
     disk = {
