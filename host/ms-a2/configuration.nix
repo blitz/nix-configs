@@ -29,6 +29,7 @@
     ../../modules/niri.nix
     ../../modules/secrets.nix
     ../../modules/hercules-ci-worker.nix
+    ../../modules/awesome-kernel.nix
 
     # ../../modules/vms.nix
 
