@@ -96,7 +96,7 @@
     libva-utils
 
     xournalpp
-    alsa-utils                  # for alsamixer
+    alsa-utils # for alsamixer
     super-productivity
   ];
 

@@ -41,7 +41,7 @@
   services.udev.extraRules = ''
     # Tag the Shokz dongle and trigger the systemd service, passing the card number (%n)
     ACTION=="add", SUBSYSTEM=="sound", KERNEL=="controlC*", ATTRS{idVendor}=="3511", ATTRS{idProduct}=="2f06", TAG+="systemd", ENV{SYSTEMD_WANTS}+="shokz-volume@%n.service"
-'';
+  '';
 
   systemd.services."shokz-volume@" = {
     description = "Force Shokz Dongle hardware volume to 100%";

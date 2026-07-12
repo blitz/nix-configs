@@ -96,7 +96,6 @@ in
     compressor = "zstd";
   };
 
-
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
   services.chrony.enable = true;
