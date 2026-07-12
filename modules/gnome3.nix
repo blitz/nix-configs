@@ -6,23 +6,7 @@
   ...
 }:
 {
-  # Yubikey / GPG
-  services.udev.packages = [
-    pkgs.libu2f-host
-    pkgs.yubikey-personalization
-  ];
-  services.pcscd.enable = true;
-
-  services.flatpak.enable = true;
-
   programs = {
-    appimage = {
-      enable = true;
-
-      # Allow directly executing AppImage files.
-      binfmt = true;
-    };
-
     evolution.enable = true;
 
     # This is still weird and we end up with lots of 1password processes?
@@ -47,8 +31,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.paperwm
-
     # Lots of hardware craps its pants with hardware decoding in online meetings.
     (google-chrome.override {
       commandLineArgs = [
@@ -116,15 +98,6 @@
     ];
   };
 
-  # For gnome-boxes
-  virtualisation.libvirtd = {
-    enable = false;
-
-    qemu = {
-      swtpm.enable = true;
-    };
-  };
-
   networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
@@ -155,7 +128,6 @@
 
   # Enable Gnome.
   services.displayManager.gdm.enable = true;
-  #services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.gnome.enable = true;
   services.gvfs.enable = true;
 

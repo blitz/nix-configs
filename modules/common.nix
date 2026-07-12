@@ -150,16 +150,13 @@ in
 
   environment.systemPackages = with pkgs; [
     bind
-    cachix
     dmidecode
     dool # dstat is EOL
     man-pages
-    nmap
     parted
     pciutils
     psmisc
     pv
-    pwgen
     usbutils
     wget
     zile
