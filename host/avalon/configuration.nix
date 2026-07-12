@@ -24,6 +24,7 @@
     ../../modules/aarch64-remote.nix
     #../../modules/obs-studio.nix
     ../../modules/lix.nix
+    ../../modules/secrets.nix
 
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
