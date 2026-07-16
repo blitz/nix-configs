@@ -94,7 +94,9 @@
 
         hercules-ci.flake-update = {
           enable = true;
-          createPullRequest = false;
+
+          createPullRequest = true;
+          autoMergeMethod = "merge";
 
           nix.package = { pkgs, ... }: pkgs.lixPackageSets.stable.lix;
 
@@ -129,7 +131,11 @@
                   nixpkgs ? inputs.nixpkgs,
                 }:
                 nixpkgs.lib.nixosSystem {
-                  inherit system modules;
+                  modules = modules ++ [
+                    {
+                      nixpkgs.system = system;
+                    }
+                  ];
 
                   specialArgs = {
                     inherit inputs;
@@ -179,14 +185,6 @@
                 modules = [
                   inputs.disko.nixosModules.disko
                   ./host/ms-a2/configuration.nix
-                ];
-              };
-
-              jetson = nixosSystem {
-                system = "aarch64-linux";
-
-                modules = [
-                  ./host/jetson/configuration.nix
                 ];
               };
             };

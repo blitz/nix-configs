@@ -43,11 +43,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    # For the connection to jetson.
-    picocom
-  ];
-
   # For cross-platform builds.
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
