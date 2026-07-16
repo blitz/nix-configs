@@ -17,7 +17,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      inherit (inputs.celler.packages.${pkgs.stdenv.system}) celler;
+      inherit (inputs.celler.packages.${pkgs.stdenv.hostPlatform.system}) celler;
     })
   ];
 
