@@ -94,7 +94,9 @@
 
         hercules-ci.flake-update = {
           enable = true;
-          createPullRequest = false;
+
+          createPullRequest = true;
+          autoMergeMethod = "merge";
 
           nix.package = { pkgs, ... }: pkgs.lixPackageSets.stable.lix;
 
