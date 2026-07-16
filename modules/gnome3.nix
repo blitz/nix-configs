@@ -49,6 +49,8 @@
       ];
     })
 
+    firefox
+
     mpv
     fractal
     element-desktop
