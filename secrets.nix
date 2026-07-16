@@ -20,10 +20,12 @@ in
   "secrets/celler-server-token.age".publicKeys = users ++ cellerServer;
 
   # Hercules CI for "blitz"
-  "secrets/blitz-cluster-join-token.key.age".publicKeys = users ++ herculesWorkers;
-  "secrets/blitz-binary-caches.json.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/blitz-cluster-join-token.key.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/blitz-binary-caches.json.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/blitz-secrets.json.age".publicKeys = users ++ herculesWorkers;
 
   # Hercules CI for "celler-cache"
-  "secrets/celler-cluster-join-token.key.age".publicKeys = users ++ herculesWorkers;
-  "secrets/celler-binary-caches.json.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/celler-cluster-join-token.key.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/celler-binary-caches.json.age".publicKeys = users ++ herculesWorkers;
+  "secrets/hci/celler-secrets.json.age".publicKeys = users ++ herculesWorkers;
 }
