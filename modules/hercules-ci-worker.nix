@@ -36,7 +36,6 @@
     owner = "hci-celler";
   };
 
-
   services.hercules-ci-agents = {
     blitz.settings = {
       concurrentTasks = 2;

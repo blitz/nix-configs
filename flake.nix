@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
+    ctrl-os.url = "https://channels.ctrl-os.com/channel/ctrlos-26.05.tar.xz";
+
     ctrl-os-modules = {
       url = "github:cyberus-ctrl-os/ctrl-os-modules";
       inputs.flake-parts.follows = "flake-parts";
@@ -156,6 +158,7 @@
 
               first-temple = nixosSystem {
                 system = "x86_64-linux";
+                nixpkgs = inputs.ctrl-os;
 
                 modules = [
                   ./host/first-temple/configuration.nix

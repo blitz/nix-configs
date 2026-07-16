@@ -15,7 +15,7 @@
     ../../modules/common.nix
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
-    ../../modules/home-manager.nix
+    # ../../modules/home-manager.nix
     ../../modules/hercules-ci-worker.nix
 
     inputs.nixos-hardware.nixosModules.common-pc-ssd

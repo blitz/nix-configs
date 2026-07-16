@@ -79,6 +79,18 @@
         "type": "github"
       }
     },
+    "ctrl-os": {
+      "locked": {
+        "lastModified": 315532800,
+        "narHash": "sha256-LzPWZnburc4M/6welyJBc/zoRRugmtErW3cykouS4h4=",
+        "type": "tarball",
+        "url": "https://channels.ctrl-os.com/permanent/ctrlos-86a61e61f478ec71698092de5a8755c92224144d.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.ctrl-os.com/channel/ctrlos-26.05.tar.xz"
+      }
+    },
     "ctrl-os-modules": {
       "inputs": {
         "flake-parts": [
@@ -669,6 +681,7 @@
       "inputs": {
         "agenix": "agenix",
         "celler": "celler",
+        "ctrl-os": "ctrl-os",
         "ctrl-os-modules": "ctrl-os-modules",
         "disko": "disko",
         "fenix": "fenix",
