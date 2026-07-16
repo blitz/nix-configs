@@ -131,7 +131,11 @@
                   nixpkgs ? inputs.nixpkgs,
                 }:
                 nixpkgs.lib.nixosSystem {
-                  inherit system modules;
+                  modules = modules ++ [
+                    {
+                      nixpkgs.system = system;
+                    }
+                  ];
 
                   specialArgs = {
                     inherit inputs;
