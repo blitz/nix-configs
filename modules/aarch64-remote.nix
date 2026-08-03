@@ -1,3 +1,4 @@
+# TODO The Jetson box is gone
 {
   nix.distributedBuilds = true;
 
