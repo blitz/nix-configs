@@ -21,7 +21,7 @@
     ../../modules/work.nix
     ../../modules/tailscale-client.nix
     ../../modules/home-manager.nix
-    ../../modules/aarch64-remote.nix
+    #../../modules/aarch64-remote.nix
     #../../modules/obs-studio.nix
     ../../modules/lix.nix
     ../../modules/secrets.nix
