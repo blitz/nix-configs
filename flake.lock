@@ -82,9 +82,9 @@
     "ctrl-os": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-w5wqdvGIOLV/anDrzmYSLmkId9vRoT8anPN0fDI+HfY=",
+        "narHash": "sha256-xe02e1MZvQ/FBSg2R6Op+nILzdd5F5P9ZGg6VnKNYMs=",
         "type": "tarball",
-        "url": "https://channels.ctrl-os.com/permanent/ctrlos-0342bb013111216140426fa5c54ec6c5f9463d41.tar.xz"
+        "url": "https://channels.ctrl-os.com/permanent/ctrlos-2a4de56d4e8a161583d96eda233e0828115c1331.tar.xz"
       },
       "original": {
         "type": "tarball",
@@ -141,11 +141,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1785833146,
-        "narHash": "sha256-FX+HlsdcUJQ3l7A9R5ArjUBTWEU7qLeB8nQMhpcvYpA=",
+        "lastModified": 1786005881,
+        "narHash": "sha256-Bj3VKIiwX1daO4vOIyAM507A65J0aaRSctc87kiT7H4=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "4a4484b275c3f40f5181c0ec17dbe23acdcf3444",
+        "rev": "a7c3ef79859bf024cdc865a0ed8f14a4e3f31099",
         "type": "github"
       },
       "original": {
@@ -443,11 +443,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785531816,
-        "narHash": "sha256-vkMnV0JIyw+g/NmcfoajlGaAO+9a0ezia+FZohQJrik=",
+        "lastModified": 1785958398,
+        "narHash": "sha256-5r/JgsoNMTx+qIh83WkxpujEKBR7PF5ssnh5vYCuSAw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bf9ce9fec78f95f374e8dd3b503863a3ec128ebe",
+        "rev": "a7c70cc290290f373f50cd820403833d250459ac",
         "type": "github"
       },
       "original": {
@@ -599,11 +599,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1785828668,
-        "narHash": "sha256-VFlH/0nM6kkWQox9IaTqx2eCT3pmkr8bB7iVZ1bkaLs=",
-        "rev": "e72e4f299401a3689d4b3d5fc6496b11db7064eb",
+        "lastModified": 1785967620,
+        "narHash": "sha256-929m7iW8q2uv3mZHNwY8Um6XKj99rbIcZsWS9cT1vaI=",
+        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1047536.e72e4f299401/nixexprs.tar.xz?lastModified=1785828668&rev=e72e4f299401a3689d4b3d5fc6496b11db7064eb"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1048607.b7c2ada94fe9/nixexprs.tar.xz?lastModified=1785967620&rev=b7c2ada94fe99c15b0dbcf4d11fd7850b957a436"
       },
       "original": {
         "type": "tarball",
@@ -699,11 +699,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1785785397,
-        "narHash": "sha256-JogDSaCukhJmhO+vHdhdwa6I1v5lHOt8ZTMWWY95Ulc=",
+        "lastModified": 1785960076,
+        "narHash": "sha256-+Xej+akyhjZIFnsEIZLO3c6YNvlnKB3rFMzsprQCyDM=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "5f258f4534e3b4bdaa45a1299b53a66cf014d803",
+        "rev": "cf3b451f47c01d76989425d1ace3f1cba70f1fdb",
         "type": "github"
       },
       "original": {
