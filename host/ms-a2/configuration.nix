@@ -30,6 +30,7 @@
     ../../modules/secrets.nix
     ../../modules/hercules-ci-worker.nix
     ../../modules/awesome-kernel.nix
+    ../../modules/blitz-deploy.nix
 
     # ../../modules/vms.nix
 
