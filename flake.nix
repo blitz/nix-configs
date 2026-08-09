@@ -190,6 +190,15 @@
                   ./host/ms-a2/configuration.nix
                 ];
               };
+
+              canaan = nixosSystem {
+                system = "x86_64-linux";
+
+                modules = [
+                  inputs.disko.nixosModules.disko
+                  ./host/ms-a2/configuration.nix
+                ];
+              };
             };
         };
 
