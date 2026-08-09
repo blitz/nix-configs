@@ -196,7 +196,7 @@
 
                 modules = [
                   inputs.disko.nixosModules.disko
-                  ./host/ms-a2/configuration.nix
+                  ./host/canaan/configuration.nix
                 ];
               };
             };
