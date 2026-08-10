@@ -30,6 +30,12 @@
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
+  services.rspamd = {
+    enable = true;
+
+    workers.normal.bindSockets = [ "localhost:6666" ];
+  };
+
   fileSystems."/".options = [
     "rw"
     "discard"
