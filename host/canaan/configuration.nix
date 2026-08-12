@@ -1,18 +1,17 @@
 { input, ... }: {
 
-  imports =
-    [
-      ../../modules/thinkpad-l14-amd.nix
-      ../../modules/laptop.nix
-      ../../modules/amdgpu.nix
-      ../../modules/cachix.nix
-      ../../modules/coding.nix
-      ../../modules/tailscale-client.nix
-      ../../modules/home-manager.nix
-      # ../../modules/secure-boot.nix
-      ../../modules/quiet-boot.nix
-    ];
-
+  imports = [
+    ../../modules/thinkpad-l14-amd.nix
+    ../../modules/laptop.nix
+    ../../modules/amdgpu.nix
+    ../../modules/cachix.nix
+    ../../modules/coding.nix
+    ../../modules/tailscale-client.nix
+    ../../modules/home-manager.nix
+    # ../../modules/secure-boot.nix
+    ../../modules/quiet-boot.nix
+    ../../modules/blitz-deploy.nix
+  ];
 
   hardware.wirelessRegulatoryDatabase = true;
 
@@ -22,7 +21,15 @@
 
   boot.initrd.availableKernelModules = [
     # TODO trim down later
-    "nvme" "ehci_pci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "ahci" "uas" "sdhci_pci"
+    "nvme"
+    "ehci_pci"
+    "xhci_pci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "ahci"
+    "uas"
+    "sdhci_pci"
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -31,19 +38,58 @@
   services.thinkfan = {
     enable = true;
     levels = [
-      [0  0   55]
-      [1  50  65]
-      [2  60  68]
-      [3  65  72]
-      [4  67  75]
-      [5  68  78]
-      [6  69  79]
-      [7  70  80]
-      [127 78 32767]
+      [
+        0
+        0
+        55
+      ]
+      [
+        1
+        50
+        65
+      ]
+      [
+        2
+        60
+        68
+      ]
+      [
+        3
+        65
+        72
+      ]
+      [
+        4
+        67
+        75
+      ]
+      [
+        5
+        68
+        78
+      ]
+      [
+        6
+        69
+        79
+      ]
+      [
+        7
+        70
+        80
+      ]
+      [
+        127
+        78
+        32767
+      ]
     ];
 
     # Disble bias because it causes annoying spinups of the fan.
-    extraArgs = [ "-b" "0" ];
+    extraArgs = [
+      "-b"
+      "0"
+    ];
     #sensors = "tp_thermal /proc/acpi/ibm/thermal";
   };
 

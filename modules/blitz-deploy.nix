@@ -5,6 +5,13 @@
   ...
 }:
 {
+  assertions =
+    [
+      {
+        assertion = !config.system.autoUpgrade.enable;
+        message = "blitz-deploy conflicts with autoUpgrade";
+      }
+    ];
 
   systemd.timers."blitz-deploy" = {
     wantedBy = [ "timers.target" ];
@@ -32,6 +39,13 @@
         ExecStart = "${lib.getExe blitz-deploy} --project github:blitz/nix-configs/master boot";
         Type = "oneshot";
         User = "root";
+
+        After = "network-online.target";
+        Wants = "network-online.target";
+
+        Restart = "on-failure";
+        StartLimitBurst = 5;
+        StartLimitIntervalSec = "600"; # 10min
       };
   };
 }
