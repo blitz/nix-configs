@@ -35,6 +35,10 @@
 
         After = "network-online.target";
         Wants = "network-online.target";
+
+        Restart = "on-failure";
+        StartLimitBurst = 5;
+        StartLimitIntervalSec = "600"; # 10min
       };
   };
 }
