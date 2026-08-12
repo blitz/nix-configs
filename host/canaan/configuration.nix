@@ -10,7 +10,7 @@
     ../../modules/home-manager.nix
     # ../../modules/secure-boot.nix
     ../../modules/quiet-boot.nix
-    ../../modules/awesome-kernel.nix
+    ../../modules/blitz-deploy.nix
   ];
 
   hardware.wirelessRegulatoryDatabase = true;

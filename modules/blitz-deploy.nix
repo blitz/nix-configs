@@ -32,6 +32,9 @@
         ExecStart = "${lib.getExe blitz-deploy} --project github:blitz/nix-configs/master boot";
         Type = "oneshot";
         User = "root";
+
+        After = "network-online.target";
+        Wants = "network-online.target";
       };
   };
 }
