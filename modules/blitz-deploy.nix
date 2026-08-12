@@ -5,6 +5,13 @@
   ...
 }:
 {
+  assertions =
+    [
+      {
+        assertion = !config.system.autoUpgrade.enable;
+        message = "blitz-deploy conflicts with autoUpgrade";
+      }
+    ];
 
   systemd.timers."blitz-deploy" = {
     wantedBy = [ "timers.target" ];
