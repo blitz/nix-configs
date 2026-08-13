@@ -30,9 +30,6 @@
     ../../modules/secrets.nix
     ../../modules/hercules-ci-worker.nix
     ../../modules/awesome-kernel.nix
-    ../../modules/blitz-deploy.nix
-
-    # ../../modules/vms.nix
 
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.common-cpu-amd

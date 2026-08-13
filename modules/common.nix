@@ -15,6 +15,8 @@ in
 {
   imports = [
     ./celler-client.nix
+    ./deploy.nix
+    ./quiet-boot.nix
   ];
 
   options = {
@@ -31,6 +33,21 @@ in
   };
 
   config = {
+    blitz.deploy = {
+      enable = true;
+
+      repo = "github:blitz/nix-configs/master";
+
+      operation =
+        {
+          server = "switch";
+          client = "boot";
+        }
+        .${cfg.system-role};
+    };
+
+    blitz.quiet-boot.enable = isClient;
+
     nix = {
       gc = {
         automatic = true;

@@ -25,7 +25,6 @@
     #../../modules/obs-studio.nix
     ../../modules/lix.nix
     ../../modules/secrets.nix
-    ../../modules/blitz-deploy.nix
 
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];

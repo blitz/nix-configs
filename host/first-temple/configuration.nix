@@ -72,8 +72,6 @@
     ACTION=="add|change", KERNEL=="[sv]d[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
 
-  system.autoUpgrade.enable = true;
-
   # Networking
   systemd.network.enable = true;
   networking = {
