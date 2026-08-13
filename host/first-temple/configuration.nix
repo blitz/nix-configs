@@ -24,6 +24,8 @@
     inputs.hercules-ci.nixosModules.agent-service
   ];
 
+  blitz.common.system-role = "server";
+
   systemd.services.celler-upload = {
     description = "Upload everything to Celler cache";
 
@@ -69,8 +71,6 @@
   services.udev.extraRules = ''
     ACTION=="add|change", KERNEL=="[sv]d[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
-
-  system.autoUpgrade.enable = true;
 
   # Networking
   systemd.network.enable = true;

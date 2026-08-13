@@ -11,10 +11,10 @@
     #../../modules/matrix-coturn.nix
   ];
 
+  blitz.common.system-role = "server";
+
   # /boot doesn't have a lot of space.
   boot.loader.grub.configurationLimit = lib.mkForce 2;
-
-  system.autoUpgrade.enable = true;
 
   networking.hostName = "chat";
   networking.domain = "x86.lol";

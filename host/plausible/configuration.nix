@@ -12,15 +12,11 @@
     ../../modules/celler.nix
   ];
 
+  blitz.common.system-role = "server";
+
   nix.gc = {
     automatic = true;
     dates = "daily";
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:blitz/nix-configs";
-    allowReboot = true;
   };
 
   # Use the systemd-boot EFI boot loader.

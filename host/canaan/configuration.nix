@@ -9,9 +9,9 @@
     ../../modules/tailscale-client.nix
     ../../modules/home-manager.nix
     # ../../modules/secure-boot.nix
-    ../../modules/quiet-boot.nix
-    ../../modules/blitz-deploy.nix
   ];
+
+  blitz.common.system-role = "client";
 
   hardware.wirelessRegulatoryDatabase = true;
 
