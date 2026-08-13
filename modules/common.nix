@@ -7,188 +7,194 @@
 }:
 let
   hasSwapPartition = (builtins.length config.swapDevices) != 0;
+
+  cfg = config.blitz.common;
+  isClient = cfg.system-role == "client";
+  isServer = cfg.system-role == "server";
 in
 {
   imports = [
     ./celler-client.nix
   ];
 
-  nix = {
-    settings = {
-      trusted-users = [
-        "root"
-        "julian"
+  options = {
+    blitz.common.system-role = lib.mkOption {
+      type = lib.types.enum [
+        "server"
+        "client"
       ];
 
-      # Does this have performance impact?
-      auto-optimise-store = true;
+      # No default. Needs to be specified for every system.
 
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      description = "The type of system";
+    };
+  };
+
+  config = {
+    nix = {
+      gc = {
+        automatic = true;
+        dates = lib.mkDefault "monthly";
+      };
+
+      settings = {
+        trusted-users = [
+          "root"
+          "julian"
+        ];
+
+        # Does this have performance impact?
+        auto-optimise-store = true;
+
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+
+      daemonCPUSchedPolicy = "idle";
+
+      extraOptions = ''
+        # See https://jackson.dev/post/nix-reasonable-defaults/
+        connect-timeout = 5
+        log-lines = 25
+        warn-dirty = false
+        fallback = true
+      '';
     };
 
-    daemonCPUSchedPolicy = "idle";
+    # Working around: https://discourse.nixos.org/t/run0-not-working-right/62772/4
+    security.pam.services.systemd-run0 = { };
 
-    extraOptions = ''
-      # See https://jackson.dev/post/nix-reasonable-defaults/
-      connect-timeout = 5
-      log-lines = 25
-      warn-dirty = false
-      fallback = true
+    # Living on the edge.
+    boot.kernelParams = [ "mitigations=off" ];
+
+    # Don't accumulate crap.
+    boot.tmp.cleanOnBoot = true;
+    services.journald.extraConfig = ''
+      SystemMaxUse=250M
+      SystemMaxFileSize=50M
     '';
-  };
 
-  system.autoUpgrade = {
-    # We set this per host.
-    #
-    # enable = true;
+    nix.optimise.automatic = true;
+    boot.loader.systemd-boot.configurationLimit = 5;
+    boot.loader.grub.configurationLimit = 3;
 
-    flake = "github:blitz/nix-configs";
-    flags = [
-      " --no-write-lock-file"
-    ];
-  };
+    # Swap
 
-  # Working around: https://discourse.nixos.org/t/run0-not-working-right/62772/4
-  security.pam.services.systemd-run0 = { };
+    ## Only useful if there is no swap partition.
+    zramSwap = {
+      enable = !hasSwapPartition;
+      algorithm = "zstd";
+      memoryPercent = 25;
+    };
 
-  # Living on the edge.
-  boot.kernelParams = [ "mitigations=off" ];
-  boot.kernelPatches = [
-    # Nothing here at the moment.
-  ];
+    ## Fully integrated into the Swap subsystem.
+    boot.zswap = {
+      enable = hasSwapPartition;
+      maxPoolPercent = 25;
+      compressor = "zstd";
+    };
 
-  # Make dm-crypt fast in the early boot phases.
-  boot.initrd.availableKernelModules = lib.optionals (pkgs.stdenv.system == "x86_64-linux") [
-    "aesni_intel"
-    "cryptd"
-  ];
+    # Set your time zone.
+    time.timeZone = "Europe/Madrid";
+    services.chrony.enable = true;
 
-  # Don't accumulate crap.
-  boot.tmp.cleanOnBoot = true;
-  services.journald.extraConfig = ''
-    SystemMaxUse=250M
-    SystemMaxFileSize=50M
-  '';
-  nix.gc = {
-    automatic = true;
-    dates = lib.mkDefault "monthly";
-  };
-  nix.optimise.automatic = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.grub.configurationLimit = 3;
+    # Microcode / Firmware Update
+    hardware.enableAllFirmware = true;
+    hardware.enableRedistributableFirmware = true;
+    services.fwupd.enable = true;
 
-  # Swap
+    # Package Overlay
+    nixpkgs.config.allowUnfree = true;
 
-  ## Only useful if there is no swap partition.
-  zramSwap = {
-    enable = !hasSwapPartition;
-    algorithm = "zstd";
-    memoryPercent = 25;
-  };
+    services.resolved = {
+      enable = true;
 
-  ## Fully integrated into the Swap subsystem.
-  boot.zswap = {
-    enable = hasSwapPartition;
-    maxPoolPercent = 25;
-    compressor = "zstd";
-  };
+      # This leads to spurious failures?
+      # settings.Resolve.DNSSEC = false;
+    };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Madrid";
-  services.chrony.enable = true;
+    # Shell
+    environment.variables = {
+      EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
+    };
+    users.defaultUserShell = config.programs.fish.package;
 
-  console.useXkbConfig = true;
+    programs.direnv = {
+      enable = isClient;
+      nix-direnv.enable = true;
+    };
 
-  # Microcode / Firmware Update
-  hardware.enableAllFirmware = true;
-  hardware.enableRedistributableFirmware = true;
-  services.fwupd.enable = true;
+    programs.fish = {
+      enable = true;
 
-  # Package Overlay
-  nixpkgs.config.allowUnfree = true;
+      shellInit = ''
+        eval "$(direnv hook fish)"
+      '';
+    };
 
-  services.resolved = {
-    enable = true;
+    programs.tmux = {
+      enable = true;
+      clock24 = true;
 
-    # This leads to spurious failures?
-    # settings.Resolve.DNSSEC = false;
-  };
+      extraConfig = ''
+        set -g @tmux_power_theme 'snow'
+        run-shell "${pkgs.tmuxPlugins.power-theme}/share/tmux-plugins/power/tmux-power.tmux"
+      '';
+    };
 
-  # Shell
-  environment.variables = {
-    EDITOR = pkgs.lib.mkOverride 0 "${pkgs.zile}/bin/zile";
-  };
-  users.defaultUserShell = config.programs.fish.package;
+    programs.htop.enable = true;
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+    environment.systemPackages =
+      with pkgs;
+      [
+        bind
+        dool # dstat is EOL
+        parted
+        psmisc
+        wget
+        zile
+        nh
+      ]
+      ++ (lib.optionals isClient (
+        with pkgs;
+        [
+          usbutils
+          pciutils
+          man-pages
+          dmidecode
+          pv
+        ]
+      ));
 
-  programs.fish = {
-    enable = true;
+    documentation.man.enable = isClient;
+    documentation.dev.enable = isClient;
+    documentation.doc.enable = false;
+    documentation.enable = isClient;
 
-    shellInit = ''
-      eval "$(direnv hook fish)"
-    '';
-  };
+    users.mutableUsers = false;
+    users.users.julian = {
+      description = "Julian Stecklina";
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "video"
+        "kvm"
+        "networkmanager"
+        "dialout"
+        "libvirtd"
+        "docker"
+        "vboxusers"
+      ];
+      createHome = true;
 
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErZm6k0S7NahikKEbTQlrOrsLKgr9X+iNoUsGeqDV0F julian@canaan.xn--pl-wia.net"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIiTyh7jJD9x8N64kgUGDgeo3F96i5Av3tHvwePHq5 julian@babylon"
+      ];
 
-    extraConfig = ''
-      set -g @tmux_power_theme 'snow'
-      run-shell "${pkgs.tmuxPlugins.power-theme}/share/tmux-plugins/power/tmux-power.tmux"
-    '';
-  };
-
-  programs.htop.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    bind
-    dmidecode
-    dool # dstat is EOL
-    man-pages
-    parted
-    pciutils
-    psmisc
-    pv
-    usbutils
-    wget
-    zile
-    nh
-  ];
-
-  documentation.man.enable = true;
-  documentation.dev.enable = true;
-  documentation.doc.enable = false;
-  documentation.enable = true;
-
-  users.mutableUsers = false;
-  users.users.julian = {
-    description = "Julian Stecklina";
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "video"
-      "kvm"
-      "networkmanager"
-      "dialout"
-      "libvirtd"
-      "docker"
-      "vboxusers"
-    ];
-    createHome = true;
-
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErZm6k0S7NahikKEbTQlrOrsLKgr9X+iNoUsGeqDV0F julian@canaan.xn--pl-wia.net"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIiTyh7jJD9x8N64kgUGDgeo3F96i5Av3tHvwePHq5 julian@babylon"
-    ];
-
-    hashedPassword = "$6$d4Q85PrE$m/mrZqoe6R4oi.2NHoB6gJicQr85yKtnmZBXUeyap7KPGKCp9SLqfPOprY12cJtjCcM3bsXTUVzS3O6n8VNTx0";
+      hashedPassword = "$6$d4Q85PrE$m/mrZqoe6R4oi.2NHoB6gJicQr85yKtnmZBXUeyap7KPGKCp9SLqfPOprY12cJtjCcM3bsXTUVzS3O6n8VNTx0";
+    };
   };
 }

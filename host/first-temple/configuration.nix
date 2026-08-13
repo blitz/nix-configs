@@ -24,6 +24,8 @@
     inputs.hercules-ci.nixosModules.agent-service
   ];
 
+  blitz.common.system-role = "server";
+
   systemd.services.celler-upload = {
     description = "Upload everything to Celler cache";
 

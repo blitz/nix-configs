@@ -30,6 +30,8 @@
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
+  blitz.common.system-role = "client";
+
   fileSystems."/".options = [
     "rw"
     "discard"

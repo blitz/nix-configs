@@ -13,6 +13,8 @@
     ../../modules/blitz-deploy.nix
   ];
 
+  blitz.common.system-role = "client";
+
   hardware.wirelessRegulatoryDatabase = true;
 
   boot.extraModprobeConfig = ''

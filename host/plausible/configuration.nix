@@ -12,6 +12,8 @@
     ../../modules/celler.nix
   ];
 
+  blitz.common.system-role = "server";
+
   nix.gc = {
     automatic = true;
     dates = "daily";
