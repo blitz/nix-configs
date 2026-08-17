@@ -146,7 +146,7 @@ in
     programs.fish = {
       enable = true;
 
-      shellInit = ''
+      shellInit = lib.optionalString config.programs.direnv.enable ''
         eval "$(direnv hook fish)"
       '';
     };
