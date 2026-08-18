@@ -51,6 +51,11 @@ in
         config.system.build.nixos-rebuild
       ];
 
+      unitConfig = {
+        After = [ "network-online.target" ];
+        Wants = [ "network-online.target" ];
+      };
+
       serviceConfig =
         let
           blitz-deploy = pkgs.callPackage ../pkgs/blitz-deploy { };
@@ -59,9 +64,6 @@ in
           ExecStart = "${lib.getExe blitz-deploy} --project '${cfg.repo}' '${cfg.operation}'";
           Type = "oneshot";
           User = "root";
-
-          After = "network-online.target";
-          Wants = "network-online.target";
 
           Restart = "on-failure";
           RestartSec = 600;
