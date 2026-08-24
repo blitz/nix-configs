@@ -7,8 +7,10 @@
 
 {
   boot.kernelParams = [
-    # May help with AMDGPU gfxhub page faults
-    "amdgpu.sg_display=0"
+    # May help with AMDGPU gfxhub page faults.
+    #
+    # TODO: We have a discrete GPU now. Let's see!
+    # "amdgpu.sg_display=0"
   ];
 
   hardware.amdgpu = {
