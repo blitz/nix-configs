@@ -22,6 +22,7 @@
     jq
     fzf
     nix-index
+    bubblewrap # For zed-editor
   ];
 
   nixpkgs.config.allowUnfree = true;
