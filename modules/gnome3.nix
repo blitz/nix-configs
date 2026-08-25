@@ -31,24 +31,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Lots of hardware craps its pants with hardware decoding in online meetings.
-    (google-chrome.override {
-      commandLineArgs = [
-        # https://github.com/NixOS/nixpkgs/issues/306471
-        "--enable-features=UseOzonePlatform"
-
-        "--ozone-platform-hint=wayland"
-
-        "--enable-features=VaapiVideoDecoder"
-
-        # Might cause issues.
-        # "--enable-features=VaapiVideoEncoder"
-
-        # "--enable-features=Vulkan"
-        # "--use-angle=vulkan"
-      ];
-    })
-
+    google-chrome
     firefox
 
     mpv
