@@ -9,6 +9,7 @@
     ctrl-os-modules = {
       url = "github:cyberus-ctrl-os/ctrl-os-modules";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "ctrl-os";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
