@@ -65,5 +65,12 @@ in
 
     # C++ development
     clang-tools
+
+    # Smartcards
+    pcsc-tools
+    opensc
   ];
+
+  # Smartcards
+  services.pcscd.enable = true;
 }
