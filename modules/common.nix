@@ -88,10 +88,22 @@ in
 
     # Don't accumulate crap.
     boot.tmp.cleanOnBoot = true;
-    services.journald.extraConfig = ''
-      SystemMaxUse=250M
-      SystemMaxFileSize=50M
-    '';
+
+    services.journald =
+      if lib.versionOlder lib.version "26.11" then
+        {
+          extraConfig = ''
+            SystemMaxUse=250M
+            SystemMaxFileSize=50M
+          '';
+        }
+      else
+        {
+          settings.Journal = {
+            SystemMaxUse = "250M";
+            SystemMaxFileSize = "50M";
+          };
+        };
 
     nix.optimise.automatic = true;
     boot.loader.systemd-boot.configurationLimit = 5;
