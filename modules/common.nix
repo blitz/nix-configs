@@ -111,16 +111,17 @@ in
 
     # Swap
 
-    ## Only useful if there is no swap partition.
-    zramSwap = {
-      enable = !hasSwapPartition;
+    ## A stand-in for a real swap partition.
+    zramSwap = lib.mkIf (!hasSwapPartition) {
+      enable = true;
       algorithm = "zstd";
       memoryPercent = 25;
     };
 
-    ## Fully integrated into the Swap subsystem.
-    boot.zswap = {
-      enable = hasSwapPartition;
+    ## Fully integrated into the Swap subsystem. Only works if there
+    ## is actually a swap partition.
+    boot.zswap = lib.mkIf hasSwapPartition {
+      enable = true;
       maxPoolPercent = 25;
       compressor = "zstd";
     };
