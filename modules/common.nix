@@ -88,10 +88,22 @@ in
 
     # Don't accumulate crap.
     boot.tmp.cleanOnBoot = true;
-    services.journald.extraConfig = ''
-      SystemMaxUse=250M
-      SystemMaxFileSize=50M
-    '';
+
+    services.journald =
+      if lib.versionOlder lib.version "26.11" then
+        {
+          extraConfig = ''
+            SystemMaxUse=250M
+            SystemMaxFileSize=50M
+          '';
+        }
+      else
+        {
+          settings.Journal = {
+            SystemMaxUse = "250M";
+            SystemMaxFileSize = "50M";
+          };
+        };
 
     nix.optimise.automatic = true;
     boot.loader.systemd-boot.configurationLimit = 5;
@@ -99,16 +111,17 @@ in
 
     # Swap
 
-    ## Only useful if there is no swap partition.
-    zramSwap = {
-      enable = !hasSwapPartition;
+    ## A stand-in for a real swap partition.
+    zramSwap = lib.mkIf (!hasSwapPartition) {
+      enable = true;
       algorithm = "zstd";
       memoryPercent = 25;
     };
 
-    ## Fully integrated into the Swap subsystem.
-    boot.zswap = {
-      enable = hasSwapPartition;
+    ## Fully integrated into the Swap subsystem. Only works if there
+    ## is actually a swap partition.
+    boot.zswap = lib.mkIf hasSwapPartition {
+      enable = true;
       maxPoolPercent = 25;
       compressor = "zstd";
     };

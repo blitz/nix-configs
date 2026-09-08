@@ -4,12 +4,12 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    ctrl-os.url = "https://channels.ctrl-os.com/channel/ctrlos-26.05.tar.xz";
+    cyberus-linux.url = "https://channels.cyberus-linux.com/channel/ctrlos-26.05.tar.xz";
 
-    ctrl-os-modules = {
-      url = "github:cyberus-ctrl-os/ctrl-os-modules";
+    cyberus-linux-modules = {
+      url = "github:cyberus-linux/cyberus-linux-modules";
       inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "ctrl-os";
+      inputs.nixpkgs.follows = "cyberus-linux";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -159,7 +159,7 @@
 
               first-temple = nixosSystem {
                 system = "x86_64-linux";
-                nixpkgs = inputs.ctrl-os;
+                nixpkgs = inputs.cyberus-linux;
 
                 modules = [
                   ./host/first-temple/configuration.nix
