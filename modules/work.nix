@@ -8,10 +8,10 @@
 {
 
   imports = [
-    inputs.ctrl-os-modules.nixosModules.profiles
+    inputs.cyberus-linux-modules.nixosModules.profiles
   ];
 
-  ctrl-os.profiles.developer.enable = true;
+  cyberus-linux.profiles.developer.enable = true;
 
   # For cross-platform builds.
   boot.binfmt.emulatedSystems = [

@@ -79,7 +79,7 @@
         "type": "github"
       }
     },
-    "ctrl-os": {
+    "cyberus-linux": {
       "locked": {
         "lastModified": 315532800,
         "narHash": "sha256-zcMsMF2g4s+alkxrCJjUGcBlJ1GCjARRIIx0mi6O8lA=",
@@ -88,30 +88,30 @@
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.ctrl-os.com/channel/ctrlos-26.05.tar.xz"
+        "url": "https://channels.cyberus-linux.com/channel/ctrlos-26.05.tar.xz"
       }
     },
-    "ctrl-os-modules": {
+    "cyberus-linux-modules": {
       "inputs": {
         "flake-parts": [
           "flake-parts"
         ],
         "nixpkgs": [
-          "ctrl-os"
+          "cyberus-linux"
         ],
         "preCommitHooksNix": "preCommitHooksNix"
       },
       "locked": {
         "lastModified": 1788379144,
         "narHash": "sha256-ot1zV0qvVPEL88ZK3uWihOnUezNNhEWKdKRt9X+xKUU=",
-        "owner": "cyberus-ctrl-os",
-        "repo": "ctrl-os-modules",
+        "owner": "cyberus-linux",
+        "repo": "cyberus-linux-modules",
         "rev": "1f9536ed917343b0702f9ef3a0f92c437fb075fd",
         "type": "github"
       },
       "original": {
-        "owner": "cyberus-ctrl-os",
-        "repo": "ctrl-os-modules",
+        "owner": "cyberus-linux",
+        "repo": "cyberus-linux-modules",
         "type": "github"
       }
     },
@@ -625,7 +625,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "nixpkgs": [
-          "ctrl-os-modules",
+          "cyberus-linux-modules",
           "nixpkgs"
         ]
       },
@@ -647,8 +647,8 @@
       "inputs": {
         "agenix": "agenix",
         "celler": "celler",
-        "ctrl-os": "ctrl-os",
-        "ctrl-os-modules": "ctrl-os-modules",
+        "cyberus-linux": "cyberus-linux",
+        "cyberus-linux-modules": "cyberus-linux-modules",
         "disko": "disko",
         "fenix": "fenix",
         "flake-parts": "flake-parts",
