@@ -1,3 +1,4 @@
+# agenix -i ~/.ssh/id_agesecrets ...
 let
   # id_agesecrets
   julian = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA2r6yTDSfWjVrIzRSlDFrl5cgMcKilexdnW33xPRsil";
@@ -17,6 +18,10 @@ let
   ];
 in
 {
+  # Celler Admin
+  "secrets/celler-private.age".publicKeys = users;
+  
+  # AWS credentials
   "secrets/celler-server-token.age".publicKeys = users ++ cellerServer;
 
   # Hercules CI for "blitz"

@@ -31,7 +31,9 @@
     settings = {
       listen = "[::]:8080";
 
-      jwt = { };
+      jwt = {
+        rs256-public-key = ../public-keys/celler.pem;
+      };
 
       database = {
         url = "postgresql:///cellerd";
