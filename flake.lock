@@ -36,11 +36,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1788976507,
-        "narHash": "sha256-zODo08Nv8DaWNppXX8I+fjty0AMj6Q+2xODB15PIjl4=",
+        "lastModified": 1789165784,
+        "narHash": "sha256-mj8tdH3dexOG7MiCitOkFOgufszhDe1q78ySuFA51jc=",
         "owner": "blitz",
         "repo": "celler",
-        "rev": "05ddc231d4a7f6d5b79e89c051265973db1a8d2a",
+        "rev": "804ac6b73aac442832bfa3d226a5b55cfaa8e8e6",
         "type": "github"
       },
       "original": {
