@@ -62,7 +62,7 @@
     };
 
     celler = {
-      url = "github:blitz/celler";
+      url = "github:blitz/celler/blitz/celler-admin";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
