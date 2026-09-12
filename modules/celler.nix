@@ -32,7 +32,7 @@
       listen = "[::]:8080";
 
       jwt = {
-        rs256-public-key = ../public-keys/celler.pem;
+        rs256-public-key-file = ../public-keys/celler.pem;
       };
 
       database = {
