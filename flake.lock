@@ -30,22 +30,22 @@
         "flake-parts": [
           "flake-parts"
         ],
+        "git-hooks": "git-hooks",
         "nixpkgs": [
           "nixpkgs"
         ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1789216370,
-        "narHash": "sha256-umCNqOEmmMG5EMnfIAyiyIQo4AzzOrPNcgDb26f1ARY=",
-        "owner": "blitz",
+        "lastModified": 1789374738,
+        "narHash": "sha256-WgP1kXnFKycUtSNeZ7hPZ12T4Gn8TNE6/nbz4m0jXUY=",
+        "owner": "celler-cache",
         "repo": "celler",
-        "rev": "5de65840a2ebc8b7e5ec8a55c9fd5c6420677ea2",
+        "rev": "8d1ea58d5b10b681b055065f984bd5aac7201857",
         "type": "github"
       },
       "original": {
-        "owner": "blitz",
-        "ref": "blitz/celler-admin",
+        "owner": "celler-cache",
         "repo": "celler",
         "type": "github"
       }
@@ -320,6 +320,31 @@
     },
     "git-hooks": {
       "inputs": {
+        "flake-compat": [
+          "celler",
+          "flake-compat"
+        ],
+        "nixpkgs": [
+          "celler",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788267358,
+        "narHash": "sha256-nt+lUqYVpc9Y6JeMd2WmXzCDojasdadKo0mWcluvY2Y=",
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "rev": "27555e2624241fb116b49095df4caaee85a25691",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "git-hooks_2": {
+      "inputs": {
         "flake-compat": "flake-compat_4",
         "nixpkgs": [
           "nom",
@@ -581,7 +606,7 @@
     "nom": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "git-hooks": "git-hooks",
+        "git-hooks": "git-hooks_2",
         "nixpkgs": [
           "nixpkgs"
         ]
