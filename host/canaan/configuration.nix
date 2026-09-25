@@ -13,6 +13,8 @@
 
   blitz.common.system-role = "client";
 
+  services.sshd.enable = true;
+
   hardware.wirelessRegulatoryDatabase = true;
 
   boot.extraModprobeConfig = ''
