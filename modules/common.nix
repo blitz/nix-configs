@@ -198,6 +198,9 @@ in
         ]
       ));
 
+    # Allow running unmodified binaries.
+    programs.nix-ld.enable = isClient;
+
     documentation.man.enable = isClient;
     documentation.dev.enable = isClient;
     documentation.doc.enable = false;

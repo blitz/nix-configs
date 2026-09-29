@@ -16,7 +16,7 @@
   boot.lanzaboote = {
     enable = true;
 
-    configurationLimit = 8;
+    configurationLimit = 4;
     pkiBundle = lib.mkDefault "/etc/secureboot";
 
     allowUnsigned = true;
@@ -39,14 +39,10 @@
       name = "lockdown";
       patch = null;
 
-      # Auto-sign kernel modules and (not) enable kernel lockdown.
+      # Auto-sign kernel modules and enable kernel lockdown.
       #
       # Trimming kernel symbols is safe, because we can't build
       # out-of-tree modules anymore anyway.
-      #
-      # Kernel lockdown is currently disabled because it prevents suspend-to-ram?
-      # [268876.864150] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
-      #
       extraConfig = ''
         MODULE_SIG y
         MODULE_SIG_FORCE y

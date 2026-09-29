@@ -21,7 +21,7 @@ in
 {
   # Celler Admin
   "secrets/celler-private.age".publicKeys = users;
-  
+
   # AWS credentials
   "secrets/celler-server-token.age".publicKeys = users ++ cellerServer;
 

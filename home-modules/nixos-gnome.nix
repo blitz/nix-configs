@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
 
   imports = [
@@ -40,7 +40,6 @@
               # Application does *not* have a desktopItem entry. Try to find a
               # matching .desktop name in /share/applications
               source =
-                with builtins;
                 let
                   appsPath = "${pkg}/share/applications";
                   # function to filter out subdirs of /share/applications
@@ -48,7 +47,7 @@
                     dirContents:
                     lib.attrsets.filterAttrs (
                       _: fileType:
-                      elem fileType [
+                      builtins.elem fileType [
                         "regular"
                         "symlink"
                       ]
@@ -56,13 +55,13 @@
                 in
                 (
                   # if there's a desktop file by the app's pname, use that
-                  if (pathExists "${appsPath}/${pkg.pname}.desktop") then
+                  if (builtins.pathExists "${appsPath}/${pkg.pname}.desktop") then
                     "${appsPath}/${pkg.pname}.desktop"
                   # if there's not, find the first desktop file in the app's directory and assume that's good enough
                   else
                     (
-                      if pathExists "${appsPath}" then
-                        "${appsPath}/${head (attrNames (filterFiles (readDir "${appsPath}")))}"
+                      if builtins.pathExists "${appsPath}" then
+                        "${appsPath}/${builtins.head (builtins.attrNames (filterFiles (builtins.readDir "${appsPath}")))}"
                       else
                         throw "no desktop file for app ${pkg.pname}"
                     )
