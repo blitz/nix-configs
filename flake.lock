@@ -34,15 +34,16 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1789374738,
-        "narHash": "sha256-WgP1kXnFKycUtSNeZ7hPZ12T4Gn8TNE6/nbz4m0jXUY=",
+        "lastModified": 1790630732,
+        "narHash": "sha256-FgenjJbX1Slbjj6GdpnxSTcfzYPeDumXnn+Zhjd8jIo=",
         "owner": "celler-cache",
         "repo": "celler",
-        "rev": "8d1ea58d5b10b681b055065f984bd5aac7201857",
+        "rev": "194c64c47246e5b232263f8c6ac44d0d37952927",
         "type": "github"
       },
       "original": {
         "owner": "celler-cache",
+        "ref": "blitz/object-store",
         "repo": "celler",
         "type": "github"
       }
