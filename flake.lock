@@ -86,7 +86,7 @@
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.cyberus-linux.com/channel/ctrlos-26.05.tar.xz"
+        "url": "https://channels.cyberus-linux.com/channel/cyberus-linux-26.05.tar.xz"
       }
     },
     "cyberus-linux-modules": {

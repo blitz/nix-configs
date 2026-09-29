@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    cyberus-linux.url = "https://channels.cyberus-linux.com/channel/ctrlos-26.05.tar.xz";
+    cyberus-linux.url = "https://channels.cyberus-linux.com/channel/cyberus-linux-26.05.tar.xz";
 
     cyberus-linux-modules = {
       url = "github:cyberus-linux/cyberus-linux-modules";
@@ -58,7 +58,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "";
     };
 
     celler = {
