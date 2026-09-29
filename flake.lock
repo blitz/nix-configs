@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790088168,
-        "narHash": "sha256-3dH4x0aSykEJ2qis+60KC18knQViFSNAM6xKN6LsGvw=",
+        "lastModified": 1790667227,
+        "narHash": "sha256-8LvIawaY64dCwvxWjUQNvkv3Gyou9KW2cnDtzphlOmY=",
         "owner": "cyberus-linux",
         "repo": "cyberus-linux-modules",
-        "rev": "ade3a51dd1cca997fd91f4e1ea6c44e07dcabb27",
+        "rev": "7693a05f11d7aea3c406d32771ce1cd60a93e94f",
         "type": "github"
       },
       "original": {
@@ -142,11 +142,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1790642863,
-        "narHash": "sha256-JIwE6EnebvxW7QFFEitWHuZDXwN6Qcf6ZC8DIvYW3y8=",
+        "lastModified": 1790684979,
+        "narHash": "sha256-vsUeGN4sI81IxNei+4uXatmkCDpMK3Q6l/rtxc1JeEU=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "a8f386c482e78e9a48be5abecdc17a9b098a95a1",
+        "rev": "d30cd5c9c2d376fbecb7cabf999270b62b51dda3",
         "type": "github"
       },
       "original": {
