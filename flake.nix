@@ -61,7 +61,7 @@
     };
 
     celler = {
-      url = "github:celler-cache/celler?ref=blitz/object-store";
+      url = "github:celler-cache/celler";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
