@@ -47,6 +47,7 @@
         MODULE_SIG y
         MODULE_SIG_FORCE y
         MODULE_SIG_ALL y
+        MODULE_SIG_KEY_TYPE_ECDSA y
 
         TRIM_UNUSED_KSYMS y
 
