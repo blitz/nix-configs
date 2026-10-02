@@ -8,7 +8,6 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
 
-    ../../modules/plausible.nix
     ../../modules/celler.nix
   ];
 
@@ -23,7 +22,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "plausible";
+  networking.hostName = "cache";
   networking.domain = "x86.lol";
   services.openssh.enable = true;
 

@@ -166,11 +166,11 @@
                 ];
               };
 
-              plausible = nixosSystem {
+              cache = nixosSystem {
                 system = "aarch64-linux";
 
                 modules = [
-                  ./host/plausible/configuration.nix
+                  ./host/cache/configuration.nix
                 ];
               };
 
