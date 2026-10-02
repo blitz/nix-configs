@@ -8,6 +8,7 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
 
+    ../../modules/hercules-ci-worker.nix
     ../../modules/celler.nix
   ];
 
