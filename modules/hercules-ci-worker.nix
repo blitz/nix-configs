@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, ... }:
 {
   imports = [
     ./secrets.nix
@@ -54,6 +54,6 @@
 
   nix.gc = {
     automatic = true;
-    dates = "monthly";
+    dates = lib.mkDefault "monthly";
   };
 }

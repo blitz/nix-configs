@@ -61,7 +61,7 @@
     };
 
     celler = {
-      url = "github:celler-cache/celler?ref=blitz/object-store";
+      url = "github:celler-cache/celler";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
@@ -166,11 +166,11 @@
                 ];
               };
 
-              plausible = nixosSystem {
+              cache = nixosSystem {
                 system = "aarch64-linux";
 
                 modules = [
-                  ./host/plausible/configuration.nix
+                  ./host/cache/configuration.nix
                 ];
               };
 

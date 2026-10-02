@@ -8,7 +8,7 @@
     ../../modules/tailscale-exit-node.nix
     ../../modules/cachix.nix
 
-    ../../modules/plausible.nix
+    ../../modules/hercules-ci-worker.nix
     ../../modules/celler.nix
   ];
 
@@ -16,14 +16,14 @@
 
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
   };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "plausible";
+  networking.hostName = "cache";
   networking.domain = "x86.lol";
   services.openssh.enable = true;
 
