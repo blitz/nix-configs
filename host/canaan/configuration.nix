@@ -11,6 +11,36 @@
     # ../../modules/secure-boot.nix
   ];
 
+  services.jellyfin = {
+    enable = true;
+    #openFirewall = true;
+
+    hardwareAcceleration.type = "vaapi";
+  };
+  users.users.jellyfin.extraGroups = [
+    "render"
+    "video"
+  ];
+
+  services.nginx = {
+    enable = true;
+
+    # "_" acts as a catch-all for any IP address
+    virtualHosts."_" = {
+      default = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8096";
+
+        # Required by Jellyfin
+        proxyWebsockets = true;
+      };
+    };
+  };
+
+  # Open HTTP port in the firewall
+  networking.firewall.allowedTCPPorts = [ 80 ];
+
   blitz.common.system-role = "client";
 
   services.sshd.enable = true;
