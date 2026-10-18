@@ -21,10 +21,7 @@
 
     hercules-ci = {
       url = "github:hercules-ci/hercules-ci-agent";
-
-      # This breaks Hercules CI's cachix version.
-      #
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fenix = {
