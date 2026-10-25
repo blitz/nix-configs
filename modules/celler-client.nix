@@ -7,7 +7,7 @@
   nix = {
     settings = {
       substituters = [
-        "https://cache.x86.lol/blitz"
+        "https://blitz-cache.x86.lol/"
       ];
       trusted-public-keys = [
         "blitz:2+sGBneZ99Gz4bIWifuLiHXDPINTgQgmhaFKUhNwpsU="
