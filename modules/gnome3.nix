@@ -121,11 +121,6 @@
 
     # Needs nscd
     nssmdns4 = true;
-
-    publish = {
-      enable = true;
-      workstation = true;
-    };
   };
 
   # "Shokz Loop120 by Shokz Consumer Control" sends POWER button
