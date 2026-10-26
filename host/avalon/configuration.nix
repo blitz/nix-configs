@@ -44,13 +44,7 @@
   ];
   boot.initrd.luks.devices."luks-a226c66b-7561-47cd-96c2-3b24a7a92220".allowDiscards = true;
 
-  # Quiet boot
-  boot.initrd.verbose = false;
-  boot.consoleLogLevel = 3;
   boot.kernelParams = [
-    "quiet"
-    "udev.log_level=3"
-
     # https://gitlab.freedesktop.org/drm/amd/-/issues/3647
     "amdgpu.dcdebugmask=0x10"
   ];
