@@ -8,7 +8,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    boot.initrd.verbose = false;
     boot.consoleLogLevel = 3;
 
     boot.kernelParams = [
@@ -16,8 +15,6 @@ in
       "udev.log_level=3"
     ];
 
-    boot.initrd.systemd.enable = true;
     boot.plymouth.enable = true;
-
   };
 }
