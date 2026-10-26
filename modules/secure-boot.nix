@@ -56,6 +56,28 @@
         LOCK_DOWN_KERNEL_FORCE_INTEGRITY y
       '';
     }
+
+    {
+      name = "builtin-keyboard";
+      patch = null;
+
+      structuredExtraConfig = with lib.kernel; {
+        # USB Host Controller
+        USB_SUPPORT = yes;
+        USB = yes;
+        USB_XHCI_HCD = yes;
+        USB_XHCI_PCI = yes;
+
+        # HID Support
+        HID = yes;
+        HID_GENERIC = yes;
+        USB_HID = yes;
+
+        # Input Device Core
+        INPUT = yes;
+        INPUT_EVDEV = yes;
+      };
+    }
   ];
 
 }
