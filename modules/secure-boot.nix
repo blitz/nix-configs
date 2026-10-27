@@ -34,31 +34,35 @@
     };
   };
 
+  boot.initrd.systemd.emergencyAccess = "$y$j9T$A2U8SmdosL3CNAuUH1lpJ/$0CXHTyO5gDCaXMTnqEHC.iD4W4ryD3zky68f8IG80EB";
+  systemd.enableEmergencyMode = true;
+
   boot.kernelPatches = [
+    # Is this still needed after this PR?
+    # https://github.com/NixOS/nixpkgs/pull/571181
+    #     {
+    #       name = "lockdown";
+    #       patch = null;
+    #
+    #       # Auto-sign kernel modules and enable kernel lockdown.
+    #       #
+    #       # Trimming kernel symbols is safe, because we can't build
+    #       # out-of-tree modules anymore anyway.
+    #       structuredExtraConfig = with lib.kernel; {
+    #         MODULE_SIG = yes;
+    #         MODULE_SIG_FORCE = yes;
+    #         MODULE_SIG_ALL = yes;
+    #         MODULE_SIG_KEY_TYPE_RSA = yes;
+    #
+    #         TRIM_UNUSED_KSYMS = yes;
+    #
+    #         SECURITY_LOCKDOWN_LSM = yes;
+    #         SECURITY_LOCKDOWN_LSM_EARLY = yes;
+    #         LOCK_DOWN_KERNEL_FORCE_INTEGRITY = yes;
+    #       };
+    #     }
     {
-      name = "lockdown";
-      patch = null;
-
-      # Auto-sign kernel modules and enable kernel lockdown.
-      #
-      # Trimming kernel symbols is safe, because we can't build
-      # out-of-tree modules anymore anyway.
-      extraConfig = ''
-        MODULE_SIG y
-        MODULE_SIG_FORCE y
-        MODULE_SIG_ALL y
-        MODULE_SIG_KEY_TYPE_ECDSA y
-
-        TRIM_UNUSED_KSYMS y
-
-        SECURITY_LOCKDOWN_LSM y
-        SECURITY_LOCKDOWN_LSM_EARLY y
-        LOCK_DOWN_KERNEL_FORCE_INTEGRITY y
-      '';
-    }
-
-    {
-      name = "builtin-keyboard";
+      name = "builtin-essentials";
       patch = null;
 
       structuredExtraConfig = with lib.kernel; {
@@ -68,14 +72,29 @@
         USB_XHCI_HCD = yes;
         USB_XHCI_PCI = yes;
 
-        # HID Support
         HID = yes;
         HID_GENERIC = yes;
         USB_HID = yes;
-
-        # Input Device Core
         INPUT = yes;
         INPUT_EVDEV = yes;
+
+        XFS_FS = yes;
+        VFAT_FS = yes;
+        FAT_FS = yes;
+        FUSE_FS = yes;
+        EFIVAR_FS = yes;
+        AUTOFS_FS = yes;
+        CONFIGFS_FS = yes;
+
+        BLK_DEV_NVME = yes;
+        NVME_AUTH = lib.mkForce yes;
+        BLK_DEV_DM = yes;
+        X86_PMEM_LEGACY = yes;
+        DAX = yes;
+        DM_CRYPT = yes;
+        CRYPTO_AES_NI_INTEL = yes;
+        ENCRYPTED_KEYS = yes;
+        TRUSTED_KEYS = yes;
       };
     }
   ];
