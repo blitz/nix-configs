@@ -227,7 +227,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIiTyh7jJD9x8N64kgUGDgeo3F96i5Av3tHvwePHq5 julian@babylon"
       ];
 
-      hashedPassword = "$6$d4Q85PrE$m/mrZqoe6R4oi.2NHoB6gJicQr85yKtnmZBXUeyap7KPGKCp9SLqfPOprY12cJtjCcM3bsXTUVzS3O6n8VNTx0";
+      hashedPassword = "$y$j9T$VGK2II0lRvSlT7mwCeSvV.$mbZxFJ7d1/N363XAOooH.gwaaq9upOV4QJFElpDSMCD";
     };
   };
 }
