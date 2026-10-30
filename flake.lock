@@ -80,9 +80,9 @@
     "cyberus-linux": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-mKU7MNOppS1FojUnZWL2Foy2YDnRSBvYD+RK+kDe0hc=",
+        "narHash": "sha256-bcDupg4C3IGfnTZDt+F8Q/NmoQu5adPeJfSAcjIL/7Q=",
         "type": "tarball",
-        "url": "https://channels.ctrl-os.com/permanent/ctrlos-800822598d1b548ec3d79dfcc87badc38dc1dc14.tar.xz"
+        "url": "https://channels.ctrl-os.com/permanent/ctrlos-2d41e2b37e3774fc947f96b2ba160413170be0f4.tar.xz"
       },
       "original": {
         "type": "tarball",
@@ -141,11 +141,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1793190498,
-        "narHash": "sha256-XXhpFYjSCLs85iw+V7V9GeGKaXr8DLOmiYjItxeU3Bc=",
+        "lastModified": 1793277514,
+        "narHash": "sha256-oazTcfIGr1pFdY8oNZ9A5yEsNBa5fzsV3w5bEdXmJl4=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "32215a6d88a3ec9dec267f42bfed3e3a3b4856fa",
+        "rev": "cf57f8966c3c129e31caaf29790caf8a6a93e0a6",
         "type": "github"
       },
       "original": {
@@ -516,11 +516,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793054847,
-        "narHash": "sha256-mhud3nRH8RoP0h9MydfkJ8mISpj+QE/S//wOt9bNgC0=",
+        "lastModified": 1793236063,
+        "narHash": "sha256-jGFe4xdrCw6xpgH2zgKwslACyt/NGuPwGILPEMFxmcQ=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "8ba09466dc929acf5c8bb3e0cc40f472a7df3630",
+        "rev": "b6754c901c21478fd8450d62101e712b2a4f0d75",
         "type": "github"
       },
       "original": {
