@@ -79,6 +79,7 @@
       freefont_ttf
       liberation_ttf
       mplus-outline-fonts.githubRelease
+      fraunces
       # nerdfonts
     ];
   };
