@@ -53,6 +53,14 @@
     "riscv64-linux"
   ];
 
+  nix.sshServe = {
+    enable = true;
+    protocol = "ssh-ng";
+    write = true;
+    trusted = true;
+    keys = [ (builtins.readFile ../../ssh-public-keys/ms-a2-build.pub) ];
+  };
+
   # https://github.com/nix-community/home-manager/issues/3113
   programs.dconf.enable = true;
 

@@ -4,6 +4,7 @@
 
 {
   inputs,
+  self,
   pkgs,
   lib,
   ...
@@ -34,6 +35,31 @@
 
   blitz.common.system-role = "client";
   blitz.amdgpu.hwVideoEncoding = true;
+
+  nix.distributedBuilds = true;
+  nix.settings.builders-use-substitutes = true; # builder downloads from caches itself
+
+  nix.buildMachines =
+    let
+      server = self.nixosConfigurations.first-temple;
+    in
+    [
+      {
+        hostName = "first-temple.lan";
+        protocol = "ssh-ng";
+        sshUser = "nix-ssh";
+
+        # TODO add to agenix
+        sshKey = "/etc/nix/builder_ed25519"; # private key, used by root's nix-daemon
+
+        systems = [ "x86_64-linux" ];
+        maxJobs = 2;
+        speedFactor = 2;
+        supportedFeatures = server.nix.settings.system-features;
+
+        publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUVscVh4LzZlQjFNWXNoNGNWcDlmNHBMcndvd1JtNFdzRjdpd2E2Zk9xT1kgcm9vdEBuaXhvcwo=";
+      }
+    ];
 
   systemd.network.enable = true;
   systemd.network.wait-online.enable = false;
