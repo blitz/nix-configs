@@ -163,14 +163,6 @@
                 ];
               };
 
-              cache = nixosSystem {
-                system = "aarch64-linux";
-
-                modules = [
-                  ./host/cache/configuration.nix
-                ];
-              };
-
               chat = nixosSystem {
                 system = "aarch64-linux";
 

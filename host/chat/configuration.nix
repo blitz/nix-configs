@@ -9,9 +9,17 @@
     ../../modules/cachix.nix
     ../../modules/matrix-synapse.nix
     #../../modules/matrix-coturn.nix
+
+    ../../modules/hercules-ci-worker.nix
+    ../../modules/celler.nix
   ];
 
   blitz.common.system-role = "server";
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
 
   # /boot doesn't have a lot of space.
   boot.loader.grub.configurationLimit = lib.mkForce 2;
