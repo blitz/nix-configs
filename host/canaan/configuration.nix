@@ -1,4 +1,4 @@
-{ input, ... }: {
+{ pkgs, ... }: {
 
   imports = [
     ../../modules/thinkpad-l14-amd.nix
@@ -10,6 +10,9 @@
     ../../modules/home-manager.nix
     # ../../modules/secure-boot.nix
   ];
+
+  # To workaround bcachefs compilation issues.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.jellyfin = {
     enable = true;
