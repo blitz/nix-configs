@@ -80,9 +80,9 @@
     "cyberus-linux": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-EayCjYU4KMKi96qbNYVLq6e10fLVzpFyZZDpt4fwicU=",
+        "narHash": "sha256-YfucMZfeMFLAj8W5b46ITUEUPUKtdcMnz2lDG37lscM=",
         "type": "tarball",
-        "url": "https://channels.cyberus-linux.com/permanent/ctrlos-50cf8b4f1543b63dd84f459e455552232893ec72.tar.xz"
+        "url": "https://channels.cyberus-linux.com/permanent/ctrlos-ee66c8d25c7e6eeea5a7d35f90b2dfc6998469dd.tar.xz"
       },
       "original": {
         "type": "tarball",
